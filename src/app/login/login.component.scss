@@ -1,0 +1,100 @@
+body {
+    font-size: 13px;
+    font-family: Calibri;
+    background-color: #F8F8F8;
+    color: #333333;
+}
+.img-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 70px;
+}
+.login-panel {
+    position: fixed;
+    background-color: white;
+    width: auto;
+    height: 100%;
+    padding: 75px 11%;
+    box-shadow: 0px 2px 3px #635d5d1a;
+    right: 0;
+}
+
+.logo img {   
+    display: block;
+    margin: 0px auto;
+}
+h1 {
+    color: #053c6d;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 41px;
+    font-weight: 700;
+    margin: 25px 0 45px 0;
+}
+.form-control {
+    background-color: white;
+    border-radius: 4px;
+    height: 38px;
+    border: 1px solid #ced4da !important;
+    font-size: 16px;
+    padding: .375rem .75rem 0.375rem 2.60rem;
+    width: 220px !important;
+    color: #053c6d;
+}
+.icon-left {
+    margin-bottom: 15px;
+}
+    .icon-left span {
+        position: absolute;
+        top: 8px;
+        left: 11px;
+        font-size: 21px;
+        color: #868686;
+        z-index: 111;
+    }
+.login-btn {
+    background-color: #053C6D;
+    color: white;
+    text-align: center;
+    padding: 7px;
+    border-radius: .25rem !important;
+    cursor: pointer;
+    border: 0;
+    width: 100%;
+    margin-top: 25px;
+    font-size: 16px;
+    display: block;
+}
+
+.login-btn:focus {
+    color: white;
+    text-decoration: none;
+    outline: 1px dotted;
+    outline: 0;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.login-btn:hover {
+    color: white;
+    text-decoration: none;
+    outline: 1px dotted;
+    outline: 0;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+}
+.forgot-password {
+    color: #1A2E35;
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    margin-top: 55px;
+    text-decoration: underline;
+    font-weight: 600;
+}
+@media (max-width:1023px) {
+    .img-fluid {
+        max-width: 44% !important;
+        height: auto;
+    }
+}
