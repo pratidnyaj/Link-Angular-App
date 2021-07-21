@@ -17,6 +17,10 @@ export class CaseService {
     this._caseInfoSource.next(oCase);
   }
 
+  public getCaseInteractionHistory(): Observable<any> {
+    return this.httpclient.get('./assets/json/interaction-history-list.json');
+  }
+
   public getCaseList(): Observable<any> {
     return this.httpclient.get('./assets/json/cases-list.json');
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-contact-info',
@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class ContactInfoComponent implements OnInit {
 
   constructor() { }
+
+  @Input() contactInfoIP : any = {};
 
   ngOnInit(): void {
   }

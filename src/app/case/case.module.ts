@@ -6,6 +6,7 @@ import { CaseFilterComponent } from './case-filter/case-filter.component';
 import { CaseListDisplayComponent } from './case-list-display/case-list-display.component';
 import { CaseInfoComponent } from './case-info/case-info.component';
 import { ContactInfoComponent } from './contact-info/contact-info.component';
+import { CaseInteractionListComponent } from './case-interaction-list/case-interaction-list.component';
 
 
 
@@ -16,7 +17,8 @@ import { ContactInfoComponent } from './contact-info/contact-info.component';
     CaseFilterComponent,
     CaseListDisplayComponent,
     CaseInfoComponent,
-    ContactInfoComponent
+    ContactInfoComponent,
+    CaseInteractionListComponent
   ],
   imports: [
     CommonModule

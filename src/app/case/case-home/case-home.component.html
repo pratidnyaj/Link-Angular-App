@@ -2,29 +2,16 @@
     <div class="col-md-3 col-sm-12 col-xs-12 no-padding">
         <app-case-list></app-case-list>
     </div>
+    
     <div class="col-lg-9 d-flex">
         <div class="col-md-8 d-none d-sm-block less-padding">
             <div class="middle-panel">
-                <div class="case-details"></div>
-                <div class="case-action"></div>
-                <div class="mid-content">
-                    <div class="mail-content">
-                        Middle mail content....
-                    </div>
-                </div>
+                <app-case-interaction-list></app-case-interaction-list>
             </div>
         </div>
+
         <div class="col-md-4 d-none d-sm-block less-padding">
-            <div class="col-12 no-padding">
-                <div class="right-panel" style="overflow-y: auto;margin-top: 23px;">
-                    <app-case-info></app-case-info>
-                </div>
-            </div>
-            <div class="col-12 no-padding">
-                <div class="content-half d-flex">
-                    <app-contact-info></app-contact-info>
-                </div>
-            </div>
+            <app-case-info></app-case-info>
         </div>
     </div>
 </div>
