@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="col-md-3 col-sm-12 col-xs-12 no-padding">
+<!-- <div class="row">
+    <div class="col-md-3 col-sm-12 col-xs-12 no-padding cases-mobile">
         <app-case-list></app-case-list>
     </div>
     
@@ -12,6 +12,267 @@
 
         <div class="col-md-4 d-none d-sm-block less-padding">
             <app-case-info></app-case-info>
+        </div>
+    </div>
+</div> -->
+
+
+
+<div class="uf_cmn_sty">
+    <div class="row">
+        <div class="col-md-3 col-sm-12 col-xs-12 no-padding cases-mobile">
+            <app-case-list></app-case-list>
+        </div>
+        <div class="col-lg-9 d-sm-block show-cases">
+            <div class="tile" id="tile-1">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs nav-justified" id="tabs" role="tablist">
+                    <div class="slider"></div>
+                    <li class="">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#interactions" role="tab"
+                            aria-controls="home" aria-selected="true"><i class="fas fa-home"></i> Interactions</a>
+                    </li>
+                    <li class="">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#case-info" role="tab"
+                            aria-controls="profile" aria-selected="false"><i class="fas fa-id-card"></i> Case Info</a>
+                    </li>
+                    <li class="">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact-info" role="tab"
+                            aria-controls="contact" aria-selected="false"><i class="fas fa-map-signs"></i> Contact
+                            Info</a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <!--<div class="tab-content">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">Home</div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Profile</div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Contact</div>
+            </div>-->
+                <div class="d-flex tab-content case-cont">
+                    <div class="col-md-8 padding-less middle tab-pane fade show active" id="interactions"
+                        role="tabpanel" aria-labelledby="home-tab">
+                        <app-case-interaction-list></app-case-interaction-list>
+                        <!-- <div class="middle-panel">
+                            <div class="case-details">
+                                <div style="width: 100%">
+                                    <ul id="horizontal-style">
+                                        <li><a href="#"><span class="status">Open</span></a></li>
+                                        <li><a href="#"><span style="padding:0px 8px">Case ID<strong> :
+                                                        2405454</strong></span></a></li>
+                                        <li><a href="#"> <span style="padding:0px 8px">Created On<strong> : 20/05/2021
+                                                        2:30PM</strong></span></a></li>
+                                        <li><a href="#"> <span style="padding:0px 8px">Last Updated On<strong> :
+                                                        21/05/2021 4:48</strong></span></a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <div class="case-action">
+                                <ul class="list-group list-group-horizontal">
+                                    <li class="list-group-item"><img src="assets/images/assign.png" /> Assign To Me</li>
+                                    <li class="list-group-item"><img src="assets/images/Notes.png" /> Notes</li>
+                                    <li class="list-group-item"><img src="assets/images/Close.png" /> Close</li>
+                                    <li class="list-group-item"><img src="assets/images/spam.png" /> Spam</li>
+                                    <li class="list-group-item"><img src="assets/images/Block.png" /> Block</li>
+                                </ul>
+                            </div>
+                            <div class="mid-content">
+                                <div class="mail-content">
+                                    <span class="gray float-right">20/05/2021 2:30PM <span class="more"> <img
+                                                src="assets/images/svg/more.svg" /></span> </span>
+                                    <div class="clear"></div>
+                                    <div class="case-mail">
+                                        <div class="mail-detail d-flex">
+                                            <img src="assets/images/case pic3.png" class="case-profile" />
+                                            <div class="media-subject top flex-wrap">
+                                                <p class="case-subject x4">
+                                                    Faucibus neque
+                                                </p>
+                                                <p class="case-info x2">
+                                                    <img src="assets/images/svg/email.svg" style="vertical-align: baseline;" />
+                                                    <span class="blue">Carol Reyes</span> Reported in issue
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="case-body">
+                                            <span>
+                                                Hi, <br />With dummy text you can view your website as it's supposed to
+                                                look
+                                            </span>
+                                            <div class="case-attachment d-flex">
+                                                <span><img src="assets/images/svg/attachmentimg.svg" /></span>
+                                                <span><img src="assets/images/svg/attachmentimg.svg" /></span>
+                                                <span><img src="assets/images/svg/attachmentimg.svg" /></span>
+                                            </div>
+                                            <div class="case-reply d-flex">
+                                                <span><img src="assets/images/svg/reply.svg" /> Reply</span>
+                                                <span><img src="assets/images/svg/reply-all.svg" /> Reply to All</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mail-content">
+                                    <span class="gray float-right">20/05/2021 2:30PM <span class="more"> <img
+                                                src="assets/images/svg/more.svg" /></span> </span>
+                                    <div class="clear"></div>
+                                    <div class="case-mail">
+                                        <div class="mail-detail d-flex">
+                                            <img src="assets/images/case pic3.png" class="case-profile" />
+                                            <div class="media-subject top flex-wrap">
+                                                <p class="case-subject x4">
+                                                    Faucibus neque
+                                                </p>
+                                                <p class="case-info x2">
+                                                    <img src="assets/images/mail.png" style="vertical-align: baseline;" />
+                                                    <span class="blue">Carol Reyes</span> Reported in issue
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="case-body">
+                                            <span>
+                                                Hi, <br />Hi, With dummy text you can view your website as it's supposed
+                                                to look
+                                            </span>
+                                            <div class="case-attachment d-flex">
+                                                <span><img src="assets/images/svg/attachmentimg.svg" /></span>
+                                                <span><img src="assets/images/svg/attachmentimg.svg" /></span>
+                                                <span><img src="assets/images/svg/attachmentimg.svg" /></span>
+                                            </div>
+                                            <div class="case-reply d-flex">
+                                                <span><img src="assets/images/svg/reply.svg" /> Reply</span>
+                                                <span><img src="assets/images/svg/reply-all.svg" /> Reply to All</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="col-md-4 padding-right last" id="last">
+                        <app-case-info></app-case-info>
+                        <!-- <div>
+                            <div class="tab-pane" id="contact-info" role="tabpanel" aria-labelledby="contact-tab">
+                                <div class="case-div-top d-flex">
+                                    <span> <img src="assets/images/profile img.png" /> </span>
+                                    <div class="media-body contact-body">
+                                        <span class="contact-name">Carlos Reyes</span>
+                                        <div class="float-right margin-top-7">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                                                width="24px" fill="#5F5F5F">
+                                                <path d="M0 0h24v24H0z" fill="none" />
+                                                <path
+                                                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                                            </svg>
+                                        </div>
+                                        <p>
+                                            <span style=" vertical-align: sub;"><svg xmlns="http://www.w3.org/2000/svg"
+                                                    height="15px" viewBox="0 0 24 24" width="15px" fill="#ff0000">
+                                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                                    <path
+                                                        d="M6.54 5c.06.89.21 1.76.45 2.59l-1.2 1.2c-.41-1.2-.67-2.47-.76-3.79h1.51m9.86 12.02c.85.24 1.72.39 2.6.45v1.49c-1.32-.09-2.59-.35-3.8-.75l1.2-1.19M7.5 3H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.49c0-.55-.45-1-1-1-1.24 0-2.45-.2-3.57-.57-.1-.04-.21-.05-.31-.05-.26 0-.51.1-.71.29l-2.2 2.2c-2.83-1.45-5.15-3.76-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1z" />
+                                                </svg></span>
+                                            <span>+91 98546 00987</span>
+                                        </p>
+                                        <p>
+                                            <span style=" vertical-align: sub;"><svg xmlns="http://www.w3.org/2000/svg"
+                                                    height="15px" viewBox="0 0 24 24" width="15px" fill="#6EB3F2">
+                                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                                    <path
+                                                        d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
+                                                </svg></span>
+                                            <span>carlos.reyes@gmail.com</span>
+                                        </p>
+                                        <p>
+                                            <span style=" vertical-align: sub;"><svg xmlns="http://www.w3.org/2000/svg"
+                                                    enable-background="new 0 0 24 24" height="15px" viewBox="0 0 24 24"
+                                                    width="15px" fill="#3B5998">
+                                                    <rect fill="none" height="24" width="24" />
+                                                    <path
+                                                        d="M22,12c0-5.52-4.48-10-10-10S2,6.48,2,12c0,4.84,3.44,8.87,8,9.8V15H8v-3h2V9.5C10,7.57,11.57,6,13.5,6H16v3h-2 c-0.55,0-1,0.45-1,1v2h3v3h-3v6.95C18.05,21.45,22,17.19,22,12z" />
+                                                </svg></span>
+                                            <span class="gray">carlos.r@facebook.com</span>
+                                        </p>
+                                        <a href="" data-toggle="modal" data-target="#showModal"
+                                            class="more-btn float-left gray">
+                                            < Past Cases</a>
+                                                <a href="" class="more-btn float-right">More Details ></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="case-info" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="case-div-bottom">
+                                    <div class="head-title d-flex justify-content-between">
+                                        <h5 class="content-title">Case Info</h5>
+                                        <a href="" class="more-btn">More Details ></a>
+
+                                    </div>
+                                    <hr />
+                                    <div class="table-responsive">
+                                        <table class="table table-hover font-2x">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Status</td>
+                                                    <td class="blue text-right"><strong>Open</strong> <svg
+                                                            xmlns="http://www.w3.org/2000/svg" height="20px"
+                                                            viewBox="0 0 24 24" width="20px" fill="#5F5F5F">
+                                                            <path d="M24 24H0V0h24v24z" fill="none" opacity=".87" />
+                                                            <path
+                                                                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z" />
+                                                        </svg></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Priority</td>
+                                                    <td class="red text-right"><strong>High</strong> <svg
+                                                            xmlns="http://www.w3.org/2000/svg" height="20px"
+                                                            viewBox="0 0 24 24" width="20px" fill="#ff0000">
+                                                            <path d="M24 24H0V0h24v24z" fill="none" opacity=".87" />
+                                                            <path
+                                                                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z" />
+                                                        </svg></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Type</td>
+                                                    <td class="text-right"><strong>Support Team</strong> <svg
+                                                            xmlns="http://www.w3.org/2000/svg" height="20px"
+                                                            viewBox="0 0 24 24" width="20px" fill="#5F5F5F">
+                                                            <path d="M24 24H0V0h24v24z" fill="none" opacity=".87" />
+                                                            <path
+                                                                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z" />
+                                                        </svg></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Assign To</td>
+                                                    <td class="text-right"><strong>Amit Patil</strong> <svg
+                                                            xmlns="http://www.w3.org/2000/svg" height="16px"
+                                                            viewBox="0 0 24 24" width="16px" fill="#5F5F5F">
+                                                            <path d="M0 0h24v24H0z" fill="none" />
+                                                            <path
+                                                                d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                                                        </svg></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Case ID</td>
+                                                    <td class="text-right"><strong>240736</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Created On</td>
+                                                    <td class="text-right"><strong>20/05/2021 2:30PM</strong></td>
+                                                <tr>
+                                                    <td>Due Date</td>
+                                                    <td class="text-right"><strong>20/05/2021 2:30PM</strong></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

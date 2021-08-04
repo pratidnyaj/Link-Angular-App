@@ -1,4 +1,4 @@
-<div class="case-details">
+<!-- <div class="case-details">
     <p class="assign-to text-center">
         <span class="status">Open</span> <span style="padding:0px 8px">Case ID<strong> :</strong>
         </span> <span style="padding:0px 8px">Created On<strong> : </strong>
@@ -29,7 +29,7 @@
                     </p>
                     <p class="case-info x2">
                         <img src="/assets/images/mail.png" style="vertical-align: baseline;" /> 
-                        <!-- <span class="blue">Carol Reyes</span> Reported in issue -->
+                     
                     </p>
                 </div>
             </div>
@@ -49,4 +49,66 @@
         </div>
     </div>
     
+</div> -->
+
+<div class="middle-panel">
+    <div class="case-details">
+        <div style="width: 100%">
+            <ul id="horizontal-style">
+                <li><a href="#"><span class="status">Open</span></a></li>
+                <li><a href="#"><span style="padding:0px 8px">Case ID<strong> :
+                                2405454</strong></span></a></li>
+                <li><a href="#"> <span style="padding:0px 8px">Created On<strong> : 20/05/2021
+                                2:30PM</strong></span></a></li>
+                <li><a href="#"> <span style="padding:0px 8px">Last Updated On<strong> :
+                                21/05/2021 4:48</strong></span></a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="case-action">
+        <ul class="list-group list-group-horizontal">
+            <li class="list-group-item"><img src="assets/images/assign.png" /> Assign To Me</li>
+            <li class="list-group-item"><img src="assets/images/Notes.png" /> Notes</li>
+            <li class="list-group-item"><img src="assets/images/Close.png" /> Close</li>
+            <li class="list-group-item"><img src="assets/images/spam.png" /> Spam</li>
+            <li class="list-group-item"><img src="assets/images/Block.png" /> Block</li>
+        </ul>
+    </div>
+    <div class="">
+        <div class="mail-content" *ngFor="let inxHistory of caseInteractions">
+            <span class="gray float-right">{{inxHistory.CreatedDate}} <span class="more"> <img
+                        src="assets/images/svg/more.svg" /></span> </span>
+            <div class="clear"></div>
+            <div class="case-mail">
+                <div class="mail-detail d-flex">
+                    <img src="assets/images/case pic3.png" class="case-profile" />
+                    <div class="media-subject top flex-wrap">
+                        <p class="case-subject x4">
+                            {{inxHistory.Subject}}
+                        </p>
+                        <p class="case-info x2">
+                            <img src="assets/images/svg/email.svg" style="vertical-align: baseline;" />
+                            <span class="blue">Carol Reyes</span> Reported in issue
+                        </p>
+                    </div>
+                </div>
+                <div class="case-body">
+                    <span [innerHTML]="inxHistory.InteractionDesc">                   
+                    </span>
+                    <div class="case-attachment d-flex">
+                        <span><img src="assets/images/svg/attachmentimg.svg" /></span>
+                        <span><img src="assets/images/svg/attachmentimg.svg" /></span>
+                        <span><img src="assets/images/svg/attachmentimg.svg" /></span>
+                    </div>
+                    <div class="case-reply d-flex">
+                        <span><img src="assets/images/svg/reply.svg" /> Reply</span>
+                        <span><img src="assets/images/svg/reply-all.svg" /> Reply to All</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        
+    </div>
 </div>

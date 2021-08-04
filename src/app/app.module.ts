@@ -12,6 +12,7 @@ import { CaseModule } from './case/case.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AppRoutingModule } from './app-routing.module';
 import { ClientModule } from './client/client.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,14 @@ import { ClientModule } from './client/client.module';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule, AdminModule, ReportModule, CaseModule, DashboardModule, AppRoutingModule, ClientModule
+    HttpClientModule, 
+    AdminModule, 
+    ReportModule, 
+    CaseModule, 
+    DashboardModule, 
+    AppRoutingModule, 
+    ClientModule, 
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

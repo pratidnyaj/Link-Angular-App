@@ -7,8 +7,7 @@ import { CaseListDisplayComponent } from './case-list-display/case-list-display.
 import { CaseInfoComponent } from './case-info/case-info.component';
 import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { CaseInteractionListComponent } from './case-interaction-list/case-interaction-list.component';
-
-
+import { PastCaseComponent } from './past-case/past-case.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +17,8 @@ import { CaseInteractionListComponent } from './case-interaction-list/case-inter
     CaseListDisplayComponent,
     CaseInfoComponent,
     ContactInfoComponent,
-    CaseInteractionListComponent
+    CaseInteractionListComponent,
+    PastCaseComponent
   ],
   imports: [
     CommonModule

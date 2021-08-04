@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col-6">
         <input (click)="callParent()" type="button" value="To Parent" class="btn btn-sm btn-primary">
     </div>
@@ -10,5 +10,46 @@
                 <option>3</option>
             </select>
         </div>
+    </div>
+</div> -->
+
+
+<!-- Ld code start -->
+<div class="row">
+    <div class="col-6">
+        <input (click)="callParent()" type="button" value="To Parent" class="btn btn-sm wrap-drop">
+        <!-- <div class="wrap-drop" id="noble-gases">
+            <span>My All Cases</span>
+            <ul class="drop">
+                <li class="disabled">My Cases</li>
+                <li><a>Open(10)</a></li>
+                <li><a>Close(03)</a></li>
+                <li><a>In Progress(06)</a></li>
+                <li><a>Not Responded(02)</a></li>
+                <li><a>Fresh Cases(01)</a></li>
+                <li class="disabled">All Cases</li>
+                <li><a>Open(10)</a></li>
+                <li><a>Close(03)</a></li>
+                <li><a>In Progress(06)</a></li>
+                <li><a>Not Responded(02)</a></li>
+                <li><a>Fresh Cases(01)</a></li>
+            </ul>
+        </div> -->
+    </div>
+     <div class="col-6">
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <form class="searchbox">
+                    <input type="search" placeholder="Search......" name="search" class="searchbox-input" onkeyup="buttonUp();" required>
+                    <input type="submit" class="searchbox-submit" value="">
+                    <span class="searchbox-icon">
+                        <img src="assets/images/svg/case-search.svg" style="vertical-align: middle;" />
+                    </span>
+                </form>
+            </li>
+            <li class="list-inline-item">
+                <img src="assets/images/svg/more.svg" class="img-position" />
+            </li>
+        </ul>
     </div>
 </div>
