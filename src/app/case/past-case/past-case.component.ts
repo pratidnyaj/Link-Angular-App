@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CaseService } from 'src/app/service/case.service';
 @Component({
   selector: 'app-past-case',
   templateUrl: './past-case.component.html',
@@ -7,17 +8,29 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class PastCaseComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) { }
+  pastCases: Array<any>;
+  totalRec: number = 0;
+  currentPageNumber: number = 1;
+  perPageCnt: number = 5;
+  absoluteIndex: number = 0;
 
-  ngOnInit(): void {
+  constructor(private caseService: CaseService) { 
+    this.pastCases = new Array<any>();
   }
 
-  // open(content) {
-  //   this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-  //     this.closeResult = `Closed with: ${result}`;
-  //   }, (reason) => {
-  //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-  //   });
-  // }
+  handlePageChange(event: number) {
+    this.currentPageNumber = event;
+    this.absoluteIndex = this.perPageCnt * (this.currentPageNumber - 1);
+  }
+
+  
+  ngOnInit(): void {
+    this.caseService.getPastCaseList().subscribe(data => {
+      this.pastCases = data.data;
+      this.totalRec = data.data.length;
+      console.log('pastCases', this.pastCases);
+    })
+
+  }
 
 }

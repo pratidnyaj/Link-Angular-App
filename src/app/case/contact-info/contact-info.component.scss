@@ -1,0 +1,45 @@
+.btn-link {
+    color: #5f5f5f;
+    background-color: transparent;
+    border: none;
+    font-size: 12px;
+    font-weight: bold;
+    &:hover {
+        background-color: transparent;
+        box-shadow: none;
+        text-decoration: none;
+    }
+    &:focus {
+        outline: none;
+        box-shadow: none;
+        text-decoration: none;
+    }
+}
+
+
+.cust-modal {
+    .modal-header {
+        border-bottom: transparent;
+    }
+    .modal-body{
+        .mod_tbl_header{
+            padding-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .tbl-ttl{
+                color: #333333;
+                font-weight: bolder;
+                font-size: 18px;
+            }
+            .action-section{
+                display: flex;
+                align-items: center;
+                margin-right: 20px;
+                .mod_pagination{
+                    margin-right: 40px;
+                }
+            }
+        }
+    }
+}

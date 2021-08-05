@@ -28,4 +28,8 @@ export class CaseService {
   public getCaseInfo(): Observable<any> {
     return this.httpclient.get('./assets/json/case-details.json');
   }
+
+  public getPastCaseList(): Observable<any> {
+    return this.httpclient.get('./assets/json/past-case.json');
+  }
 }

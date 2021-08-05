@@ -2691,24 +2691,24 @@ table.head-center thead tr th {
     padding-right: 0px;
 }
 
-.modal-content {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    width: 100%;
-    pointer-events: auto;
-    background-color: #f8f8f8;
-    height: 100%;
-}
+// .modal-content {
+//     position: relative;
+//     display: -webkit-box;
+//     display: -ms-flexbox;
+//     display: flex;
+//     -webkit-box-orient: vertical;
+//     -webkit-box-direction: normal;
+//     -ms-flex-direction: column;
+//     flex-direction: column;
+//     width: 100%;
+//     pointer-events: auto;
+//     background-color: #f8f8f8;
+//     height: 100%;
+// }
 
-.modal-header {
-    border-bottom: 0px solid #e9ecef;
-}
+// .modal-header {
+//     border-bottom: 0px solid #e9ecef;
+// }
 
 .close {
     float: right;
@@ -2723,26 +2723,26 @@ table.head-center thead tr th {
     right: 35px;
 }
 
-.modal-header {
-    display: inline-block;
-}
+// .modal-header {
+//     display: inline-block;
+// }
 
-.modal-title {
-    text-align: center;
-    font: normal normal bold 25px/31px Calibri;
-    letter-spacing: 0px;
-    color: #053c6d;
-}
+// .modal-title {
+//     text-align: center;
+//     font: normal normal bold 25px/31px Calibri;
+//     letter-spacing: 0px;
+//     color: #053c6d;
+// }
 
-.modal-dialog {
-    max-width: 85% !important;
-    height: 88%;
-}
+// .modal-dialog {
+//     max-width: 85% !important;
+//     height: 88%;
+// }
 
-.modal-body {
-    width: 82% !important;
-    margin: 0px auto;
-}
+// .modal-body {
+//     width: 82% !important;
+//     margin: 0px auto;
+// }
 
 .card-css {
     box-shadow: 0px 2px 3px #0000001a;
@@ -2894,6 +2894,10 @@ table.head-center thead tr th {
     border-radius: 5px;
     font-size: 12px;
     float: left;
+    color: white    ;
+}
+.wrap-drop:hover{
+    color: white;
 }
 
 .wrap-drop::after {

@@ -1,0 +1,29 @@
+#sidebar {
+    .sidebar-content {
+        .nav-pills {
+            .nav-item {
+                    svg {
+                        .a {
+                            color: #5f5f5f;
+                            fill: #5f5f5f;
+                        }
+                        .ab{
+                            fill: none;
+                        }
+                        .b{
+                            fill:#5f5f5f;
+                        }
+                    }
+            }
+            .nav-link.active {
+                svg {
+                    top:0px;
+                    .a {
+                        color: #fff;
+                        fill: #fff;
+                    }
+                }
+            }
+        }
+    }
+}

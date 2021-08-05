@@ -8,6 +8,7 @@ import { CaseInfoComponent } from './case-info/case-info.component';
 import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { CaseInteractionListComponent } from './case-interaction-list/case-interaction-list.component';
 import { PastCaseComponent } from './past-case/past-case.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PastCaseComponent } from './past-case/past-case.component';
     PastCaseComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgxPaginationModule
   ]
 })
 export class CaseModule { }
