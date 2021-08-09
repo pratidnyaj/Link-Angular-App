@@ -21,25 +21,25 @@
     .modal-header {
         border-bottom: transparent;
     }
-    .modal-body{
-        .mod_tbl_header{
-            padding-top: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            .tbl-ttl{
-                color: #333333;
-                font-weight: bolder;
-                font-size: 18px;
-            }
-            .action-section{
-                display: flex;
-                align-items: center;
-                margin-right: 20px;
-                .mod_pagination{
-                    margin-right: 40px;
-                }
-            }
-        }
-    }
+    // .modal-body{
+    //     .mod_tbl_header{
+    //         padding-top: 10px;
+    //         display: flex;
+    //         align-items: center;
+    //         justify-content: space-between;
+    //         .tbl-ttl{
+    //             color: #333333;
+    //             font-weight: bolder;
+    //             font-size: 18px;
+    //         }
+    //         .action-section{
+    //             display: flex;
+    //             align-items: center;
+    //             margin-right: 20px;
+    //             .mod_pagination{
+    //                 margin-right: 40px;
+    //             }
+    //         }
+    //     }
+    // }
 }

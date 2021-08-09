@@ -14,13 +14,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { ClientModule } from './client/client.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FilterCasesPipe } from './shared/pipes/filter-cases.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    FilterCasesPipe
   ],
   imports: [
     BrowserModule,

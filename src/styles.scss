@@ -1729,28 +1729,23 @@
 //   ---------------------------------
 // */
 
-
-
 // // Ul_ld New css start here uf_ng_structure
 // .uf_cmn_sty {
 //     padding-top: 70px;
 //     padding-left: 70px;
 // }
 
-
-:root{
+:root {
     --theme_blue: #053c6d;
     --theme_bg_gray: #f8f8f8;
-    --theme_red:#ed1c24;
+    --theme_red: #ed1c24;
     --white: #ffffff;
-    --dark_gray :#5f5f5f;
-    --black:#1A2E35;
-    --placeholder: #5F5F5F;
-    --input_border:#B4B4B4;
-    --txt-black:#333333;
-
+    --dark_gray: #5f5f5f;
+    --black: #1a2e35;
+    --placeholder: #5f5f5f;
+    --input_border: #b4b4b4;
+    --txt-black: #333333;
 }
-
 
 @font-face {
     font-family: "Calibri";
@@ -1785,6 +1780,48 @@
     font-style: normal;
     font-display: swap;
 }
+.ngx-pagination {
+    margin-bottom: 0px !important;
+    padding-left: 0px;
+    .current {
+        background-color: var(--theme_blue) !important;
+        border-radius: 50%;
+    }
+    li {
+        a {
+            &:hover {
+                background-color: var(--theme_blue) !important;
+                border-radius: 50%;
+                color: var(--white);
+
+                span {
+                    color: var(--white);
+                }
+            }
+        }
+    }
+    .pagination-previous,
+    .pagination-next {
+        a {
+            &:hover {
+                color: white;
+            }
+            &::before {
+                margin-right: 0px !important;
+            }
+            &::after {
+                margin-left: 0px !important;
+            }
+        }
+    }
+}
+.modal-content {
+    border-radius: 15px;
+    border: none;
+}
+
+
+
 body {
     font-size: 13px;
     font-family: Calibri;
@@ -2811,7 +2848,7 @@ table.head-center thead tr th {
     bottom: 0;
     top: 73px;
     width: 300px;
-    left: 70px;//added by ld
+    left: 70px; //added by ld
 }
 .right-panel {
     background-color: white;
@@ -2894,9 +2931,9 @@ table.head-center thead tr th {
     border-radius: 5px;
     font-size: 12px;
     float: left;
-    color: white    ;
+    color: white;
 }
-.wrap-drop:hover{
+.wrap-drop:hover {
     color: white;
 }
 

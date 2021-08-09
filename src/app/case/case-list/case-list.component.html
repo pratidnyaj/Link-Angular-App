@@ -15,7 +15,7 @@
 
 <div class="left-panel">
     <div class="left-panel-header">
-        <app-case-filter (caseFilterEvent)="fetchCaseWithFilter()"></app-case-filter>
+        <app-case-filter (caseFilterEvent)="fetchCaseWithFilter($event)"></app-case-filter>
         <!-- <div class="row">
             <div class="col-6">
                 <div class="wrap-drop" id="noble-gases">
@@ -57,7 +57,7 @@
 
     <div class="cases-holder">
         <ul class="list-group fa-padding">
-            <li *ngFor="let case of cases; let index = index" class="list-group-item active-case case-list"
+            <li *ngFor="let case of cases ; let index = index" class="list-group-item active-case case-list"
                 data-toggle="modal" data-target="#issue">
                 <app-case-list-display [case]="case"></app-case-list-display>
                 <!-- <div class="media">

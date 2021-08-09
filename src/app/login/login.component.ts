@@ -39,22 +39,22 @@ export class LoginComponent implements OnInit {
       debugger;
       this.oLoginRq.emailID = this.userEmail;
       this.oLoginRq.password = this.userPassword;
-
-      this.loginService.authenticateLogin(this.oLoginRq).subscribe((res: LoginRS)=>
-      {
-        if(res && res.data.length > 0)
-        {
-          let status = res.data[0].Result.toUpperCase();
-          if(status == "SUCCESS")
-          {
-            this.router.navigate(['dashboard']);
-          }
-          else
-          {
-            alert('Failed to login.');
-          }
-        }
-      });      
+      this.router.navigate(['dashboard']);
+      // this.loginService.authenticateLogin(this.oLoginRq).subscribe((res: LoginRS)=>
+      // {
+      //   if(res && res.data.length > 0)
+      //   {
+      //     let status = res.data[0].Result.toUpperCase();
+      //     if(status == "SUCCESS")
+      //     {
+      //       this.router.navigate(['dashboard']);
+      //     }
+      //     else
+      //     {
+      //       alert('Failed to login.');
+      //     }
+      //   }
+      // });      
     }
     else {
       alert('Validation Failed...');

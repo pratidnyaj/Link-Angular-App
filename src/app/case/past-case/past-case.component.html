@@ -1,29 +1,52 @@
 <!-- <pre>{{pastCases|json}}</pre> -->
-<div class="mod_tbl_header">
+<div class="modal_tblheader">
   <div class="tbl-ttl">
-    Displaying {{(( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt + 1}} -
-    {{(( ( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) + perPageCnt > (totalRec) ? totalRec : ((( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) + perPageCnt}}
-    of {{ totalRec }} Records
     <strong>Total {{totalRec}} Cases</strong>
   </div>
-  <div class="action-section">
-    <div class="mod_pagination">
-      <pagination-controls id="listing_pagination" previousLabel="Prev" nextLabel="Next" [maxSize]="7"
-        [directionLinks]="false" (pageChange)="handlePageChange($event)"></pagination-controls>
-    </div>
-    <div>
-      <span class="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="15.57" height="14" viewBox="0 0 15.57 14" fill="#5F5F5F">
-          <g transform="translate(536 -226)">
-            <path class="a"
-              d="M-520.575,235.694l.017-.023.02-.027.017-.028.015-.025c.005-.009.009-.019.014-.029l.013-.027c0-.01.007-.019.01-.029s.007-.02.011-.03,0-.019.008-.029.006-.021.008-.031,0-.022.005-.034,0-.019,0-.028,0-.041,0-.062h0c0-.021,0-.041,0-.062s0-.019,0-.028,0-.022-.005-.033-.005-.021-.008-.032,0-.019-.008-.029-.007-.02-.011-.03l-.01-.029-.013-.027-.014-.029-.015-.026-.017-.028-.02-.027-.017-.023c-.013-.016-.026-.03-.04-.045l0,0-1.591-1.591a.636.636,0,0,0-.9,0,.637.637,0,0,0,0,.9l.5.5h-1.942V231.32c0-.006,0-.011,0-.017a.632.632,0,0,0-.145-.4l0,0c-.012-.014-.024-.028-.037-.041l-.006-.006-.017-.017-4.647-4.647h0c-.013-.013-.027-.025-.041-.037l-.013-.011-.031-.023-.016-.011-.034-.021-.014-.008-.047-.023-.02-.008-.032-.012-.022-.007-.037-.009-.017,0-.054-.008h-.017l-.045,0h-5.525a.636.636,0,0,0-.636.636v12.727a.636.636,0,0,0,.636.636h10.182a.636.636,0,0,0,.636-.636v-3.436h1.942l-.5.5a.637.637,0,0,0,0,.9.634.634,0,0,0,.45.186.635.635,0,0,0,.45-.186l1.591-1.591h0c.014-.014.028-.03.041-.046Zm-8.637-7.522,2.494,2.494h-2.494Z" />
-          </g>
-        </svg>
-      </span>
-    </div>
+  <div class="file-upload">
+    <button class="btn-export">
+      <svg xmlns="http://www.w3.org/2000/svg" width="10.647" height="13.309" viewBox="0 0 10.647 13.309">
+        <defs>
+          <style>
+            .a {
+              fill: #053c6d;
+            }
+          </style>
+        </defs>
+        <path class="a"
+          d="M10.654,2H5.331A1.329,1.329,0,0,0,4.007,3.331L4,13.978a1.329,1.329,0,0,0,1.324,1.331h7.992a1.335,1.335,0,0,0,1.331-1.331V5.993Zm2.662,11.978H5.331V3.331H9.989V6.658h3.327Zm-1.331-3.334-.938-.938L9.989,10.757V7.989H8.658v2.768L7.6,9.7l-.938.945,2.655,2.668Z"
+          transform="translate(-4 -2)" />
+      </svg>
+      <span>Export</span>
+    </button>
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="15.57" height="14" viewBox="0 0 15.57 14" fill="#5F5F5F">
+      <g transform="translate(536 -226)">
+        <path class="a"
+          d="M-520.575,235.694l.017-.023.02-.027.017-.028.015-.025c.005-.009.009-.019.014-.029l.013-.027c0-.01.007-.019.01-.029s.007-.02.011-.03,0-.019.008-.029.006-.021.008-.031,0-.022.005-.034,0-.019,0-.028,0-.041,0-.062h0c0-.021,0-.041,0-.062s0-.019,0-.028,0-.022-.005-.033-.005-.021-.008-.032,0-.019-.008-.029-.007-.02-.011-.03l-.01-.029-.013-.027-.014-.029-.015-.026-.017-.028-.02-.027-.017-.023c-.013-.016-.026-.03-.04-.045l0,0-1.591-1.591a.636.636,0,0,0-.9,0,.637.637,0,0,0,0,.9l.5.5h-1.942V231.32c0-.006,0-.011,0-.017a.632.632,0,0,0-.145-.4l0,0c-.012-.014-.024-.028-.037-.041l-.006-.006-.017-.017-4.647-4.647h0c-.013-.013-.027-.025-.041-.037l-.013-.011-.031-.023-.016-.011-.034-.021-.014-.008-.047-.023-.02-.008-.032-.012-.022-.007-.037-.009-.017,0-.054-.008h-.017l-.045,0h-5.525a.636.636,0,0,0-.636.636v12.727a.636.636,0,0,0,.636.636h10.182a.636.636,0,0,0,.636-.636v-3.436h1.942l-.5.5a.637.637,0,0,0,0,.9.634.634,0,0,0,.45.186.635.635,0,0,0,.45-.186l1.591-1.591h0c.014-.014.028-.03.041-.046Zm-8.637-7.522,2.494,2.494h-2.494Z" />
+      </g>
+    </svg> -->
+  </div>
+</div>
+
+
+<!-- <div class="mod_tbl_header">
+  <div class="tbl-ttl">
+    <strong>Total {{totalRec}} Cases</strong>
+  </div>
+  <div class="action-section">  
+  <div>
+    <span class="">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15.57" height="14" viewBox="0 0 15.57 14" fill="#5F5F5F">
+        <g transform="translate(536 -226)">
+          <path class="a"
+            d="M-520.575,235.694l.017-.023.02-.027.017-.028.015-.025c.005-.009.009-.019.014-.029l.013-.027c0-.01.007-.019.01-.029s.007-.02.011-.03,0-.019.008-.029.006-.021.008-.031,0-.022.005-.034,0-.019,0-.028,0-.041,0-.062h0c0-.021,0-.041,0-.062s0-.019,0-.028,0-.022-.005-.033-.005-.021-.008-.032,0-.019-.008-.029-.007-.02-.011-.03l-.01-.029-.013-.027-.014-.029-.015-.026-.017-.028-.02-.027-.017-.023c-.013-.016-.026-.03-.04-.045l0,0-1.591-1.591a.636.636,0,0,0-.9,0,.637.637,0,0,0,0,.9l.5.5h-1.942V231.32c0-.006,0-.011,0-.017a.632.632,0,0,0-.145-.4l0,0c-.012-.014-.024-.028-.037-.041l-.006-.006-.017-.017-4.647-4.647h0c-.013-.013-.027-.025-.041-.037l-.013-.011-.031-.023-.016-.011-.034-.021-.014-.008-.047-.023-.02-.008-.032-.012-.022-.007-.037-.009-.017,0-.054-.008h-.017l-.045,0h-5.525a.636.636,0,0,0-.636.636v12.727a.636.636,0,0,0,.636.636h10.182a.636.636,0,0,0,.636-.636v-3.436h1.942l-.5.5a.637.637,0,0,0,0,.9.634.634,0,0,0,.45.186.635.635,0,0,0,.45-.186l1.591-1.591h0c.014-.014.028-.03.041-.046Zm-8.637-7.522,2.494,2.494h-2.494Z" />
+        </g>
+      </svg>
+    </span>
+  </div>
   </div>
 
-</div>
+</div> -->
 <div class="mod_tbl_body">
   <div class="table-responsive">
     <table class="table table-hover text-center">
@@ -42,6 +65,12 @@
         itemsPerPage: perPageCnt,
         currentPage: currentPageNumber,
         totalItems: totalRec }; let idx = index">
+          <!-- <td>
+            <label class="container-checkbox">
+              <input type="checkbox">
+              <span class="checkmark right-check"></span>
+            </label>
+          </td> -->
           <td>{{pc.CaseID}}</td>
           <td>{{pc.Subject}}</td>
           <td>{{pc.CreatedDate}}</td>
@@ -51,5 +80,23 @@
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <div class="cust-mod-footer">
+    <div>
+      Displaying {{(( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt + 1}} -
+      {{(( ( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) + perPageCnt > (totalRec) ? totalRec :
+      (((
+      currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) + perPageCnt}}
+      of {{ totalRec }} Records
+    </div>
+    <div>
+      <div class="mod_pagination">
+        <pagination-controls id="listing_pagination" previousLabel="" nextLabel="" [maxSize]="7" [directionLinks]="true"
+          (pageChange)="handlePageChange($event)"></pagination-controls>
+      </div>
+    </div>
   </div>
 </div>

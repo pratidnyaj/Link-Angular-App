@@ -1,23 +1,7 @@
-<!-- <div class="row">
-    <div class="col-6">
-        <input (click)="callParent()" type="button" value="To Parent" class="btn btn-sm btn-primary">
-    </div>
-    <div class="col-6">
-        <div class="form-group">
-            <select class="form-control" id="sel1" name="sellist1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-            </select>
-        </div>
-    </div>
-</div> -->
-
-
 <!-- Ld code start -->
 <div class="row">
     <div class="col-6">
-        <input (click)="callParent()" type="button" value="My All Cases" class="btn btn-sm wrap-drop">
+        <!-- <input (click)="callParent()" type="button" value="My All Cases" class="btn btn-sm wrap-drop"> -->
         <!-- <div class="wrap-drop" id="noble-gases">
             <span>My All Cases</span>
             <ul class="drop">
@@ -35,14 +19,25 @@
                 <li><a>Fresh Cases(01)</a></li>
             </ul>
         </div> -->
+
+        <div class="dropdown cust-case-drpdwn">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                {{selectedCaseOption}}
+            </button>
+            <div class="dropdown-menu case-drpmenu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" *ngFor="let C of arrCasesOption" (click)="goToCaseList(C.key)">{{C.value}}</a>                
+            </div>
+        </div>
+
     </div>
-     <div class="col-6">
+    <div class="col-6">
         <ul class="list-inline">
             <li class="list-inline-item">
-                <form class="searchbox">
-                    <input type="search" placeholder="Search......" name="search" class="searchbox-input" onkeyup="buttonUp();" required>
+                <form class="searchbox searchbox-open">
+                    <input type="search" [(ngModel)]="searchText" (keyup)="onCaseSearch($event)" placeholder="Search." name="txtCaseSearch" class="searchbox-input">
                     <input type="submit" class="searchbox-submit" value="">
-                    <span class="searchbox-icon">
+                    <span class="searchbox-icon" (click)="filterSearchCase()">
                         <img src="assets/images/svg/case-search.svg" style="vertical-align: middle;" />
                     </span>
                 </form>

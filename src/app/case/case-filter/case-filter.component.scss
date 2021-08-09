@@ -1,0 +1,21 @@
+.cust-case-drpdwn {
+    button {
+        color: #fff;
+        font-size: 12px;
+        background-color: #053c6d;
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+    .case-drpmenu {
+        background-color: #053c6d;
+        a {
+            color: #fff;
+            font-size: 12px;
+            &:hover {
+                color: #333333;
+            }
+        }
+    }
+}
