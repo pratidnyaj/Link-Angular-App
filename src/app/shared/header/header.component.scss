@@ -61,7 +61,7 @@
                         border: 1px solid #f8f8f8;
                         .add-menus {
                             padding: 10px 15px;
-                            &:hover{
+                            &:hover {
                                 background-color: #ddd;
                             }
                         }
@@ -75,63 +75,41 @@
                         }
                     }
                 }
+                .notify {
+                    position: relative;
+                    .notification-count {
+                        background: var(--theme_blue);
+                        border-radius: 50%;
+                        padding: 3px;
+                        color: white;
+                        font-size: 10px;
+                        position: absolute;
+                        width: 22px;
+                        height: 22px;
+                        text-align: center;
+                        right: 4px;
+                        top: 11px;
+                    }
+                }
+                .profile-pic {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 30px;
+                    box-shadow: 0px 3px 3px 0px #dcdcdc;
+                    background-image: url("/assets/images/profile pic.jpg");
+                    position: relative;
+                    .online-sign {
+                        background-color: rgb(36, 230, 36);
+                        height: 10px;
+                        width: 10px;
+                        border-radius: 50%;
+                        position: absolute;
+                        bottom: 0px;
+                        left: 50%;
+                        transform: translate(-4px, 5px);
+                    }
+                }
             }
-            // a.nav-link {
-            //     padding: 0.5rem 15px;
-            //     .add-btn {
-            //         background-color: #053c6d;
-            //         color: white;
-            //         width: 26px;
-            //         height: 26px;
-            //         border-radius: 34px;
-            //         font-size: 30px;
-            //         text-align: center;
-            //         line-height: 0.9;
-            //         font-weight: bold;
-            //         margin-top: 6px;
-            //         border: 0;
-            //         position: relative;
-            //         display: block;
-            //         span {
-            //             &:first-child {
-            //                 top: 12px;
-            //             }
-            //             &:last-child {
-            //                 top: 6px;
-            //                 height: 14px;
-            //                 width: 2px;
-            //                 left: 12px;
-            //             }
-            //         }
-            //     }
-
-            // }
-            // .add-div {
-            //     background-color: #fff;
-            //     width: 150px;
-            //     height: 92px;
-            //     position: absolute;
-            //     display: none;
-            //     right: 61px;
-            //     top: 60px;
-            //     box-shadow: 0px 3px 6px #00000029;
-            //     border-radius: 15px;
-            //     padding: 15px;
-            //     border: 1px solid #f8f8f8;
-            //     .add-new{
-            //         list-style: none;
-            //         padding-left: 0;
-            //         color: #333333;
-            //         font-size: 14px;
-            //         li {
-            //             padding-bottom: 15px;
-            //             svg {
-            //                 vertical-align: middle;
-            //                 margin-right: 8px;
-            //             }
-            //         }
-            //     }
-            // }
         }
     }
 }

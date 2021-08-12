@@ -12,6 +12,7 @@ export class CaseFilterComponent implements OnInit {
 
   arrCasesOption = new Array();
   selectedCaseOption: any = "MyOpenCases";
+  IsToggleSearchBoxOpen: boolean = false;
   searchText: any = "";
 
   ngOnInit(): void {
@@ -19,18 +20,24 @@ export class CaseFilterComponent implements OnInit {
     this.goToCaseList(this.selectedCaseOption);
   }
 
-  goToCaseList(selectedCaseOptionValue: any) {
-    //We pass the data from child (case-filter) to parent (case-list)
-    this.selectedCaseOption = selectedCaseOptionValue;
-    this.caseFilterEvent.emit({ 'selectedCaseOption': this.selectedCaseOption, "searchText": this.searchText });    
-  }
-
-  filterSearchCase() {
+  emitCaseFilterChanges()
+  {
     this.caseFilterEvent.emit({ 'selectedCaseOption': this.selectedCaseOption, "searchText": this.searchText });
   }
 
+  goToCaseList(selectedCaseOptionValue: any) {
+    //We pass the data from child (case-filter) to parent (case-list)
+    this.selectedCaseOption = selectedCaseOptionValue;
+    this.emitCaseFilterChanges();
+  }
+
+  toggleSearchBox() {
+    this.IsToggleSearchBoxOpen = !this.IsToggleSearchBoxOpen;    
+  }
+
   onCaseSearch(event: any) {
-    this.filterSearchCase();
+    //This gets trigerred on every keyup event.
+    this.emitCaseFilterChanges();
   }
 
   setCasesOption() {

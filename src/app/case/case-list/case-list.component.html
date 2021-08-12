@@ -1,18 +1,3 @@
-<!-- <div class="left-panel">
-    <div class="left-panel-header">
-        <app-case-filter (caseFilterEvent)="fetchCaseWithFilter()"></app-case-filter>
-    </div>
-
-    <div class="cases-holder">
-        <ul class="list-group fa-padding">
-            <li *ngFor="let case of cases; let index = index" class="list-group-item" data-toggle="modal"
-                data-target="#issue">
-                <app-case-list-display [case]="case"></app-case-list-display>
-            </li>
-        </ul>
-    </div>
-</div> -->
-
 <div class="left-panel">
     <div class="left-panel-header">
         <app-case-filter (caseFilterEvent)="fetchCaseWithFilter($event)"></app-case-filter>
@@ -57,9 +42,12 @@
 
     <div class="cases-holder">
         <ul class="list-group fa-padding">
-            <li *ngFor="let case of cases ; let index = index" class="list-group-item active-case case-list"
-                data-toggle="modal" data-target="#issue">
-                <app-case-list-display [case]="case"></app-case-list-display>
+            <li *ngFor="let case of cases ; let idx = index" class="list-group-item case-list"
+                [ngClass]="{'active-case': case.caseid === currentSelectedCaseId}" data-toggle="modal"
+                data-target="#issue">
+                <app-case-list-display [case]="case"
+                    (currentSelectedCaseIdChanged)="oncurrentSelectedCaseIdChanged($event)">
+                </app-case-list-display>
                 <!-- <div class="media">
                     <img src="images/case pic1.png" class="case-profile" />
                     <div class="media-body">

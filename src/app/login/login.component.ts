@@ -1,7 +1,8 @@
+import { JsonpClientBackend } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
-import { LoginRQ, LoginRS,LoginResult } from './loginDataModel';
+import { LoggedUser, LoginRQ, LoginRS, RelatedTeams } from './loginDataModel';
 
 @Component({
   selector: 'app-login',
@@ -15,15 +16,15 @@ export class LoginComponent implements OnInit {
 
   oLoginRq: LoginRQ;
   oLoginRS: LoginRS = new LoginRS;
-  oLoginResult: LoginResult = new LoginResult;
 
+  oLoggedUser?: LoggedUser;
+  oRelatedTeams?:RelatedTeams;
+  
   constructor(private router: Router, private loginService: LoginService) {
     this.userEmail = "";
     this.userPassword = "";
 
     this.oLoginRq = new LoginRQ();
-    this.oLoginRq.userType = "agent";
-    this.oLoginRq.sessionRequired = "T";
     this.oLoginRq.emailID = "";
     this.oLoginRq.password = "";
   }
@@ -34,27 +35,35 @@ export class LoginComponent implements OnInit {
 
 
   performAuth() {
-    if (this.userEmail && this.userPassword) 
-    {
+    if (this.userEmail && this.userPassword) {
       debugger;
       this.oLoginRq.emailID = this.userEmail;
       this.oLoginRq.password = this.userPassword;
-      this.router.navigate(['dashboard']);
-      // this.loginService.authenticateLogin(this.oLoginRq).subscribe((res: LoginRS)=>
-      // {
-      //   if(res && res.data.length > 0)
-      //   {
-      //     let status = res.data[0].Result.toUpperCase();
-      //     if(status == "SUCCESS")
-      //     {
-      //       this.router.navigate(['dashboard']);
-      //     }
-      //     else
-      //     {
-      //       alert('Failed to login.');
-      //     }
-      //   }
-      // });      
+      //this.router.navigate(['dashboard']);
+
+      this.loginService.authenticateLogin(this.oLoginRq).subscribe((res: LoginRS) => {
+        if (res.status) 
+        {
+          if (res.data && res.data.length > 0) 
+          {            
+            let loggedInUser = res.data[0][0];
+            let relatedTeams=res.data[1];
+
+            this.oLoggedUser = loggedInUser;
+            this.oRelatedTeams = relatedTeams;
+            
+            sessionStorage.setItem('_loggedInUser',JSON.stringify(loggedInUser));
+            sessionStorage.setItem('_relatedTeams',JSON.stringify(relatedTeams));
+
+            this.router.navigate(['dashboard']);
+          }
+          else
+          {
+            alert('Login Failed.');
+          }
+          
+        }
+      });
     }
     else {
       alert('Validation Failed...');

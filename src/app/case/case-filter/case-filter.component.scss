@@ -7,6 +7,8 @@
             outline: none;
             box-shadow: none;
         }
+       
+        
     }
     .case-drpmenu {
         background-color: #053c6d;
@@ -14,6 +16,10 @@
             color: #fff;
             font-size: 12px;
             &:hover {
+                color: #333333;
+            }
+            &:active{
+                background-color: #e9ecef;
                 color: #333333;
             }
         }

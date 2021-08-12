@@ -8,25 +8,29 @@ import { CaseService } from 'src/app/service/case.service';
 })
 export class CaseInfoComponent implements OnInit {
 
-  constructor(private caseService : CaseService) { }
+  constructor(private caseService: CaseService) { }
 
-  caseInfo : any = {};
-  contactInfo : any = {};
+  caseInfo: any = {};
+  selectedCaseId: string = "";
 
   ngOnInit(): void {
-    this.caseService.caseInfo$.subscribe(message=>{
-      //console.log(message.caseid);
+    this.caseService.caseInfo$.subscribe(message => {
+      //console.log('case-info',message);
 
-      this.caseService.getCaseInfo().subscribe(data=>
-        {                  
+      let caseInfoRq: any = {
+        "caseId": message.caseid
+      }
+
+      this.caseService.getCaseInfo(caseInfoRq).subscribe(data => {
+        console.log('case-info', data);
+        if (data.status) {
           this.caseInfo = data.data[0];
-          this.contactInfo = data.ContactDetails[0];
-          // console.log(data);
-        })
-      
+          this.selectedCaseId = message.caseid;          
+        }
+        // console.log(data);
+      })
+
     })
   }
-
-  
 
 }

@@ -21,12 +21,18 @@ export class CaseService {
     return this.httpclient.get('./assets/json/interaction-history-list.json');
   }
 
-  public getCaseList(): Observable<any> {
-    return this.httpclient.get('./assets/json/cases-list.json');
+  public getCaseList(caseListRq:any): Observable<any> {
+    //return this.httpclient.get('./assets/json/cases-list.json');
+    return this.httpclient.post<any>("http://localhost:8005/api/fetchcaseApi",caseListRq);
   }
 
-  public getCaseInfo(): Observable<any> {
-    return this.httpclient.get('./assets/json/case-details.json');
+  public getCaseInfo(caseInfoRq:any): Observable<any> {
+    //return this.httpclient.get('./assets/json/case-details.json');
+    return this.httpclient.post<any>("http://localhost:8005/api/caseinfoApi",caseInfoRq);
+  }
+
+  public getContactInfo(contactInfoRq:any): Observable<any> {
+    return this.httpclient.post<any>("http://localhost:8005/api/contactinfoApi",contactInfoRq);
   }
 
   public getPastCaseList(): Observable<any> {

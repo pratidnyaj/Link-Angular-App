@@ -1,26 +1,33 @@
 export class LoginRQ {
     emailID!: string;
     password!: string;
-    userType!: string;
-    sessionRequired!: string;
+    // userType!: string;
+    // sessionRequired!: string;
 }
 
-export class LoginResult {
-    Result: string;
-    PendingStat: boolean;
+export class LoginRS 
+{
+    status: boolean;
+    statusCode: number;
+    message: string;
+    data!: any;
 
     constructor()
     {
-        this.Result = "";
-        this.PendingStat = false;
+        this.status=false;
+        this.statusCode = 0;
+        this.message = "";        
     }
 }
 
-export class LoginRS {
-    data: LoginResult[];
+export interface LoggedUser {
+    UserID: string;
+    FullName: string;
+    EmailID: string;
+    PhoneNo: string;
+    RoleID: number;
+}
 
-    constructor()
-    {
-        this.data = [];
-    }
+export interface RelatedTeams {
+    TeamID: number;
 }

@@ -34,10 +34,11 @@
     <div class="col-6">
         <ul class="list-inline">
             <li class="list-inline-item">
-                <form class="searchbox searchbox-open">
-                    <input type="search" [(ngModel)]="searchText" (keyup)="onCaseSearch($event)" placeholder="Search." name="txtCaseSearch" class="searchbox-input">
+                <form [ngClass]="IsToggleSearchBoxOpen ? 'searchbox searchbox-open' : 'searchbox'">
+                    <input type="text" [(ngModel)]="searchText" (keyup)="onCaseSearch($event)" autocomplete="off"
+                    placeholder="Search." name="txtCaseSearch" class="searchbox-input">
                     <input type="submit" class="searchbox-submit" value="">
-                    <span class="searchbox-icon" (click)="filterSearchCase()">
+                    <span class="searchbox-icon" (click)="toggleSearchBox()">
                         <img src="assets/images/svg/case-search.svg" style="vertical-align: middle;" />
                     </span>
                 </form>

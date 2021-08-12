@@ -12,6 +12,7 @@ export class LoginService {
   authenticateLogin(loginRq: LoginRQ) {
     return this
     .httpClient
-    .post<any>("http://localhost/unfyd-link-old/AdminHandler?Action=CheckLogin",loginRq)
+    .post<any>("http://localhost:8005/api/loginApi",loginRq);
+    //.post<any>("http://localhost/unfyd-link-old/AdminHandler?Action=CheckLogin",loginRq)
   }
 }

@@ -1,37 +1,18 @@
-<!-- <div class="media" (click)="selectCase(case)">
-    <img src="/assets/images/case pic1.png" class="case-profile" />
-    <div class="media-body">
-        <span class="case-id">{{case.caseid}}</span><span class="badge badge-light">New</span> <span
-            class="date float-right">2:30 PM</span>
-        <p class="case-subject">
-            {{case.Subject}}
-        </p>
-        <p class="case-info">
-            <img src="/assets/images/mail.png" style="vertical-align: baseline;" /> {{case.FullName}} <span
-                class="dot">.</span> {{case.CreatedDate}}
-        </p>
-        <p class="assign-to">
-            Assign to : {{case.AssignedToAgent}} <span class="status">{{case.Status}}</span> <span
-                class="badge badge-danger float-right">High</span>
-        </p>
-    </div>
-</div> -->
-
 <div class="media" (click)="selectCase(case)">
     <img src="/assets/images/case pic1.png" class="case-profile" />
     <div class="media-body">
         <span class="case-id">{{case.caseid}}</span><span class="badge badge-light">New</span> <span
-            class="date float-right">2:30 PM</span>
+            class="date float-right">{{case.CreatedTime}}</span>
         <p class="case-subject">
             {{case.Subject}}
         </p>
         <p class="case-info">
             <img src="/assets/images/svg/email.svg" style="vertical-align: baseline;" /> {{case.FullName}} <span
-                class="dot">.</span>  {{case.CreatedDate}}
+                class="dot">.</span> {{case.CreatedDate}}
         </p>
         <p class="assign-to">
             Assign to :{{case.AssignedToAgent}} <span class="status">{{case.Status}}</span> <span
-                class="badge badge-danger float-right">High</span>
+                class="badge badge-danger float-right">{{case.Priority}}</span>
         </p>
     </div>
 </div>
