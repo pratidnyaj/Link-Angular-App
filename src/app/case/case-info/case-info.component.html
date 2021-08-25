@@ -2,26 +2,31 @@
     <div class="tab-pane" id="contact-info" role="tabpanel" aria-labelledby="contact-tab">
         <app-contact-info [selectedCaseId]="selectedCaseId"></app-contact-info>
     </div>
-
+    
     <div class="tab-pane" id="case-info" role="tabpanel" aria-labelledby="profile-tab">
         <div class="case-div-bottom">
             <div class="head-title d-flex justify-content-between">
                 <h5 class="content-title">Case Info</h5>
                 <a href="" class="more-btn">More Details ></a>
             </div>
-            <hr />
-            <div class="table-responsive">
+            <!-- <hr /> -->
+            <div class="table-responsive tbl-caseinfo">
                 <table class="table table-hover font-2x">
                     <tbody>
                         <tr>
-                            <td>Status</td>
+                            <td class="tbl-fileds">Status</td>
                             <td class="blue text-right"><strong>
-                                    <div class="dropdown add-item-drpdown">
-                                        <button class="btn btnadd" type="button" id="dropdownMenuButton"
+                                    <div class="dropdown caseifo-status-drpdown">
+                                        <button class="btn btn-caseinfo-add" type="button" id="dropdownMenuButton"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{caseInfo.Status}}
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24"
+                                                width="20px" fill="#5F5F5F">
+                                                <path d="M24 24H0V0h24v24z" fill="none" opacity=".87" />
+                                                <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z" />
+                                            </svg>
                                         </button>
-                                        <div class="dropdown-menu add-drpmenu" aria-labelledby="dropdownMenuButton">
+                                        <!-- <div class="dropdown-menu add-drpmenu" aria-labelledby="dropdownMenuButton">
                                             <div class="add-menus">
                                                 <a href="#" id="show-new-cases">
                                                     <svg xmlns="http://www.w3.org/2000/svg" height="20px"
@@ -46,16 +51,43 @@
                                                 </a>
                                             </div>
 
+                                        </div> -->
+                                        <div class="dropdown-menu case-drpmenu" aria-labelledby="dropdownMenuButton">
+                                            <div class="case-menus">
+                                                <button class="csmenu" (click)="openVerticallyCentered(content)">
+                                                    Open</button>
+                                                <!-- <a href="#" id="show-new-cases" (click)="openVerticallyCentered(content)">                                                   
+                                                   Open
+                                                </a> -->
+                                            </div>
+                                            <div class="case-menus">
+                                                <button class="csmenu" (click)="openVerticallyCentered(content)">
+                                                    Close</button>
+                                                <!-- <a href="#" id="show-new-contact">
+                                                    Close
+                                                </a> -->
+                                            </div>
+                                            <div class="case-menus">
+                                                <button class="csmenu" (click)="openVerticallyCentered(content)">
+                                                    Pending</button>
+                                                <!-- <a href="#" id="show-new-contact">
+                                                    Pending
+                                                </a> -->
+                                            </div>
+                                            <div class="case-menus">
+                                                <button class="csmenu" (click)="openVerticallyCentered(content)">
+                                                    Hold</button>
+                                                <!-- <a href="#" id="show-new-contact">
+                                                    Hold
+                                                </a> -->
+                                            </div>
+
                                         </div>
                                     </div>
-                                </strong> <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24"
-                                    width="20px" fill="#5F5F5F">
-                                    <path d="M24 24H0V0h24v24z" fill="none" opacity=".87" />
-                                    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z" />
-                                </svg></td>
+                                </strong> </td>
                         </tr>
                         <tr>
-                            <td>Priority</td>
+                            <td class="tbl-fileds">Priority</td>
                             <td class="red text-right"><strong>{{caseInfo.Priority}}</strong> <svg
                                     xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px"
                                     fill="#ff0000">
@@ -64,7 +96,7 @@
                                 </svg></td>
                         </tr>
                         <tr>
-                            <td>Assign To Team</td>
+                            <td class="tbl-fileds">Assign To Team</td>
                             <td class="text-right"><strong>{{caseInfo.AssignedToTeamName}}</strong> <svg
                                     xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px"
                                     fill="#5F5F5F">
@@ -73,7 +105,7 @@
                                 </svg></td>
                         </tr>
                         <tr>
-                            <td>Assign To Agent</td>
+                            <td class="tbl-fileds">Assign To Agent</td>
                             <td class="text-right"><strong>{{caseInfo.AssignedToAgentName}}</strong> <svg
                                     xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 24 24" width="16px"
                                     fill="#5F5F5F">
@@ -83,43 +115,43 @@
                                 </svg></td>
                         </tr>
                         <tr>
-                            <td>Case ID</td>
+                            <td class="tbl-fileds">Case ID</td>
                             <td class="text-right"><strong>{{caseInfo.CaseID}}</strong></td>
                         </tr>
                         <tr>
-                            <td>Created On</td>
+                            <td class="tbl-fileds">Created On</td>
                             <td class="text-right"><strong>{{caseInfo.CreatedDate}}</strong></td>
                         </tr>
                         <tr>
-                            <td>Case Type</td>
+                            <td class="tbl-fileds">Case Type</td>
                             <td class="text-right"><strong>{{caseInfo.CaseType}}</strong></td>
                         </tr>
                         <tr>
-                            <td>Requested By</td>
+                            <td class="tbl-fileds">Requested By</td>
                             <td class="text-right"><strong>{{caseInfo.RequestedByEmailId}}</strong></td>
                         </tr>
                         <tr>
-                            <td>Source Id</td>
+                            <td class="tbl-fileds">Source Id</td>
                             <td class="text-right"><strong>{{caseInfo.CaseSource}}</strong></td>
                         </tr>
                         <tr>
-                            <td>Source Channel </td>
+                            <td class="tbl-fileds">Source Channel </td>
                             <td class="text-right"><strong>{{caseInfo.CaseSourceName}}</strong></td>
                         </tr>
                         <tr>
-                            <td>Callback Request</td>
+                            <td class="tbl-fileds">Callback Request</td>
                             <td class="text-right"><strong>{{caseInfo.CallBackReq}}</strong></td>
                         </tr>
                         <tr>
-                            <td>Escalation</td>
+                            <td class="tbl-fileds">Escalation</td>
                             <td class="text-right"><strong>{{caseInfo.Escalation}}</strong></td>
                         </tr>
                         <tr>
-                            <td>Junk</td>
+                            <td class="tbl-fileds">Junk</td>
                             <td class="text-right"><strong>{{caseInfo.Junk}}</strong></td>
                         </tr>
                         <tr>
-                            <td>Remarks</td>
+                            <td class="tbl-fileds">Remarks</td>
                             <td class="text-right"><strong>{{caseInfo.Remarks}}</strong></td>
                         </tr>
                     </tbody>
@@ -128,3 +160,39 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+<ng-template #content let-modal>
+    <div class="case-info-modal">
+        <div class="modal-header">
+            <!-- <h4 class="modal-title">Modal title</h4> -->
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="caseinfo-modal-bdy">
+                <h2 class="case-ttl">Are you sure? </h2>
+                <p class="sub-ttl"> You want to change status</p>
+            </div>
+            <div class="case-modal-button">
+                <div class="btn-no">
+                    <button>
+                        No
+                    </button>
+                </div>
+                <div class="btn-yes">
+                    <button>
+                        Yes
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+          </div> -->
+    </div>
+</ng-template>

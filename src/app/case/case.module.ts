@@ -10,6 +10,8 @@ import { CaseInteractionListComponent } from './case-interaction-list/case-inter
 import { PastCaseComponent } from './past-case/past-case.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
+import { SafeHtmlPipe } from './case-interaction-list/safe-html.pipe';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,14 @@ import { FormsModule } from '@angular/forms';
     CaseInfoComponent,
     ContactInfoComponent,
     CaseInteractionListComponent,
-    PastCaseComponent
+    PastCaseComponent,
+    SafeHtmlPipe
   ],
   imports: [
     CommonModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    NgSelectModule
   ],
   exports:[]
 })

@@ -1,18 +1,27 @@
-<div class="media" (click)="selectCase(case)">
-    <img src="/assets/images/case pic1.png" class="case-profile" />
-    <div class="media-body">
-        <span class="case-id">{{case.caseid}}</span><span class="badge badge-light">New</span> <span
-            class="date float-right">{{case.CreatedTime}}</span>
-        <p class="case-subject">
-            {{case.Subject}}
-        </p>
-        <p class="case-info">
-            <img src="/assets/images/svg/email.svg" style="vertical-align: baseline;" /> {{case.FullName}} <span
-                class="dot">.</span> {{case.CreatedDate}}
-        </p>
-        <p class="assign-to">
-            Assign to :{{case.AssignedToAgent}} <span class="status">{{case.Status}}</span> <span
-                class="badge badge-danger float-right">{{case.Priority}}</span>
-        </p>
+<div class="form_to_rly" style="display:block;">
+    From :
+    <ng-select [items]="oInxData.arrFromEmail" placeholder="From" appendTo="body" [multiple]="false"
+        bindLabel="SupportEmail" [clearable]="false" [(ngModel)]="oInxData.selectedFromEmail">
+    </ng-select>
+    To :
+    <ng-select [items]="oInxData.arrToEmail" placeholder="To" appendTo="body" [multiple]="true" [addTag]="true"
+        [clearable]="false" [(ngModel)]="oInxData.selectedToEmail">
+    </ng-select>
+    Cc :
+    <ng-select [items]="oInxData.arrCcEmail" placeholder="Cc" appendTo="body" [multiple]="true" [addTag]="true"
+        [(ngModel)]="oInxData.selectedCcEmail">
+    </ng-select>
+    Subject :
+    <input class="floating-input subject" type="text" placeholder="" [(ngModel)]="oInxData.subject">
+    Body
+    <textarea class="floating-input" type="text" placeholder=" " row="5"></textarea>
+    <br>
+    <div class="btn_rly_mail">
+        <div>
+            <button class="btn_discard">Discard</button>
+        </div>
+        <div>
+            <button class="btn_send" (click)="sendMail()">Send</button>
+        </div>
     </div>
 </div>

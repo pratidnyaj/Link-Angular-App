@@ -1,0 +1,116 @@
+.form_to_rly {
+	margin-top: 25px;
+	.floating-label {
+		position: relative;
+		margin-bottom: 20px;
+	}
+	.floating-input {
+		display: block;
+		width: 100%;
+		background-color: transparent;
+		border: 1px solid #ececec;
+		color: #5f5f5f;
+		border-radius: 8px;
+		background-color: white;
+		border-radius: 4px;
+		// height: 40px;
+		font-size: 16px;
+		padding: 0.375rem 0.75rem;
+		&:focus {
+			outline: none;
+			~ {
+				label {
+					top: -12px;
+					font-size: 16px;
+					left: 10px;
+					background-color: #fff;
+				}
+			}
+		}
+		&:not(:placeholder-shown) {
+			~ {
+				label {
+					top: -12px;
+					font-size: 16px;
+					left: 10px;
+					color: #5f5f5f;
+					background-color: #fff;
+				}
+			}
+		}
+	}
+
+	label {
+		color: #5f5f5f;
+		font-size: 14px;
+		font-weight: normal;
+		position: absolute;
+		pointer-events: none;
+		left: 10px;
+		top: 8px;
+		transition: 0.2s ease all;
+		-moz-transition: 0.2s ease all;
+		-webkit-transition: 0.2s ease all;
+	}
+	.btn_rly_mail {
+		display: flex;
+		align-items: center;
+		button {
+			outline: none;
+			border: none;
+			background-color: transparent;
+			// &:hover{
+			// 	box-shadow: none;
+			// }
+		}
+		.btn_discard {
+			padding: 6px 30px;
+			font-size: 14px;
+			border: 1px solid #b4b4b4;
+			border-radius: 4px;
+			margin-right: 20px;
+		}
+		.btn_send {
+			padding: 6px 30px;
+			color: #fff;
+			font-size: 14px;
+			border: 1px solid #053c6d;
+			border-radius: 4px;
+			margin-right: 40px;
+			background-color: #053c6d;
+		}
+	}
+}
+
+.case-actiob-btn {
+	display: flex;
+    align-items: center;
+    justify-content: space-around;
+	.btn-cases {
+		padding: 0.3rem 0rem;
+		margin-bottom: -1px;
+		background-color: #fff;
+		border: 1px solid rgba(0, 0, 0, 0.125);
+		box-shadow: 0px 1px 3px #0000001a;
+		border-radius: 6px !important;
+		margin-bottom: 0;
+		margin-right: 6px;
+		width: 18.5%;
+		img{
+			padding-right: 10px;
+		}
+		// &:hover{
+		// 	background-color: #053c6d;
+		// 	border: 1px solid #053c6d;
+		// 	color: #fff;
+		// }
+	}
+}
+
+.case-details{
+	.case-dtl{
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+}

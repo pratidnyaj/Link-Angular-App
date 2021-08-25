@@ -1,3 +1,5 @@
+@import "~@ng-select/ng-select/scss/default.theme.scss";
+
 // :root {
 //     --theme_blue: #053c6d;
 //     --theme_bg_gray: #f8f8f8;
@@ -2753,7 +2755,7 @@ a:focus {
 }
 
 ::-webkit-scrollbar {
-    width: 9px;
+    width: 2px;
     background-color: #f5f5f5;
     height: 9px;
 }
@@ -3165,7 +3167,7 @@ input.form-control.floating-placeholder {
 }
 
 input.form-control {
-    border-radius: 30px;
+    // border-radius: 30px;
     height: 35px;
     background: #f6f6f1;
     border: 1px solid #f6f6f1 !important;
@@ -3385,8 +3387,8 @@ canvas#myChart {
 }
 
 .content-title {
-    font-size: 25px;
-    color: #333333;
+    font-size: 20px;
+    color: #000000;
 }
 
 .card-title {
@@ -3719,10 +3721,20 @@ table.head-center thead tr th {
 #horizontal-style li:last-child a {
     text-align: right;
 }
+#horizontal-style li .caseid {
+    padding: 0px 8px;
+    color: #5f5f5f;
+    font-size: 12px;
+}
+.casenumber {
+    font-weight: bold;
+    color: #000000;
+    font-size: 12px;
+}
 .left-panel {
     background-color: white;
     /* height: 88vh; */
-    overflow-y: auto;
+    // overflow-y: auto;
     box-shadow: 0px 2px 3px #0000001a;
     position: fixed;
     bottom: 0;
@@ -3754,29 +3766,123 @@ table.head-center thead tr th {
     left: 10px;
     /* width: 100%; */
     height: 195px;
-    right: 0px;
+    // right: 0px;   //ld comments
+    right: 10px;
 }
 
 .case-div-bottom {
     position: absolute;
     bottom: 0;
-    right: 0;
+    // right: 0;  //ld comments
+    right: 10px;
     left: 10px;
     top: 227px;
     background-color: white;
-    padding: 15px;
+    // padding: 15px;
     margin-bottom: 15px;
     box-shadow: 0px 2px 3px #0000001a;
     border-radius: 15px;
     opacity: 1;
+    overflow: hidden;
     /* margin-top: 13px; */
-    overflow-y: auto;
+    // overflow-y: auto;
 }
 .head-title {
-    margin: 10px 0;
+    // margin: 10px 0;
+    padding: 15px 15px 0px 15px;
 }
 .case-details {
-    padding: 15px 0px;
+    padding: 15px 15px 15px 15px;
+}
+.case-div-bottom .tbl-caseinfo {
+    padding: 15px;
+    overflow-y: auto;
+    height: 100%;
+}
+.case-div-bottom .tbl-caseinfo .tbl-fileds {
+    color: #5f5f5f;
+    font-size: 14px;
+}
+.case-div-bottom .tbl-caseinfo tr:last-child .tbl-fileds {
+    padding-bottom: 26px;
+}
+.case-div-bottom .tbl-caseinfo .caseifo-status-drpdown .btn-caseinfo-add {
+    padding: 0px;
+    color: #053c6d;
+    font-size: 14px;
+    font-weight: bold;
+}
+.case-div-bottom .tbl-caseinfo .caseifo-status-drpdown .btn-caseinfo-add:focus {
+    outline: none;
+    box-shadow: none;
+}
+.case-div-bottom .tbl-caseinfo .caseifo-status-drpdown .btn-caseinfo-add:hover {
+    box-shadow: none;
+}
+.case-drpmenu {
+    background-color: #fff;
+    position: absolute;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 15px;
+    border: 1px solid #f8f8f8;
+    padding: 20px;
+}
+// .case-menus {
+//     color: #000000;
+//     font-size: 14px;
+//     padding: 6px 0px;
+// }
+.case-menus .csmenu {
+    border: none;
+    background-color: transparent;
+    color: #000000;
+    font-size: 14px;
+    padding: 6px 0px;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+}
+.case-menus .csmenu:hover {
+    box-shadow: none;
+}
+.case-info-modal .modal-header {
+    border-bottom: none;
+}
+.case-info-modal .modal-body .caseinfo-modal-bdy .case-ttl {
+    color: #000000;
+    text-align: center;
+    font-size: 22px;
+}
+.sub-ttl {
+    color: #5f5f5f;
+    font-size: 14px;
+    text-align: center;
+}
+.case-modal-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 30px 0px 20px;
+}
+.case-modal-button .btn-no button {
+    border: 1px solid #b4b4b4;
+    color: #5f5f5f;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 3px #0000001a;
+    padding: 6px 50px;
+    border-radius: 4px;
+    width: 100%;
+    font-weight: bold;
+}
+.case-modal-button .btn-yes button {
+    border: 1px solid #b4b4b4;
+    color: #ffffff;
+    background-color: #053c6d;
+    box-shadow: 0px 1px 3px #0000001a;
+    padding: 6px 50px;
+    border-radius: 4px;
+    width: 100%;
+    font-weight: bold;
 }
 .cont {
     position: fixed;
@@ -3973,6 +4079,13 @@ i.bi.bi-search {
 
 li.list-inline-item img {
     vertical-align: bottom;
+    // margin-right: 4px;
+    // width: 14px;
+}
+li.list-inline-item .filtermenu {
+    vertical-align: bottom;
+    margin-right: 4px;
+    width: 14px;
 }
 
 .img-position {
@@ -3991,6 +4104,8 @@ li.list-inline-item img {
     width: 100%;
     height: auto;
     overflow-x: auto;
+    overflow-y: auto;
+    height: 100%;
 }
 
 .media {
@@ -4068,6 +4183,7 @@ li.list-inline-item img {
     line-height: 0;
     border-radius: 5px;
     width: 50px;
+    background-color: #ff4e56;
 }
 
 .badge-light {
@@ -4092,7 +4208,9 @@ li.list-inline-item img {
     width: 100%;
     background-color: #f8f8f8;
 }
-
+.list-group-item:hover {
+    background-color: #f8f8f8;
+}
 ul.list-group.list-group-horizontal {
     display: inline-block;
     width: 100%;
@@ -4106,27 +4224,20 @@ ul.list-group.list-group-horizontal {
     background-color: #fff;
     border: 1px solid rgba(0, 0, 0, 0.125);
     box-shadow: 0px 1px 3px #0000001a;
-}
-
-.list-group-horizontal .list-group-item {
+    border-radius: 6px !important;
     margin-bottom: 0;
     margin-right: 6px;
     width: 18.5%;
-    border-radius: 0;
+}
+.font-12 {
+    font-size: 12px;
 }
 
-// .list-group-horizontal .list-group-item:first-child {
-//   /*  border-top-right-radius: 0 !important;
-//     border-bottom-left-radius: 4px !important;
-//     border-top-left-radius: 4px !important;*/
-// }
-
-// .list-group-horizontal .list-group-item:last-child {
-//   /*  border-top-right-radius: 4px !important;
-//     border-bottom-left-radius: 0 !important;
-//     border-right-width: 1px !important;*/
-// }
-
+.list-group-horizontal .list-group-item .tabs-title {
+    font-size: 14px;
+    color: #5f5f5f;
+    padding-left: 6px;
+}
 .list-group-horizontal .list-group-item:focus,
 .list-group-horizontal .list-group-item:hover {
     z-index: 0 !important;
@@ -4158,8 +4269,14 @@ ul.list-group.list-group-horizontal {
 .case-body {
     font-size: 14px;
     padding-left: 40px;
+    padding-top: 16px;
 }
-
+.case-body .case-bycontent {
+    color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
 .mail-detail {
     margin: 0;
     display: flex;
@@ -4186,6 +4303,8 @@ ul.list-group.list-group-horizontal {
 .case-reply span {
     padding: 15px 20px 10px 0px;
     cursor: pointer;
+    font-size: 12px;
+    color: #5f5f5f;
 }
 
 .mail-content {
@@ -4209,9 +4328,10 @@ td svg {
 }
 
 .contact-name {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 700;
     margin-bottom: 10px;
+    color: #000000;
 }
 
 .contact-body {
@@ -4222,6 +4342,10 @@ td svg {
     font-weight: 700;
     font-size: 14px;
     margin-bottom: 7px;
+}
+.cont-number {
+    color: #000000;
+    font-size: 14px;
 }
 
 /*---------------------------------
@@ -5305,4 +5429,124 @@ h1 {
 
 .rounded {
     padding: 3px 5px 3px 39px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///new style created by lajarid
+
+/* You can add global styles to this file, and also import other style files */
+@import "assets/scss/icon.scss";
+
+@font-face {
+    font-family: "Calibri";
+    src: url("assets/fonts/Calibri.eot");
+    src: url("assets/fonts/Calibri.eot?#iefix") format("embedded-opentype"),
+        url("assets/fonts/Calibri.woff2") format("woff2"), url("assets/fonts/Calibri.woff") format("woff"),
+        url("assets/fonts/Calibri.ttf") format("truetype"), url("assets/fonts/Calibri.svg#Calibri") format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Calibri";
+    src: url("assets/fonts/Calibri-Bold.eot");
+    src: url("assets/fonts/Calibri-Bold.eot?#iefix") format("embedded-opentype"),
+        url("assets/fonts/Calibri-Bold.woff2") format("woff2"), url("assets/fonts/Calibri-Bold.woff") format("woff"),
+        url("assets/fonts/Calibri-Bold.ttf") format("truetype"),
+        url("assets/fonts/Calibri-Bold.svg#Calibri-Bold") format("svg");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "icomoon";
+    src: url("assets/icon/icomoon.eot");
+    src: url("assets/icon/icomoon.eot?5iotxc");
+    src: url("assets/icon/icomoon.eot?5iotxc#iefix") format("embedded-opentype"),
+        url("assets/icon/icomoon.ttf?5iotxc") format("truetype"), url("assets/icon/icomoon.woff?5iotxc") format("woff"),
+        url("assets/icon/icomoon.svg?5iotxc#icomoon") format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+body {
+    font-family: Calibri;
+    // padding-top: 74px;
+    background-color: #f8f8f8;
+    // padding-left: 70px;
+    overflow: hidden;
+}
+:root {
+    --theme_bg_color: #f8f8f8;
+    --theme_bg_blue: #053c6d;
+    --white_color: #ffffff;
+    --theme_red: #ed1c24;
+    --theme_palceholder: #a7a7a7;
+    --theme_input_border: #eaeaea;
+    --button_border: #70707057;
+    --btn_link: #1a2e35;
+    --theme_input_color: #5f5f5f;
+    --nabar_border: #ececec;
+    --box_shadow: #0000001a;
+    --search_input_bg: #f6f6f1;
+    --light_boxshadow: #dcdcdc;
+    --theme_green: #24e624;
+    --theme_icon_gray: #7b7b7b;
+}
+
+.unlink_theme_font {
+    font-family: "Calibri";
+}
+
+.unlink_remove_padd {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+.unlink_theme_button {
+    background-color: var(--theme_bg_blue);
+    border: 1px solid var(--button_border);
+    border-radius: 5px;
+    text-transform: capitalize;
+    color: var(--white_color);
+    width: 100%;
+    padding: 6px 0px;
+    font-size: 14px;
+    transition: 0.5s all;
+    &:hover {
+        box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+        border: 1px solid var(--theme_bg_blue);
+        color: var(--theme_bg_blue);
+        background-color: var(--white_color);
+        transition: 0.5s all;
+        font-weight: 600;
+    }
+}
+.unlink_mt-20 {
+    margin-top: 20px;
+}
+.unlink_mt-60 {
+    margin-top: 60px;
+}
+p {
+    margin-bottom: 0px;
+}
+a {
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+    }
 }

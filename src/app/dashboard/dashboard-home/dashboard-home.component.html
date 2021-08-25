@@ -314,20 +314,316 @@
     </div>
 </div> -->
 
-<div class="mobile-padding" id="show-model">
-    <div id="dashboard">
-        <div class="dashboard-container padding-right">
+<div class="default-spacing">
+    <div class="container-fluid mobile-padding" id="show-model">
+        <div id="dashboard">
+            <div class="dashboard-container padding-right">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="content-div">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="content-title">Todays Cases Stats</h5>
+                                <a href="#" data-toggle="modal" data-target="#showModal" class="more-btn">More Details ></a>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 padding-small">
+                                    <div class="card border-0">
+                                        <div class="card-content">
+                                            <div class="card-body text-center xs">
+                                                <div class="card-title">
+                                                    Total
+                                                </div>
+                                                <div class="card-value d-inline-block">
+                                                    <h3>520</h3>
+                                                </div>
+                                               <img src="images/svg/rise.svg"  />
+                                                <div class="card-text">
+                                                    <span>Yesterday 480 cases</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 padding-small">
+                                    <div class="card border-0">
+                                        <div class="card-content">
+                                            <div class="card-body text-center xs xs">
+                                                <div class="card-title">
+                                                    Open
+                                                </div>
+                                                <div class="card-value d-inline-block">
+                                                    <h3>209</h3>
+                                                </div>
+                                               <img src="images/svg/rise.svg"  />
+                                                <div class="card-text">
+                                                    <span>Yesterday 220 cases are open</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 padding-small">
+                                    <div class="card border-0">
+                                        <div class="card-content">
+                                            <div class="card-body text-center xs">
+                                                <div class="card-title">
+                                                    Closed
+                                                </div>
+                                                <div class="card-value d-inline-block">
+                                                    <h3>245</h3>
+                                                </div>
+                                               <img src="images/svg/fall.svg"  />
+                                                <div class="card-text">
+                                                    <span>Yesterday 198 cases are closed</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 padding-small">
+                                    <div class="card border-0">
+                                        <div class="card-content">
+                                            <div class="card-body text-center xs">
+                                                <div class="card-title">
+                                                    Overdue
+                                                </div>
+                                                <div class="card-value d-inline-block">
+                                                    <h3>66</h3>
+                                                </div>
+                                                <img src="images/svg/rise.svg"  />
+                                                <div class="card-text">
+                                                    <span>Yesterday 50 cases are overdue</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-div">
+                        <div class="case-report">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <h5 class="content-title">Cases Reports</h5>
+                                </div>
+                                <div class="col-md-7">
+                                    <nav class="tabs">
+                                        <div class="selector"></div>
+                                        <a href="#" class="active">Hours</a>
+                                        <a href="#">Day</a>
+                                        <a href="#">Week</a>
+                                        <a href="#">Month</a>
+                                    </nav>
+                                    <!-- <span class="material-icons settings">
+                                        settings
+                                    </span> -->
+                                </div>
+                            </div>
+                            <div class="uf-charts">
+                                <canvas id="myChart" ></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-category">
+                        <div class="content-half-top">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="content-title">Category</h5>
+                            </div>
+                            <div class="uf-doughnut-charts">
+                                <canvas id="myChart1"></canvas>
+                            </div>
+                        </div>
+                            <div class="content-half-bottom d-none d-sm-block">
+                                    <div class="d-flex justify-content-between">
+                                        <h5 class="content-title">Service Level Agreement</h5>
+                                    </div>
+                                    <div class="uf-doughnut-charts">
+                                        <canvas id="myChart1"></canvas>
+                                    </div>
+                            </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="side-div d-none d-sm-block">
+                   <app-top-performer></app-top-performer>
+            </div>
+        </div>
+    
+        <div id="new-case" style="display: none;" >
             <div class="row">
                 <div class="col-md-12">
-                    <div class="content-div">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="content-title">Todays Cases Stats</h5>
-                            <a href="#" data-toggle="modal" data-target="#showModal" class="more-btn">More
-                                Details ></a>
+                    <ul class="checklist">
+                        <li>
+                            <input type="radio" id="f-option" name="selector" checked="checked">
+                            <label for="f-option">Existing contact for</label>
+    
+                            <div class="check"></div>
+                        </li>
+    
+                        <li>
+                            <input type="radio" id="s-option" name="selector">
+                            <label for="s-option">Existing Requestor for</label>
+    
+                            <div class="check"><div class="inside"></div></div>
+                        </li>
+    
+                        <li>
+                            <input type="radio" id="t-option" name="selector">
+                            <label for="t-option">New requestor</label>
+    
+                            <div class="check"><div class="inside"></div></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="full-content">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-sm-4 m-bottom">
+                            <select placeholder="Team" class="form-control floating-placeholder">
+                                <option></option>
+                                <option value="1">Team 1</option>
+                                <option value="2">Team 2</option>
+                            </select>
                         </div>
+                        <div class="col-sm-4 m-bottom">
+                            <select placeholder="Agent" class="form-control floating-placeholder">
+                                <option></option>
+                                <option value="1">Agent 1</option>
+                                <option value="2">Agent 2</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4 m-bottom">
+                            <select placeholder="Source Email" class="form-control floating-placeholder">
+                                <option></option>
+                                <option value="1">Email 1</option>
+                                <option value="2">Email 2</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4 m-bottom">
+                            <input type="text" class="form-control floating-placeholder" placeholder="Sender Email">
+                        </div>
+                        <div class="col-sm-4 m-bottom">
+                            <select placeholder="Contact" class="form-control floating-placeholder">
+                                <option></option>
+                                <option value="1">Contact 1</option>
+                                <option value="2">Contact 2</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4 m-bottom">
+                            <select placeholder="Account" class="form-control floating-placeholder">
+                                <option></option>
+                                <option value="1">Account 1</option>
+                                <option value="2">Account 2</option>
+                            </select>
+                        </div>
+                        <div class="col-12 m-bottom">
+                            <input type="text" class="form-control floating-placeholder" placeholder="CC">
+                        </div>
+                        <div class="col-12 m-bottom">
+                            <input type="text" class="form-control floating-placeholder" placeholder="Subject">
+                        </div>
+                        <div class="col-12 m-bottom">
+                            <textarea class="form-control floating-placeholder" rows="3" placeholder="Description"></textarea>
+                        </div>
+    
+                        <div class="col-sm-4 m-bottom">
+                            <select placeholder="Priority" class="form-control floating-placeholder">
+                                <option></option>
+                                <option value="1">Priority 1</option>
+                                <option value="2">Priority 2</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4 m-bottom">
+                            <select placeholder="Status" class="form-control floating-placeholder">
+                                <option></option>
+                                <option value="1">Status 1</option>
+                                <option value="2">Status 2</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4 m-bottom">
+                            <select placeholder="Request Type" class="form-control floating-placeholder">
+                                <option></option>
+                                <option value="1">Request Type 1</option>
+                                <option value="2">Request Type 2</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4 m-bottom">
+                            <select placeholder="Business Hours" class="form-control floating-placeholder">
+                                <option></option>
+                                <option value="1">Business Hours 1</option>
+                                <option value="2">Business Hours 2</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4 m-bottom">
+                            <select placeholder="Escalation" class="form-control floating-placeholder">
+                                <option></option>
+                                <option value="1">Escalation 1</option>
+                                <option value="2">Escalation 2</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4 m-bottom">
+                            <select placeholder="Callback Request" class="form-control floating-placeholder">
+                                <option></option>
+                                <option value="1">Callback Request 1</option>
+                                <option value="2">Callback Request 2</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4 m-bottom">
+                            <select placeholder="Source Channel" class="form-control floating-placeholder">
+                                <option></option>
+                                <option value="1">Business Hours 1</option>
+                                <option value="2">Business Hours 2</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4 m-bottom position">
+                            <label for="dueDate"></label>
+                            <input type="text" class="form-control floating-placeholder" placeholder="Due On" id="dueDate" />
+                            <span class="calendar"><svg xmlns="http://www.w3.org/2000/svg" height="19px" viewBox="0 0 24 24" width="19px" fill="#5F5F5F"><path d="M0 0h24v24H0V0z" fill="none" /><path d="M7 11h2v2H7v-2zm14-5v14c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2l.01-14c0-1.1.88-2 1.99-2h1V2h2v2h8V2h2v2h1c1.1 0 2 .9 2 2zM5 8h14V6H5v2zm14 12V10H5v10h14zm-4-7h2v-2h-2v2zm-4 0h2v-2h-2v2z" /></svg></span>
+                        </div>
+                        <div class="col-sm-4 m-bottom position">
+                            <label for="followDate"></label>
+                            <input type="text" class="form-control floating-placeholder" placeholder="Follow up Date" id="followDate" />
+                            <span class="calendar"><svg xmlns="http://www.w3.org/2000/svg" height="19px" viewBox="0 0 24 24" width="19px" fill="#5F5F5F"><path d="M0 0h24v24H0V0z" fill="none" /><path d="M7 11h2v2H7v-2zm14-5v14c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2l.01-14c0-1.1.88-2 1.99-2h1V2h2v2h8V2h2v2h1c1.1 0 2 .9 2 2zM5 8h14V6H5v2zm14 12V10H5v10h14zm-4-7h2v-2h-2v2zm-4 0h2v-2h-2v2z" /></svg></span>
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">
+    
+                        </div>
+                        <div class="col-md-3">
+                            <button class="border-btn">Assign To Me</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="filled-btn">Create Case</button>
+                        </div>
+                        <div class="col-md-3">
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- large modal -->
+        <div class="modal fade" id="showModal">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-center" id="myModalLabel">Todays Cases Stats</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
                         <div class="row">
-                            <div class="col-3 padding-small">
-                                <div class="card border-0">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
+                                <div class="card border-0 card-css">
                                     <div class="card-content">
                                         <div class="card-body text-center xs">
                                             <div class="card-title">
@@ -336,7 +632,7 @@
                                             <div class="card-value d-inline-block">
                                                 <h3>520</h3>
                                             </div>
-                                            <img src="/assets/images/svg/rise.svg" />
+                                            <img src="images/svg/rise.svg"  />
                                             <div class="card-text">
                                                 <span>Yesterday 480 cases</span>
                                             </div>
@@ -344,17 +640,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-3 padding-small">
-                                <div class="card border-0">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small dash-card">
+                                <div class="card border-0 card-css">
                                     <div class="card-content">
-                                        <div class="card-body text-center xs xs">
+                                        <div class="card-body text-center xs">
                                             <div class="card-title">
                                                 Open
                                             </div>
                                             <div class="card-value d-inline-block">
                                                 <h3>209</h3>
                                             </div>
-                                            <img src="/assets/images/svg/rise.svg" />
+                                             <img src="images/svg/fall.svg"  />
                                             <div class="card-text">
                                                 <span>Yesterday 220 cases are open</span>
                                             </div>
@@ -362,8 +658,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-3 padding-small">
-                                <div class="card border-0">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
+                                <div class="card border-0 card-css">
                                     <div class="card-content">
                                         <div class="card-body text-center xs">
                                             <div class="card-title">
@@ -372,7 +668,7 @@
                                             <div class="card-value d-inline-block">
                                                 <h3>245</h3>
                                             </div>
-                                            <img src="/assets/images/svg/fall.svg" />
+                                             <img src="images/svg/fall.svg"  />
                                             <div class="card-text">
                                                 <span>Yesterday 198 cases are closed</span>
                                             </div>
@@ -380,8 +676,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-3 padding-small">
-                                <div class="card border-0">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
+                                <div class="card border-0 card-css">
                                     <div class="card-content">
                                         <div class="card-body text-center xs">
                                             <div class="card-title">
@@ -390,7 +686,7 @@
                                             <div class="card-value d-inline-block">
                                                 <h3>66</h3>
                                             </div>
-                                            <img src="/assets/images/svg/rise.svg" />
+                                            <img src="images/svg/rise.svg"  />
                                             <div class="card-text">
                                                 <span>Yesterday 50 cases are overdue</span>
                                             </div>
@@ -399,433 +695,121 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="case-report">
                         <div class="row">
-                            <div class="col-md-5">
-                                <h5 class="content-title">Cases Reports</h5>
-                            </div>
-                            <div class="col-md-7">
-                                <nav class="tabs">
-                                    <div class="selector"></div>
-                                    <a href="#" class="active">Hours</a>
-                                    <a href="#">Day</a>
-                                    <a href="#">Week</a>
-                                    <a href="#">Month</a>
-                                </nav>
-                                <span class="material-icons settings">
-                                    settings
-                                </span>
-                            </div>
-                        </div>
-                        <div class="uf-charts">
-                            <canvas id="myChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="case-category">
-                    <div class="content-half-top">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="content-title">Category</h5>
-                        </div>
-                        <div class="uf-doughnut-charts">
-                            <canvas id="myChart1"></canvas>
-                        </div>
-                    </div>
-                    <div class="content-half-bottom d-none d-sm-block">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="content-title">Service Level Agreement</h5>
-                        </div>
-                        <div class="uf-doughnut-charts">
-                            <canvas id="myChart1"></canvas>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="side-div d-none d-sm-block">
-            <app-top-performer></app-top-performer>            
-        </div>
-    </div>
-
-    <div id="new-case" class="d-none">
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="checklist">
-                    <li>
-                        <input type="radio" id="f-option" name="selector" checked="checked">
-                        <label for="f-option">Existing contact for</label>
-
-                        <div class="check"></div>
-                    </li>
-
-                    <li>
-                        <input type="radio" id="s-option" name="selector">
-                        <label for="s-option">Existing Requestor for</label>
-
-                        <div class="check">
-                            <div class="inside"></div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <input type="radio" id="t-option" name="selector">
-                        <label for="t-option">New requestor</label>
-
-                        <div class="check">
-                            <div class="inside"></div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="full-content">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-sm-4 m-bottom">
-                        <select placeholder="Team" class="form-control floating-placeholder">
-                            <option></option>
-                            <option value="1">Team 1</option>
-                            <option value="2">Team 2</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4 m-bottom">
-                        <select placeholder="Agent" class="form-control floating-placeholder">
-                            <option></option>
-                            <option value="1">Agent 1</option>
-                            <option value="2">Agent 2</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4 m-bottom">
-                        <select placeholder="Source Email" class="form-control floating-placeholder">
-                            <option></option>
-                            <option value="1">Email 1</option>
-                            <option value="2">Email 2</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4 m-bottom">
-                        <input type="text" class="form-control floating-placeholder" placeholder="Sender Email">
-                    </div>
-                    <div class="col-sm-4 m-bottom">
-                        <select placeholder="Contact" class="form-control floating-placeholder">
-                            <option></option>
-                            <option value="1">Contact 1</option>
-                            <option value="2">Contact 2</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4 m-bottom">
-                        <select placeholder="Account" class="form-control floating-placeholder">
-                            <option></option>
-                            <option value="1">Account 1</option>
-                            <option value="2">Account 2</option>
-                        </select>
-                    </div>
-                    <div class="col-12 m-bottom">
-                        <input type="text" class="form-control floating-placeholder" placeholder="CC">
-                    </div>
-                    <div class="col-12 m-bottom">
-                        <input type="text" class="form-control floating-placeholder" placeholder="Subject">
-                    </div>
-                    <div class="col-12 m-bottom">
-                        <textarea class="form-control floating-placeholder" rows="3"
-                            placeholder="Description"></textarea>
-                    </div>
-
-                    <div class="col-sm-4 m-bottom">
-                        <select placeholder="Priority" class="form-control floating-placeholder">
-                            <option></option>
-                            <option value="1">Priority 1</option>
-                            <option value="2">Priority 2</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4 m-bottom">
-                        <select placeholder="Status" class="form-control floating-placeholder">
-                            <option></option>
-                            <option value="1">Status 1</option>
-                            <option value="2">Status 2</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4 m-bottom">
-                        <select placeholder="Request Type" class="form-control floating-placeholder">
-                            <option></option>
-                            <option value="1">Request Type 1</option>
-                            <option value="2">Request Type 2</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4 m-bottom">
-                        <select placeholder="Business Hours" class="form-control floating-placeholder">
-                            <option></option>
-                            <option value="1">Business Hours 1</option>
-                            <option value="2">Business Hours 2</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4 m-bottom">
-                        <select placeholder="Escalation" class="form-control floating-placeholder">
-                            <option></option>
-                            <option value="1">Escalation 1</option>
-                            <option value="2">Escalation 2</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4 m-bottom">
-                        <select placeholder="Callback Request" class="form-control floating-placeholder">
-                            <option></option>
-                            <option value="1">Callback Request 1</option>
-                            <option value="2">Callback Request 2</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4 m-bottom">
-                        <select placeholder="Source Channel" class="form-control floating-placeholder">
-                            <option></option>
-                            <option value="1">Business Hours 1</option>
-                            <option value="2">Business Hours 2</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4 m-bottom position">
-                        <label for="dueDate"></label>
-                        <input type="text" class="form-control floating-placeholder" placeholder="Due On"
-                            id="dueDate" />
-                        <span class="calendar"><svg xmlns="http://www.w3.org/2000/svg" height="19px" viewBox="0 0 24 24"
-                                width="19px" fill="#5F5F5F">
-                                <path d="M0 0h24v24H0V0z" fill="none" />
-                                <path
-                                    d="M7 11h2v2H7v-2zm14-5v14c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2l.01-14c0-1.1.88-2 1.99-2h1V2h2v2h8V2h2v2h1c1.1 0 2 .9 2 2zM5 8h14V6H5v2zm14 12V10H5v10h14zm-4-7h2v-2h-2v2zm-4 0h2v-2h-2v2z" />
-                            </svg></span>
-                    </div>
-                    <div class="col-sm-4 m-bottom position">
-                        <label for="followDate"></label>
-                        <input type="text" class="form-control floating-placeholder" placeholder="Follow up Date"
-                            id="followDate" />
-                        <span class="calendar"><svg xmlns="http://www.w3.org/2000/svg" height="19px" viewBox="0 0 24 24"
-                                width="19px" fill="#5F5F5F">
-                                <path d="M0 0h24v24H0V0z" fill="none" />
-                                <path
-                                    d="M7 11h2v2H7v-2zm14-5v14c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2l.01-14c0-1.1.88-2 1.99-2h1V2h2v2h8V2h2v2h1c1.1 0 2 .9 2 2zM5 8h14V6H5v2zm14 12V10H5v10h14zm-4-7h2v-2h-2v2zm-4 0h2v-2h-2v2z" />
-                            </svg></span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-3">
-
-                    </div>
-                    <div class="col-md-3">
-                        <button class="border-btn">Assign To Me</button>
-                    </div>
-                    <div class="col-md-3">
-                        <button class="filled-btn">Create Case</button>
-                    </div>
-                    <div class="col-md-3">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- large modal -->
-    <div class="modal fade" id="showModal">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title text-center" id="myModalLabel">Todays Cases Stats</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
-                            <div class="card border-0 card-css">
-                                <div class="card-content">
-                                    <div class="card-body text-center xs">
-                                        <div class="card-title">
-                                            Total
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
+                                <div class="card border-0 card-css">
+                                    <div class="card-content">
+                                        <div class="card-body text-center xs">
+                                            <div class="card-title">
+                                                Spam
+                                            </div>
+                                            <div class="card-value d-inline-block">
+                                                <h3>20</h3>
+                                            </div>
+                                            <img src="images/svg/rise.svg"  />
+                                            <div class="card-text">
+                                                <span>Yesterday 480 cases</span>
+                                            </div>
                                         </div>
-                                        <div class="card-value d-inline-block">
-                                            <h3>520</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
+                                <div class="card border-0 card-css">
+                                    <div class="card-content">
+                                        <div class="card-body text-center xs">
+                                            <div class="card-title">
+                                                Spam pending approval
+                                            </div>
+                                            <div class="card-value d-inline-block">
+                                                <h3>09</h3>
+                                            </div>
+                                            <img src="images/svg/rise.svg"  />
+                                            <div class="card-text">
+                                                <span>Yesterday 220 cases are open</span>
+                                            </div>
                                         </div>
-                                        <img src="images/svg/rise.svg" />
-                                        <div class="card-text">
-                                            <span>Yesterday 480 cases</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
+                                <div class="card border-0 card-css">
+                                    <div class="card-content">
+                                        <div class="card-body text-center xs">
+                                            <div class="card-title">
+                                                Block
+                                            </div>
+                                            <div class="card-value d-inline-block">
+                                                <h3>24</h3>
+                                            </div>
+                                            <img src="images/svg/fall.svg"  />
+                                            <div class="card-text">
+                                                <span>Yesterday 198 cases are closed</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
+                                <div class="card border-0 card-css">
+                                    <div class="card-content">
+                                        <div class="card-body text-center xs">
+                                            <div class="card-title">
+                                                Blocked pending approval
+                                            </div>
+                                            <div class="card-value d-inline-block">
+                                                <h3>12</h3>
+                                            </div>
+                                            <img src="images/svg/fall.svg"  />
+                                            <div class="card-text">
+                                                <span>Yesterday 50 cases are overdue</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
-                            <div class="card border-0 card-css">
-                                <div class="card-content">
-                                    <div class="card-body text-center xs">
-                                        <div class="card-title">
-                                            Open
-                                        </div>
-                                        <div class="card-value d-inline-block">
-                                            <h3>209</h3>
-                                        </div>
-                                        <img src="images/svg/fall.svg" />
-                                        <div class="card-text">
-                                            <span>Yesterday 220 cases are open</span>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 d-sm-none padding-small">
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
+                                <div class="card border-0 card-css">
+                                    <div class="card-content">
+                                        <div class="card-body text-center xs">
+                                            <div class="card-title">
+                                                Open assigned
+                                            </div>
+                                            <div class="card-value d-inline-block">
+                                                <h3>04</h3>
+                                            </div>
+                                             <img src="images/svg/rise.svg"  />
+                                            <div class="card-text">
+                                                <span>Yesterday 480 cases</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
-                            <div class="card border-0 card-css">
-                                <div class="card-content">
-                                    <div class="card-body text-center xs">
-                                        <div class="card-title">
-                                            Closed
-                                        </div>
-                                        <div class="card-value d-inline-block">
-                                            <h3>245</h3>
-                                        </div>
-                                        <img src="images/svg/fall.svg" />
-                                        <div class="card-text">
-                                            <span>Yesterday 198 cases are closed</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
-                            <div class="card border-0 card-css">
-                                <div class="card-content">
-                                    <div class="card-body text-center xs">
-                                        <div class="card-title">
-                                            Overdue
-                                        </div>
-                                        <div class="card-value d-inline-block">
-                                            <h3>66</h3>
-                                        </div>
-                                        <img src="images/svg/rise.svg" />
-                                        <div class="card-text">
-                                            <span>Yesterday 50 cases are overdue</span>
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
+                                <div class="card border-0 card-css">
+                                    <div class="card-content">
+                                        <div class="card-body text-center xs">
+                                            <div class="card-title">
+                                                Open unassigned
+                                            </div>
+                                            <div class="card-value d-inline-block">
+                                                <h3>05</h3>
+                                            </div>
+                                             <img src="images/svg/fall.svg"  />
+                                            <div class="card-text">
+                                                <span>Yesterday 220 cases are open</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
-                            <div class="card border-0 card-css">
-                                <div class="card-content">
-                                    <div class="card-body text-center xs">
-                                        <div class="card-title">
-                                            Spam
-                                        </div>
-                                        <div class="card-value d-inline-block">
-                                            <h3>20</h3>
-                                        </div>
-                                        <img src="images/svg/rise.svg" />
-                                        <div class="card-text">
-                                            <span>Yesterday 480 cases</span>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-md-3 col-sm-6 col-xs-12 d-sm-none padding-small">
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
-                            <div class="card border-0 card-css">
-                                <div class="card-content">
-                                    <div class="card-body text-center xs">
-                                        <div class="card-title">
-                                            Spam pending approval
-                                        </div>
-                                        <div class="card-value d-inline-block">
-                                            <h3>09</h3>
-                                        </div>
-                                        <img src="images/svg/rise.svg" />
-                                        <div class="card-text">
-                                            <span>Yesterday 220 cases are open</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
-                            <div class="card border-0 card-css">
-                                <div class="card-content">
-                                    <div class="card-body text-center xs">
-                                        <div class="card-title">
-                                            Block
-                                        </div>
-                                        <div class="card-value d-inline-block">
-                                            <h3>24</h3>
-                                        </div>
-                                        <img src="images/svg/fall.svg" />
-                                        <div class="card-text">
-                                            <span>Yesterday 198 cases are closed</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
-                            <div class="card border-0 card-css">
-                                <div class="card-content">
-                                    <div class="card-body text-center xs">
-                                        <div class="card-title">
-                                            Blocked pending approval
-                                        </div>
-                                        <div class="card-value d-inline-block">
-                                            <h3>12</h3>
-                                        </div>
-                                        <img src="images/svg/fall.svg" />
-                                        <div class="card-text">
-                                            <span>Yesterday 50 cases are overdue</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 d-sm-none padding-small">
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
-                            <div class="card border-0 card-css">
-                                <div class="card-content">
-                                    <div class="card-body text-center xs">
-                                        <div class="card-title">
-                                            Open assigned
-                                        </div>
-                                        <div class="card-value d-inline-block">
-                                            <h3>04</h3>
-                                        </div>
-                                        <img src="images/svg/rise.svg" />
-                                        <div class="card-text">
-                                            <span>Yesterday 480 cases</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 padding-small">
-                            <div class="card border-0 card-css">
-                                <div class="card-content">
-                                    <div class="card-body text-center xs">
-                                        <div class="card-title">
-                                            Open unassigned
-                                        </div>
-                                        <div class="card-value d-inline-block">
-                                            <h3>05</h3>
-                                        </div>
-                                        <img src="images/svg/fall.svg" />
-                                        <div class="card-text">
-                                            <span>Yesterday 220 cases are open</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12 d-sm-none padding-small">
                         </div>
                     </div>
                 </div>

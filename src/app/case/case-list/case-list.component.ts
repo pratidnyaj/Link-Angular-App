@@ -10,7 +10,8 @@ import { FilterCasesPipe } from 'src/app/shared/pipes/filter-cases.pipe';
 export class CaseListComponent implements OnInit {
 
   constructor(private caseService: CaseService) { }
-
+  
+  //Holds list of cases
   cases: any[] = [];
   //captures the currently selected case from the case list which is used to apply the active class.
   currentSelectedCaseId: string = "";
@@ -19,14 +20,15 @@ export class CaseListComponent implements OnInit {
 
   }
 
-  oncurrentSelectedCaseIdChanged(selectedCaseId: any)
-  {
-    this.currentSelectedCaseId = selectedCaseId;
+  selectCase(oCase: any) {
+    //trigger selected case object details of all the subscribers.
+    this.caseService.emitCaseData(oCase);
+    this.currentSelectedCaseId = oCase.caseid;
   }
 
   fetchCaseWithFilter(filterData: any) {
     //From parent (case-list) we have captured data. 
-    console.log('fetchCaseWithFilter', filterData);
+    //console.log('fetchCaseWithFilter', filterData);
 
     if (filterData.searchText) {
       //search is via textbox.
@@ -36,7 +38,7 @@ export class CaseListComponent implements OnInit {
       //console.log('filteredCases', filteredCases);
     }
     else if (filterData.selectedCaseOption) {
-      console.log('server hit...');
+      //console.log('server hit...');
 
       let caseListRq: any = {
         "userID": "Z69EVN",
@@ -45,15 +47,13 @@ export class CaseListComponent implements OnInit {
       };
 
       this.caseService.getCaseList(caseListRq).subscribe(data => {
-        if(data.data.length > 0)
-        {
+        if (data.data.length > 0) {
           this.cases = data.data;
-          this.currentSelectedCaseId = data.data[0].caseid;
-        }        
+          this.selectCase(data.data[0]);
+        }
       })
     }
-    else 
-    {
+    else {
       //TODO : No match.
     }
   }

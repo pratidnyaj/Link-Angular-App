@@ -15,6 +15,8 @@ import { ClientModule } from './client/client.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterCasesPipe } from './shared/pipes/filter-cases.pipe';
+import { SafeHtmlPipe } from './case/case-interaction-list/safe-html.pipe';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { FilterCasesPipe } from './shared/pipes/filter-cases.pipe';
     AppRoutingModule, 
     ClientModule, 
     NgbModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

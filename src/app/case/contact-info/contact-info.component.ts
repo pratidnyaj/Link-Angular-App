@@ -20,18 +20,20 @@ export class ContactInfoComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes.selectedCaseId.currentValue);
-
-    let contactInfoRq: any = {
-      "caseId": changes.selectedCaseId.currentValue
-    }
-
-    this.caseService.getContactInfo(contactInfoRq).subscribe(data => {
-      if (data.status) {
-        this.contactInfo = data.data[0];
+    // console.log(changes.selectedCaseId.currentValue);
+    if(changes.selectedCaseId.currentValue)
+    {
+      let contactInfoRq: any = {
+        "caseId": changes.selectedCaseId.currentValue
       }
-      //console.log('getContactInfo', this.contactInfoIP);
-    })
+  
+      this.caseService.getContactInfo(contactInfoRq).subscribe(data => {
+        if (data.status) {
+          this.contactInfo = data.data[0];
+        }
+        //console.log('getContactInfo', this.contactInfoIP);
+      })
+    }
 
   }
 

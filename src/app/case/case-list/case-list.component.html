@@ -1,108 +1,33 @@
-<div class="left-panel">
+<div class="left-panel">    
     <div class="left-panel-header">
         <app-case-filter (caseFilterEvent)="fetchCaseWithFilter($event)"></app-case-filter>
-        <!-- <div class="row">
-            <div class="col-6">
-                <div class="wrap-drop" id="noble-gases">
-                    <span>My All Cases</span>
-                    <ul class="drop">
-                        <li class="disabled">My Cases</li>
-                        <li><a>Open(10)</a></li>
-                        <li><a>Close(03)</a></li>
-                        <li><a>In Progress(06)</a></li>
-                        <li><a>Not Responded(02)</a></li>
-                        <li><a>Fresh Cases(01)</a></li>
-                        <li class="disabled">All Cases</li>
-                        <li><a>Open(10)</a></li>
-                        <li><a>Close(03)</a></li>
-                        <li><a>In Progress(06)</a></li>
-                        <li><a>Not Responded(02)</a></li>
-                        <li><a>Fresh Cases(01)</a></li>
-                    </ul>
-                </div>
-            </div>
-             <div class="col-6">
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <form class="searchbox">
-                            <input type="search" placeholder="Search......" name="search" class="searchbox-input" onkeyup="buttonUp();" required>
-                            <input type="submit" class="searchbox-submit" value="">
-                            <span class="searchbox-icon">
-                                <img src="images/svg/case-search.svg" style="vertical-align: middle;" />
-                            </span>
-                        </form>
-                    </li>
-                    <li class="list-inline-item">
-                        <img src="images/svg/more.svg" class="img-position" />
-                    </li>
-                </ul>
-            </div>
-        </div> -->
-    </div>
+    </div>    
 
     <div class="cases-holder">
         <ul class="list-group fa-padding">
-            <li *ngFor="let case of cases ; let idx = index" class="list-group-item case-list"
-                [ngClass]="{'active-case': case.caseid === currentSelectedCaseId}" data-toggle="modal"
-                data-target="#issue">
-                <app-case-list-display [case]="case"
-                    (currentSelectedCaseIdChanged)="oncurrentSelectedCaseIdChanged($event)">
-                </app-case-list-display>
-                <!-- <div class="media">
-                    <img src="images/case pic1.png" class="case-profile" />
+            <li *ngFor="let case of cases ; let idx = index" 
+            [ngClass]="{'active-case': case.caseid === currentSelectedCaseId}"
+            class="list-group-item case-list">
+                <div class="media" (click)="selectCase(case)">
+                    <img src="/assets/images/case pic1.png" class="case-profile" />
                     <div class="media-body">
-                        <span class="case-id">A0987654</span><span class="badge badge-light">New</span> <span class="date float-right">2:30 PM</span>
+                        <span class="case-id">{{case.caseid}}</span><span class="badge badge-light">New</span> <span
+                            class="date float-right">{{case.CreatedTime}}</span>
                         <p class="case-subject">
-                            Website not working..
+                            {{case.Subject}}
                         </p>
                         <p class="case-info">
-                            <img src="images/svg/email.svg" style="vertical-align: baseline;" /> Carol Reyes <span class="dot">.</span> created 20 mins ago
+                            <img src="/assets/images/svg/email.svg" style="vertical-align: baseline;" />
+                            {{case.FullName}} <span class="dot">.</span> {{case.CreatedDate}}
                         </p>
                         <p class="assign-to">
-                            Assign to : Amit Patil <span class="status">Open</span> <span class="badge badge-danger float-right">High</span>
-                        </p>
-                    </div>
-                </div> -->
-            </li>
-            <!-- <li class="list-group-item" data-toggle="modal" data-target="#issue">
-                <div class="media">
-                    <img src="images/case pic2.png" class="case-profile" />
-                    <div class="media-body">
-                        <span class="case-id">6754564</span><span class="date float-right">2:30 PM</span>
-                        <p class="case-subject">
-                            Libero curabitur nunc
-                        </p>
-                        <p class="case-info">
-                            <img src="images/svg/email.svg" style="vertical-align: baseline;" /> Carol Reyes <span class="dot">.</span> created 1 hrs ago
-                        </p>
-                        <p class="assign-to">
-                            Assign to : Amit Patil <span class="status">Close</span> <span class="badge badge-success float-right">Medium</span>
+                            Assign to :{{case.AssignedToAgent}} <span class="status">{{case.Status}}</span> <span
+                                class="badge badge-danger float-right">{{case.Priority}}</span>
                         </p>
                     </div>
                 </div>
+
             </li>
-            <li class="list-group-item" data-toggle="modal" data-target="#issue">
-                <div class="media">
-                    <img src="images/case pic3.png" class="case-profile" />
-                    <div class="media-body">
-                        <span class="case-id">1237651</span><span class="badge badge-light">New</span> <span class="date float-right">2:30 PM</span>
-                        <p class="case-subject">
-                            Faucibus neque
-                        </p>
-                        <p class="case-info">
-                            <img src="images/svg/email.svg" style="vertical-align: baseline;" /> Carol Reyes <span class="dot">.</span> created 2 days ago
-                        </p>
-                        <p class="assign-to">
-                            Assign to : Amit Patil <span class="status">Open</span> <span class="badge badge-warning float-right">Low</span>
-                        </p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="media">
-                    <hr />
-                </div>
-            </li> -->
         </ul>
     </div>
 </div>

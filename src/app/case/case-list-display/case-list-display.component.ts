@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { CaseService } from 'src/app/service/case.service';
 
 @Component({
@@ -8,18 +9,25 @@ import { CaseService } from 'src/app/service/case.service';
 })
 export class CaseListDisplayComponent implements OnInit {
 
+  oInxData: any = "";
   constructor(private caseService: CaseService) { }
 
-  @Input() case: any = {};
-  @Output() currentSelectedCaseIdChanged: EventEmitter<string> = new EventEmitter();
-
-  ngOnInit(): void {
+  @Input() set setProp(value: any) 
+  {
+    this.oInxData = value;
   }
 
-  selectCase(oCase: any) {    
-     //Emits the changes back to case-list (parent) component
-    this.currentSelectedCaseIdChanged.emit(oCase.caseid);
-    
-    this.caseService.requestCaseInfo(oCase);
-  } 
+  get getInxData(): any {
+    return this.oInxData;
+  }
+
+  ngOnInit(): void {
+
+  }
+
+  sendMail()
+  {
+    console.log('sendMail', this.oInxData);
+    alert('send');
+  }
 }

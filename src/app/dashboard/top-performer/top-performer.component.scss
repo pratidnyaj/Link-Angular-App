@@ -1,0 +1,92 @@
+.top-performance {
+    .content-title {
+        font-size: 25px;
+        color: var(--theme_hero_title);
+        font-weight: 600;
+        margin-bottom: 0px;
+    }
+    .wrapper {
+        width: auto;
+        border-radius: 0;
+        border-bottom: 1px solid var(--nabar_border);
+        position: relative;
+        input[type="radio"] {
+            display: none;
+        }
+        nav {
+            position: relative;
+            width: auto;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            label {
+                display: block;
+                height: 36px;
+                width: 70px;
+                text-align: left;
+                line-height: 34px;
+                cursor: pointer;
+                position: relative;
+                z-index: 1;
+                color: var(--theme_input_color);
+                font-size: 14px;
+                border-radius: 5px;
+                margin: 0px;
+            }
+            .home, .blog {
+                color: var(--theme_bg_blue);
+                font-weight: 600;
+            }
+            .slider {
+                position: absolute;
+                height: 35px;
+                width: 60px;
+                left: 0;
+                bottom: -1px;
+                z-index: 0;
+                border-radius: 0;
+                transition: all 0.3s ease;
+                border-bottom: 2px solid var(--theme_bg_blue);
+            }
+        }
+    }
+    table.head-center {
+        thead {
+            tr {
+                th {
+                    text-align: left !important;
+                }
+            }
+        }
+    }
+    .table {
+        thead {
+            th {
+                vertical-align: bottom;
+                border-bottom: 1px solid var(--nabar_border);
+                color: var( --theme_input_color);
+                font-size: 12px;
+            }
+        }
+        td {
+            padding: 0.7rem 0 0.7rem 0px;
+            vertical-align: baseline;
+            border-bottom: 1px solid var(--nabar_border);
+            font-size: 14px;
+            color: var(--theme_hero_title);
+            text-align: center;
+        }
+        .blue {
+            color: var(--theme_bg_blue);
+        }
+    }
+}
+#home:checked ~ nav label.home,
+#blog:checked ~ nav label.blog,
+#about:checked ~ nav label.about {
+    color: var(--theme_input_color);
+    font-weight: 600;
+}
+#blog:checked ~ nav .slider {
+    left: 25%;
+}
