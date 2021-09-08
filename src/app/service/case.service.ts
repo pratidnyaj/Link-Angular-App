@@ -23,6 +23,8 @@ export class CaseService {
   }
 
   //#region start
+  //This Subject is used to emit changes on case-list selection.
+  //Subscribers :: case-info, case-interaction-list 
   private _caseSubjectSource = new Subject<any>();
   observeCaseData(): Observable<any> {
     return this._caseSubjectSource.asObservable();

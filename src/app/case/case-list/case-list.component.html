@@ -9,7 +9,7 @@
             [ngClass]="{'active-case': case.caseid === currentSelectedCaseId}"
             class="list-group-item case-list">
                 <div class="media" (click)="selectCase(case)">
-                    <img src="/assets/images/case pic1.png" class="case-profile" />
+                    <img src="assets/images/case pic1.png" class="case-profile" />
                     <div class="media-body">
                         <span class="case-id">{{case.caseid}}</span><span class="badge badge-light">New</span> <span
                             class="date float-right">{{case.CreatedTime}}</span>
@@ -17,7 +17,7 @@
                             {{case.Subject}}
                         </p>
                         <p class="case-info">
-                            <img src="/assets/images/svg/email.svg" style="vertical-align: baseline;" />
+                            <img src="assets/images/svg/email.svg" style="vertical-align: baseline;" />
                             {{case.FullName}} <span class="dot">.</span> {{case.CreatedDate}}
                         </p>
                         <p class="assign-to">
