@@ -1,24 +1,32 @@
-<div class="form_to_rly" style="display:block;">
-    From :
-    <ng-select [items]="oInxData.arrFromEmail" placeholder="From" appendTo="body" [multiple]="false"
-        bindLabel="SupportEmail" [clearable]="false" [(ngModel)]="oInxData.selectedFromEmail">
-    </ng-select>
-    To :
-    <ng-select [items]="oInxData.arrToEmail" placeholder="To" appendTo="body" [multiple]="true" [addTag]="true"
-        [clearable]="false" [(ngModel)]="oInxData.selectedToEmail">
-    </ng-select>
-    Cc :
-    <ng-select [items]="oInxData.arrCcEmail" placeholder="Cc" appendTo="body" [multiple]="true" [addTag]="true"
-        [(ngModel)]="oInxData.selectedCcEmail">
-    </ng-select>
-    Subject :
-    <input class="floating-input subject" type="text" placeholder="" [(ngModel)]="oInxData.subject">
-    Body
-    <textarea class="floating-input" type="text" placeholder=" " row="5"></textarea>
+<div #divEmailEditorScroll class="form_to_rly">
+    <div [hidden]="oInxData.interactionReplyType == 'CaseNote'">
+        <ng-select [items]="oInxData.arrFromEmail" placeholder="From" appendTo="body" [multiple]="false"
+            bindLabel="SupportEmail" [clearable]="false" [(ngModel)]="oInxData.selectedFromEmail" class="mb-3">
+        </ng-select>
+    </div>
+
+    <div [hidden]="oInxData.interactionReplyType == 'CaseNote'">
+        <ng-select [items]="oInxData.arrToEmail" placeholder="To" appendTo="body" [multiple]="true" [addTag]="true"
+            [clearable]="false" [(ngModel)]="oInxData.selectedToEmail" class="mb-3">
+        </ng-select>
+    </div>
+
+    <div [hidden]="oInxData.interactionReplyType == 'CaseNote'">
+        <ng-select [items]="oInxData.arrCcEmail" placeholder="Cc" appendTo="body" [multiple]="true" [addTag]="true"
+            [(ngModel)]="oInxData.selectedCcEmail" class="mb-3">
+        </ng-select>
+    </div>
+
+    
+    <input class="floating-input subject" type="text" placeholder="Subject" [(ngModel)]="oInxData.subject">
+    &nbsp;
+    <!-- <textarea class="floating-input" type="text" placeholder="" row="5" [(ngModel)]="oInxData.description"></textarea> -->
+    <input [ngxSummernote]="config" type="text" [(ngModel)]="oInxData.description">
+
     <br>
     <div class="btn_rly_mail">
         <div>
-            <button class="btn_discard">Discard</button>
+            <button class="btn_discard" (click)="discardMail()">Discard</button>
         </div>
         <div>
             <button class="btn_send" (click)="sendMail()">Send</button>

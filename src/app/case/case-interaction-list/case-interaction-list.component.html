@@ -1,86 +1,90 @@
-<div class="middle-panel">
-    <div class="case-details">
-        <div class="case-dtl">
-            <div>
-                <span class="status">{{selectedCase.Status}}</span>
-            </div>
-            <div>
-                <span class="caseid">Case ID : <span class="casenumber">{{selectedCase.caseid}}</span></span>
-            </div>
-            <div>
-                <span class="caseid">Created On : <span class="casenumber">{{selectedCase.CreatedDate}}</span></span>
-            </div>
-            <div>
-                <span class="caseid">Last Updated On : <span
-                        class="casenumber">{{selectedCase.LastIxnDate}}</span></span>
-            </div>
-        </div>
-    </div>
-
-    <div class="case-actiob-btn">
-        <button class="btn-cases"><img src="assets/images/assign.png" alt="assign" /><span class="tabs-title">Assign To
-                Me</span></button>
-        <button class="btn-cases"><img src="assets/images/Notes.png" alt="Notes" /><span
-                class="tabs-title">Notes</span></button>
-        <button class="btn-cases"><img src="assets/images/Close.png" alt="Close" /><span
-                class="tabs-title">Close</span></button>
-        <button class="btn-cases"><img src="assets/images/spam.png" alt="spam" /><span
-                class="tabs-title">Spam</span></button>
-        <button class="btn-cases"><img src="assets/images/Block.png" alt="Block" /><span
-                class="tabs-title">Block</span></button>
-    </div>
-    <div class="mid-content">
-        <div class="mail-content" *ngFor="let inxHistory of caseInteractions">
-            <span class="gray float-right font-12">{{inxHistory.CreatedDateUI}} {{inxHistory.CreatedTimeUI}}<span
-                    class="more"> <img src="assets/images/svg/more.svg" /></span> </span>
-            <div class="clear"></div>
-            <div class="case-mail">
-                <div class="mail-detail d-flex">
-                    <img src="assets/images/case pic3.png" class="case-profile" />
-                    <div class="media-subject top flex-wrap">
-                        <p class="case-subject x4">
-                            {{inxHistory.Subject}}
-                        </p>
-                        <p class="case-info x2">
-                            <img src="assets/images/svg/email.svg"
-                                style="vertical-align: baseline; margin-right: 4px;" />
-                            <span class="blue">{{inxHistory.EmailType}} {{inxHistory.InteractionChannelSource}} :
-                                {{inxHistory.EmailSourceAccount}}</span>
-                        </p>
-                        <p *ngIf="inxHistory.Direction == 1" class="case-info x2">
-                            <span class="blue">Disposition : </span> {{inxHistory.Disposition}}
-                            <span class="blue">Sub-Disposition : </span> {{inxHistory.SubDisposition}}
-                            <span class="blue">Sub-Sub-Disposition : </span> {{inxHistory.SubSubDisposition}}
-                        </p>
-                    </div>
+<div class="case-middle-section">
+    <div class="middle-panel">
+        <div class="case-details">
+            <div class="case-dtl">                
+                <div>
+                    <span class="status">{{selectedCase.Status}}</span>
                 </div>
-                <div class="case-body">
-                    <div *ngIf="inxHistory.RequesterUserType !== 'agent'; else emailToTemplate">
-                        <div><span class="blue">To : </span> {{inxHistory.InboundEmail}}</div>
+                <div>
+                    <span class="caseid">Case ID : <span class="casenumber">{{selectedCase.caseid}}</span></span>
+                </div>
+                <div>
+                    <span class="caseid">Created On : <span
+                            class="casenumber">{{selectedCase.CreatedDate}}</span></span>
+                </div>
+                <div>
+                    <span class="caseid">Last Updated On : <span
+                            class="casenumber">{{selectedCase.LastIxnDate}}</span></span>
+                </div>
+            </div>
+        </div>        
+        <div class="case-actiob-btn">
+            <button class="btn-cases" (click)="AssignCaseToMe()"><img src="assets/images/assign.png" alt="assign" /><span class="tabs-title">Assign To Me</span></button>
+            <button class="btn-cases" (click)="AddCaseNote()"><img src="assets/images/Notes.png" alt="Notes" /><span class="tabs-title">Notes</span></button>
+            <button class="btn-cases" (click)="CloseCase()"><img src="assets/images/Close.png" alt="Close" /><span class="tabs-title">Close</span></button>
+            <button class="btn-cases" (click)="MarkCaseAsSpam()"><img src="assets/images/spam.png" alt="spam" /><span class="tabs-title">Spam</span></button>
+            <button class="btn-cases" (click)="MarkCaseAsBlocked()"><img src="assets/images/Block.png" alt="Block" /><span class="tabs-title">Block</span></button>
+        </div>        
+        <div #divInxHistScroll class="mid-content" [ngClass]="{'make-blur' : isCaseInteractionBlur}">
+            <div class="mail-content" *ngFor="let inxHistory of caseInteractions">
+                <span class="gray float-right font-12">{{inxHistory.CreatedDateUI}} {{inxHistory.CreatedTimeUI}}<span
+                        class="more"> <img src="assets/images/svg/more.svg" /></span> </span>
+                <div class="clear"></div>
+                <div class="case-mail">
+                    <div class="mail-detail d-flex">
+                        <img src="assets/images/case pic3.png" class="case-profile" />
+                        <div class="media-subject top flex-wrap">
+                            <p class="case-subject x4">
+                                {{inxHistory.Subject}}
+                            </p>
+                            <p class="case-info x2" *ngIf="inxHistory.ChannelName != 'CaseNote'">
+                                <img src="assets/images/svg/email.svg"
+                                    style="vertical-align: baseline; margin-right: 4px;" />
+                                <span class="blue">{{inxHistory.EmailType}} {{inxHistory.InteractionChannelSource}} : {{inxHistory.EmailSourceAccount}}</span>
+                            </p>
+                            <p *ngIf="inxHistory.Direction == 1" class="case-info x2">
+                                <span class="blue">Disposition : </span> {{inxHistory.Disposition}}
+                                <span class="blue">Sub-Disposition : </span> {{inxHistory.SubDisposition}}
+                                <span class="blue">Sub-Sub-Disposition : </span> {{inxHistory.SubSubDisposition}}
+                            </p>
+                        </div>
                     </div>
-                    <ng-template #emailToTemplate>
-                        <div><span class="blue">To : </span> {{inxHistory.EmailTo}}</div>
-                    </ng-template>
-                    <div><span class="blue">Cc : </span> {{inxHistory.Cc}}</div>
+                    <div class="case-body">
+                        <div *ngIf="inxHistory.ChannelName != 'CaseNote'">
+                            <div *ngIf="inxHistory.RequesterUserType !== 'agent'; else emailToTemplate">
+                                <div><span class="blue">To : </span> {{inxHistory.InboundEmail}}</div>
+                            </div>
+                            <ng-template #emailToTemplate>
+                                <div><span class="blue">To : </span> {{inxHistory.EmailTo}}</div>
+                            </ng-template>
+                            <div><span class="blue">Cc : </span> {{inxHistory.Cc}}</div>
 
-                    <span class="case-bycontent" [innerHTML]="inxHistory.InteractionDesc|safeHtml"></span>
+                        </div>
+                        <span class="case-bycontent" [innerHTML]="inxHistory.InteractionDesc|safeHtml"></span>
 
-                    <div class="case-attachment d-flex">
-                        <span *ngFor="let attach of inxHistory.ExternalAttachment">
-                            <span>
-                                <a [href]="attach.AttachmentFilePath" [download]="attach.AttachmentFileName"
-                                    target="_blank" title="{{attach.AttachmentSize}}">{{attach.AttachmentFileName}}</a>
+                        <div class="case-attachment d-flex">
+                            <span *ngFor="let attach of inxHistory.ExternalAttachment">
+                                <span>
+                                    <a [href]="attach.AttachmentFilePath" [download]="attach.AttachmentFileName"
+                                        target="_blank"
+                                        title="{{attach.AttachmentSize}}">{{attach.AttachmentFileName}}</a>
+                                </span>
+                                <img src="assets/images/svg/attachmentimg.svg" />
                             </span>
-                            <img src="assets/images/svg/attachmentimg.svg" />
-                        </span>
-                    </div>
-                    <div class="case-reply d-flex">
-                        <span (click)="Reply(inxHistory)"><img src="assets/images/svg/reply.svg" /> Reply</span>
-                        <span (click)="ReplyAll(inxHistory)"><img src="assets/images/svg/reply-all.svg" /> Reply to All</span>
+                        </div>
+                        <div class="case-reply d-flex" *ngIf="inxHistory.ChannelName != 'CaseNote'">
+                            <span (click)="Reply(inxHistory)"><img src="assets/images/svg/reply.svg" /> Reply</span>
+                            <span (click)="ReplyAll(inxHistory)"><img src="assets/images/svg/reply-all.svg" /> Reply to
+                                All</span>
+                        </div>
                     </div>
                 </div>
+                
+                <div [ngClass]="{'make-blur' : isEditorBlur}">
+                    <app-case-list-display *ngIf="selectedInteractionId == inxHistory.InteractionID"
+                        (emailEditorEvent)="emailEditorEventHandler($event)" [setProp]='oReply'></app-case-list-display>
+                </div>
             </div>
-            <app-case-list-display *ngIf="selectedInteractionId == inxHistory.InteractionID" [setProp]='oReply'></app-case-list-display>
         </div>
     </div>
 </div>

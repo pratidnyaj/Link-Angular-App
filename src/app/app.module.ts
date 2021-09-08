@@ -12,11 +12,13 @@ import { CaseModule } from './case/case.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AppRoutingModule } from './app-routing.module';
 import { ClientModule } from './client/client.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule , NgbAccordionModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterCasesPipe } from './shared/pipes/filter-cases.pipe';
 import { SafeHtmlPipe } from './case/case-interaction-list/safe-html.pipe';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,10 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ClientModule, 
     NgbModule,
     NgxPaginationModule,
-    NgSelectModule
+    NgSelectModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    NgbAccordionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

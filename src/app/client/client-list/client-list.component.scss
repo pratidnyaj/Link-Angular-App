@@ -1,0 +1,72 @@
+.cases-holder {
+    width: 100%;
+    height: auto;
+    overflow-x: auto;
+    overflow-y: auto;
+    height: 100%;
+    .list-group {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        border-radius: 0.25rem;
+        .list-group-item {
+            position: relative;
+            display: block;
+            padding: 0;
+            margin-bottom: 0px;
+            background-color: var(--white_color);
+            border: none;
+            &:nth-child(1) {
+                border-top: none;
+            }
+
+            .media {
+                border-top: none;
+                border-bottom: 1px solid var(--nabar_border);
+                margin: 0 1.25rem;
+                padding: 15px 0;
+
+                .client-list {
+                    margin-left: 10px;
+                    .client-list-name {
+                        font-size: 16px;
+                        font-weight: 700;
+                    }
+                    .margin-top-7 {
+                        margin-top: 7px;
+                        button{
+                            background-color: transparent;
+                            border: none;
+                            &:hover{
+                                box-shadow: none;
+                            }
+                        }
+                    }
+                    p {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 0px;
+                        .gray {
+                            color: var(--theme_input_color);
+                            font-weight: normal;
+                            font-size: 13px;
+                            padding-left: 4px;
+                        }
+                    }
+                }
+                .image_outer_container {
+                    margin-top: auto;
+                    margin-bottom: auto;
+                    border-radius: 50%;
+                    position: relative;
+                    .status-icon {
+                        position: absolute;
+                        right: 12px;
+                        bottom: -12px;
+                    }
+                }
+            }
+        }
+    }
+}

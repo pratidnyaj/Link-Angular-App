@@ -12,6 +12,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 import { SafeHtmlPipe } from './case-interaction-list/safe-html.pipe';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { NgxSummernoteModule } from 'ngx-summernote';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     CommonModule,
     NgxPaginationModule,
     FormsModule,
-    NgSelectModule
+    NgSelectModule,
+    NgxSummernoteModule
   ],
   exports:[]
 })

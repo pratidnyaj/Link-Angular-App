@@ -1,0 +1,35 @@
+<div class="unlink_clients_filters">
+    <div class="row">
+        <div class="col-6">          
+            <div class="dropdown cust-case-drpdwn">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    selectedCaseOption
+                </button>
+                <div class="dropdown-menu case-drpmenu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item">abc</a>
+                    <a class="dropdown-item">aaa</a>
+                    <a class="dropdown-item">aaa</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <ul class="list-inline">
+                <li class="list-inline-item">
+                    <form [ngClass]="IsToggleSearchBoxOpen ? 'searchbox searchbox-open' : 'searchbox'">
+                        <input type="text" autocomplete="off" placeholder="Search." name="txtCaseSearch"
+                            class="searchbox-input">
+                        <input type="submit" class="searchbox-submit" value="">
+                        <span class="searchbox-icon" (click)="toggleSearchBox()">
+                            <img src="/assets/images/svg/case-search.svg"
+                                style="vertical-align: middle;" />
+                        </span>
+                    </form>
+                </li>
+                <li class="list-inline-item">
+                    <img src="/assets/images/svg/more.svg" class="img-position" />
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

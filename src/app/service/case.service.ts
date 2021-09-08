@@ -1,16 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { AppService } from '../app.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CaseService {
 
-  constructor(private httpclient: HttpClient) { }
+  private baseUrl: string;
+
+  constructor(private httpclient: HttpClient, private appService: AppService) {
+    this.baseUrl = appService.getBaseUrl();
+  }
+
+  //This Subject Observer will listen inside case-list component.
+  private _caseIdSource = new BehaviorSubject('');
+  _syncCaseId = this._caseIdSource.asObservable();
+  
+  syncCaseId(message: string) {
+    this._caseIdSource.next(message)
+  }
 
   //#region start
-  private _caseSubjectSource = new Subject<any>();  
+  private _caseSubjectSource = new Subject<any>();
   observeCaseData(): Observable<any> {
     return this._caseSubjectSource.asObservable();
   }
@@ -19,27 +32,42 @@ export class CaseService {
   }
   //#endregion
 
+  public assignCaseToMe(strCaseId: string, strUserId: string): Observable<any> {   
+    const url = `${this.baseUrl}/AssignCaseToSelf?Action=PickUpCase&caseid=${strCaseId}&UserID=${strUserId}`;
+    return this.httpclient.get(url);
+  }
+
+  public createInteraction(interactionRq: any): Observable<any> {
+    const url = `${this.baseUrl}/sendMail`;
+    return this.httpclient.post<any>(url, interactionRq);
+  }
+
   public getMailBoxInfo(mailBoxRq: any): Observable<any> {
-    return this.httpclient.post<any>("http://localhost:8005/api/mailBox", mailBoxRq);
+    const url = `${this.baseUrl}/mailBox`;
+    return this.httpclient.post<any>(url, mailBoxRq);
   }
 
   public getCaseInteractionHistory(caseInteractionHistoryRq: any): Observable<any> {
-    return this.httpclient.post<any>("http://localhost:8005/api/caseHistory1", caseInteractionHistoryRq);
+    const url = `${this.baseUrl}/caseHistory1`;
+    return this.httpclient.post<any>(url, caseInteractionHistoryRq);
     //return this.httpclient.get('./assets/json/interaction-history-list.json');
   }
 
   public getCaseList(caseListRq: any): Observable<any> {
+    const url = `${this.baseUrl}/fetchcaseApi`;
     //return this.httpclient.get('./assets/json/cases-list.json');
-    return this.httpclient.post<any>("http://localhost:8005/api/fetchcaseApi", caseListRq);
+    return this.httpclient.post<any>(url, caseListRq);
   }
 
   public getCaseInfo(caseInfoRq: any): Observable<any> {
+    const url = `${this.baseUrl}/caseinfoApi`;
     //return this.httpclient.get('./assets/json/case-details.json');
-    return this.httpclient.post<any>("http://localhost:8005/api/caseinfoApi", caseInfoRq);
+    return this.httpclient.post<any>(url, caseInfoRq);
   }
 
   public getContactInfo(contactInfoRq: any): Observable<any> {
-    return this.httpclient.post<any>("http://localhost:8005/api/contactinfoApi", contactInfoRq);
+    const url = `${this.baseUrl}/contactinfoApi`;
+    return this.httpclient.post<any>(url, contactInfoRq);
   }
 
   public getPastCaseList(): Observable<any> {

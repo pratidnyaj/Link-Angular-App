@@ -8,6 +8,7 @@ import { ReportHomeComponent } from './report/report-home/report-home.component'
 import { CaseHomeComponent } from './case/case-home/case-home.component';
 import { ClientHomeComponent } from './client/client-home/client-home.component';
 
+
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardHomeComponent },

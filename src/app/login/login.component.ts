@@ -42,11 +42,12 @@ export class LoginComponent implements OnInit {
       //this.router.navigate(['dashboard']);
 
       this.loginService.authenticateLogin(this.oLoginRq).subscribe((res: LoginRS) => {
+        debugger;
         if (res.status) 
         {
           if (res.data && res.data.length > 0) 
           {            
-            let loggedInUser = res.data[0][0];
+            let loggedInUser = res.data[0];
             let relatedTeams=res.data[1];
 
             this.oLoggedUser = loggedInUser;

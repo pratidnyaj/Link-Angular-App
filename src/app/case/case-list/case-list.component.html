@@ -3,7 +3,7 @@
         <app-case-filter (caseFilterEvent)="fetchCaseWithFilter($event)"></app-case-filter>
     </div>    
 
-    <div class="cases-holder">
+    <div class="cases-holder" [ngClass]="{'make-blur' : isCaseListBlur}">
         <ul class="list-group fa-padding">
             <li *ngFor="let case of cases ; let idx = index" 
             [ngClass]="{'active-case': case.caseid === currentSelectedCaseId}"

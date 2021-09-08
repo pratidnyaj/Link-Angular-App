@@ -11,7 +11,7 @@ export class CaseFilterComponent implements OnInit {
   @Output() caseFilterEvent = new EventEmitter();
 
   arrCasesOption = new Array();
-  selectedCaseOption: any = "MyOpenCases";
+  selectedCaseOption: any = "demo";
   IsToggleSearchBoxOpen: boolean = false;
   searchText: any = "";
 
@@ -41,13 +41,15 @@ export class CaseFilterComponent implements OnInit {
   }
 
   setCasesOption() {
+    this.arrCasesOption.push({ "key": "demo", "value": "Demo" });
+
     this.arrCasesOption.push({ "key": "MyOpenCases", "value": "My Open Cases" });
     this.arrCasesOption.push({ "key": "MyClosedCases", "value": "My Closed Cases" });
-    this.arrCasesOption.push({ "key": "MyFreshCases", "value": "My Fresh Cases" });
+    // this.arrCasesOption.push({ "key": "MyFreshCases", "value": "My Fresh Cases" });
 
     this.arrCasesOption.push({ "key": "AllOpenCases", "value": "All Open Cases" });
     this.arrCasesOption.push({ "key": "AllClosedCases", "value": "All Closed Cases" });
-    this.arrCasesOption.push({ "key": "AllInProgressCases", "value": "All In-Progress Cases" });
+    // this.arrCasesOption.push({ "key": "AllInProgressCases", "value": "All In-Progress Cases" });
     this.arrCasesOption.push({ "key": "AllNotRespondedCases", "value": "All Not-Responded Cases" });
     this.arrCasesOption.push({ "key": "AllFreshCases", "value": "All Fresh Cases" });
   }

@@ -1,0 +1,19 @@
+.default-spacing {
+    .no-padding {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .show-cases {
+        .case-cont {
+            position: fixed;
+            bottom: 0;
+            top: 70px;
+            right: 12px;
+            left: 375px;
+
+            .padding-right {
+                padding-right: 8px;
+            }
+        }
+    }
+}

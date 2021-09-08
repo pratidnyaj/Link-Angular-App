@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { CaseService } from 'src/app/service/case.service';
 
@@ -10,6 +10,11 @@ import { CaseService } from 'src/app/service/case.service';
 export class CaseListDisplayComponent implements OnInit {
 
   oInxData: any = "";
+  @Output() emailEditorEvent = new EventEmitter<any>();
+
+  @ViewChild('divEmailEditorScroll') divEmailEditorScrollEl?:ElementRef;
+  private divEmailEditorScrollRef: any;
+
   constructor(private caseService: CaseService) { }
 
   @Input() set setProp(value: any) 
@@ -25,9 +30,31 @@ export class CaseListDisplayComponent implements OnInit {
 
   }
 
+  ngAfterViewInit() {
+    this.divEmailEditorScrollRef = this.divEmailEditorScrollEl?.nativeElement;
+    this.divEmailEditorScrollRef.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  }
+
   sendMail()
   {
-    console.log('sendMail', this.oInxData);
-    alert('send');
+    this.emailEditorEvent.emit({"action":"send","data":this.oInxData});
+  }
+
+  discardMail()
+  {
+    this.emailEditorEvent.emit({"action":"discard","data":this.oInxData});
+  }
+
+  config :any= {
+    placeholder: 'Type...',
+    tabsize: 2,
+    height: '120px',
+    uploadImagePath: '/api/upload',
+    toolbar: [
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['insert', ['table']]
+    ],
+    fontNames: ['Helvetica', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Roboto', 'Times']
   }
 }
