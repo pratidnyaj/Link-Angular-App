@@ -1,0 +1,32 @@
+<div class="custmodal" id="longContent" data-backdrop="static" [ngClass]="{'displays': display === 'block'}">
+    <div class="cust-content">
+        <div class="cust-modalHeader">
+            <div>
+                <h3 class="title">Push Notification</h3>
+            </div>
+            <div class="cancel">
+                <button (click)="closeModal()"><i class="icon-cancel"></i></button>
+            </div>
+        </div>
+        <div class="cust-modalbody">
+            <div class="data">
+                <div class="logo">
+                    <img src="assets/images/svg/textboxgreenlogo.svg" alt="sms">
+                </div>
+                <div class="text">
+                    SMS
+                </div>
+            </div>
+            <div class="data">
+                <div class="logo">
+                    <img src="assets/images/svg/whatslogo.svg" alt="whatslogo">
+                </div>
+                <div class="text">
+                    WhatsApp
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="custom-overlay"></div>

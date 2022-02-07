@@ -1,0 +1,150 @@
+<div class="tab-title">
+    <h4>Side Conversation</h4>
+    <div class="icons-link">
+        <div><a (click)="sideconversation(longContent)"><i class="icon-gry-plus"></i></a></div>
+    </div>
+</div>
+<div class="scroll-content">
+    <div>
+        <div class="sidecon-info">
+            <div>
+                <span><img src="assets/images/profile_pic.jpg" alt="cutomer"></span>
+            </div>
+            <div class="side-info" (click)="sidecondata(sideconinfo)" style="cursor: pointer;">
+                <p class="name">pintu pal</p>
+                <p class="sub-frmdata"><i class="icon-mail-outline"></i><span class="side-name">Amit patil</span></p>
+                <p class="sub-name">Hi pintu, Thank you</p>
+            </div>
+        </div>
+        <div class="sidecon-info">
+            <div>
+                <span><img src="assets/images/profile_pic.jpg" alt="cutomer"></span>
+            </div>
+            <div class="side-info" (click)="sidecondata(sideconinfo)" style="cursor: pointer;">
+                <p class="name">pintu pal</p>
+                <p class="sub-frmdata"><i class="icon-mail-outline"></i><span class="side-name">Amit patil</span></p>
+                <p class="sub-name">Hi pintu, Thank you</p>
+            </div>
+        </div>
+        <div class="sidecon-info">
+            <div>
+                <span><img src="assets/images/profile_pic.jpg" alt="cutomer"></span>
+            </div>
+            <div class="side-info" (click)="sidecondata(sideconinfo)" style="cursor: pointer;">
+                <p class="name">pintu pal</p>
+                <p class="sub-frmdata"><i class="icon-mail-outline"></i><span class="side-name">Amit patil</span></p>
+                <p class="sub-name">Hi pintu, Thank you</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<ng-template #sideconinfo let-modal>
+    <div class="modal-header sidecon-list">
+        <div class="cust-sideheader">
+            <div class="side-userinfo">
+                <span><img src="assets/images/profile_pic.jpg" alt="cutomer"></span>
+                <span class="name">Pintu Pal</span>
+            </div>
+            <div>
+                <a (click)="sideconversation(longContent)"><i class="icon-gry-plus"></i></a>
+            </div>
+        </div>
+
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body sidecon-body">
+        <div>
+            <div class="side-list">
+                <div class="date-time">20/05/2021 2:30PM</div>
+                <div class="side-user">
+                    <div>
+                        <span><img src="assets/images/profile_pic.jpg" alt="cutomer"></span>
+                    </div>
+                    <div class="info">
+                        <p class="user-profile">Amit Patil</p>
+                        <p class="icon-data">
+                            <span class="mail"><i class="icon-mail-outline"></i></span>
+                            <span class="sub-name">Amit patil</span>
+                            <span class="triangle"><i class="icon-down-triangle"></i></span>
+
+                        </p>
+                    </div>
+
+                </div>
+                <div class="details">
+                    <p>Hi, pintu</p>
+                    <p>Approve this status</p>
+
+                </div>
+            </div>
+            <div class="side-list">
+                <div class="date-time">20/05/2021 2:30PM</div>
+                <div class="side-user">
+                    <div>
+                        <span><img src="assets/images/profile_pic.jpg" alt="cutomer"></span>
+                    </div>
+                    <div class="info">
+                        <p class="user-profile">Amit Patil</p>
+                        <p class="icon-data">
+                            <span class="mail"><i class="icon-mail-outline"></i></span>
+                            <span class="sub-name">Amit patil</span>
+                            <span class="triangle"><i class="icon-down-triangle"></i></span>
+
+                        </p>
+                    </div>
+
+                </div>
+                <div class="details">
+                    <p>Hi, pintu</p>
+                    <p>Approve this status</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ng-template>
+
+
+
+
+<ng-template #longContent let-modal>
+    <div class="modal-header side-mailcon">
+        <div>Side Conversation</div>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body side-mailbody">
+        <div class="form_to_rly">
+
+            <div>
+                <ng-select placeholder="To" appendTo="body" [multiple]="true" [addTag]="true" [clearable]="false"
+                    class="mb-3">
+                </ng-select>
+            </div>
+            <div>
+                <ng-select placeholder="Cc" appendTo="body" [multiple]="true" [addTag]="true" class="mb-3">
+                </ng-select>
+            </div>
+            <div class="floating-label">
+                <input type="text" class="floating-input" placeholder=" ">
+                <label>Subject</label>
+            </div>
+            <div class="btn_rly_mail mb-3 mt-4">
+                <div>
+                    <button class="btn_discard">Discard</button>
+                </div>
+                <div>
+                    <button class="btn_send">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,242 @@
+<!-- Ld code start
+<div class="unlinks_filterme">
+    <div class="row">
+        <div class="col-6">
+            <div class="dropdown cust-case-drpdwn">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    {{selectedCaseOption}}
+                </button>
+                <div class="dropdown-menu case-drpmenu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" *ngFor="let C of arrCasesOption"
+                        (click)="goToCaseList(C.key)">{{C.value}}</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-6">
+            <ul class="list-inline">
+                <li class="list-inline-item">
+                    <form [ngClass]="IsToggleSearchBoxOpen ? 'searchbox searchbox-open' : 'searchbox'">
+                        <input type="text" [(ngModel)]="searchText" (keyup)="onCaseSearch($event)" autocomplete="off"
+                            placeholder="Search." name="txtCaseSearch" class="searchbox-input">
+                        <input type="submit" class="searchbox-submit" value="">
+                        <span class="searchbox-icon" (click)="toggleSearchBox()">
+                            <img src="assets/images/svg/search.svg" style="vertical-align: middle;" alt="search" />
+                        </span>
+                    </form>
+                </li>
+
+                <li class="list-inline-item">
+                    <div class="dropdown filter-menu-drpdwn">
+                        <button class="btn btn-filter" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-sort pr-1"></i>
+                        </button>
+                        <div class="dropdown-menu unlink_filter_list" aria-labelledby="dropdownMenuButton">
+                            <p class="unlink_fit_ttl">Sort by</p>
+                            <div class="sort-menus">
+                                <button class="sortmenu">
+                                    <div class="filt_cross">
+                                        <div>
+                                            open
+                                        </div>
+                                        <div class="d-flex">
+                                            <i class="icon-check"></i>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                            <div class="sort-menus">
+                                <button class="sortmenu">
+                                    Close</button>
+                            </div>
+                            <div class="sort-menus">
+                                <button class="sortmenu">
+                                    Pending</button>
+                            </div>
+                            <div class="sort-menus">
+                                <button class="sortmenu">
+                                    Hold</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                <li class="list-inline-item">
+                    <div class="dropdown filter-menu-drpdwn">
+                        <button class="btn btn-filter" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-filters"></i>
+                        </button>
+                        
+                        <div class="dropdown-menu unlink_filter_list unlink_sortfilters"
+                            aria-labelledby="dropdownMenuButton">
+                            <p class="unlink_fit_ttl unlink_brder-btms">Filter</p>
+                            <div class="unlink_filterdrpdwn">
+                                <div class="unlink_greybg">
+                                    <ul>
+                                        <li class="active">Created On</li>
+                                        <li>Status</li>
+                                        <li>Routed to agent</li>
+                                        <li>Routed to Team</li>
+                                        <li>Last Ixn Date</li>
+                                        <li>Case Source</li>
+                                    </ul>
+                                </div>
+                                <div class="unlink_bgwhite">
+                                    <div class="unlink_filter_check">
+                                        <div class="unlink_filt_txt">
+                                            today
+                                        </div>
+                                        <div class="unlink_check">
+                                            <label class="">
+                                                <input type="checkbox">
+                                                <span class="checkmark right-check"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="unlink_filter_check">
+                                        <div class="unlink_filt_txt">
+                                            Last 8 hours
+                                        </div>
+                                        <div class="unlink_check">
+                                            <label class="">
+                                                <input type="checkbox">
+                                                <span class="checkmark right-check"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="unlink_filter_check">
+                                        <div class="unlink_filt_txt">
+                                            Last 30 days
+                                        </div>
+                                        <div class="unlink_check">
+                                            <label class="">
+                                                <input type="checkbox">
+                                                <span class="checkmark right-check"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="unlink_filter_check">
+                                        <div class="unlink_filt_txt">
+                                            Select time period
+                                            <div>
+                                                <input class="unlink_date" type="date" id="birthday" name="birthday">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="unlink_filter-buttons">
+                                        <div class="btnreset">
+                                            <button>Reset</button>
+                                        </div>
+                                        <div class="btnapply">
+                                            <button>Apply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+
+              
+            </ul>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="filter-area">
+    <div class="filters-nav">
+        <div class="dropdown custom-dropdown blue-dropdown" *ngIf="!collaborateFilter">
+            <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="true">
+                <label> {{selectedCaseOption}}</label>
+            </a>
+            <ul class="dropdown-menu full-dropdown" aria-labelledby="dropdownMenu1">
+                <li><a *ngFor="let C of arrCasesOption" (click)="goToCaseList(C.key)">{{C.value}}</a></li>
+            </ul>
+        </div>
+        <div class="icon-btns">
+            <div *ngIf="searchCaseAccessModule"><a (click)="toggleSearch()" [class.toggled]="searchShow"><i class="icon-search"></i></a></div>
+            <div class="sort-by" *ngIf="!collaborateFilter && sortCaseAccessModule"><a (click)="toggleSort()" [class.toggled]="sortShow"><i
+                        class="icon-sort"></i></a>
+                <ng-container *ngIf="sortShow">
+                    <div class="filter-panel">
+                        <h4>Sort By</h4>
+                        <form>
+                            <div class="form-group">
+                                <label for="Date" class="customCheckboxRadio radio"><span>Date</span><input
+                                        name="sortby" id="Date" value="Date" type="radio" /><i
+                                        class="sort-checkmark icon-check"></i></label>
+                                <label for="Time" class="customCheckboxRadio radio"><span>Time</span><input
+                                        name="sortby" id="Time" value="Time" type="radio" /><i
+                                        class="sort-checkmark icon-check"></i></label>
+                                <label for="Name" class="customCheckboxRadio radio"><span>Name</span><input
+                                        name="sortby" id="Name" value="Name" type="radio" /><i
+                                        class="sort-checkmark icon-check"></i></label>
+                                <label for="Status" class="customCheckboxRadio radio"><span>Status</span><input
+                                        name="sortby" id="Status" value="Status" type="radio" /><i
+                                        class="sort-checkmark icon-check"></i></label>
+                            </div>
+                        </form>
+                    </div>
+                </ng-container>
+            </div>
+            <div *ngIf="caseFilterAccessModule"><a (click)="toggleFilter()" [class.toggled]="filterShow"><i class="icon-filters"></i></a></div>
+        </div>
+    </div>
+    <ng-container *ngIf="filterShow">
+        <div class="filter-panel">
+            <h4>Filter</h4>
+            <div class="custom-tab horizontal-tab">
+                <ul class="nav">
+                    <li><a data-target="#Date" data-toggle="tab" class="active">Date</a></li>
+                    <li><a data-target="#Name" data-toggle="tab">Name</a></li>
+                    <li><a data-target="#Number" data-toggle="tab">Number</a></li>
+                    <li><a data-target="#EmailId" data-toggle="tab">Email ID</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="Date" class="tab-pane active">
+                        <form>
+                            <div class="form-group">
+                                <label class="customCheckboxRadio checkbox"><span>Today</span><input
+                                        type="checkbox" /><i class="checkmark icon-Checkbox"></i></label>
+                                <label class="customCheckboxRadio checkbox"><span>Last 8 hours</span><input
+                                        type="checkbox" /><i class="checkmark icon-Checkbox"></i></label>
+                                <label class="customCheckboxRadio checkbox"><span>Last 30 days</span><input
+                                        type="checkbox" /><i class="checkmark icon-Checkbox"></i></label>
+                                <label class="customCheckboxRadio checkbox"><span>Last 30 days</span><input
+                                        type="checkbox" /><i class="checkmark icon-Checkbox"></i></label>
+                                <label class="customCheckboxRadio checkbox"><span>Select time period</span></label>
+                            </div>
+                            <div class="buttons">
+                                <button type="button" class="btn btn-outline-primary">Reset</button>
+                                <button type="button" class="btn btn-primary">Apply</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="Name" class="tab-pane">
+                        Name
+                    </div>
+                    <div id="Number" class="tab-pane">
+                        Number
+                    </div>
+                    <div id="EmailId" class="tab-pane">
+                        Email ID
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="searchShow">
+        <div class="search-panel">
+            <div class="form-group">
+                <input type="search" class="form-control" placeholder="Search" />
+                <button (click)="toggleSearch()" class="btn" type="btn"><i class="icon-search"></i></button>
+            </div>
+        </div>
+    </ng-container>
+</div>

@@ -1,0 +1,233 @@
+<!-- <div class="default-spacing">
+    <div class="container-fluid mobile-padding">
+        <div id="dashboard">
+
+            <div class="dashboard-container padding-right">
+                <h5>New Business Attributes Create</h5>
+                <form [formGroup]="addCustomizedFields">
+                    <div class="unlink_case_form">
+                        <div class="">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="src_filed">
+                                        <input class="form-control" placeholder="Name" formControlName="lableName">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="src_filed">
+                                        <input class="form-control" placeholder="displayName"
+                                            formControlName="displayName">
+                                    </div>
+                                </div>
+                            </div> <br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="src_filed">
+                                        <input class="form-control" placeholder="description"
+                                            formControlName="description">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="src_filed">
+                                        <ng-select formControlName="dataType" placeholder="Data Type"
+                                            [items]="dataTypeObj" [clearable]="false" [closeOnSelect]="true"
+                                            bindValue="name" bindLabel="name" name="name" [(ngModel)]="selectedTeam"
+                                            (ngModelChange)="setchoice($event)" class="mb-3">
+                                        </ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row colors" id="choices" *ngIf="SetChoice">
+
+                                <div class="col-md-6">
+                                    <div>
+                                        <label for="">Choices:</label>
+                                        <p style="display:flex;">
+                                            <input class="form-control" placeholder="Choices" #theChoicevale name="name"
+                                                type="text">
+                                            <input type="submit" class="btn btn-primary" value="Add"
+                                                (click)="addChoice(theChoicevale.value,0)">
+                                        </p>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="col-md-6 adclass">
+
+                                    <div class="DeletableList__item" style="border: solid 1px #eee !important;"
+                                        *ngFor="let item of TheChosenchoiceEditList;">
+                                        <div class="DeletableList__label">{{item.ListValue}}</div>
+                                        <span class="DeletableList__delete">
+
+                                            <i class="icon-cancel" style="position: absolute;
+                                padding-left: 610px;
+                                float: left;margin-top: -18px " (click)="removeMeList(item)"></i>
+
+                                        </span>
+                                    </div>
+
+
+                                    <div *ngIf="AddChoice">
+                                        <div class="DeletableList__item" style="border: solid 1px #eee !important;"
+                                            *ngFor="let choschoices of TheChosenchoice;">
+                                            <div class="DeletableList__label">{{choschoices}}</div>
+                                            <span class="DeletableList__delete">
+
+                                                <i class="icon-cancel" style="position: absolute;
+                                    padding-left: 610px;
+                                    float: left;margin-top: -18px " (click)="removeMe($event,choschoices,0)"></i>
+
+                                            </span>
+                                        </div>
+
+
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                            <div class="src_filed"> <label>Visible To Agent </label> <input style="margin-left:16px;"
+                                    class="demo" type="checkbox" formControlName="visibleToAgent" /></div>
+                            <div class="src_filed"> <label>Visible To Contact </label> <input style="margin-left:16px;"
+                                    class="demo" type="checkbox" formControlName="visibleToContact" /></div>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="unlink_theme_button" (click)="saveCustomizedfield()"
+                                type="button">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
+</div> -->
+
+
+
+<div class="wrapper">
+    <div class="cust-ttl">
+        New Business Attributes Create
+    </div>
+
+    <div class="custom-frm">
+        <form [formGroup]="addCustomizedFields">
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Name</mat-label>
+                        <input matInput autocomplete="off" name="RoleName" formControlName="lableName">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Display Name</mat-label>
+                        <input matInput autocomplete="off" name="RoleName" formControlName="displayName">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Description</mat-label>
+                        <input matInput autocomplete="off" name="RoleName" formControlName="description">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <!-- <ng-select formControlName="dataType" placeholder="Data Type" [items]="dataTypeObj"
+                        [clearable]="false" [closeOnSelect]="true" bindValue="name" bindLabel="name" name="name"
+                        [(ngModel)]="selectedTeam" (ngModelChange)="setchoice($event)" class="mb-3">
+                    </ng-select> -->
+
+
+                    <!-- <mat-select required placeholder="" formControlName="sourceEmailId" 
+                    (ngModelChange)="selectSourceEmail($event)"   [ngClass]="{ 'is-invalid': submitted && f.sourceEmailId.errors }">
+                    <mat-option *ngFor="let val of sourceEmailData"
+                        value="{{val.SupportEmailID}}">{{val.SupportEmail}}</mat-option>
+                </mat-select> -->
+
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Select</mat-label>
+                        <mat-select formControlName="dataType" name="name" [(ngModel)]="selectedTeam"
+                            (ngModelChange)="setchoice($event)" formControlName="dataType">
+                            <mat-option *ngFor="let val of dataTypeObj" value="{{val.name}}">{{val.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                    <div class="option-check">
+                        <div class="optns">
+                            <mat-checkbox formControlName="visibleToAgent">Visible To Agent</mat-checkbox>
+                        </div>
+                        <div class="optns">
+                            <mat-checkbox formControlName="visibleToContact">Visible To Contact </mat-checkbox>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12" id="choices" *ngIf="SetChoice">
+                    <div class="attr-list">
+                        <div class="list-ttl">
+                            Attribute List value
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="submit" class="btn-add" value="Add" (click)="addChoice(theChoicevale.value,0)">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="choice-item">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Display Name</mat-label>
+                                    <input #theChoicevale matInput autocomplete="off" name="name"  formControlName="name">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="list-view" *ngFor="let item of TheChosenchoiceEditList;">
+                                <div class="DeletableList__item">
+                                    <div class="DeletableList__label">{{item.ListValue}}</div>
+                                    <span class="DeletableList__delete" (click)="removeMeList(item)">
+                                        <i class="icon-dustbox"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- //Add list -->
+                    <div class="row">
+                        <div class="col-md-6" *ngIf="AddChoice">
+                            <div class="list-view" *ngFor="let choschoices of TheChosenchoice;">
+                                <div class="DeletableList__item">
+                                    <div class="DeletableList__label">{{choschoices}}</div>
+                                    <span class="DeletableList__delete" (click)="removeMe($event,choschoices,0)">
+                                        <i class="icon-dustbox"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div class="pl-3 mt-4">
+                    <button class="filled-btn" (click)="saveCustomizedfield()" type="button">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

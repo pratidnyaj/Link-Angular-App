@@ -1,0 +1,205 @@
+<!-- <div class="cont d-none d-sm-block">
+    <div class="report-div">
+        <div id='myDiv'></div>
+    </div>
+    <div class="reports-bottom">
+        <div class="unlink_table">
+            <div class="tbl_heading">
+                <h6 class="content-title">Total {{totalRec}} Cases</h6>
+                <div class="file-upload">
+                    <button class="btn-export" (click)="exportexcel()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10.647" height="13.309"
+                            viewBox="0 0 10.647 13.309">
+                            <defs>
+                                <style>
+                                    .a {
+                                        fill: #053c6d;
+                                    }
+                                </style>
+                            </defs>
+                            <path class="a"
+                                d="M10.654,2H5.331A1.329,1.329,0,0,0,4.007,3.331L4,13.978a1.329,1.329,0,0,0,1.324,1.331h7.992a1.335,1.335,0,0,0,1.331-1.331V5.993Zm2.662,11.978H5.331V3.331H9.989V6.658h3.327Zm-1.331-3.334-.938-.938L9.989,10.757V7.989H8.658v2.768L7.6,9.7l-.938.945,2.655,2.668Z"
+                                transform="translate(-4 -2)" />
+                        </svg>
+                        <span>Export</span>
+                    </button>
+
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Case ID</th>
+                            <th>Subject</th>
+                            <th>Case Source</th>
+                            <th>Created Date</th>
+                            <th>Requested By</th>
+                            <th>Requester User Type</th>
+                            <th>Phone No</th>
+                            <th>Email</th>
+                            <th>Dispositon</th>
+                            <th>Sub Disposition</th>
+                            <th>Status</th>
+                            <th>Closed Date</th>
+                            <th>Closed By</th>
+                            <th>First Interaction Agent ID</th>
+                            <th>First Interaction Date</th>
+                            <th>First Response Time(in Mins)</th>
+                            <th># of Customer Interactions</th>
+                            <th># of Agent Interactions</th>
+                            <th># of Case Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let group of CaselevelData | paginate: { id: 'listing_pagination',
+        itemsPerPage: perPageCnt,
+        currentPage: currentPageNumber,
+        totalItems: totalRec }; let idx = index">
+                            <td>{{group.CaseID}}</td>
+                            <td>{{group.Subject}}</td>
+                            <td>{{group.CaseSource}}</td>
+                            <td>{{group.OpenedDate}}</td>
+                            <td>{{group.RequestedBy}}</td>
+                            <td>{{group.RequesterUserType}}</td>
+                            <td>{{group.PhoneNo}}</td>
+                            <td>{{group.Email}}</td>
+                            <td>{{group.Disposition}}</td>
+                            <td>{{group.SubDisposition}}</td>
+                            <td>{{group.Status}}</td>
+                            <td>{{group.ClosedDate}}</td>
+                            <td>{{group.ClosedBy}}</td>
+                            <td>{{group.FirstIxnAgentID}}</td>
+                            <td>{{group.FirstIxnDateTime}}</td>
+                            <td>{{group.AgentRespondTime}}</td>
+                            <td>{{group.CustomerIxns}}</td>
+                            <td>{{group.AgentIxns}}</td>
+                            <td>{{group.TotalCaseNotes}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="tbl-footer">
+                <div class="displaying_count">
+                    <div>
+                        Displaying {{(( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt + 1}} -
+                        {{(( ( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) + perPageCnt >
+                        (totalRec) ? totalRec :
+                        (((
+                        currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) + perPageCnt}}
+                        of {{ totalRec }} Records
+                    </div>
+                </div>
+                <div>
+                    <div class="mod_pagination">
+                        <pagination-controls id="listing_pagination" previousLabel="" nextLabel="" [maxSize]="7"
+                            [directionLinks]="true" (pageChange)="handlePageChange($event)"></pagination-controls>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<div class="report-section">
+    <div>   
+        <ngb-accordion [closeOthers]="true" activeIds="static-1">
+            <ngb-panel id="static-1">
+                <ng-template ngbPanelTitle>
+                    Chart
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    need to show case level chart here
+                </ng-template>
+            </ngb-panel>
+            <ngb-panel id="static-2">
+                <ng-template ngbPanelTitle>
+                    Total {{totalRec}} Cases
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <div class="client-case-tbl">
+                        <div id="table-scroll" class="table-scroll">
+                            <table id="main-table" class="main-table">
+                                <thead>
+                                    <tr>
+                                        <th>Case ID</th>
+                                        <th>Subject</th>
+                                        <th>Case Source</th>
+                                        <th>Created Date</th>
+                                        <th>Requested By</th>
+                                        <th>Requester User Type</th>
+                                        <th>Phone No</th>
+                                        <th>Email</th>
+                                        <th>Dispositon</th>
+                                        <th>Sub Disposition</th>
+                                        <th>Status</th>
+                                        <th>Closed Date</th>
+                                        <th>Closed By</th>
+                                        <th>First Interaction Agent ID</th>
+                                        <th>First Interaction Date</th>
+                                        <th>First Response Time(in Mins)</th>
+                                        <th># of Customer Interactions</th>
+                                        <th># of Agent Interactions</th>
+                                        <th># of Case Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let group of CaselevelData | paginate: { id: 'listing_pagination',
+                                itemsPerPage: perPageCnt,
+                                currentPage: currentPageNumber,
+                                totalItems: totalRec }; let idx = index">
+                                        <td>{{group.CaseID}}</td>
+                                        <td>{{group.Subject}}</td>
+                                        <td>{{group.CaseSource}}</td>
+                                        <td>{{group.OpenedDate}}</td>
+                                        <td>{{group.RequestedBy}}</td>
+                                        <td>{{group.RequesterUserType}}</td>
+                                        <td>{{group.PhoneNo}}</td>
+                                        <td>{{group.Email}}</td>
+                                        <td>{{group.Disposition}}</td>
+                                        <td>{{group.SubDisposition}}</td>
+                                        <td>{{group.Status}}</td>
+                                        <td>{{group.ClosedDate}}</td>
+                                        <td>{{group.ClosedBy}}</td>
+                                        <td>{{group.FirstIxnAgentID}}</td>
+                                        <td>{{group.FirstIxnDateTime}}</td>
+                                        <td>{{group.AgentRespondTime}}</td>
+                                        <td>{{group.CustomerIxns}}</td>
+                                        <td>{{group.AgentIxns}}</td>
+                                        <td>{{group.TotalCaseNotes}}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tbl-footer">
+                            <div class="displaying_count">
+                                <div>
+                                    Displaying {{(( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt +
+                                    1}} -
+                                    {{(( ( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) +
+                                    perPageCnt >
+                                    (totalRec) ? totalRec :
+                                    (((
+                                    currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) + perPageCnt}}
+                                    of {{ totalRec }} Records
+                                </div>
+                            </div>
+                            <div>
+                                <div class="mod_pagination">
+                                    <pagination-controls id="listing_pagination" previousLabel="" nextLabel=""
+                                        [maxSize]="7" [directionLinks]="true" (pageChange)="handlePageChange($event)">
+                                    </pagination-controls>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
+    </div>
+</div>

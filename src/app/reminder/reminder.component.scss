@@ -1,0 +1,147 @@
+.panel-dashboard {
+    .panel-header {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 13px 15px;
+        h4 {
+            margin-bottom: 0;
+            flex: 1;
+            font-size: 18px;
+            font-weight: 600;
+        }
+    }
+    .panel-body {
+        height: calc(100% - 65px);
+        padding: 0 15px;
+        overflow-y: scroll;
+        ul {
+            li {
+                a {
+                    font-size: 14px;
+                    text-align: left;
+                }
+            }
+        }
+
+        .chain-listing {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                position: relative;
+                .date-flag {
+                    display: flex;
+                    flex-wrap: wrap;
+                    cursor: pointer;
+                    padding: 26px 0px 15px 0px;
+                    margin-left: 16px;
+                    .date {
+                        background-color: var(--theme_bg_blue);
+                        padding: 6px 24px;
+                        border-radius: 0px 20px 20px 0px;
+                        color: var(--white_color);
+                        font-size: 12px;
+                        text-transform: capitalize;
+                    }
+                }
+                a {
+                    display: flex;
+                    flex-wrap: wrap;
+                    cursor: pointer;
+                    padding: 15px 0;
+                    .icon {
+                        position: relative;
+                        flex: 0 0 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        border: 0.5px solid var(--theme_input_border);
+                        box-shadow: 0px 1px 2px 0px var(--box_shadow);
+                        background-color: var(--white_color);
+                        margin-right: 15px;
+                        z-index: 1;
+                        // style added ld
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: var(--theme_bg_blue);
+                        font-weight: 600;
+                        font-size: 16px;
+                        i {
+                            font-size: 16px;
+                            padding: 6px;
+                            display: flex;
+                        }
+                    }
+                    .short-description {
+                        flex: 1;
+                        .ticket-id,
+                        .spend-time,
+                        .web-link,
+                        .total-clicks {
+                            font-size: 12px;
+                            line-height: 14px;
+                            display: flex;
+                        }
+                        .ticket-id,
+                        .spend-time {
+                            color: var(--theme_input_color);
+                        }
+                        .web-link {
+                            color: var(--theme_bg_blue);
+                            text-decoration: underline;
+                            margin-top: 2px;
+                        }
+                        .total-clicks {
+                            color: var(--profile_icon_border);
+                            margin-top: 5px;
+                        }
+                        h6 {
+                            font-size: 14px;
+                            font-weight: bold;
+                            color: var(--theme_title);
+                            margin: 0;
+                            .date-time {
+                                font-size: 11px;
+                                font-weight: normal;
+                                color: var(--theme_input_color);
+                                margin-left: 5px;
+                            }
+                        }
+                        .sub-title {
+                            display: block;
+                            font-size: 11px;
+                            color: var(--theme_input_color);
+                            span {
+                                &.status {
+                                    font-weight: bold;
+                                    margin-left: 10px;
+                                    &.red {
+                                        color: var(--theme_red);
+                                    }
+                                    &.green {
+                                        color: var(--theme_green);
+                                    }
+                                    &.yellow {
+                                        color: var(--theme_yellow);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &::before {
+                    position: absolute;
+                    width: 1px;
+                    left: 14.5px;
+                    top: 0;
+                    bottom: 0;
+                    background-color: var(--theme_input_border);
+                    display: block;
+                    content: "";
+                    clear: both;
+                }
+            }
+        }
+    }
+}

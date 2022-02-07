@@ -1,0 +1,22 @@
+<div class="rightSlidePanel column-slide-panel panel-notify-list">
+    <div class="panel-header">
+        <h4>Notifications</h4>
+        <div class="close-btn"><i (click)="closePanel()" class="icon-cancel"></i></div>
+    </div>
+    <div class="panel-body">
+        <div class="notify-list">
+            <ul>
+                <li *ngFor="let notify of Notify_data">
+                    <div class="time">
+                       {{notify.time}}
+                    </div>
+                    <div class="list">
+                        <h4>{{notify.title}}</h4>
+                        <p>{{notify.data}}</p>
+                    </div>
+                </li>
+             
+            </ul>
+        </div>
+    </div>
+</div>

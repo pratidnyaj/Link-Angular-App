@@ -1,0 +1,124 @@
+<div class="wrapper">
+    <div class="action-perform-btns">
+        <div class="filter-action">
+            <button class="filters filter-blue" (click)="openVertically(producttModal);">Add Product</button>
+        </div>
+    </div>
+    <div class="tbl-section">
+        <div class="data-body">
+            <table>
+                <thead>
+                    <tr style="font-weight: bold;">
+                        <th>Products</th>
+                        <th>Contract Start Date</th>
+                        <th>Contract End Date</th>
+                        <th>Is Active</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                     
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of productList | paginate: { itemsPerPage:10, currentPage: p }">
+                       <td>{{data.ProductName}}</td>
+                       <td>{{data.ContractStartDate}}</td>
+                       <td>{{data.ContractEndDate}}</td>
+                       <td>{{data.IsActive}}</td>
+                     
+                       <td class="actions">
+                        <a><i class="icon-edit" (click)="openVerticallyEdit(producttModal,data);"></i></a>
+                    </td>
+                    <td class="delete">
+                        <a><i  class="icon-dustbox"  (click)="deleteProduct(data);"></i></a>
+                    </td>
+                   </tr>
+
+               
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="data-footer">
+        <paging-controls (pageChange)="p = $event" [isItemsPerPage]="false"></paging-controls>
+    </div>
+
+</div>
+
+
+<ng-template #producttModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title"> Add Product</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click');closefrom()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="assign_form">
+            <form class="form_to_rly" action=""  [formGroup]="productsForm">
+                <div class="row">
+                    <div class="col-md-12">
+                    <!-- <mat-form-field appearance="outline">
+                       <mat-label>Product</mat-label>
+
+
+                        <mat-select placeholder="" name="value" formControlName="productsId">
+                            <mat-option *ngFor="let val of productMstrdropdown" value="{{val.ProductID}}">
+                                {{val.ProductName}}</mat-option>
+                        </mat-select>
+
+
+
+                  </mat-form-field> -->
+
+
+
+
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Product</mat-label>
+                    <mat-select required formControlName="productsId" multiple #select [disabled]="disableSelect">
+                        <div class="select-all">
+                            <button (click)="selectAlla()" class="btn btn-sm btn-secondary" style="margin-left:10px;">Select all</button>
+                            <button (click)="unSelectAlla()" class="btn btn-sm btn-secondary" style="margin-left:10px">Unselect all</button>
+                        </div>
+                        <mat-option *ngFor="let val of productMstrdropdown" value={{val.ProductID}}>
+                            {{val.ProductName}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+
+                  </div>
+                  <div class="col-md-12">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Contract Start Date</mat-label> 
+                        <input matInput [matDatepicker]="picker"  formControlName="contractStartDate" >
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+
+                </div>
+                <div class="col-md-12">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Contract End Date</mat-label> 
+                        <input matInput [matDatepicker]="picker2"  formControlName="contractEndDate" >
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                    <div class="col-md-12">
+                        <mat-label>IsActive</mat-label>
+                        <input style="margin-left: 10px;" type="checkbox" autocomplete="off" name="Description"
+                            formControlName="IsActive">
+                    </div>
+                </div>
+                <div class="text-center mt-3"  *ngIf="accountProductID === undefined">
+                    <button class="filled-btn" (click)="save();">Save Product</button>
+                </div>
+                <div class="text-center mt-3" *ngIf="accountProductID != undefined">
+                    <button class="filled-btn" (click)="editSaveProduct();">Update Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,240 @@
+<div class="wrapper">
+  <div class="left-side-panel">
+    <app-client-filter></app-client-filter>
+    <app-client-list></app-client-list>
+  </div>
+  <div class="middle-panel-content">
+    <div class="cust-mid">
+      <ngb-accordion [closeOthers]="true" activeIds="static-1">
+        <ngb-panel id="static-1">
+          <ng-template ngbPanelTitle>
+            <div class="case-switches-header">
+              <div class="acc-title">
+                <!-- <span class="client-pic">
+                  <img src="/assets/images/client-profile.png" class="client-profile" alt= "profile" />
+                </span> -->
+                <div class="media-profile">
+                  <img src="/assets/images/client-profile.png" class="case-profile" alt="profile" />
+                </div>
+                <span class="client-name">{{clientFullname}} </span>
+
+              </div>
+              <div class="client-action-btn">
+                <div class="dropdown filter-menu-drpdwn">
+                  <button class="btn btn-filter" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="icon-merge"></i>
+                  </button>
+                  <div class="dropdown-menu unlink_filter_list" aria-labelledby="dropdownMenuButton">
+                    <div class="sort-menus">
+                      <button class="sortmenu">
+                        <span (click)="openScrollableContent(longContent)">Mobile Number</span>
+                      </button>
+                    </div>
+                    <div class="sort-menus">
+                      <button class="sortmenu">
+                        <span>Email Address</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <button><i class="icon-edit"></i></button>
+                </div>
+                <div>
+                  <button><i class="icon-cancel"></i></button>
+                </div>
+                <div>
+                  <button><i class="icon-check"></i></button>
+                </div>
+
+                <div>
+                  <button><i class="icon-dustbox"></i></button>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <app-client-info (valueChange)='displayFullname($event)'></app-client-info>
+          </ng-template>
+        </ngb-panel>
+
+
+        <ngb-panel id="static-2">
+          <ng-template ngbPanelTitle>
+            <div class="case-switches-header">
+              <div class="acc-title">
+                <span class="case-name">Total 25 cases</span>
+              </div>
+              <div class="client-action-btn">
+                <button class="btn-export">
+                  <i class="icon-export"></i>
+                  <span>Export</span>
+                </button>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <app-client-cases></app-client-cases>
+          </ng-template>
+        </ngb-panel>
+
+      </ngb-accordion>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #longContent let-modal class="merge-ticket">
+  <div class="modal-header">
+    <h4 class="modal-title">Merge Number</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="merge-info">
+      <div>
+        <img src="assets/images/profile_pic.jpg" alt="assign-user" class="img-fluid" />
+      </div>
+      <div class="mer_info">
+        <p class="title">carol Rayes</p>
+        <!-- <p class="sub-title">website is not working</p> -->
+        <!-- <div class="assign_deatils">
+                  <div>
+                      <span class="caseid">Case ID : <span class="casenumber">2345678990</span></span>
+                  </div>
+                  <div>
+                      <span class="blueid">Assign to : <span class="blueid">Amit patil</span></span>
+                  </div>
+                  <div>
+                      <span class="casedate">Created On : <span class="casedate">20/05/2021</span></span>
+                  </div>
+              </div> -->
+
+        <div>
+          <div class="call-info">
+            <div class="icon">
+              <span class="icon-call-redbg"><span class="path1"></span><span class="path2"></span></span>
+            </div>
+            <div class="data">
+              <p class="data-ttl">Mobile 1 </p>
+              <p class="data-subttl">+91 9778482251</p>
+
+            </div>
+            <div class="data">
+              <p class="data-ttl">Mobile 1 </p>
+              <p class="data-subttl">+91 9778482251</p>
+
+            </div>
+            <div class="data">
+              <p class="data-ttl">Mobile 1 </p>
+              <p class="data-subttl">+91 9778482251</p>
+
+            </div>
+          </div>
+          <div class="case-count">
+            Total 25 cases create with this number
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="frm_merge">
+      <form action="">
+        <div class="field" id="searchform">
+          <input type="text" placeholder="Enter Mobile Number" />
+          <button type="button">merge</button>
+        </div>
+
+        <div>
+          <p class="case-guide">Select and Mereg</p>
+        </div>
+        <div>
+          <div class="merge-info select_tomereg">
+            <div>
+              <img src="assets/images/profile_pic.jpg" alt="assign-user" class="img-fluid" />
+            </div>
+            <div class="mer_info">
+              <p class="title">carol Rayes</p>
+              <p class="sub-title">website is not working</p>
+              <div class="assign_deatils">
+                <div>
+                  <span class="caseid">Case ID : <span class="casenumber">2345678990</span></span>
+                </div>
+                <!-- <div>
+                  <span class="blueid">Assign to : <span class="blueid">Amit patil</span></span>
+                </div> -->
+                <div>
+                  <span class="caseid">Created On : <span class="casenumber">20/05/2021</span></span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <label class="container-checkbox">
+                <input type="checkbox">
+                <span class="checkmark right-check"></span>
+              </label>
+            </div>
+          </div>
+          <div class="merge-info select_tomereg">
+            <div>
+              <img src="assets/images/profile_pic.jpg" alt="assign-user" class="img-fluid" />
+            </div>
+            <div class="mer_info">
+              <p class="title">carol Rayes</p>
+              <p class="sub-title">website is not working</p>
+              <div class="assign_deatils">
+                <div>
+                  <span class="caseid">Case ID : <span class="casenumber">2345678990</span></span>
+                </div>
+                <!-- <div>
+                  <span class="blueid">Assign to : <span class="blueid">Amit patil</span></span>
+                </div> -->
+                <div>
+                  <span class="caseid">Created On : <span class="casenumber">20/05/2021</span></span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <label class="container-checkbox">
+                <input type="checkbox">
+                <span class="checkmark right-check"></span>
+              </label>
+            </div>
+          </div>
+          <div class="merge-info select_tomereg">
+            <div>
+              <img src="assets/images/profile_pic.jpg" alt="assign-user" class="img-fluid" />
+            </div>
+            <div class="mer_info">
+              <p class="title">carol Rayes</p>
+              <p class="sub-title">website is not working</p>
+              <div class="assign_deatils">
+                <div>
+                  <span class="caseid">Case ID : <span class="casenumber">2345678990</span></span>
+                </div>
+                <div>
+                  <span class="caseid">Created On : <span class="casenumber">20/05/2021</span></span>
+                </div>
+                <!-- <div>
+                  <span class="blueid">Assign to : <span class="blueid">Amit patil</span></span>
+                </div> -->
+
+              </div>
+            </div>
+            <div>
+              <label class="container-checkbox">
+                <input type="checkbox">
+                <span class="checkmark right-check"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="btn_merge">
+          <button>Mrege</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>

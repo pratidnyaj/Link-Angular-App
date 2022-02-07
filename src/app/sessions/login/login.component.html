@@ -1,0 +1,72 @@
+<div class="unlink_loginsec">
+    <div class="container-fluid unlink_remove_padd">
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-8 unlink_remove_padd unlink_mobhide">
+                <div class="unlink_loginimg">
+                    <img src="assets/images/login-img.png" alt="login_banner" class="img-fluid">
+                    <div class="ext-txt">
+                        With dummy text you can view your website
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-4 unlink_remove_padd">
+                <form action="">
+                    <div class="unlink_login_white">
+                        <div class="unlink_login_me d-block">
+                            <div class="text-center">
+                                <img src="assets/images/svg/unfyd-logo.svg" alt="unfyd-logo" class="img-fluid">
+                            </div>
+                            <div>
+                                <h1 class="unlink_title unlink_theme_font">
+                                    Unfyd Link
+                                </h1>
+                            </div>
+                            <div class="unlink_inputs">
+
+                                <form [formGroup]="loginForm" (ngSubmit)="signin()">
+                                    <div class="form-group unlink_formgroup">
+                                        <i class="icon-login-user"></i>
+                                        <input type="text" class="form-control unlink_theme_font" placeholder="Username"
+                                            formControlName="userEmail" autocomplete=off name="userEmail"
+                                            [ngClass]="{ 'is-invalid': submitted && f.userEmail.errors }">
+                                        <div *ngIf="submitted && f.userEmail.errors" class="invalid-feedback">
+                                            <div *ngIf="f.userEmail.errors.required">Email is required</div>
+                                            <div *ngIf="f.userEmail.errors.email">Email must be a valid </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group unlink_formgroup">
+                                        <i class="icon-lock-password"></i>
+                                        <!-- <img src="assets/images/svg/password.svg" alt=""> -->
+                                        <input [type]="passType" class="form-control unlink_theme_font"
+                                            placeholder="Password" formControlName="userPassword" autocomplete=off
+                                            name="userPassword"
+                                            [ngClass]="{ 'is-invalid': submitted && f.userPassword.errors }">
+                                        <i class="icon-eye-icon unlink_showpass" (click)="showPassword()"></i>
+                                        <div *ngIf="submitted && f.userPassword.errors" class="invalid-feedback">
+                                            <div *ngIf="f.userPassword.errors.required">Password is required</div>
+                                            <!-- <div *ngIf="f.userPassword.errors.minlength">Minimum 12 characters </div> -->
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button
+                                            class="unlink_theme_button unlink_theme_font unlink_mt-20">login</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="text-center unlink_mt-60">
+                                <p class="unlink_frgtpass unlink_theme_font markpoint" (click)="forgotClick()">Forgot
+                                    Password</p>
+
+                            </div>
+                        </div>
+                        <div class="unlink_cmnycode">
+                            <a href="#" class="unlink_code"> &copy;UNFYD<sup>&copy;</sup></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

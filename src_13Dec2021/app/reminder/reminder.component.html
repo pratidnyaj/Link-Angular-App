@@ -1,0 +1,140 @@
+<div class="rightSlidePanel column-slide-panel panel-dashboard">
+    <div class="panel-header">
+        <h4>Reminders</h4>
+        <div class="close-btn"><i (click)="closePanel()" class="icon-cancel"></i></div>
+    </div>
+    <div class="panel-body">
+        <div class="custom-tab bordered-tab">
+            <ul class="nav">
+                <li><a data-target="#rem-Upcoming" data-toggle="tab" class="active">Upcoming</a></li>
+                <li><a data-target="#rem-Completed" data-toggle="tab">Completed</a></li>
+                <li><a data-target="#rem-All" data-toggle="tab">All</a></li>
+
+            </ul>
+            <div class="scroll-content">
+                <div class="tab-content">
+                    <div id="rem-Upcoming" class="tab-pane active">
+                        <ul class="chain-listing" *ngFor="let reminder of Reminder_data">
+                            <li>
+                                <a class="date-flag">
+                                    <div class="date">octomber2021</div>
+
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <div class="icon">05</div>
+                                    <div class="short-description">
+                                        <span class="ticket-id">{{reminder.id}}</span>
+                                        <h6><span>{{reminder.title}}</span></h6>
+                                        <span class="sub-title"><span>{{reminder.date}}</span></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <div class="icon">05</div>
+                                    <div class="short-description">
+                                        <span class="ticket-id">{{reminder.id}}</span>
+                                        <h6><span>{{reminder.title}}</span></h6>
+                                        <span class="sub-title"><span>{{reminder.date}}</span></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <div class="icon">05</div>
+                                    <div class="short-description">
+                                        <span class="ticket-id">{{reminder.id}}</span>
+                                        <h6><span>{{reminder.title}}</span></h6>
+                                        <span class="sub-title"><span>{{reminder.date}}</span></span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="rem-Completed" class="tab-pane">
+                        <ul class="chain-listing" *ngFor="let reminder of Reminder_data">
+                            <li>
+                                <a class="date-flag">
+                                    <div class="date">November 2021</div>
+
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <div class="icon">05</div>
+                                    <div class="short-description">
+                                        <span class="ticket-id">{{reminder.id}}</span>
+                                        <h6><span>{{reminder.title}}</span></h6>
+                                        <span class="sub-title"><span>{{reminder.date}}</span></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <div class="icon">05</div>
+                                    <div class="short-description">
+                                        <span class="ticket-id">{{reminder.id}}</span>
+                                        <h6><span>{{reminder.title}}</span></h6>
+                                        <span class="sub-title"><span>{{reminder.date}}</span></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <div class="icon">05</div>
+                                    <div class="short-description">
+                                        <span class="ticket-id">{{reminder.id}}</span>
+                                        <h6><span>{{reminder.title}}</span></h6>
+                                        <span class="sub-title"><span>{{reminder.date}}</span></span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="rem-All" class="tab-pane">
+                        <ul class="chain-listing" *ngFor="let reminder of Reminder_data">
+                            <li>
+                                <a class="date-flag">
+                                    <div class="date">December 2021</div>
+
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <div class="icon">05</div>
+                                    <div class="short-description">
+                                        <span class="ticket-id">{{reminder.id}}</span>
+                                        <h6><span>{{reminder.title}}</span></h6>
+                                        <span class="sub-title"><span>{{reminder.date}}</span></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <div class="icon">05</div>
+                                    <div class="short-description">
+                                        <span class="ticket-id">{{reminder.id}}</span>
+                                        <h6><span>{{reminder.title}}</span></h6>
+                                        <span class="sub-title"><span>{{reminder.date}}</span></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <div class="icon">05</div>
+                                    <div class="short-description">
+                                        <span class="ticket-id">{{reminder.id}}</span>
+                                        <h6><span>{{reminder.title}}</span></h6>
+                                        <span class="sub-title"><span>{{reminder.date}}</span></span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

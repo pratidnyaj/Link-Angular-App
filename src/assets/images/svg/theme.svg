@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+  <g id="Group_1591" data-name="Group 1591" transform="translate(-2 -2)">
+    <g id="Group_1593" data-name="Group 1593" transform="translate(2 2)">
+      <g id="Group_1592" data-name="Group 1592">
+        <g id="Group_1591-2" data-name="Group 1591">
+          <path id="Path_950" data-name="Path 950" d="M9,16A7,7,0,0,1,9,2c3.857,0,7,2.828,7,6.3a4.2,4.2,0,0,1-4.2,4.2H10.561a.347.347,0,0,0-.35.35.37.37,0,0,0,.091.231,1.781,1.781,0,0,1,.448,1.169A1.751,1.751,0,0,1,9,16ZM9,3.4A5.6,5.6,0,1,0,9,14.6a.347.347,0,0,0,.35-.35.378.378,0,0,0-.1-.245,1.745,1.745,0,0,1,1.309-2.9H11.8a2.8,2.8,0,0,0,2.8-2.8C14.6,5.6,12.087,3.4,9,3.4Z" transform="translate(-2 -2)" fill="#053c6d"/>
+          <ellipse id="Ellipse_182" data-name="Ellipse 182" cx="1" cy="1.5" rx="1" ry="1.5" transform="translate(2 5)" fill="#053c6d"/>
+          <circle id="Ellipse_183" data-name="Ellipse 183" cx="1" cy="1" r="1" transform="translate(4 3)" fill="#053c6d"/>
+          <circle id="Ellipse_184" data-name="Ellipse 184" cx="1" cy="1" r="1" transform="translate(8 3)" fill="#053c6d"/>
+          <ellipse id="Ellipse_185" data-name="Ellipse 185" cx="1" cy="1.5" rx="1" ry="1.5" transform="translate(10 5)" fill="#053c6d"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

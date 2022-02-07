@@ -1,0 +1,249 @@
+﻿
+/* Common css for mobile device */
+
+@media (max-width: 768px) {
+    .page-heading {
+        font-size: 19px;
+        float: left;
+        position: relative;
+        left: 0;
+        line-height: 2.5;
+    }
+
+    .navbar {
+        display: inherit;
+    }
+
+    .navbar-collapse {
+        float: right;
+        display: block !important;
+    }
+
+    #search-box {
+        float: left;
+    }
+
+    .navbar-nav {
+        display: block;
+        float: right;
+    }
+
+    ul.navbar-nav li {
+        float: left;
+    }
+
+    .searchboxwrapper {
+        position: relative;
+        right: 0px;
+    }
+
+    .navbar {
+        height: auto;
+    }
+    /*  .searchboxwrapper input {
+            width: 50px;
+        }
+    .search-input{
+        display:none;
+    }*/
+    .collapse {
+        display: block !important;
+    }
+
+    #search-box {
+        float: left;
+        width: 97px;
+    }
+
+    .profile-pic {
+        width: 30px;
+        height: 30px;
+        background-position: -4px 0px;
+    }
+
+    .navbar-nav a.nav-link {
+        padding: 0.5rem 10px !important;
+    }
+
+    .add-btn {
+        margin-top: 3px;
+    }
+
+    .margin-top-7 {
+        margin-top: 4px;
+    }
+
+    /* Slide toggle nav bar css */
+    #sidebar {
+        position: fixed;
+        bottom: 0px;
+        top: inherit;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        text-align: center;
+        margin-left: 0px !important;
+        padding: 0px;
+    }
+
+        #sidebar.active {
+            margin-left: 0 !important;
+        }
+
+    #sidebarCollapse span {
+        display: none;
+    }
+
+    ul.nav.nav-pills {
+        padding: 0px 10px;
+    }
+    /*   #sidebar.active {
+        width: 67px;
+        min-width: 67px;
+        max-width: 67px;
+    }*/
+    ul.nav.nav-pills {
+        padding: 0px 10px;
+        -webkit-box-orient: horizontal !important;
+        -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+        flex-direction: row !important;
+    }
+
+    .nav-pills li.nav-item {
+        padding: 3px 0px !important;
+        width: 20%;
+        text-align: center;
+        margin: 0px auto;
+    }
+
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+        color: #fff;
+        background-color: #053c6d;
+        border-radius: 10px;
+        width: 38px;
+        margin: 0px auto;
+        position: relative;
+        top: 4px;
+        padding: 4px 0px;
+    }
+
+    #sidebar.active .sidebar-content {
+        display: block !important;
+    }
+
+    main {
+        margin-left: 50px;
+    }
+
+    /*Dashboard css*/
+
+    .content-title {
+        font-size: 17px;
+        color: #333333;
+    }
+
+    .xs > .material-icons-outlined, .material-icons {
+        font-size: 14px;
+        line-height: inherit;
+        vertical-align: middle;
+    }
+
+    .material-icons-outlined, .material-icons {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .more-btn {
+        line-height: 1.3;
+    }
+
+    .mobile-padding {
+        padding-bottom: 50px;
+    }
+
+    /*Reports css*/
+
+    .left-panel {
+        background-color: white;
+        height: 100% !important;
+        overflow-y: auto;
+        box-shadow: 0px 2px 3px #0000001a;
+        position: fixed !important;
+        width: 100% !important;
+        overflow-y: scroll;
+        padding-bottom: 116px;
+    }
+
+    .bottom-padding {
+        padding-bottom: 20px;
+    }
+
+    .img-title {
+        font-size: 12px;
+    }
+
+    a.navbar-brand {
+        display: none;
+    }
+}
+
+
+
+
+/* Custom, iPhone Retina */
+@media only screen and (max-device-width :320px) {
+    body {
+        padding-left: 0px;
+    }
+
+    .card-title {
+        font-size: 11px;
+    }
+
+    .card-value > h3 {
+        font-size: 22px;
+    }
+
+    .card-text {
+        font-size: 10px;
+    }
+}
+
+/* Media Query for Mobile Devices */
+@media only screen and (max-device-width: 480px) {
+    body {
+        padding-left: 0px;
+    }
+
+    .card-title {
+        font-size: 11px;
+    }
+
+    .card-value > h3 {
+        font-size: 22px;
+    }
+
+    .card-text {
+        font-size: 10px;
+    }
+}
+
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 481px) and (max-width: 767px) {
+    body {
+        padding-left: 0px;
+    }
+
+    .card-title {
+        font-size: 13px;
+    }
+
+    .card-value > h3 {
+        font-size: 27px;
+    }
+
+    .card-text {
+        font-size: 10px;
+    }
+}

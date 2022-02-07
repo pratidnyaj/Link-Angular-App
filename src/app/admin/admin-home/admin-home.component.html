@@ -1,14 +1,14 @@
 <div class="container-fluid mobile-padding">
     <div class="admin_content">
-        <div class="Admin_elements">
+        <div class="Admin_elements"  *ngIf="agentPage  || teamsPage  ||  rolePage">
             <div class="admin_title">
-                <span>Header</span>
+                <!-- <span>Admin</span> -->
             </div>
             <div class="admin_body">
                 <div class="row">
-                    <div class="col col-lg-2">
+                    <div class="col col-lg-2" *ngIf="agentPage">
                         <div class="admin-roles">
-                            <a href="">
+                            <a [routerLink]="['/agents']">
                                 <div>
                                     <img src="assets/images/svg/agents.svg" alt="agents">
                                 </div>
@@ -18,9 +18,9 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col col-lg-2">
+                    <div class="col col-lg-2" *ngIf="teamsPage">
                         <div class="admin-roles">
-                            <a href="">
+                            <a [routerLink]="['/team']">
                                 <div>
                                     <img src="assets/images/svg/teams.svg" alt="teams">
                                 </div>
@@ -30,30 +30,67 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col col-lg-2">
+                    <div class="col col-lg-2" *ngIf="rolePage">
                         <div class="admin-roles">
-                            <a href="">
+                            <a [routerLink]="['/role-master']">
                                 <div>
                                     <img src="assets/images/svg/roles.svg" alt="agents">
                                 </div>
                                 <div class="admin_info">
-                                    <span>roles</span>
+                                    <span  (click)="goToNextPage()"> roles</span>
+                                        <!-- <a class="nav-link" title="Role" [routerLink]="['/role-master']">
+                                          
+                                        </a> -->
+                                        
+                                       
                                 </div>
                             </a>
                         </div>
                     </div>
+
+
+
+                    <div class="col col-lg-2">
+                        <div class="admin-roles">
+                            <a [routerLink]="['/account']">
+                                <div>
+                                    <img src="assets/images/svg/agents.svg" alt="account">
+                                </div>
+                                <div class="admin_info">
+                                    <span>Account</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="col col-lg-2">
+                        <div class="admin-roles">
+                            <a [routerLink]="['/collaborators']">
+                                <div>
+                                    <img src="assets/images/svg/agents.svg" alt="account">
+                                </div>
+                                <div class="admin_info">
+                                    <span>Collaborators</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    
                 </div>
             </div>
         </div>
-        <div class="Admin_elements">
+        <div class="Admin_elements" *ngIf="productPage  || businessRolesPage  ||  configurationPage || emailNotificationPage  || businessObjectsPage  ||  templatePage">
             <div class="admin_title">
-                <span>Header</span>
+                <!-- <span>Header</span> -->
             </div>
             <div class="admin_body">
                 <div class="row">
-                    <div class="col col-lg-2">
+                    <div class="col col-lg-2" *ngIf="productPage">
                         <div class="admin-roles">
-                            <a href="">
+                            <a [routerLink]="['/products']">
                                 <div>
                                     <img src="assets/images/svg/products.svg" alt="products">
                                 </div>
@@ -63,7 +100,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col col-lg-2">
+                    <div class="col col-lg-2" *ngIf="businessRolesPage">
                         <div class="admin-roles">
                             <a href="">
                                 <div>
@@ -75,7 +112,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col col-lg-2">
+                    <div class="col col-lg-2" *ngIf="configurationPage">
                         <div class="admin-roles">
                             <a href="">
                                 <div>
@@ -87,9 +124,9 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col col-lg-2">
+                    <div class="col col-lg-2" *ngIf="emailNotificationPage">
                         <div class="admin-roles">
-                            <a href="">
+                            <a [routerLink]="['/emailnotificationSettings']">
                                 <div>
                                     <img src="assets/images/svg/email-notification.svg" alt="Email-Notification">
                                 </div>
@@ -99,19 +136,19 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col col-lg-2">
+                    <div class="col col-lg-2" *ngIf="businessObjectsPage">
                         <div class="admin-roles">
-                            <a href="">
+                            <a  [routerLink]="['/ObjectManager']">
                                 <div>
                                     <img src="assets/images/svg/objects.svg" alt="Objects">
                                 </div>
                                 <div class="admin_info">
-                                    <span>Objects</span>
+                                    <span>Business Object</span>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="col col-lg-2">
+                    <div class="col col-lg-2" *ngIf="templatePage">
                         <div class="admin-roles">
                             <a href="">
                                 <div>
@@ -128,11 +165,11 @@
         </div>
         <div class="Admin_elements">
             <div class="admin_title">
-                <span>Header</span>
+                <!-- <span>Header</span> -->
             </div>
             <div class="admin_body">
                 <div class="row">
-                    <div class="col col-lg-2">
+                    <div class="col col-lg-2" *ngIf="dispositionPage">
                         <div class="admin-roles">
                             <a href="">
                                 <div>
@@ -144,7 +181,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col col-lg-2">
+                    <div class="col col-lg-2"  *ngIf="channelSourceMappingPage">
                         <div class="admin-roles">
                             <a href="">
                                 <div>
@@ -156,7 +193,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col col-lg-2">
+                    <div class="col col-lg-2"  *ngIf="channelSourcePage">
                         <div class="admin-roles">
                             <a href="">
                                 <div>
@@ -168,7 +205,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col col-lg-2">
+                    <div class="col col-lg-2" *ngIf="agentTemplateMappingPage">
                         <div class="admin-roles">
                             <a href="">
                                 <div>
@@ -183,156 +220,5 @@
                 </div>
             </div>
         </div>
-
     </div>
-
-
-
-    <!-- <div class="admin-content">
-        <h5 class="content-title">Header</h5>
-        <div class="row">
-            <div class="col-lg-2 col">
-                <div class="card text-center bottom-padding">
-                    <div class="img-content">
-                        <img class="img-center" src="assets/images/svg/agents.svg" alt="agents">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="img-title text-center">Agents</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col">
-                <div class="card text-center bottom-padding">
-                    <div class="img-content">
-                        <img class="img-center" src="assets/images/svg/teams.svg" alt="teams">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="img-title text-center">Teams</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col">
-                <div class="card text-center bottom-padding">
-                    <div class="img-content">
-                        <img class="img-center" src="assets/images/svg/roles.svg" alt="roles">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="img-title text-center">Roles</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr />
-        <br />
-        <h5 class="content-title">Header</h5>
-        <div class="row">
-            <div class="col-lg-2 col">
-                <div class="card text-center bottom-padding">
-                    <div class="img-content">
-                        <img class="img-center" src="assets/images/svg/products.svg" alt="products">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="img-title text-center">Products</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col">
-                <div class="card text-center bottom-padding">
-                    <div class="img-content">
-                        <img class="img-center img-prop" src="assets/images/svg/rules.svg" alt="rules">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="img-title text-center">Business Rules</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col">
-                <div class="card text-center bottom-padding">
-                    <div class="img-content">
-                        <img class="img-center" src="assets/images/svg/configuration.svg" alt="configuration">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="img-title text-center">Configuration</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col">
-                <div class="card text-center bottom-padding">
-                    <div class="img-content">
-                        <img class="img-center" src="assets/images/svg/email-notification.svg" alt="email-notification">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="img-title text-center">Email Notification</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col">
-                <div class="card text-center bottom-padding">
-                    <div class="img-content">
-                        <img class="img-center" src="assets/images/svg/objects.svg" alt="objects">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="img-title text-center">Business Objects</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col">
-                <div class="card text-center bottom-padding">
-                    <div class="img-content">
-                        <img class="img-center" src="assets/images/svg/templates.svg" alt="templates">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="img-title text-center">Templets</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <hr />
-        <br />
-        <h5 class="content-title">Header</h5>
-        <div class="row">
-            <div class="col-lg-2 col">
-                <div class="card text-center bottom-padding">
-                    <div class="img-content">
-                        <img class="img-center" src="assets/images/svg/disposition.svg" alt="disposition">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="img-title text-center">Disposition</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col">
-                <div class="card text-center bottom-padding">
-                    <div class="img-content">
-                        <img class="img-center" src="assets/images/svg/channel-mapping.svg" alt="channel-mapping">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="img-title text-center">Channel Source Mapping</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col">
-                <div class="card text-center bottom-padding">
-                    <div class="img-content">
-                        <img class="img-center" src="assets/images/svg/channel-source.svg" alt="channel-source">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="img-title text-center">Channel Source</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col">
-                <div class="card text-center bottom-padding">
-                    <div class="img-content">
-                        <img class="img-center" src="assets/images/svg/agents-template.svg" alt="agents-template">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="img-title text-center">Agents Templet Mapping</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div> -->
 </div>

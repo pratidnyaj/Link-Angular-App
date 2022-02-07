@@ -1,0 +1,102 @@
+<div class="wrapper">
+    <div class="action-perform-btns">
+        <div class="search-actions">
+            <div class="show-count">
+                <span>Show</span>
+                <span class="select-dropdown">
+                    <select>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </span>
+                <span>Entry</span>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Search by Name">
+                <button class="find" type="submit"><i class="icon-search"></i></button>
+            </div>
+
+        </div>
+        <div class="filter-action">
+            <button class="filters"><span><i class="icon-filters"></i></span>Filters</button>
+            <button class="filters"><span><i class="icon-export"></i></span>Import</button>
+            <button class="filters"><span><i class="icon-export"></i></span>Export</button>
+            <button class="filters"><span><i class="icon-filters"></i></span>Field Chooser</button>
+            <button class="filters filter-blue">Add new Group</button>
+        </div>
+    </div>
+    <div class="tbl-section">
+        <div class="data-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></th>
+                        <th>Photo</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Email</th>
+                        <th>Phone No</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of usermasterdata | paginate: { itemsPerPage:10, currentPage: p }">
+                        <!-- <tr *ngFor="let data of userMasterData | paginate: {itemsPerPage:10, currentPage: p id: 'listing_pagination',
+                        itemsPerPage: perPageCnt,
+                        currentPage: currentPageNumber,
+                        totalItems: totalRec }; let idx = index"> -->
+
+
+                        <td><input type="checkbox"></td>
+                        <td>{{data.Photo}}</td>
+                        <td>{{data.FullName}}</td>
+                        <td>{{data.RoleName}}</td>
+                        <td>{{data.EmailID}}</td>
+                        <td>{{data.PhoneNo}}</td>
+                        <td>{{data.IsActive}}</td>
+                        <td class="actions">
+                            <a><i class="icon-edit"></i></a>   
+                        </td>
+                        <td class="delete">
+                            <a><i class="icon-dustbox"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="data-footer">
+        <!-- <paging-controls (pageChange)="p = $event" [isItemsPerPage]="false"></paging-controls> -->
+    </div>
+    <!-- <div class="tbl-footer">
+        <div class="displaying_count">
+            <div>
+                Displaying {{(( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt + 1}} -
+                {{(( ( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) + perPageCnt > (totalRec)
+                ? totalRec :
+                (((
+                currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) + perPageCnt}}
+                of {{ totalRec }} Records
+            </div>
+        </div>
+        <div>
+            <div class="mod_pagination">
+                <pagination-controls id="listing_pagination" previousLabel="" nextLabel="" [maxSize]="7"
+                [directionLinks]="true" (pageChange)="handlePageChange($event)"></pagination-controls>
+            </div>
+        </div>
+    </div> -->
+
+
+
+</div>
+
+
+
+
+
+

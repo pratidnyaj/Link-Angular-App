@@ -1,0 +1,60 @@
+.client-case-tbl {
+  .table-scroll {
+    position: relative;
+    // width: calc(100vh - -300px);
+    z-index: 1;
+    margin: auto;
+    overflow: auto;
+    height: calc(100vh - 390px);
+    table {
+      width: 100%;
+      min-width: 934px;
+      margin: auto;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    th {
+      padding: 5px 10px;
+      background: #fff;
+      vertical-align: top;
+      text-transform: capitalize;
+    }
+
+    td {
+      padding: 5px 10px;
+      background: #fff;
+      vertical-align: top;
+      border-bottom: 1px solid var(--theme_input_border);
+      white-space: nowrap;
+      text-align: center;
+      color: var(--theme_title);
+      font-size: 12px;
+    }
+    thead {
+      th {
+        color: var(--theme_input_color);
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        border-bottom: 1px solid var(--theme_input_border);
+        border-top: 1px solid var(--theme_input_border);
+        text-align: center;
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+  }
+  .table-wrap {
+    position: relative;
+  }
+  .tbl-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    .displaying_count {
+      color: var(--theme_title);
+      font-size: 12px;
+    }
+  }
+}

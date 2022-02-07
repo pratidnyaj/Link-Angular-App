@@ -1,0 +1,25 @@
+<div class="rightSlidePanel column-slide-panel panel-knowledgeManager">
+    <div class="panel-header">
+        <h4>Knowledge Manager</h4>
+        <div class="close-btn"><i (click)="closePanel()" class="icon-cancel"></i></div>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <input class="form-control" type="text" name="search" autocomplete="off" placeholder="Search your Answer">
+            <i class="icon-search"></i>
+        </div>
+        <ul class="knowledge-list">
+            <li (click)="sendDetails()" *ngFor ="let knowledge_data of  knowledgeData">
+                <div class="img"><img src="assets/images/taj.jpg"></div>
+                <div class="KM-content">
+                    <h5>{{knowledge_data.title}}</h5>
+                    <p>{{knowledge_data.description}}</p>
+                </div>
+                <div class="share-btn"><i class="icon-share"></i></div>
+            </li>           
+        </ul>
+    </div>
+</div>
+
+<app-knowledge-manager-details (closeKnowledgeManagerDetails)='closeKnowledgeManagerDetails($event)'
+    [ngClass]="knowledgeManagerDetailsState ? 'fade-in' : 'fade-out'"></app-knowledge-manager-details>

@@ -1,40 +1,44 @@
-<div class="case-div-top d-flex">
-    <span> <img src="assets/images/profile img.png" /> </span>
+<!-- d-none -->
+<div class="case-div-top d-none">
+    <span> <img src="assets/images/profile img.png" alt="user" /> </span>
     <div class="media-body contact-body">
         <span class="contact-name">{{contactInfo.FullName}}</span>
         <div class="float-right margin-top-7">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#5F5F5F">
-                <path d="M0 0h24v24H0z" fill="none" />
-                <path
-                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
-            </svg>
+            <button>
+                <i class="icon-edit"></i>
+            </button>
+
         </div>
         <p class="d-flex" *ngIf="contactInfo.PrimaryEmail">
-            <span style=" vertical-align: sub;padding-right:6px"><svg xmlns="http://www.w3.org/2000/svg" height="15px"
-                    viewBox="0 0 24 24" width="15px" fill="#6EB3F2">
+            <span style=" vertical-align: sub;padding-right:6px">
+                <svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 0 24 24" width="15px" fill="#6EB3F2">
                     <path d="M0 0h24v24H0V0z" fill="none" />
                     <path
                         d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
-                </svg></span>
+                </svg>
+            </span>
             <span>{{contactInfo.PrimaryEmail}}</span>
         </p>
         <p class="d-flex" *ngIf="contactInfo.PrimaryPhone">
-            <span style=" vertical-align: sub;padding-right:6px"><svg xmlns="http://www.w3.org/2000/svg" height="15px"
-                    viewBox="0 0 24 24" width="15px" fill="#ff0000">
+            <span style=" vertical-align: sub;padding-right:6px">
+                <svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 0 24 24" width="15px" fill="#ff0000">
                     <path d="M0 0h24v24H0V0z" fill="none" />
                     <path
                         d="M6.54 5c.06.89.21 1.76.45 2.59l-1.2 1.2c-.41-1.2-.67-2.47-.76-3.79h1.51m9.86 12.02c.85.24 1.72.39 2.6.45v1.49c-1.32-.09-2.59-.35-3.8-.75l1.2-1.19M7.5 3H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.49c0-.55-.45-1-1-1-1.24 0-2.45-.2-3.57-.57-.1-.04-.21-.05-.31-.05-.26 0-.51.1-.71.29l-2.2 2.2c-2.83-1.45-5.15-3.76-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1z" />
-                </svg></span>
+                </svg>
+            </span>
             <span>{{contactInfo.PrimaryPhone}}</span>
         </p>
 
         <p class="d-flex" *ngIf="contactInfo.Facebook">
-            <span style=" vertical-align: sub; padding-right:6px"><svg xmlns="http://www.w3.org/2000/svg"
-                    enable-background="new 0 0 24 24" height="15px" viewBox="0 0 24 24" width="15px" fill="#3B5998">
+            <span style=" vertical-align: sub; padding-right:6px">
+                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="15px"
+                    viewBox="0 0 24 24" width="15px" fill="#3B5998">
                     <rect fill="none" height="24" width="24" />
                     <path
                         d="M22,12c0-5.52-4.48-10-10-10S2,6.48,2,12c0,4.84,3.44,8.87,8,9.8V15H8v-3h2V9.5C10,7.57,11.57,6,13.5,6H16v3h-2 c-0.55,0-1,0.45-1,1v2h3v3h-3v6.95C18.05,21.45,22,17.19,22,12z" />
-                </svg></span>
+                </svg>
+            </span>
             <span class="gray">{{contactInfo.Facebook}}</span>
         </p>
         <div>
@@ -45,7 +49,6 @@
     </div>
 
 </div>
-
 <!-- past case modal start here -->
 <ng-template #content let-modal>
     <div class="cust-modal">
@@ -61,6 +64,557 @@
 
     </div>
 </ng-template>
-
-
 <!-- past case modal end here -->
+
+
+<!-- new unfyd-link design start here DISPLAY: BLOCK-->
+<div style="display: none;">
+    <div class="case-info-panel">
+        <ngb-accordion [closeOthers]="true" activeIds="static-1">
+            <ngb-panel id="static-1">
+                <ng-template ngbPanelTitle>
+                    <div class="case-switches-header">
+                        <div class="acc-title">Case info</div>
+                        <div>
+                            <img src="assets/images/svg/add.svg" alt="add-icon" class="add">
+                            <button class="edit"> <img src="assets/images/svg/edit.svg" alt="add-icon"></button>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <form action="">
+                        <div class="card-elements">
+                            <div class="card-list">
+                                <div class="case-label">Status</div>
+                                <div class="case-label blue d-none">
+                                    Open
+                                </div>
+                                <div>
+                                    <div class="dropdown caseifo-status-drpdown">
+                                        <button class="btn btn-caseinfo-add" type="button" id="dropdownMenuButton"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="case-label blue pr-2">Open</span>
+                                            <i class="icon-down-arrow"></i>
+                                        </button>
+
+                                        <div class="dropdown-menu case-drpmenu" aria-labelledby="dropdownMenuButton">
+                                            <div class="case-menus">
+                                                <button class="csmenu" (click)="status(statuscontent)">
+                                                    Open</button>
+                                            </div>
+                                            <div class="case-menus">
+                                                <button class="csmenu" (click)="status(statuscontent)">
+                                                    Close</button>
+
+                                            </div>
+                                            <div class="case-menus">
+                                                <button class="csmenu" (click)="status(statuscontent)">
+                                                    Pending</button>
+
+                                            </div>
+                                            <div class="case-menus">
+                                                <button class="csmenu" (click)="status(statuscontent)">
+                                                    Hold</button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-list">
+                                <div class="case-label">Priority</div>
+                                <div class="case-label red">
+                                    High
+                                </div>
+
+                            </div>
+                            <div class="card-list">
+                                <div class="case-label">Type</div>
+                                <div class="case-label">
+                                    Support Team
+                                </div>
+                            </div>
+                            <div class="card-list">
+                                <div class="case-label">Assiggn to</div>
+                                <div class="case-label">
+                                    Amit Patil
+                                </div>
+                            </div>
+                            <div class="card-list">
+                                <div class="case-label">Case ID</div>
+                                <div class="case-label">
+                                    2405454
+                                </div>
+                            </div>
+                            <div class="card-list">
+                                <div class="case-label">Created On</div>
+                                <div class="case-label">
+                                    05/01/2021 19:27
+                                </div>
+                            </div>
+                            <div class="card-list">
+                                <div class="case-label">Due Date</div>
+                                <div class="case-label">
+                                    10/01/2021 19:27
+                                </div>
+                            </div>
+                            <div class="btn-case">
+                                <button class="btn-discard">Discard</button>
+                                <button class="btn-save">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </ng-template>
+            </ngb-panel>
+
+
+            <ngb-panel id="static-2">
+                <ng-template ngbPanelTitle>
+                    <div class="case-switches-header">
+                        <div class="acc-title">Customer info</div>
+                        <div>
+                            <img src="assets/images/svg/add.svg" alt="add-icon" class="add">
+                            <button class="edit"> <img src="assets/images/svg/edit.svg" alt="add-icon"></button>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <form action="">
+                        <div class="card-elements">
+                            <div class="customer-info">
+                                <div>
+                                    <span><img src="assets/images/profile_pic.jpg" alt="cutomer"></span>
+                                    <span class="cust-name">Carol Reyes</span>
+                                </div>
+                                <ul class="contact-list">
+                                    <li>
+                                        <a href="tel:+919090989898">
+                                            <span><img src="assets/images/svg/call-bg-red.svg" alt="cutomer"></span>
+                                            <span class="pl-2">(129)240-2788</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="mailto:carlos.reyes@gmail.com">
+                                            <span><img src="assets/images/svg/mail-bgblue.svg" alt="cutomer"></span>
+                                            <span class="pl-2">carlos.reyes@gmail.com</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="mailto:carlos.reyes@gmail.com">
+                                            <span><img src="assets/images/svg/facebook.svg" alt="cutomer"></span>
+                                            <span class="pl-2">carlos.reyes@gmail.com</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="mailto:carlos.reyes@gmail.com">
+                                            <span><img src="assets/images/svg/twitter.svg" alt="cutomer"></span>
+                                            <span class="pl-2">carlos.reyes@gmail.com</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </form>
+                </ng-template>
+            </ngb-panel>
+            <ngb-panel id="static-3">
+                <ng-template ngbPanelTitle>
+                    <div class="case-switches-header">
+                        <div class="acc-title">Side Conversation <span>(1)</span></div>
+                        <div>
+                            <img src="assets/images/svg/add.svg" alt="add-icon" class="add">
+                            <button class="edit"> <img src="assets/images/svg/edit.svg" alt="add-icon"></button>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <div class="card-elements">
+                        <div>
+                            <div class="sidecon-info">
+                                <div>
+                                    <span><img src="assets/images/profile_pic.jpg" alt="cutomer"></span>
+                                </div>
+                                <div class="side-info">
+                                    <p class="name">pintu pal</p>
+                                    <p><i class="icon-mailbox"></i><span class="side-name">Amit patil</span></p>
+                                    <p class="sub-name">Hi pintu, Thank you</p>
+                                </div>
+                            </div>
+                            <div class="sidecon-info">
+                                <div>
+                                    <span><img src="assets/images/profile_pic.jpg" alt="cutomer"></span>
+                                </div>
+                                <div class="side-info">
+                                    <p class="name">pintu pal</p>
+                                    <p><i class="icon-mailbox"></i><span class="side-name">Amit patil</span></p>
+                                    <p class="sub-name">Hi pintu, Thank you</p>
+                                </div>
+                            </div>
+                            <div class="sidecon-info">
+                                <div>
+                                    <span><img src="assets/images/profile_pic.jpg" alt="cutomer"></span>
+                                </div>
+                                <div class="side-info">
+                                    <p class="name">pintu pal</p>
+                                    <p><i class="icon-mailbox"></i><span class="side-name">Amit patil</span></p>
+                                    <p class="sub-name">Hi pintu, Thank you</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ngb-panel>
+            <ngb-panel id="static-4">
+                <ng-template ngbPanelTitle>
+                    <div class="case-switches-header">
+                        <div class="acc-title">Call Logs</div>
+
+                    </div>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <div class="card-elements">
+                        <ul class="nav nav-tabs logstabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                    aria-controls="home" aria-selected="true">Home</a>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                                    aria-controls="contact" aria-selected="false">Contact</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                ..111.</div>
+                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">..333.
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
+    </div>
+</div>
+<!-- new unfyd-link design end here -->
+<ng-template #statuscontent let-modal>
+    <div class="case-info-modal">
+        <div class="modal-header">
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="caseinfo-modal-bdy">
+                <h2 class="case-ttl">Are you sure? </h2>
+                <p class="sub-ttl"> You want to change status</p>
+            </div>
+            <div class="case-modal-button">
+                <div class="btn-no">
+                    <button>
+                        No
+                    </button>
+                </div>
+                <div class="btn-yes">
+                    <button>
+                        Yes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+
+
+<!-- //tabs contact info design start here -->
+<div class="case-left-tabs">
+    <div class="customer-info">
+        <form action="" [formGroup]="contactEditForm">
+            <div class="inside-customer">
+                <div class="cust-data">
+                    <!-- <span class="user-pic">
+                        <span class="user-img"> <img *ngIf="contactInfo.profilephotourl != null"
+                                src='{{contactInfo.profilephotourl}}' /></span>
+                        <span class="user-img"> <img *ngIf="contactInfo.profilephotourl === null"
+                                src="assets/images/emptyProfile.jpg" /></span>
+                    </span> -->
+
+                    <div class="media-profile">
+                        <img class="case-profile" *ngIf="contactInfo.profilephotourl != null" src='{{contactInfo.profilephotourl}}' />
+                         <img class="case-profile" *ngIf="contactInfo.profilephotourl === null" src="assets/images/emptyProfile.jpg" />
+                    </div>
+                    <span class="cust-name" title="{{contactInfo.FullName}}">{{contactInfo.FullName}}</span>
+                </div>
+                <div class="cust-edit">
+                    <button class="edit" (click)="toggle()" *ngIf="editContactCasesRole"><img
+                            src="assets/images/svg/edit.svg" alt="add-icon" *ngIf="!show"> </button>
+                    <div class="case-info-btn" *ngIf="show">
+                        <button class="cancel" (click)="closeEditContact()"><i class="icon-cancel"></i></button>
+                        <button class="save" (click)="updateContactInfos()"><i class="icon-check"></i></button>
+                    </div>
+                </div>
+            </div>
+            <ul class="contact-list">
+                <li>
+                    <a href="tel:+919090989898" *ngIf="!show">
+                        <span *ngIf="contactInfo.PrimaryPhone != undefined "><img src="assets/images/svg/call-redbg.svg"
+                                alt="call"></span>
+                        <span>
+                            <span *ngIf="contactInfo.PrimaryPhone == undefined "><img
+                                    src="assets/images/svg/call-redbg.svg" alt="call">
+                                <span class="br-btm pl-1">Mobile No.</span>
+                            </span>
+                            <span class="pl-1"> {{contactInfo.PrimaryPhone}}</span>
+
+                        </span>
+                    </a>
+                    <div *ngIf="show">
+                        <span><img src="assets/images/svg/call-redbg.svg" alt="call"></span>
+                        <input placeholder="Mobile No." class="pl-1 contact-fileds" formControlName="phone"
+                            name="phone">
+
+                    </div>
+                </li>
+                <li>
+                    <a href="mailto:carlos.reyes@gmail.com" *ngIf="!show">
+                        <span *ngIf="contactInfo.PrimaryEmail != undefined "><img
+                                src="assets/images/svg/mail-bgblue.svg" alt="mail"></span>
+                        <span>
+                            <span *ngIf="contactInfo.PrimaryEmail == undefined "><img
+                                    src="assets/images/svg/mail-bgblue.svg" alt="call">
+                                <span class="br-btm pl-1">Email ID</span>
+                            </span>
+                            <span class="pl-1"> {{contactInfo.PrimaryEmail}}</span>
+
+                        </span>
+                    </a>
+                    <div *ngIf="show">
+                        <span><img src="assets/images/svg/mail-bgblue.svg" alt="mail"></span>
+                        <input placeholder="Email ID" class="pl-1 contact-fileds" formControlName="email" name="email">
+
+                    </div>
+                </li>
+                <li>
+                    <a href="mailto:carlos.reyes@facebook.com" *ngIf="!show">
+                        <span *ngIf="contactInfo.Facebook != undefined "><img src="assets/images/svg/fb-bgblue.svg"
+                                alt="facebook"></span>
+                        <span> <span *ngIf="contactInfo.Facebook == undefined "><img
+                                    src="assets/images/svg/fb-bgblue.svg" alt="call">
+                                <span class="br-btm pl-1">Facebook ID</span>
+                            </span>
+                            <span class="pl-1"> {{contactInfo.Facebook}}</span>
+                        </span>
+                    </a>
+                    <div *ngIf="show">
+                        <span><img src="assets/images/svg/fb-bgblue.svg" alt="facebook"></span>
+                        <input placeholder="Facebook ID" class="pl-1 contact-fileds" formControlName="facebook"
+                            name="facebook">
+                    </div>
+                </li>
+                <li>
+                    <a href="mailto:carlos.reyes@twitter.com" *ngIf="!show">
+                        <span *ngIf="contactInfo.Twitter != undefined "><img src="assets/images/svg/twitter-bgblue.svg"
+                                alt="twitter"></span>
+                        <span class=""> <span *ngIf="contactInfo.Twitter == undefined "><img
+                                    src="assets/images/svg/twitter-bgblue.svg" alt="call">
+                                <span class="br-btm pl-1">Twiiter ID</span>
+                            </span>
+                            <span class="pl-1"> {{contactInfo.Twitter}}</span>
+
+                        </span>
+                    </a>
+                    <div *ngIf="show">
+                        <span><img src="assets/images/svg/twitter-bgblue.svg" alt="twitter"></span>
+                        <input placeholder="Twiiter ID" class="pl-1 contact-fileds" formControlName="twitter"
+                            name="twitter">
+
+
+                    </div>
+                </li>
+
+                <li>
+                    <a href="mailto:carlos.reyes@twitter.com" *ngIf="!show">
+                        <span *ngIf="contactInfo.Instagram != undefined "><img src="assets/images/svg/instame.svg"
+                                alt="Instagram"></span>
+                        <span class=""> <span *ngIf="contactInfo.Instagram == undefined "><img
+                                    src="assets/images/svg/instame.svg" alt="call">
+                                <span class="br-btm pl-1">Instagram ID</span>
+                            </span>
+                            <span class="pl-1"> {{contactInfo.Instagram}}</span>
+
+                        </span>
+                    </a>
+                    <div *ngIf="show">
+                        <span><img src="assets/images/svg/instame.svg" alt="Instagram"></span>
+                        <input placeholder="Instagram ID" class="pl-1 contact-fileds" formControlName="instagram"
+                            name="Instagram">
+
+
+                    </div>
+                </li>
+
+                <li>
+                    <a href="mailto:carlos.reyes@twitter.com" *ngIf="!show">
+                        <span *ngIf="contactInfo.Whatsup != undefined " class="pl-1"><img
+                                src="assets/images/svg/ng-whatsup.svg" alt="whatsup" height="16px"></span>
+                        <span class="pl-1"> <span *ngIf="contactInfo.Whatsup == undefined "><img
+                                    src="assets/images/svg/ng-whatsup.svg" alt="whatsup" height="16px">
+                                <span class="br-btm pl-1">Whatsapp</span>
+                            </span>
+                            <span class="pl-1"> {{contactInfo.Whatsup}}</span>
+
+                        </span>
+                    </a>
+                    <div *ngIf="show">
+                        <span class="pl-1"><img src="assets/images/svg/ng-whatsup.svg" alt="Whatsapp"
+                                height="16px"></span>
+                        <input placeholder="Whatsapp" class="pl-1 contact-fileds" formControlName="whatsup"
+                            name="Whatsapp">
+
+
+                    </div>
+                </li>
+            </ul>
+        </form>
+    </div>
+    <div class="custom-tab ">
+        <ul class="nav side-tabs">
+            <li matTooltip="CaseInfo" matTooltipClass="custom-tooltip" *ngIf="caseinfoAccessModule"><a data-target="#caseinfo" data-toggle="tab" class="active"> <i
+                        class="icon-caseinfo"></i></a></li>
+            <li matTooltip="Past Cases" matTooltipClass="custom-tooltip" *ngIf="paseCaseAccessModule"><a data-target="#pastCases" data-toggle="tab"
+                    (click)="pastcaseTabActive()"> <i class="icon-ticket"></i></a></li>
+            <li matTooltip="Side Conversations" matTooltipClass="custom-tooltip" *ngIf="sideconversationAccessModule"><a data-target="#Conversation" data-toggle="tab"> <i
+                        class="icon-side-conversation"></i></a></li>
+            <li matTooltip="Appointment" matTooltipClass="custom-tooltip" *ngIf="customerAppAccessModule"><a data-target="#Appointment" data-toggle="tab"> <i
+                        class="icon-appoinment"></i></a></li>
+            <li matTooltip="Call Logs" matTooltipClass="custom-tooltip" *ngIf="calLogsAccessModule"><a data-target="#logs" data-toggle="tab"> <i class="icon-call-logs"></i></a>
+            </li>
+
+        </ul>
+        <div class="tab-content main-tab-content">
+            <div id="caseinfo" class="tab-pane active" *ngIf="caseinfoAccessModule">
+                <form action="" [formGroup]="contactInfoEditForm">
+                    <div class="tab-title">
+                        <h4>Case Info</h4>
+                        <div class="icons-link ">
+                            <div class="edit-pencil">
+                                <button (click)="editIconCaseInfotoggle()"><img src="assets/images/svg/edit.svg"
+                                        alt="add-icon" *ngIf="!showEditIconCaseInfo"> </button>
+                            </div>
+                            <div class="case-info-btn" *ngIf="showEditIconCaseInfo">
+                                <button class="cancel" (click)="closeCaseinfoEdit()">cancel</button>
+                                <button class="save" (click)="updateCaseInfo()">save info</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scroll-content">
+                        <div class="case-items">
+                            <div class="case-label">Status</div>
+                            <div class="blue case-label" *ngIf="!showEditIconCaseInfo"> {{caseInfo.Status}} </div>
+
+                            <ng-select name="value" *ngIf="showEditIconCaseInfo" [clearable]="false"
+                                formControlName="status">
+                                <ng-option *ngFor="let val of getstatus" value="{{val.CaseStatus}}">
+                                    {{val.CaseStatus}}
+                                </ng-option>
+                            </ng-select>
+
+                        </div>
+                        <div class="case-items">
+                            <div class="case-label">Priority</div>
+                            <div class="case-label" *ngIf="!showEditIconCaseInfo" [ngClass]="{'clr-cd-Low' : caseInfo.Priority === 'Low' ,'clr-cd-High' : 
+                            caseInfo.Priority === 'High','clr-cd-1-Medium' : caseInfo.Priority === 'Medium' }">
+                                {{caseInfo.Priority}} </div>
+                            <ng-select name="value" *ngIf="showEditIconCaseInfo" [clearable]="false"
+                                formControlName="priority">
+                                <ng-option *ngFor="let val of getpriority" value="{{val.Priority}}">
+                                    {{val.Priority}}
+                                </ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="case-items">
+                            <div class="case-label">Assign To Team</div>
+                            <div class="case-label">{{caseInfo.AssignedToTeamName}} </div>
+                        </div>
+                        <div class="case-items">
+                            <div class="case-label">Assiggn to</div>
+                            <div class="case-label">{{caseInfo.AssignedToAgentName}} </div>
+                        </div>
+                        <div class="case-items">
+                            <div class="case-label">Case ID</div>
+                            <div class="case-label">{{caseInfo.CaseID}} </div>
+                        </div>
+                        <div class="case-items">
+                            <div class="case-label">Created On</div>
+                            <div class="case-label">{{caseInfo.CreatedDate}} </div>
+                        </div>
+                        <div class="case-items">
+                            <div class="case-label">Case Type</div>
+                            <div class="case-label">{{caseInfo.CaseType}}</div>
+                        </div>
+                        <div class="case-items">
+                            <div class="case-label">Requested By</div>
+                            <div class="case-label">{{caseInfo.RequestedByEmailId}}</div>
+                        </div>
+                        <div class="case-items">
+                            <div class="case-label">Source Id</div>
+                            <div class="case-label">{{caseInfo.CaseSource}}</div>
+                        </div>
+
+
+
+                        <div class="case-items">
+                            <div class="case-label">Source Channel</div>
+                            <div class="case-label">{{caseInfo.CaseSourceName}}</div>
+                        </div>
+                        <div class="case-items">
+                            <div class="case-label">Callback Request</div>
+                            <div class="case-label">{{caseInfo.CallBackReq}}</div>
+                        </div>
+                        <div class="case-items">
+                            <div class="case-label">Escalation</div>
+                            <div class="case-label">{{caseInfo.Escalation}}</div>
+                        </div>
+
+                        <div class="case-items">
+                            <div class="case-label">Junk</div>
+                            <div class="case-label">{{caseInfo.Escalation}}</div>
+                        </div>
+                        <div class="case-items">
+                            <div class="case-label">Remarks</div>
+                            <div class="case-label">{{caseInfo.Junk}}</div>
+                        </div>
+                        <div class="case-items" style="display: none;">
+                            <input formControlName="caseid" type="text" />
+                            <input formControlName="userid" type="text" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div id="pastCases" class="tab-pane" *ngIf="paseCaseAccessModule">
+                <app-past-cases-info></app-past-cases-info>
+            </div>
+
+            <div id="Conversation" class="tab-pane" title="Side Conversation" *ngIf="sideconversationAccessModule">
+                <app-side-conversation></app-side-conversation>
+
+            </div>
+
+            <div id="Appointment" class="tab-pane" *ngIf="customerAppAccessModule">
+                <app-customer-appointment></app-customer-appointment>
+            </div>
+
+            <div id="logs" class="tab-pane" *ngIf="calLogsAccessModule">
+                <app-sum-call-whatsapp-info></app-sum-call-whatsapp-info>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

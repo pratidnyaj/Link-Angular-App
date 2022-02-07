@@ -1,0 +1,100 @@
+<div class="unlink_case_form">
+    <div class="src">
+        <div class="src_filed">
+            <label for="" class="src_txt">From Date</label>
+          
+            <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd"
+                      name="dp" [(ngModel)]="modelFrdt" ngbDatepicker #d="ngbDatepicker" 
+                      [maxDate]=today>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                      <i  class="icon-calender"></i>
+                  </button>
+                </div>
+              </div> 
+
+            <!-- {{fromDate}} -->
+        </div>
+      
+        <div class="src_filed">
+            <label for="" class="src_txt">To Date</label>
+            <!-- <input type="date" name="" id="" [(ngModel)]="toDate" (ngModelChange)="onChangeTodate($event)"> -->
+            <!-- <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" [maxDate]=today
+                      name="dp2" [(ngModel)]="modelTodt" ngbDatepicker #d1="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button">
+                    <i  class="icon-calender"></i>
+                  </button>
+                </div>
+              </div> -->
+            <!-- {{toDate}} -->
+        </div>
+       
+        <div class="src_filed">
+            <label for="" class="src_txt">Terms</label>
+            <!-- <input type="text" name="" id="" placeholder="Abishek Tearm"> {{selectedTeams}} -->
+            <div>
+                <ng-select [items]="teamsData" [multiple]="true" [closeOnSelect]="false" bindValue="TeamID"
+                (ngModelChange)="onChangeTeams($event)" 
+                    bindLabel="TeamName" [selectableGroup]="true" [(ngModel)]="selectedTeams">
+                    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                        <input id="item-{{index}}" type="checkbox" /> {{item.TeamName}}
+                    </ng-template>
+                </ng-select>
+            </div>
+
+        </div>
+        <div class="src_filed">
+            <label for="" class="src_txt">Agent</label>
+            <!-- <input type="text" name="" id="" placeholder="Sevice"> -->
+            <div>
+                <ng-select [items]="agentsData" [multiple]="true" [closeOnSelect]="false" bindValue="UserID"
+                (ngModelChange)="onChangeAgents($event)" 
+                    bindLabel="FullName" [selectableGroup]="true" [(ngModel)]="selectedAgents">
+                    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                        <input id="item-{{index}}" type="checkbox" /> {{item.FullName}}
+                    </ng-template>
+                </ng-select>
+            </div>
+
+        </div>
+        <div class="src_filed">
+            <label for="" class="src_txt">Channel Source</label>
+            <!-- <input type="text" name="" id="" placeholder="Intellect Design"> -->
+            <div>
+                <ng-select [items]="channelData" [multiple]="true" [closeOnSelect]="false"
+                (ngModelChange)="onChangeChannel($event)" 
+                    bindValue="EmailChannelSource" bindLabel="EmailChannelSource" [selectableGroup]="true" groupBy=""
+                    [(ngModel)]="selectedChannel">
+                    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                        <input id="item-{{index}}" type="checkbox" /> {{item.EmailChannelSource}}
+                    </ng-template>
+                </ng-select>
+            </div>
+        </div>
+
+        <!-- <ng-select
+            [items]="people"
+            [multiple]="true"
+            bindLabel="name"
+            groupBy="gender"
+            [selectableGroup]="true"
+            [closeOnSelect]="false"
+            bindValue="id"
+            [(ngModel)]="selectedPeople">
+            <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"/> {{item.gender | uppercase}}
+            </ng-template>
+            <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"/> {{item.name}}
+            </ng-template>
+        </ng-select> -->
+
+    </div>
+    <div>
+        <button class="unlink_theme_button" type="button" (click)="Search()">Search</button>
+    </div>
+
+</div>

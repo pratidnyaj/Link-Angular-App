@@ -1,0 +1,75 @@
+
+
+
+<div class="default-spacing">
+    <div class="container-fluid mobile-padding" >
+        <div id="dashboard">
+            
+            <div class="dashboard-container padding-right">
+                <h5>Business Attribute</h5>
+                <form [formGroup]="addCustomizedFields">
+                <div class="unlink_case_form">
+                    <div class="">
+                        <div class="row">
+                        <div class="col-md-6">
+                        <div class="src_filed">
+                                <input class="form-control" placeholder="Name" formControlName="lableName">
+                        </div>   </div> 
+                        <div class="col-md-6">
+                        <div class="src_filed">
+                                      <ng-select formControlName="dataType"  placeholder="Data Type" [items]="dataTypeObj" [clearable]="false" [closeOnSelect]="true"
+                                      bindValue="name"  bindLabel="name" name="name"
+                                      [(ngModel)]="selectedTeam"   
+                                      (ngModelChange)="setchoice($event)" class="mb-3">
+                                  </ng-select>
+                        </div>
+                    </div> 
+                </div> 
+                        <div class="row colors" id="choices" *ngIf="SetChoice">
+                           
+                            <div class="col-md-6">
+                                <div>
+                                    <label for="">Choices:</label>
+                                    <p style="display:flex;">
+                                        <input class="form-control" placeholder="Choices" #theChoicevale name="name"
+                                            type="text">
+                                        <input type="submit" class="btn btn-primary" value="Add"
+                                            (click)="addChoice(theChoicevale.value,0)">
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 adclass" *ngIf="AddChoice">
+                                <div class="DeletableList__item" style="border: solid 1px #eee !important;"
+                                    *ngFor="let choschoices of TheChosenchoice;">
+                                    <div class="DeletableList__label">{{choschoices}}</div>
+                                    <span class="DeletableList__delete">
+                                        <!-- <span class="glyphicon glyphicon-remove"
+                                        (click)="removeMe($event,choschoices,0)">
+                                    </span> -->
+                                    <i  class="icon-cancel" style="position: absolute;
+                                    padding-left: 610px;
+                                    float: left;margin-top: -18px " (click)="removeMe($event,choschoices,0)"></i>
+                                   
+                                    </span>
+                                </div>
+                           
+                        </div>
+                        </div>
+                        <div class="src_filed">     <label>Visible To Agent </label>   <input  style="margin-left:16px;" class="demo"  type="checkbox"  formControlName="visibleToAgent"/></div>
+                        <div class="src_filed">   <label>Visible To Contact </label>  <input style="margin-left:16px;" class="demo"  type="checkbox" formControlName="visibleToContact"/></div>
+                    </div>
+                    <div>
+                        <button class="unlink_theme_button"  (click)="saveCustomizedfield()" type="button">Submit</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+          
+        </div>
+
+     
+        </div>
+    </div>
+    
+
+

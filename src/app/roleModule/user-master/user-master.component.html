@@ -1,0 +1,376 @@
+<div class="wrapper">
+    <div class="action-perform-btns">
+        <!-- <div class="search-actions">
+            <div class="show-count">
+                <span>Show</span>
+                <span class="select-dropdown">
+                    <select>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </span>
+                <span>Entry</span>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Search by Name">
+                <button class="find" type="submit"><i class="icon-search"></i></button>
+            </div>
+
+        </div> -->
+        <div class="filter-action">
+            <!-- <button class="filters"><span><i class="icon-filters"></i></span>Filters</button>
+            <button class="filters"><span><i class="icon-export"></i></span>Import</button>
+            <button class="filters"><span><i class="icon-export"></i></span>Export</button>
+            <button class="filters"><span><i class="icon-filters"></i></span>Field Chooser</button> -->
+            <button class="filters filter-blue" (click)="openVertically(agentModal);">Add New Agent</button>
+        </div>
+    </div>
+    <div class="tbl-section">
+        <div class="data-body">
+            <table>
+                <thead>
+                    <tr>
+                        <!-- <th><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></th> -->
+                        <th>Photo</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Email</th>
+                        <th>Phone No</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let data of userMasterData | paginate: { itemsPerPage:10, currentPage: p ,totalItems: totalRec}">
+                        <!-- <tr *ngFor="let data of userMasterData | paginate: {itemsPerPage:10, currentPage: p id: 'listing_pagination',
+                        itemsPerPage: perPageCnt,
+                        currentPage: currentPageNumber,
+                        totalItems: totalRec }; let idx = index"> -->
+
+
+                        <!-- <td><input type="checkbox"></td> -->
+                        <td class="media-profile"> <img *ngIf="data.profilephotourl != null"
+                                src='{{data.profilephotourl}}' class="case-profile" alt="user" />
+                            <img *ngIf="data.profilephotourl === null" src="assets/images/emptyProfile.jpg"
+                                class="case-profile" alt="user" />
+                        </td>
+
+                        <td>{{data.FullName}}</td>
+                        <td>{{data.RoleName}}</td>
+                        <td>{{data.EmailID}}</td>
+                        <td>{{data.PhoneNo}}</td>
+                        <td>{{data.IsActive}}</td>
+                        <td class="actions">
+                            <a><i class="icon-edit" (click)="openVerticallyCentered(agentModal,data);"></i></a>
+                        </td>
+                        <td class="delete">
+                            <a><i (click)="deleteAgent(data)" class="icon-dustbox"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="data-footer">
+        <paging-controls (pageChange)="p = $event" (pageChange)="handlePageChange($event)" [isItemsPerPage]="false">
+        </paging-controls>
+    </div>
+    <!-- <div class="tbl-footer">
+        <div class="displaying_count">
+            <div>
+                Displaying {{(( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt + 1}} -
+                {{(( ( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) + perPageCnt > (totalRec)
+                ? totalRec :
+                (((
+                currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) + perPageCnt}}
+                of {{ totalRec }} Records
+            </div>
+        </div>
+        <div>
+            <div class="mod_pagination">
+                <pagination-controls id="listing_pagination" previousLabel="" nextLabel="" [maxSize]="7"
+                [directionLinks]="true" (pageChange)="handlePageChange($event)"></pagination-controls>
+            </div>
+        </div>
+    </div> -->
+</div>
+
+<!-- //////////////////////////////////////////////////////////////////////////////////// -->
+
+
+<!-- <div class="agent-modal"> -->
+    <ng-template #agentModal let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title">New Agent</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click');closefrom()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="assign_form">
+                <form class="form_to_rly" action="" [formGroup]="agentForm">
+                    <div class="row">
+                        <div class="col-md-12 contact-profile">
+                            <div class="profile_view">
+                                <button class="profile">
+                                    <img class="user d-none" src="assets/images/svg/contact-user.svg" alt="contact">
+                                </button>
+                            </div>
+                            <div class="profile-edit">
+                                <input #uploadFile type="file" id="uploadFile" class="hidden-input"
+                                    style="display: none;"
+                                    accept="image/jpeg, .jpeg, image/png, .png, image/pjpeg, .jpg, .docx, .pdf" />
+
+
+                                <div class="pic_user">
+                                    <img class="user" [src]="url" alt="client-profile">
+                                    <button class="btn-user-edit">
+                                        <img class="pencil-icon" src="assets/images/svg/edit.svg" alt="edit"
+                                            for="uploadFile" (click)="selectFile()">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label style="color: rgb(133, 128, 128);">Name</mat-label>
+                                <!-- <mat-label style="color: black;"><span class="astrik">*</span> Name</mat-label> -->
+                                <input required matInput autocomplete="off" name="FullName" formControlName="FullName"
+                                    [ngClass]="{ 'is-invalid': submitted && f.FullName.errors }">
+                                <mat-error *ngIf="submitted && f.FullName.errors">
+                                    <mat-error *ngIf="f.FullName.errors.required"> <strong>Name is required</strong>
+                                    </mat-error>
+                                </mat-error>
+                            </mat-form-field>
+                            <!-- <div *ngIf="submitted && f.FullName.errors" class="invalid-feedbackOne">
+                            <div *ngIf="f.FullName.errors.required">* Name is required</div>
+                        </div> -->
+
+                        </div>
+                        <div class="col-md-4">
+                            <!-- <mat-form-field appearance="fill">
+                            <mat-label>Role</mat-label>
+                            <input matInput autocomplete="off" name="RoleName" formControlName="RoleName" >
+                        </mat-form-field> -->
+
+                            <!-- <ng-select placeholder="Teams" [items]="teamsData" [clearable]="false" [closeOnSelect]="true"
+                        bindValue="TeamID"  bindLabel="TeamName" name="teams"
+                       class="mb-3">
+                    </ng-select>  -->
+                            <!-- <ng-select [items]="roledata"
+                        bindLabel="RoleName"
+                        bindValue="RoleID" 
+                        placeholder="Role"
+                        appendTo="body"
+                        [clearable]="false" [closeOnSelect]="true" formControlName="RoleName"
+                        
+                        
+                        [ngClass]="{ 'is-invalid': submitted && f.RoleName.errors }">
+                      </ng-select>
+
+                      <div *ngIf="submitted && f.RoleName.errors" class="invalid-feedbackOne">
+                        <div *ngIf="f.RoleName.errors.required">* Role Name is required</div>
+                    </div> -->
+                            <mat-form-field appearance="fill">
+                                <mat-label>Role</mat-label>
+                                <mat-select required formControlName="RoleName"
+                                    [ngClass]="{ 'is-invalid': submitted && f.RoleName.errors }">
+                                    <mat-option *ngFor="let val of roledata" value={{val.RoleID}}>
+                                        {{val.RoleName}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="submitted && f.RoleName.errors">
+                                    <mat-error *ngIf="f.RoleName.errors.required"> <strong>Role Name is
+                                            required</strong>
+                                    </mat-error>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label style="color: rgb(133, 128, 128);">Email</mat-label>
+                                <input matInput autocomplete="off" name="EmailID" formControlName="EmailID"
+                                    [ngClass]="{ 'is-invalid': submitted && f.EmailID.errors }">
+
+                                <div *ngIf="submitted && f.EmailID.errors" class="invalid-feedbacktwo">
+                                    <strong *ngIf="f.EmailID.errors.required">* Email is required</strong>
+                                    <strong *ngIf="f.EmailID.errors.email">* Email must be valid</strong>
+                                </div>
+
+                            </mat-form-field>
+                        </div>
+                        <!-- </div> -->
+
+                        <!-- <div class="row"> -->
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label style="color: rgb(133, 128, 128);">Phone No</mat-label>
+                                <input required matInput autocomplete="off" name="PhoneNo" formControlName="PhoneNo"
+                                    [ngClass]="{ 'is-invalid': submitted && f.PhoneNo.errors }" maxlength="10"
+                                    (keypress)="numericOnly($event)">
+                                <mat-error *ngIf="submitted && f.PhoneNo.errors">
+                                    <mat-error *ngIf="f.PhoneNo.errors.required"> <strong>Phone No is required</strong>
+                                    </mat-error>
+                                </mat-error>
+
+                            </mat-form-field>
+                            <!-- <div *ngIf="submitted && f.PhoneNo.errors" class="invalid-feedbackOne">
+                            <div *ngIf="f.PhoneNo.errors.required">* Phone No is required</div>
+                        </div> -->
+                        </div>
+                        <div class="col-md-4">
+                            <!-- <mat-form-field appearance="fill"> -->
+                            <!-- <mat-label>Member Of</mat-label> -->
+                            <!-- <input matInput autocomplete="off" name="Description" > -->
+                            <!-- <ng-select placeholder="Teams" [items]="teamsData" [clearable]="false" [closeOnSelect]="true"
+                            bindValue="TeamID"  bindLabel="TeamName" name="teams"
+                           class="mb-3">
+                        </ng-select> -->
+                            <!-- <ng-select [items]="timeZoneData"
+                        bindLabel="TimeZone"
+                        bindValue="TimeZoneID" 
+                        placeholder="Select Time Zone"
+                        formControlName="timeZoneData"
+                        [ngClass]="{ 'is-invalid': submitted && f.timeZoneData.errors }" >
+                      </ng-select>
+                      <div *ngIf="submitted && f.timeZoneData.errors" class="invalid-feedbackOne">
+                        <div *ngIf="f.timeZoneData.errors.required">* Time Zone is required</div>
+                    </div> -->
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Time Zone</mat-label>
+                                <mat-select required formControlName="timeZoneData"
+                                    [ngClass]="{ 'is-invalid': submitted && f.timeZoneData.errors }">
+                                    <mat-option *ngFor="let val of timeZoneData" value={{val.TimeZoneID}}>
+                                        {{val.TimeZone}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="submitted && f.timeZoneData.errors">
+                                    <mat-error *ngIf="f.timeZoneData.errors.required"> <strong>Time Zone is
+                                            required</strong></mat-error>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-4">
+                            <!-- <ng-select
+                        [items]="getTeamsdata"
+                        bindLabel="TeamName"
+                        placeholder="Member of"
+                        appendTo="body"
+                        [multiple]="true"
+                        formControlName="Teamsdata"
+                        [ngClass]="{ 'is-invalid': submitted && f.Teamsdata.errors }"  >
+
+                        <ng-template ng-header-tmp>
+                            <button (click)="selectAll()" class="btn btn-sm btn-secondary">Select all</button>
+                         
+                        </ng-template>
+                      </ng-select> -->
+                            <!-- <mat-list-item class="primary-imenu-item" role="listitem"> -->
+                            <mat-form-field appearance="fill">
+                                <mat-label>Member of</mat-label>
+                                <mat-select required formControlName="Teamsdata" multiple
+                                    [ngClass]="{ 'is-invalid': submitted && f.accountId.errors }" #select>
+                                    <div class="select-all">
+                                        <button (click)="selectAlla()" class="btn btn-sm btn-secondary">Select
+                                            all</button>
+                                    </div>
+                                    <mat-option *ngFor="let val of getTeamsdata" value={{val.TeamID}}>
+                                        {{val.TeamName}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <!-- </mat-list-item> -->
+                            <!-- <div *ngIf="submitted && f.Teamsdata.errors" class="invalid-feedbackOne">
+                        <div *ngIf="f.Teamsdata.errors.required">* Member of is required</div>
+                    </div> -->
+                        </div>
+                        <!-- </div> -->
+                        <!-- <div class="row"> -->
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Address</mat-label>
+                                <textarea matInput autocomplete="off" name="Description"
+                                    formControlName="Address"></textarea>
+                            </mat-form-field>
+                            <!-- <div *ngIf="submitted && f.Address.errors" class="invalid-feedbackOne">
+                            <div *ngIf="f.Address.errors.required">* Address is required</div>
+                        </div> -->
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Signature</mat-label>
+                                <textarea matInput autocomplete="off" name="Description"
+                                    formControlName="Signature"></textarea>
+                            </mat-form-field>
+
+                            <!-- <div *ngIf="submitted && f.Signature.errors" class="invalid-feedbackOne">
+                            <div *ngIf="f.Signature.errors.required">* Signature is required</div>
+                        </div> -->
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Password</mat-label>
+                                <input matInput autocomplete="off" maxlength="12" type="password" name="Password"
+                                    formControlName="Password">
+                            </mat-form-field>
+                        </div>
+                        <!-- </div> -->
+                        <!-- <div class="row"> -->
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Title</mat-label>
+                                <input matInput autocomplete="off" name="Title" formControlName="Title">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <!-- <ng-select [items]="accountList"
+                        bindLabel="accountname"
+                        bindValue="accountid" 
+                        placeholder="Account Name"
+                        appendTo="body"
+                        [clearable]="false" [closeOnSelect]="true" formControlName="accountId" 
+                        [ngClass]="{ 'is-invalid': submitted && f.accountId.errors }">
+                      </ng-select>
+                      <div *ngIf="submitted && f.accountId.errors" class="invalid-feedbackOne">
+                        <div *ngIf="f.accountId.errors.required">* Account Name is required</div>
+                    </div> -->
+                            <mat-form-field appearance="fill">
+                                <mat-label>Account Name</mat-label>
+                                <mat-select required formControlName="accountId"
+                                    [ngClass]="{ 'is-invalid': submitted && f.accountId.errors }">
+                                    <mat-option *ngFor="let val of accountList" value={{val.accountid}}>
+                                        {{val.accountname}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="submitted && f.accountId.errors">
+                                    <mat-error *ngIf="f.accountId.errors.required"> <strong>Account Name is
+                                            required</strong></mat-error>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <!-- <mat-form-field appearance="fill"> -->
+                            <mat-label>IsActive</mat-label>
+                            <input style="margin-left: 10px;" type="checkbox" autocomplete="off" name="Description"
+                                formControlName="IsActive">
+                            <!-- </mat-form-field> -->
+                        </div>
+                        <!-- </div> -->
+                        <!-- <div class="row"> -->
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class="filled-btn" (click)="save();">Save Agent</button>
+                    </div>
+                    <!-- 
+                <div class="src_filed">     <label>Visible To Agent </label>   <input  style="margin-left:16px;" class="demo"  type="checkbox"  formControlName="visibleToAgent"/></div>
+                <div class="src_filed">   <label>Visible To Contact </label>  <input style="margin-left:16px;" class="demo"  type="checkbox" formControlName="visibleToContact"/></div> -->
+                </form>
+                <!-- <div class="mt-3">
+                <button class="btn-role">Update Agent</button>
+            </div> -->
+            </div>
+        </div>
+    </ng-template>
+<!-- </div> -->

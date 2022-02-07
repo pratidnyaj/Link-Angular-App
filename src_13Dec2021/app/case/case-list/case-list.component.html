@@ -1,0 +1,220 @@
+<div class="left-panel d-none">
+    <div class="cases-holder">
+        <ul class="list-group fa-padding">
+            <li *ngFor="let case of cases ; let idx = index"
+                [ngClass]="{'active-case': case.caseid === currentSelectedCaseId}" class="list-group-item case-list">
+                <div class="media" (click)="selectCase(case)">
+                    <img src="assets/images/case pic1.png" class="case-profile" alt="user" />
+                    <div class="media-body">
+                        <span class="case-id">{{case.caseid}}</span><span class="badge badge-light">New</span> <span
+                            class="date float-right">{{case.CreatedTime}}</span>
+                        <p class="case-subject" title=" {{case.Subject}}">
+                            {{case.Subject}}
+                        </p>
+                        <p class="case-info">
+                            <i class="icon-mail-outline"></i>
+                            <!-- <img src="assets/images/svg/email.svg" style="vertical-align: baseline;" /> -->
+                            {{case.FullName}} <span class="dot">.</span> {{case.CreatedDate}}
+                        </p>
+                        <p class="assign-to"><span class="icon-assign-outline"></span>
+                            Assign to :{{case.AssignedToAgent}} <span class="status">{{case.Status}}</span> <span
+                                class="badge  float-right"
+                                [ngClass]="{'clr-cd-Low' : case.Priority === 'Low' ,'clr-cd-High' : case.Priority === 'High','clr-cd-1-Medium' : case.Priority === 'Medium' }">{{case.Priority}}</span>
+                        </p>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+<!-- as per new ui -->
+<div class="custom-tab ">
+    <ul class="nav d-none">
+        <li><a data-target="#Active" data-toggle="tab" class="active">Active<sup>1</sup></a></li>
+        <li><a data-target="#Missed" data-toggle="tab">Missed<sup>1</sup></a></li>
+        <li><a data-target="#Parked" data-toggle="tab">Parked<sup>1</sup></a></li>
+        <li><a data-target="#Closed" data-toggle="tab">Closed</a></li>
+    </ul>
+    <!-- <app-filter></app-filter> -->
+    <app-case-filter (caseFilterEvent)="fetchCaseWithFilter($event)"></app-case-filter>
+    <div class="tab-content">
+        <div id="Active" class="tab-pane active">
+            <div class="cases-holder" [ngClass]="{'make-blur' : isCaseListBlur}">
+                <ul class="list-group fa-padding">
+                    <li *ngFor="let case of cases ; let idx = index"
+                        [ngClass]="{'active-case': case.caseid === currentSelectedCaseId}"
+                        class="list-group-item case-list">
+                        <div class="media" (click)="selectCase(case)">
+                            <!-- <div>
+                                <span class="name-pic">LD</span>
+
+                            </div> -->
+                            <!-- <div class="social-icon">
+                                <i class="icon-cancel"></i>
+                            </div> -->
+                            <!-- <div class="social-icons">
+                                <span class="icon-insta-bg"><span class="path1"></span><span class="path2"></span><span
+                                        class="path3"></span></span>
+
+                            </div> -->
+                            <img src="assets/images/client-profile.png" class="case-profile" alt="user" />
+                            <div class="media-body">
+                                <span class="case-id">{{case.caseid}}</span><span class="badge badge-light">New</span>
+                                <span class="date float-right">{{case.CreatedTime}}</span>
+                                <p class="case-subject" title=" {{case.Subject}}">
+                                    {{case.Subject}}
+                                </p>
+                                <p class="case-info">
+                                    <i class="icon-mail-outline pr-1"></i>
+                                    {{case.FullName}} <span class="dot">.</span> {{case.CreatedDate}}
+                                </p>
+
+                                <p class="assign-to"><span class="icon-assign-outline pr-1"> </span>
+                                    <span class="name-assign">Assign to:{{case.AssignedToAgent}}</span>
+                                </p>
+                                <p class="assign-to"><span class="status">{{case.Status}}</span> <span
+                                        class="badge  float-right"
+                                        [ngClass]="{'clr-cd-Low' : case.Priority === 'Low' ,'clr-cd-High' : case.Priority === 'High','clr-cd-1-Medium' : case.Priority === 'Medium' }">{{case.Priority}}</span>
+                                </p>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="Missed" class="tab-pane">
+            <div class="cases-holder" [ngClass]="{'make-blur' : isCaseListBlur}">
+                <ul class="list-group fa-padding">
+                    <li class="list-group-item case-list">
+                        <div class="media">
+                            <!-- <div>
+                                <span class="name-pic">LD</span>
+
+                            </div> -->
+                            <!-- <div class="social-icon">
+                                <i class="icon-cancel"></i>
+                            </div> -->
+                            <!-- <div class="social-icons">
+                                <span class="icon-insta-bg"><span class="path1"></span><span class="path2"></span><span
+                                        class="path3"></span></span>
+
+                            </div> -->
+                            <img src="assets/images/client-profile.png" class="case-profile" alt="user" />
+                            <div class="media-body">
+                                <span class="case-id">123456</span><span class="badge badge-light">New</span>
+                                <span class="date float-right">12.30 AM</span>
+                                <p class="case-subject" title=" case.Subject">
+                                    Website not working
+                                </p>
+                                <p class="case-info">
+                                    <i class="icon-mail-outline pr-1"></i>
+                                    Carol Reyes <span class="dot">.</span> created 20 mins ago
+                                </p>
+
+                                <p class="assign-to"><span class="icon-assign-outline pr-1"> </span>
+                                    <span class="name-assign">Assign to:Carol Reyes </span>
+                                </p>
+                                <p class="assign-to"><span class="status">Open</span> <span
+                                        class="badge  float-right">High</span>
+                                </p>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <div id="Parked" class="tab-pane">
+                <div class="cases-holder" [ngClass]="{'make-blur' : isCaseListBlur}">
+                    <ul class="list-group fa-padding">
+                        <li class="list-group-item case-list">
+                            <div class="media">
+                                <!-- <div>
+                                    <span class="name-pic">LD</span>
+    
+                                </div> -->
+                                <!-- <div class="social-icon">
+                                    <i class="icon-cancel"></i>
+                                </div> -->
+                                <!-- <div class="social-icons">
+                                    <span class="icon-insta-bg"><span class="path1"></span><span class="path2"></span><span
+                                            class="path3"></span></span>
+    
+                                </div> -->
+                                <img src="assets/images/client-profile.png" class="case-profile" alt="user" />
+                                <div class="media-body">
+                                    <span class="case-id">123456</span><span class="badge badge-light">New</span>
+                                    <span class="date float-right">12.30 AM</span>
+                                    <p class="case-subject" title=" case.Subject">
+                                        Website not working
+                                    </p>
+                                    <p class="case-info">
+                                        <i class="icon-mail-outline pr-1"></i>
+                                        Carol Reyes <span class="dot">.</span> created 20 mins ago
+                                    </p>
+
+                                    <p class="assign-to"><span class="icon-assign-outline pr-1"> </span>
+                                        <span class="name-assign">Assign to:Carol Reyes </span>
+                                    </p>
+                                    <p class="assign-to"><span class="status">Open</span> <span
+                                            class="badge  float-right">High</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div id="Closed" class="tab-pane">
+                <div class="cases-holder" [ngClass]="{'make-blur' : isCaseListBlur}">
+                    <ul class="list-group fa-padding">
+                        <li class="list-group-item case-list">
+                            <div class="media">
+                                <!-- <div>
+                                    <span class="name-pic">LD</span>
+    
+                                </div> -->
+                                <!-- <div class="social-icon">
+                                    <i class="icon-cancel"></i>
+                                </div> -->
+                                <!-- <div class="social-icons">
+                                    <span class="icon-insta-bg"><span class="path1"></span><span class="path2"></span><span
+                                            class="path3"></span></span>
+    
+                                </div> -->
+                                <img src="assets/images/client-profile.png" class="case-profile" alt="user" />
+                                <div class="media-body">
+                                    <span class="case-id">123456</span><span class="badge badge-light">New</span>
+                                    <span class="date float-right">12.30 AM</span>
+                                    <p class="case-subject" title=" case.Subject">
+                                        Website not working
+                                    </p>
+                                    <p class="case-info">
+                                        <i class="icon-mail-outline pr-1"></i>
+                                        Carol Reyes <span class="dot">.</span> created 20 mins ago
+                                    </p>
+
+                                    <p class="assign-to"><span class="icon-assign-outline pr-1"> </span>
+                                        <span class="name-assign">Assign to:Carol Reyes </span>
+                                    </p>
+                                    <p class="assign-to"><span class="status">Open</span> <span
+                                            class="badge  float-right">High</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,48 @@
+<div class="wrapper">
+    <div class="tbl-section">
+        <div class="data-body">
+            <table>
+                <thead>
+                    <tr style="font-weight: bold;">
+                        <th>Subject</th>
+                        <th>Contact</th>
+                        <th>CreatedOn</th>
+                        <th>Owner</th>
+                        <th>RoutedAgent</th>
+                        <th>RoutedTeam</th>
+                        <th>DueOn</th>
+                        <th>Status</th>
+                        <th>Source</th>   
+                        <th>Priority</th>
+                     
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of AgentCaseListList | paginate: { itemsPerPage:10, currentPage: p }">
+                        <!-- <tr> -->
+                            <td>    <a   class="filters filter-blue" style="cursor: pointer;"   > <p class="fontcolor">{{data.Subject}}</p></a>  </td> 
+                            <td>    <a   class="filters filter-blue" style="cursor: pointer;"   > <p class="fontcolor">{{data.FullName}}</p></a>  </td> 
+                        <!-- <td>{{data.Subject}}</td> -->
+                       <!-- <td>{{data.FullName}}</td> -->
+                       <td>{{data.CreatedDate}}</td>
+                       <td>{{data.Owner}}</td>
+                       <td>{{data.AssignedToAgent}}</td>
+                       <td>{{data.AssignedToTeam}}</td>
+                       <td>{{data.DueDateTime}}</td>
+                       <td>{{data.Status}}</td>
+                       <td>Email Logo</td>
+                       <td>{{data.Priority}}</td>
+                       
+                    
+                   </tr>
+
+               
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="data-footer">
+        <paging-controls (pageChange)="p = $event" [isItemsPerPage]="false"></paging-controls>
+    </div>
+
+</div>

@@ -1,0 +1,24 @@
+<div class="row">
+<div  class="col-md-12"> 
+    <table class="responsiveTable table-bordered cust-tbls" style="text-align: left;" >
+        <thead>
+            <tr>                           
+                <th>Agent Notifications</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let items of agentNotification">                           
+               <td>
+                <!-- <mat-checkbox >fggfgf</mat-checkbox> -->
+                <mat-checkbox    [checked]="items.isSelected" 
+                >{{items.textfield}}</mat-checkbox>
+                </td>
+                <td class="actions" style="text-align: right; margin-top: 6px;">
+                    <a [routerLink]="['/notificationTemplate']"><i class="icon-edit" ></i></a>   
+                </td>
+            </tr>
+        </tbody> 
+    </table>
+</div>
+</div>

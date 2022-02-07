@@ -1,0 +1,138 @@
+<div class="wrapper">
+    <div class="filter-action">
+        <button class="filters filter-blue" (click)="openVertically(contactModal);">Add Contact</button>
+    </div>
+    <div class="tbl-section">
+        <div class="data-body">
+            <table>
+                <thead>
+                    <tr style="font-weight: bold;">
+                        <th>Contact</th>
+                        <th>Email ID</th>
+                        <th>Phone Number</th>
+                        <th>Is Active</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                     
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of contactList | paginate: { itemsPerPage:10, currentPage: p }">
+                       <td>{{data.FullName}}</td>
+                       <td>{{data.PrimaryEmail}}</td>
+                       <td>{{data.PrimaryPhone}}</td>
+                       <td>{{data.IsActive}}</td>
+                     
+                       <td class="actions">
+                        <a><i class="icon-edit"  (click)="editContactinfo(data);"></i></a>
+                    </td>
+                    <td class="delete">
+                        <a><i  class="icon-dustbox" (click)="deleteContactinfo(data);"></i></a>
+                    </td>
+                   </tr>
+
+               
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="data-footer">
+        <paging-controls (pageChange)="p = $event" [isItemsPerPage]="false"></paging-controls>
+    </div>
+
+</div>
+<ng-template #contactModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title"> Add Contact</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click');closefrom();">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="conatct-frm">
+            <!-- <form action=""> -->
+                <div class="search-panel">
+                    <div class="form-group">
+                        <input type="search" class="form-control" [(ngModel)]="searchText" placeholder="Search Name" />
+
+                        <button class="btn" type="btn"><i class="icon-search"></i></button>
+                    </div>
+                </div>
+                <div class="check-list">
+                    <ul *ngFor="let items of searchContactList | filter:searchText">
+                        <li>
+                            <div class="check-item">
+                                <label for="">{{items.FullName}}</label>
+                                <mat-checkbox  (change)="isAllSelectedAdmin(items)"></mat-checkbox>
+                            </div>
+                           
+                        </li>
+                        <!-- <li>
+                            <div class="check-item">
+                                <label for="">Abhishek Patil</label>
+                                <mat-checkbox ></mat-checkbox>
+                            </div>
+                           
+                        </li>
+                        <li>
+                            <div class="check-item">
+                                <label for="">Abhishek Patil</label>
+                                <mat-checkbox ></mat-checkbox>
+                            </div>
+                           
+                        </li>
+                        <li>
+                            <div class="check-item">
+                                <label for="">Abhishek Patil</label>
+                                <mat-checkbox ></mat-checkbox>
+                            </div>
+                           
+                        </li>
+                        <li>
+                            <div class="check-item">
+                                <label for="">Abhishek Patil</label>
+                                <mat-checkbox ></mat-checkbox>
+                            </div>
+                           
+                        </li>
+                        <li>
+                            <div class="check-item">
+                                <label for="">Abhishek Patil</label>
+                                <mat-checkbox ></mat-checkbox>
+                            </div>
+                           
+                        </li> -->
+                    </ul>
+                </div>
+                <div class="text-center mt-3">
+                    <button class="filled-btn" (click)="saveContact()">Add Contact</button>
+                </div>
+            <!-- </form> -->
+        </div>
+
+
+        <!-- <div class="assign_form">
+            <form class="form_to_rly" action="" >
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <mat-form-field appearance="outline">
+                            <input  matInput  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for a contact">
+                            <mat-label>Search Contact</mat-label>
+                      </mat-form-field>
+                   </div>
+                   <div class="col-md-12">
+                    <ul *ngFor="let items of searchContactList | filter:searchText">
+                        <li>  <mat-checkbox   (change)="isAllSelectedAdmin(items)">{{items.FullName}}</mat-checkbox></li>
+                      </ul>
+                   </div>
+                   
+                </div>
+                <div class="text-center mt-3">
+                    <button class="filled-btn" (click)="saveContact()">Save Contact</button>
+                </div>
+            </form>
+        </div> -->
+    </div>
+</ng-template>

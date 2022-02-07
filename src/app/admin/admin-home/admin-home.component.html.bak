@@ -1,0 +1,192 @@
+<div class="container-fluid mobile-padding">
+    <div class="admin_content">
+        <div class="Admin_elements"  *ngIf="agentPage  || teamsPage  ||  rolePage">
+            <div class="admin_title">
+                <!-- <span>Admin</span> -->
+            </div>
+            <div class="admin_body">
+                <div class="row">
+                    <div class="col col-lg-2" *ngIf="agentPage">
+                        <div class="admin-roles">
+                            <a [routerLink]="['/agents']">
+                                <div>
+                                    <img src="assets/images/svg/agents.svg" alt="agents">
+                                </div>
+                                <div class="admin_info">
+                                    <span>Agents</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col col-lg-2" *ngIf="teamsPage">
+                        <div class="admin-roles">
+                            <a href="">
+                                <div>
+                                    <img src="assets/images/svg/teams.svg" alt="teams">
+                                </div>
+                                <div class="admin_info">
+                                    <span>teams</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col col-lg-2" *ngIf="rolePage">
+                        <div class="admin-roles">
+                            <a [routerLink]="['/role-master']">
+                                <div>
+                                    <img src="assets/images/svg/roles.svg" alt="agents">
+                                </div>
+                                <div class="admin_info">
+                                    <span  (click)="goToNextPage()"> roles</span>
+                                        <!-- <a class="nav-link" title="Role" [routerLink]="['/role-master']">
+                                          
+                                        </a> -->
+                                        
+                                       
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Admin_elements" *ngIf="productPage  || businessRolesPage  ||  configurationPage || emailNotificationPage  || businessObjectsPage  ||  templatePage">
+            <div class="admin_title">
+                <!-- <span>Header</span> -->
+            </div>
+            <div class="admin_body">
+                <div class="row">
+                    <div class="col col-lg-2" *ngIf="productPage">
+                        <div class="admin-roles">
+                            <a href="">
+                                <div>
+                                    <img src="assets/images/svg/products.svg" alt="products">
+                                </div>
+                                <div class="admin_info">
+                                    <span>products</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col col-lg-2" *ngIf="businessRolesPage">
+                        <div class="admin-roles">
+                            <a href="">
+                                <div>
+                                    <img src="assets/images/svg/rules.svg" alt="rules">
+                                </div>
+                                <div class="admin_info">
+                                    <span>Business Rules</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col col-lg-2" *ngIf="configurationPage">
+                        <div class="admin-roles">
+                            <a href="">
+                                <div>
+                                    <img src="assets/images/svg/configuration.svg" alt="Configuration">
+                                </div>
+                                <div class="admin_info">
+                                    <span>Configuration</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col col-lg-2" *ngIf="emailNotificationPage">
+                        <div class="admin-roles">
+                            <a href="">
+                                <div>
+                                    <img src="assets/images/svg/email-notification.svg" alt="Email-Notification">
+                                </div>
+                                <div class="admin_info">
+                                    <span>Email-Notification</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col col-lg-2" *ngIf="businessObjectsPage">
+                        <div class="admin-roles">
+                            <a  [routerLink]="['/ObjectManager']">
+                                <div>
+                                    <img src="assets/images/svg/objects.svg" alt="Objects">
+                                </div>
+                                <div class="admin_info">
+                                    <span>Objects</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col col-lg-2" *ngIf="templatePage">
+                        <div class="admin-roles">
+                            <a href="">
+                                <div>
+                                    <img src="assets/images/svg/templates.svg" alt="Templates">
+                                </div>
+                                <div class="admin_info">
+                                    <span>Templates</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Admin_elements">
+            <div class="admin_title">
+                <!-- <span>Header</span> -->
+            </div>
+            <div class="admin_body">
+                <div class="row">
+                    <div class="col col-lg-2" *ngIf="dispositionPage">
+                        <div class="admin-roles">
+                            <a href="">
+                                <div>
+                                    <img src="assets/images/svg/disposition.svg" alt="Disposition">
+                                </div>
+                                <div class="admin_info">
+                                    <span>Disposition</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col col-lg-2"  *ngIf="channelSourceMappingPage">
+                        <div class="admin-roles">
+                            <a href="">
+                                <div>
+                                    <img src="assets/images/svg/channel-mapping.svg" alt="Channel-Mapping">
+                                </div>
+                                <div class="admin_info">
+                                    <span>Channel source Mapping</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col col-lg-2"  *ngIf="channelSourcePage">
+                        <div class="admin-roles">
+                            <a href="">
+                                <div>
+                                    <img src="assets/images/svg/channel-source.svg" alt="Channel-Source">
+                                </div>
+                                <div class="admin_info">
+                                    <span>Channel Source</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col col-lg-2" *ngIf="agentTemplateMappingPage">
+                        <div class="admin-roles">
+                            <a href="">
+                                <div>
+                                    <img src="assets/images/svg/agents-template.svg" alt="Agents-template">
+                                </div>
+                                <div class="admin_info">
+                                    <span>Agents template mapping</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="wrapper">
+    <div class="action-perform-btns">
+        <div class="filter-action">
+            <button class="filters filter-blue" (click)="openVertically(agentModal);">Add New Product</button>
+        </div>
+    </div>
+    <div class="tbl-section">
+        <div class="data-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Products</th>
+                        <th>Routed Team</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of getProductsList">
+                        <td>{{data.ProductName}}</td>
+                        <td>{{data.TeamName}}</td>
+                        <td class="actions">
+                            <a><i class="icon-edit" (click)="openVerticallyCentered(agentModal,data);"></i></a>
+                        </td>
+                        <td class="delete">
+                            <a><i class="icon-dustbox" (click)="deleteProduct(data);"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<ng-template #agentModal let-modal>
+    <div class="product-modal">
+        <div class="modal-header prod-header">
+            <h4 class="modal-title">Add Product</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click');closefrom()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body prod-body">
+            <div class="assign_form">
+                <form class="form_to_rly" action="" [formGroup]="productForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label style="color: rgb(133, 128, 128);">Product Name</mat-label>
+                                <input matInput autocomplete="off" name="productName" formControlName="productName">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Assign To Team</mat-label>
+                                <mat-select required formControlName="assignToTeam">
+                                    <mat-option *ngFor="let val of teamsData" value={{val.TeamID}}>
+                                        {{val.TeamName}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-12">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Description</mat-label>
+                                <textarea matInput autocomplete="off" name="description"
+                                    formControlName="description"></textarea>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-12">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Support Email</mat-label>
+                                <mat-select required formControlName="supportEmail" multiple #select>
+                                    <div class="select-all">
+                                        <button (click)="selectAlla()" class="btn btn-sm btn-secondary">Select
+                                            all</button>
+                                    </div>
+                                    <mat-option *ngFor="let val of supportEmaildata" value={{val.EmailAccountID}}>
+                                        {{val.SupportEmail}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class="filled-btn" (click)="save()">Save Agent</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,113 @@
+<div class="tab-title">
+    <h4>Customer Appointment</h4>
+    <div class="icons-link">
+        <div><a><i class="icon-gry-plus"></i></a></div>
+
+    </div>
+</div>
+<div class="scroll-content">
+    <ul class="chain-listing">
+        <li (click)="openScrollableContent(longContent)">
+            <a>
+                <div class="icon"><i class="icon-appoinment"></i></div>
+                <div class="short-description">
+                    <span class="ticket-id">14251121</span>
+                    <h6><span>Appointment Header</span></h6>
+                    <span class="sub-title"><span>Date & Time - 05/7/2021 15:34</span></span>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a>
+                <div class="icon"><i class="icon-appoinment"></i></div>
+                <div class="short-description">
+                    <span class="ticket-id">14251121</span>
+                    <h6><span>Appointment Header</span></h6>
+                    <span class="sub-title"><span>Date & Time - 05/7/2021 15:34</span></span>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a>
+                <div class="icon"><i class="icon-appoinment"></i></div>
+                <div class="short-description">
+                    <span class="ticket-id">14251121</span>
+                    <h6><span>Appointment Header</span></h6>
+                    <span class="sub-title"><span>Date & Time - 05/7/2021 15:34</span></span>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a>
+                <div class="icon"><i class="icon-appoinment"></i></div>
+                <div class="short-description">
+                    <span class="ticket-id">14251121</span>
+                    <h6><span>Appointment Header</span></h6>
+                    <span class="sub-title"><span>Date & Time - 05/7/2021 15:34</span></span>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+
+
+<ng-template #longContent let-modal>
+    <div class="modal-header book-app-header">
+        <h4 class="modal-title">Book Appointment </h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body book-app-body">
+        <form action="">
+            <div class="form_to_rly">
+                <div class="floating-label mb-3">
+                    <input type="text" class="floating-input" placeholder=" ">
+                    <label>Customer Name</label>
+                </div>
+                <div class="floating-label mb-3">
+                    <input type="text" class="floating-input" placeholder=" ">
+                    <label>Mobile Number</label>
+                </div>
+                <div class="floating-label mb-3">
+                    <input type="text" class="floating-input" placeholder=" ">
+                    <label>Email Address</label>
+                </div>
+                <div>
+                    <ng-select placeholder="Skills" appendTo="body" [multiple]="true" [addTag]="true"
+                        [clearable]="false" class="mb-3">
+                    </ng-select>
+                </div>
+                <div>
+                    <ng-select placeholder="Select Agent" appendTo="body" [multiple]="true" [addTag]="true"
+                        class="mb-3">
+                    </ng-select>
+                </div>
+
+                <div class="floating-label">
+                    <input type="text" class="floating-input" placeholder=" ">
+                    <label>Date & Time</label>
+                </div>
+                <div class=" mt-3">
+                    <input type="checkbox" id="html">
+                    <span class="pl-2 txt">Send notification to customer</span>
+                </div>
+                <div class="mt-3">
+                    <input type="checkbox" id="html">
+                    <span class="pl-2 txt">Send reminder to customer</span>
+                </div>
+                <div class="btn_rly_mail mb-3 mt-4">
+                    <div>
+                        <button class="btn_discard">Discard</button>
+                    </div>
+                    <div>
+                        <button class="btn_send">Send</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</ng-template>

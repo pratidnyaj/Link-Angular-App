@@ -1,46 +1,225 @@
 <div class="case-middle-section">
     <div class="middle-panel">
-        <div class="case-details">
-            <div class="case-dtl">                
-                <div>
-                    <span class="status">{{selectedCase.Status}}</span>
+        <div class="case-information">
+            <div class="case-info-btns">
+                <div class="case-badge">
+                    <span> new</span>
                 </div>
-                <div>
-                    <span class="caseid">Case ID : <span class="casenumber">{{selectedCase.caseid}}</span></span>
-                </div>
-                <div>
-                    <span class="caseid">Created On : <span
-                            class="casenumber">{{selectedCase.CreatedDate}}</span></span>
-                </div>
-                <div>
-                    <span class="caseid">Last Updated On : <span
-                            class="casenumber">{{selectedCase.LastIxnDate}}</span></span>
+                <div class="case-btns">
+                    <div class="dropdown filter-menu-drpdwn d-none">
+                        <button class="btn btn-filter " type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-push-notification bell-plus"></i>
+                        </button>
+                        <div class="dropdown-menu unlink_filter_list" aria-labelledby="dropdownMenuButton">
+                            <p class="unlink_fit_ttl">Push Notification</p>
+                            <div class="sort-menus">
+                                <button class="sortmenu">
+                                    <img src="assets/images/svg/sms-green.svg" alt="Sms" class="pr-2">
+                                    <span>SMS</span>
+                                </button>
+                            </div>
+                            <div class="sort-menus">
+                                <button class="sortmenu">
+                                    <img src="assets/images/svg/whatsapp-green.svg" alt="whatsapp" class="pr-2">
+                                    <span>Whatsapp</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown filter-menu-drpdwn">
+                        <button style="display: none;" class="btn btn-filter" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-call"></i>
+                        </button>
+                        <div class="dropdown-menu unlink_filter_list" aria-labelledby="dropdownMenuButton">
+                            <div class="sort-menus">
+                                <button class="sortmenu">
+                                    <span>Dial New Number</span>
+                                </button>
+                            </div>
+                            <div class="sort-menus">
+                                <button class="sortmenu">
+                                    <p class="mob-ttl">Mobile Number</p>
+                                    <p><a href="tel:+91 988 242 5574">+91 988 242 5574</a></p>
+                                </button>
+                            </div>
+                            <div class="sort-menus">
+                                <button class="sortmenu">
+                                    <p class="mob-ttl">Mobile Number</p>
+                                    <p><a href="tel:+91 988 242 5574">+91 988 242 5574</a></p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                  
+                    <button matTooltip="Assign" matTooltipClass="custom-tooltip"  (click)="openVerticallyCentered(content)"
+                        *ngIf="pickupOwnCasesRole || routeOwnCasesRole">
+                        <i class="icon-assign-outline"></i></button>
+                    <div class="dropdown filter-menu-drpdwn">
+                        <button style="display: none;" class="btn btn-filter" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-merge"></i>
+                        </button>
+                        <div class="dropdown-menu unlink_filter_list" aria-labelledby="dropdownMenuButton">
+                            <p class="unlink_fit_ttl">Merge With</p>
+                            <div class="sort-menus">
+                                <button class="sortmenu" (click)=" mergeContent(longContent)">
+                                    <span>Case ID</span>
+                                </button>
+                            </div>
+                            <div class="sort-menus">
+                                <button class="sortmenu">
+                                    <span>Mobile Number</span>
+                                </button>
+                            </div>
+                            <div class="sort-menus">
+                                <button class="sortmenu">
+                                    <span>Email Address</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <button (click)=" mergeContent(longContent)"> <i class="icon-merge"></i></button> -->
+                    <button matTooltip="Side Conversation" matTooltipClass="custom-tooltip" style="display: none;" (click)="sideconversation(sidecon)"> <i
+                            class="icon-side-conversation"></i></button>
+                    <button matTooltip="Close Case" matTooltipClass="custom-tooltip" (click)="CloseCaseModalOpen(disposition)" *ngIf="closeOwnCasesRole"> <i
+                            class="icon-ticket"></i></button>
+                    <button matTooltip="Spam Case" matTooltipClass="custom-tooltip" (click)="MarkCaseAsSpam()" *ngIf="spamCasesRole"> <i
+                            class="icon-spam"></i></button>
+                    <button matTooltip="Block Case" matTooltipClass="custom-tooltip" (click)="CaseAsBlockedModalOpen(blockstatus)" *ngIf="blockCasesRole"> <i
+                            class="icon-block"></i></button>
+                    <button  matTooltip="Download-Attachment" matTooltipClass="custom-tooltip" 
+                        (click)="attachmentFilePathModal(attachmentFilePathList,selectedCase.caseid)"> <img src="assets/images/svg/downloads.svg" alt="Download"/></button>
+                        <button  matTooltip="Resolution" matTooltipClass="custom-tooltip" 
+                        (click)="otherFieldPopupEdit(otherField,selectedCase.caseid)"> <img src="assets/images/svg/edit.svg" alt="Download"/></button>
+                        
+                    <div class="dropdown filter-menu-drpdwn" style="display: none;">
+                        <button class="btn btn-filter " type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-more-dots"></i>
+                        </button>
+                        <div class="dropdown-menu unlink_filter_list" aria-labelledby="dropdownMenuButton">
+                            <div class="three-dots-drp" (click)="showModal()">
+                                <span class="icons"><i class="icon-push-notification"></i></span>
+                                <span class="txt">Push Notification</span>
+                            </div>
+                            <div class="three-dots-drp" (click)="mergeModal()">
+                                <span class="icons"><i class="icon-merge"></i></span>
+                                <span class="txt">Merge With</span>
+                            </div>
+                            <div class="three-dots-drp">
+                                <span class="icons"><i class="icon-side-conversation"></i></span>
+                                <span class="txt">Side Conversation</span>
+                            </div>
+                            <div class="three-dots-drp">
+                                <span class="icons"><i class="icon-appoinment"></i></span>
+                                <span class="txt">Add Appointment</span>
+                            </div>
+                            <div class="three-dots-drp">
+                                <span class="icons"><i class="icon-spam"></i></span>
+                                <span class="txt">Spam</span>
+                            </div>
+                            <div class="three-dots-drp">
+                                <span class="icons"><i class="icon-block"></i></span>
+                                <span class="txt">Spam</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>        
-        <div class="case-actiob-btn">
-            <button class="btn-cases" (click)="AssignCaseToMe()"><img src="assets/images/assign.png" alt="assign" /><span class="tabs-title">Assign To Me</span></button>
-            <button class="btn-cases" (click)="AddCaseNote()"><img src="assets/images/Notes.png" alt="Notes" /><span class="tabs-title">Notes</span></button>
-            <button class="btn-cases" (click)="CloseCase()"><img src="assets/images/Close.png" alt="Close" /><span class="tabs-title">Close</span></button>
-            <button class="btn-cases" (click)="MarkCaseAsSpam()"><img src="assets/images/spam.png" alt="spam" /><span class="tabs-title">Spam</span></button>
-            <button class="btn-cases" (click)="MarkCaseAsBlocked()"><img src="assets/images/Block.png" alt="Block" /><span class="tabs-title">Block</span></button>
-        </div>        
+            <div class="case-ttl">
+                <span>{{selectedCase.Subject}}</span>
+            </div>
+            <div class="case-details ">
+                <div class="case-dtl">
+                    <div class="mrg-right">
+                        <span class="caseid">Case ID : <span class="casenumber">{{selectedCase.caseid}}</span></span>
+                    </div>
+                    <div class="mrg-right">
+                        <span class="caseid">Created On : <span
+                                class="casenumber">{{selectedCase.CreatedDate}}</span></span>
+                    </div>
+                    <div>
+                        <span class="caseid">Last Updated On : <span
+                                class="casenumber">{{selectedCase.LastIxnDate}}</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="bg-danger">
+                vsdmvksdmvklsdmvkl
+            </div> -->
+        <!-- <div class="bg-success">
+            <div class="case-details ">
+                <div class="case-dtl">
+                    <div>
+                        <span class="status">{{selectedCase.Status}}</span>
+                    </div>
+                    <div>
+                        <span class="caseid">Case ID : <span class="casenumber">{{selectedCase.caseid}}</span></span>
+                    </div>
+                    <div>
+                        <span class="caseid">Created On : <span
+                                class="casenumber">{{selectedCase.CreatedDate}}</span></span>
+                    </div>
+                    <div>
+                        <span class="caseid">Last Updated On : <span
+                                class="casenumber">{{selectedCase.LastIxnDate}}</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-actiob-btn">
+                <button class="btn-cases" (click)="AssignCaseToMe()">
+                    <i class="icon-assign-me"></i>
+                    <span class="tabs-title">Assign
+                        To Me</span>
+                </button>
+                <button class="btn-cases" (click)="AddCaseNote()">
+                    <i class="icon-notes"></i>
+                    <span class="tabs-title">Notes</span>
+                </button>
+                <button class="btn-cases" (click)="CloseCase()">
+                    <i class="icon-close"></i>
+                    <span class="tabs-title">Close</span>
+                </button>
+                <button class="btn-cases" (click)="MarkCaseAsSpam()">
+                    <i class="icon-spam"></i>
+                    <span class="tabs-title">Spam</span>
+                </button>
+                <button class="btn-cases" (click)="MarkCaseAsBlocked()">
+                    <i class="icon-block"></i>
+                    <span class="tabs-title">Block</span>
+                </button>
+            </div>
+        </div> -->
+
         <div #divInxHistScroll class="mid-content" [ngClass]="{'make-blur' : isCaseInteractionBlur}">
             <div class="mail-content" *ngFor="let inxHistory of caseInteractions">
-                <span class="gray float-right font-12">{{inxHistory.CreatedDateUI}} {{inxHistory.CreatedTimeUI}}<span
-                        class="more"> <img src="assets/images/svg/more.svg" /></span> </span>
+                <span class="gray float-right font-12">{{inxHistory.CreatedDateUI}} {{inxHistory.CreatedTimeUI}}
+                    <button class="more">
+                        <i class="icon-more-dots"></i>
+                        <!-- <img src="assets/images/svg/more.svg" /> -->
+                    </button>
+                </span>
                 <div class="clear"></div>
                 <div class="case-mail">
                     <div class="mail-detail d-flex">
-                        <img src="assets/images/case pic3.png" class="case-profile" />
+                        <div class="media-profile">
+                            <img src="assets/images/case pic3.png" class="case-profile" alt="user" />
+                        </div>
+                        <!-- <img src="assets/images/case pic3.png" class="case-profile" alt="user" /> -->
                         <div class="media-subject top flex-wrap">
                             <p class="case-subject x4">
                                 {{inxHistory.Subject}}
                             </p>
                             <p class="case-info x2" *ngIf="inxHistory.ChannelName != 'CaseNote'">
-                                <img src="assets/images/svg/email.svg"
-                                    style="vertical-align: baseline; margin-right: 4px;" />
-                                <span class="blue">{{inxHistory.EmailType}} {{inxHistory.InteractionChannelSource}} : {{inxHistory.EmailSourceAccount}}</span>
+                                <!-- <img src="assets/images/svg/email.svg"
+                                    style="vertical-align: baseline; margin-right: 4px;" /> -->
+                                <i class="icon-mailbox"></i>
+                                <span class="blue">{{inxHistory.EmailType}} {{inxHistory.InteractionChannelSource}} :
+                                    {{inxHistory.EmailSourceAccount}}</span>
                             </p>
                             <p *ngIf="inxHistory.Direction == 1" class="case-info x2">
                                 <span class="blue">Disposition : </span> {{inxHistory.Disposition}}
@@ -57,34 +236,699 @@
                             <ng-template #emailToTemplate>
                                 <div><span class="blue">To : </span> {{inxHistory.EmailTo}}</div>
                             </ng-template>
-                            <div><span class="blue">Cc : </span> {{inxHistory.Cc}}</div>
-
+                            <div *ngIf="addCCInteractionCasesRole">
+                                <div><span class="blue">Cc : </span> {{inxHistory.Cc}}</div>
+                            </div>
                         </div>
-                        <span class="case-bycontent" [innerHTML]="inxHistory.InteractionDesc|safeHtml"></span>
-
+                        <!-- its creating design problem -->
+                        <!-- <span  #p></span> -->
+                        <div innerHTML="{{inxHistory.InteractionDesc}}"></div>
+                        <!-- <span class="case-bycontent" [innerHTML]="inxHistory.InteractionDesc|safeHtml"></span> -->
+                        <!-- <p>{{inxHistory.InteractionDesc}}</p> -->
                         <div class="case-attachment d-flex">
-                            <span *ngFor="let attach of inxHistory.ExternalAttachment">
+                            <span class="file-show" *ngFor="let attach of inxHistory.ExternalAttachment">
                                 <span>
                                     <a [href]="attach.AttachmentFilePath" [download]="attach.AttachmentFileName"
                                         target="_blank"
                                         title="{{attach.AttachmentSize}}">{{attach.AttachmentFileName}}</a>
                                 </span>
-                                <img src="assets/images/svg/attachmentimg.svg" />
+                                <img class="attachment-img" src="assets/images/svg/attachmentimg.svg"
+                                    alt="attachment" />
                             </span>
                         </div>
-                        <div class="case-reply d-flex" *ngIf="inxHistory.ChannelName != 'CaseNote'">
-                            <span (click)="Reply(inxHistory)"><img src="assets/images/svg/reply.svg" /> Reply</span>
-                            <span (click)="ReplyAll(inxHistory)"><img src="assets/images/svg/reply-all.svg" /> Reply to
-                                All</span>
+                        <div class="mail-btns" *ngIf="inxHistory.ChannelName != 'CaseNote'">
+                            <button *ngIf="caseReplayAllAccessRole" class="mr-2" (click)="Reply(inxHistory)"><img
+                                    src="assets/images/svg/replay.svg" alt="reply" /> Reply to
+                                All</button>
+                            <button *ngIf="caseAddNoteAccessRole" (click)="AddCaseNote()"> <i class="icon-add-note"></i>
+                                Add Notes</button>
+
+                            <button style="margin-left: 7px;" class="mr-2" *ngIf="uploadAttachmentsInteractionRole"
+                                (click)="fileModalPopup()"><img
+                                src="assets/images/svg/attachment-gray.svg" alt="attachment" /> Attachments</button>
+                        </div>
+                    </div>
+                    <div [ngClass]="{'make-blur' : isEditorBlur}">
+                        <app-case-list-display *ngIf="selectedInteractionId == inxHistory.InteractionID"
+                            (emailEditorEvent)="emailEditorEventHandler($event)" [setProp]='oReply'>
+                        </app-case-list-display>
+                    </div>
+                </div>
+                <!-- <div [ngClass]="{'make-blur' : isEditorBlur}">
+                        <app-case-list-display *ngIf="selectedInteractionId == inxHistory.InteractionID"
+                            (emailEditorEvent)="emailEditorEventHandler($event)" [setProp]='oReply'></app-case-list-display>
+                    </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Assign to me modal -->
+<ng-template #content let-modal>
+    <div class="assign_modl">
+        <div class="modal-header">
+            <h4 class="modal-title">Assign To</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="assign_form ">
+                <form action="" class="form_to_rly">
+                    <div>
+                        <ng-select placeholder="Teams" [items]="teamsData" [clearable]="false" [closeOnSelect]="true"
+                            bindValue="TeamID" (ngModelChange)="onChangeTeams($event)" bindLabel="TeamName" name="teams"
+                            [(ngModel)]="selectedTeam" class="mb-3">
+                        </ng-select>
+                    </div>
+                    <div>
+                        <ng-select placeholder="Agent" [items]="agentsData" [clearable]="false" [closeOnSelect]="true"
+                            (ngModelChange)="onChangeAgents($event)" bindLabel="FullName" [(ngModel)]="selectedAgent"
+                            name="agents" class="mb-3">
+                        </ng-select>
+                    </div>
+                    <!-- <div _ngcontent-ych-c108="" class="floating-label">
+                       
+                        <ng-select [items]="teamsData" [multiple]="false" [closeOnSelect]="true" bindValue="TeamID"
+                            (ngModelChange)="onChangeTeams($event)" bindLabel="TeamName" name="teams"
+                            [(ngModel)]="selectedTeam">
+                        </ng-select><label _ngcontent-ych-c108="">Team</label>
+                    </div>
+                    <div _ngcontent-ych-c108="" class="floating-label">                        
+                        <ng-select [items]="agentsData" [multiple]="false" [closeOnSelect]="true"
+                            (ngModelChange)="onChangeAgents($event)" bindLabel="FullName" [(ngModel)]="selectedAgent"
+                            name="agents">
+                        </ng-select><label _ngcontent-ych-c108="">Agent</label>
+                    </div> -->
+                    <div class="modaction-btns">
+                        <button class="border-btn" *ngIf="pickupOwnCasesRole"
+                            (click)="AssignCaseToMe();modal.dismiss('Cross click')">Assign To
+                            Me</button>
+                        <button class="filled-btn" *ngIf="routeOwnCasesRole"
+                            (click)="AssignCase();modal.dismiss('Cross click')">Assign</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!--
+<ng-template #status let-modal>
+    <div class="case-info-modal">
+        <div class="modal-header">
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" id="AssignCaseModal">
+            <div class="case_status">
+
+                <div class="caseinfo-modal-bdy">
+                    <div class="assign-icon">
+                        <i class="icon-assign-me"></i>
+                    </div>
+                    <h2 class="case-ttl">Are you sure? </h2>
+                    <p class="sub-ttl"> You want to Assign Amit patil</p>
+                </div>
+                <div class="case-modal-button">
+                    <div class="btn-no">
+                        <button (click)="ClosePopup()">
+                            No
+                        </button>
+                    </div>
+                    <div class="btn-yes">
+                        <button (click)="AssignCase();">
+                            Yes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+-->
+<!-- merge modal -->
+<ng-template #longContent let-modal class="merge-ticket">
+    <div class="modal-header">
+        <h4 class="modal-title">Merge Tickete</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="merge-info">
+            <div>
+                <img src="assets/images/emptyProfile.jpg" alt="assign-user" class="img-fluid" />
+            </div>
+            <div class="mer_info">
+                <p class="title">carol Rayes</p>
+                <p class="sub-title">website is not working</p>
+                <div class="assign_deatils">
+                    <div>
+                        <span class="caseid">Case ID : <span class="casenumber">2345678990</span></span>
+                    </div>
+                    <div>
+                        <span class="blueid">Assign to : <span class="blueid">Amit patil</span></span>
+                    </div>
+                    <div>
+                        <span class="casedate">Created On : <span class="casedate">20/05/2021</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="frm_merge">
+            <form action="">
+                <div class="field" id="searchform">
+                    <input type="text" placeholder="Enter case id to merge" />
+                    <button type="button">merge</button>
+                </div>
+
+                <div>
+                    <p class="case-guide">Select and Mereg</p>
+                </div>
+                <div>
+                    <div class="merge-info select_tomereg">
+                        <div>
+                            <img src="assets/images/emptyProfile.jpg" alt="assign-user" class="img-fluid" />
+                        </div>
+                        <div class="mer_info">
+                            <p class="title">carol Rayes</p>
+                            <p class="sub-title">website is not working</p>
+                            <div class="assign_deatils">
+                                <div>
+                                    <span class="caseid">Case ID : <span class="casenumber">2345678990</span></span>
+                                </div>
+                                <div>
+                                    <span class="blueid">Assign to : <span class="blueid">Amit patil</span></span>
+                                </div>
+                                <div>
+                                    <span class="caseid">Created On : <span class="casenumber">20/05/2021</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="container-checkbox">
+                                <input type="checkbox">
+                                <span class="checkmark right-check"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="merge-info select_tomereg">
+                        <div>
+                            <img src="assets/images/emptyProfile.jpg" alt="assign-user" class="img-fluid" />
+                        </div>
+                        <div class="mer_info">
+                            <p class="title">carol Rayes</p>
+                            <p class="sub-title">website is not working</p>
+                            <div class="assign_deatils">
+                                <div>
+                                    <span class="caseid">Case ID : <span class="casenumber">2345678990</span></span>
+                                </div>
+                                <div>
+                                    <span class="blueid">Assign to : <span class="blueid">Amit patil</span></span>
+                                </div>
+                                <div>
+                                    <span class="caseid">Created On : <span class="casenumber">20/05/2021</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="container-checkbox">
+                                <input type="checkbox">
+                                <span class="checkmark right-check"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="merge-info select_tomereg">
+                        <div>
+                            <img src="assets/images/emptyProfile.jpg" alt="assign-user" class="img-fluid" />
+                        </div>
+                        <div class="mer_info">
+                            <p class="title">carol Rayes</p>
+                            <p class="sub-title">website is not working</p>
+                            <div class="assign_deatils">
+                                <div>
+                                    <span class="caseid">Case ID : <span class="casenumber">2345678990</span></span>
+                                </div>
+                                <div>
+                                    <span class="blueid">Assign to : <span class="blueid">Amit patil</span></span>
+                                </div>
+                                <div>
+                                    <span class="caseid">Created On : <span class="casenumber">20/05/2021</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="container-checkbox">
+                                <input type="checkbox">
+                                <span class="checkmark right-check"></span>
+                            </label>
                         </div>
                     </div>
                 </div>
-                
-                <div [ngClass]="{'make-blur' : isEditorBlur}">
-                    <app-case-list-display *ngIf="selectedInteractionId == inxHistory.InteractionID"
-                        (emailEditorEvent)="emailEditorEventHandler($event)" [setProp]='oReply'></app-case-list-display>
+                <div class="btn_merge">
+                    <button (click)="meregcases(mereg)">Mrege</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+<!-- merge confiramation modal -->
+<ng-template #mereg let-modal>
+    <div class="case-info-modal">
+        <div class="modal-header">
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="case_status">
+                <div class="caseinfo-modal-bdy">
+                    <div class="assign-icon">
+                        <i class="icon-assign-me"></i>
+                    </div>
+                    <!-- <h2 class="case-ttl">Case ID : <span>200400 & 30089977</span></h2> -->
+                    <p class="sub-ttl">Case ID : <span>200400 & 30089977</span></p>
+                    <p class="sub-ttl">will be merged with Case ID : 200400 </p>
+                </div>
+                <div class="case-modal-button">
+                    <div class="btn-no">
+                        <button>
+                            No
+                        </button>
+                    </div>
+                    <div class="btn-yes">
+                        <button click)="mergecase()">
+                            Yes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- side conversation -->
+<ng-template #sidecon let-modal>
+    <div class="sideconversation">
+        <div class="modal-header">
+            <h4 class="modal-title">Side Conversation</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="form_to_rly">
+                <div>
+                    <ng-select placeholder="From" appendTo="body" [multiple]="false" bindLabel="SupportEmail"
+                        [clearable]="false" class="mb-3">
+                    </ng-select>
+                </div>
+                <div>
+                    <ng-select placeholder="To" appendTo="body" [multiple]="true" [addTag]="true" [clearable]="false"
+                        class="mb-3">
+                    </ng-select>
+                </div>
+                <div>
+                    <ng-select placeholder="Cc" appendTo="body" [multiple]="true" [addTag]="true" class="mb-3">
+                    </ng-select>
+                </div>
+                <div class="floating-label">
+                    <input type="text" class="floating-input" placeholder=" ">
+                    <label>Subject</label>
+                </div>
+                <div class="btn_rly_mail mb-3 mt-4">
+                    <div>
+                        <button class="btn_discard">Discard</button>
+                    </div>
+                    <div>
+                        <button class="btn_send">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- disposition -->
+<ng-template #disposition let-modal>
+    <div class="sideconversation">
+        <div class="modal-header">
+            <h4 class="modal-title">Disposition</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="form_to_rly">
+                <app-interaction-disposition></app-interaction-disposition>
+                <!--  <div>
+                    <ng-select placeholder="Disposition" appendTo="body" [multiple]="false" bindLabel="SupportEmail"
+                        [clearable]="false" class="mb-3">
+                    </ng-select>
+                </div>
+                <div>
+                    <ng-select placeholder="Sub-Disposition" appendTo="body" [multiple]="true" [addTag]="true"
+                        [clearable]="false" class="mb-3">
+                    </ng-select>
+                </div>
+                <div>
+                    <ng-select placeholder="Ticket Status" appendTo="body" [multiple]="true" [addTag]="true"
+                        class="mb-3">
+                    </ng-select>
+                </div>
+                -->
+                <div class="floating-label">
+                    <input type="text" class="floating-input" placeholder=" " [(ngModel)]="CloseRemark">
+                    <label>Remark</label>
+                </div>
+                <!--
+                <div class="disposition-check">
+                    <input type="checkbox" id="Feedback" name="Feedback" value="Feedback">
+                    <span class="check-txt" for="Feedback"> Send Feedback Form</span>
+                </div>
+                <div class="disposition-check">
+                    <input type="checkbox" id="Transcript" name="Transcript" value="Transcript">
+                    <span class="check-txt" for="Transcript">Send Transcript</span>
+                </div>
+                <div class="disposition-check">
+                    <input type="checkbox" id="Parking" name="Parking" value="Parking">
+                    <span class="check-txt" for="Parking">Parking</span>
+                </div>
+-->
+                <div class="btn_rly_mail mb-3 mt-4">
+                    <div>
+                        <button class="btn_send"
+                            (click)="CloseCase(disposition);modal.dismiss('Cross click')">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+<!-- block confiramation modal  -->
+<ng-template #blockstatus let-modal>
+    <div class="case-info-modal">
+        <div class="modal-header">
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="case_status">
+
+                <div class="caseinfo-modal-bdy">
+                    <div class="assign-icon">
+                        <i class="icon-block"></i>
+                    </div>
+                    <h2 class="case-ttl">Are you sure? </h2>
+                    <p class="sub-ttl">You want assign to block this user</p>
+                </div>
+                <div class="case-modal-button">
+                    <div class="btn-no">
+                        <button (click)="ClosePopup();modal.dismiss('Cross click')">
+                            No
+                        </button>
+                    </div>
+                    <div class="btn-yes">
+                        <button (click)="modal.dismiss('Cross click');MarkCaseAsBlocked()">
+                            Yes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- Attachment file List -->
+
+<ng-template #attachmentFilePathList let-modal>
+    <div class="assign_modl">
+        <div class="modal-header">
+            <h4 class="modal-title">Attachments File</h4>
+            <button type="button" class="btn" (click)="downloadFile()"
+                (click)="modal.dismiss('Cross click')">
+              <img src="assets/images/svg/downloads.svg" alt="downloads">
+            </button>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+        </div>
+        <div class="modal-body">
+            <div class="assign_form ">
+                <table class="table">
+                    <tr>
+                        <th><input type="checkbox" [(ngModel)]="masterSelected" name="list_name" value="m1"
+                                (change)="checkUncheckAll()"></th>
+                        <th>FileName</th>
+                        <th>Size</th>
+                        <th>type</th>
+                    </tr>
+                    <tr *ngFor="let data of fileAttachmentUrl">
+                        <td> <input type="checkbox" [(ngModel)]="data.isSelected" name="list_name" value="{{data.id}}"
+                                (change)="isAllSelected()" /></td>
+                        <td class="ellipsis">{{data.AttachmentFileName}}</td>
+                        <td>{{data.AttachmentSize}}</td>
+                        <td>{{data.AttachmentFileType}}</td>
+                    </tr>
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- End attachment -->
+
+<app-notify-modal *ngIf="!showIt"></app-notify-modal>
+<app-merge-modal *ngIf="!mergeWith"></app-merge-modal>
+
+<!-- Case Interaction Attachment File  Modal-->
+
+
+<div class="modal" role="dialog" id="attachmentModal" data-backdrop="static">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content attachement-modal">
+            <div class="modal-header">
+                <h4 class="modal-title">Attachments</h4>
+                <button type="button" class="close" aria-label="Close" (click)="closeModalFile()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- <div class="">
+                    <input type="file" id="file" multiple (change)="getFileDetails($event)" />
+                    <label for="file">choose a file</label>
+                </div> -->
+                <div class="row">
+                    <div *ngFor="let file of myFiles" class="col-md-4">
+                        <div class="text-center mb-3">
+                            <div class="">
+                                <img src="assets/images/attachment.png" alt="attachment">
+                            </div>
+                            <div class="attach-data">
+                                <p><span class="info-label">Name:</span>&nbsp;
+                                    <span class="data">{{ file.name.substr(0, 5) }}...</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center btn-uplode">
+                    <div class="mr-3">
+                        <input type="file" id="file" multiple (change)="getFileDetails($event)" />
+                        <label for="file">choose a file</label>
+                    </div>
+                    <button class="filled-btn" (click)="uploadFiles()">Upload</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- End Case Interaction Attachment  Modal -->
+
+
+<!-- Edit custom Field values -->
+<!-- https://stackblitz.com/edit/angular-dynamic-form-creation?file=src%2Fapp%2Fform%2Fform%2Fform.component.html -->
+
+
+<ng-template #otherField let-modal>
+    <div class="assign_modl">
+        <div class="modal-header">
+            <h4 class="modal-title">Resolution</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click');clearData()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="assign_form ">
+                <!-- <form action="" class="form_to_rly"> -->
+                    
+                    
+                    <!-- <div *ngIf="buisnessobjectList != null">
+   
+                        <div class="col-md-12">
+                            <div class="row">
+                    
+                                <div class="col-sm-4 m-bottom floating-label"
+                                    *ngFor="let thcus of temp; let CusIndex = index">
+
+                                    <form [formGroup]="customFieldsValueOne" >
+                                    <div  >
+                                         <input  class="floating-input" style="height: 52px"
+                                            *ngIf=" thcus.AttributeDataType=='text'" type="text" class="form-control"
+                                            id="{{CusIndex}}" placeholder="{{thcus.DisplayName}}" name="thcus.DisplayName"
+                                           formControlName="cname"   [(ngModel)]="thcus.cnames "    >
+                                         
+                                         <ng-select *ngIf="thcus.AttributeDataType=='list'" id="{{CusIndex}}"
+                                            [clearable]="false"  [items]="optionVal"   name="thcus.DisplayName"
+                                            placeholder="{{thcus.DisplayName}}"   
+                                           >
+                                          
+                                        </ng-select>  
+                                    </div>
+                    
+                                  </form>
+                                  
+                                </div>
+                    
+                            </div>
+                        </div>
+                    </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+                    <div class="modaction-btns">
+                        <button class="border-btn" 
+                            (click)="save();modal.dismiss('Cross click')">Update Other Fields</button>
+                    </div>
+                </form> -->
+
+
+
+            
+
+                <!-- <button (click)="createForm()">Create New</button> -->
+
+                <div class="form-group" *ngIf="forms != null">
+                    <div *ngFor="let f of forms">
+                      <form novalidate [formGroup]="f.formGroup">
+                        <div class="row">
+                        <div class="col-sm-4 m-bottom floating-label" *ngFor="let prop of f.metaData">
+                          <!-- <label [attr.for]="prop">{{prop.DisplayName}}</label> -->
+                          <div [ngSwitch]="prop.AttributeDataType">
+                  
+                            <!-- <input  *ngSwitchCase="'text'" placeholder="{{prop.DisplayName}}" class="floating-input" style="height: 52px"
+                             [formControlName]="prop.key" [id]="prop.key" [type]="prop.AttributeDataType"
+                             (change)="getMyValue($event,prop)"> -->
+
+
+                             <mat-form-field appearance="fill" *ngSwitchCase="'text'">
+                                <mat-label style="color: rgb(133, 128, 128);">{{prop.DisplayName}}</mat-label>
+                                <input matInput autocomplete="off" name="name"   [formControlName]="prop.key" [id]="prop.key" [type]="prop.AttributeDataType" (change)="getMyValue($event,prop)">
+                            </mat-form-field>
+                       
+                            
+
+
+
+                             <!-- <input 
+                             *ngIf="thcus.AttributeDataType=='text'" type="text" class="form-control"
+                             id="{{CusIndex}}" placeholder="{{thcus.DisplayName}}" name="thcus.DisplayName"
+                             formControlName="cname"   (change)="getMyValue($event,thcus,thcus)">
+ -->
+
+
+
+ <!-- <input *ngSwitchCase="'text'" placeholder="{{prop.DisplayName}}" class="floating-input" style="height: 52px"
+ [formControlName]="prop.key" [id]="prop.key" [type]="prop.AttributeDataType"
+ (input)="getMyValue($event,prop)"> -->
+
+                            <ng-select   *ngSwitchCase="'list'" 
+                            [clearable]="false"  [items]="prop.option"  
+                            placeholder="{{prop.DisplayName}}"   
+                            [formControlName]="prop.key" [id]="prop.key"
+                            (change)="selectDropDown($event,prop)"  >
+                           
+                            <!-- <select [formControlName]="prop.key"  class="form-control">
+                                <option *ngFor="let option of prop.options" [value]="option.value">
+                                  {{option.label}}
+                                </option>
+                              </select> -->
+
+
+
+                           <!-- <ng-select *ngIf="thcus.AttributeDataType=='list'" id="{{CusIndex}}"
+                           [clearable]="false"  [items]="optionVal"   name="thcus.DisplayName"
+                           placeholder="{{thcus.DisplayName}}"   
+                          > -->
+
+
+
+                           <!-- formControlName="optionname"   -->
+                        </ng-select> 
+                            
+                            <!-- <input *ngSwitchCase="'file'" type="file" [id]="prop.key" [formControlName]="prop.key">
+                            <input *ngSwitchCase="'checkbox'" type="checkbox" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+                            <input *ngSwitchCase="'email'" type="email" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+                            <input *ngSwitchCase="'date'" type="date" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+                            <input *ngSwitchCase="'datetime'" type="datetime" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+                            <input *ngSwitchCase="'datetime-local'" type="datetime-local" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+                            <input *ngSwitchCase="'number'" type="number" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+                            <input *ngSwitchCase="'reset'" type="reset" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+                            <input *ngSwitchCase="'tel'" type="tel" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+                            <input *ngSwitchCase="'url'" type="url" [id]="prop.key" [value]="prop.value" [formControlName]="prop.key">
+                  
+                            <select [formControlName]="prop.key" *ngSwitchCase="'select'" class="form-control">
+                              <option *ngFor="let option of prop.options" [value]="option.value">
+                                {{option.label}}
+                              </option>
+                            </select>
+                  
+                            <ng-container *ngSwitchCase="'radio'">
+                              <label *ngFor="let option of prop.options">
+                                <input type="radio" [name]="prop.key" [formControlName]="prop.key" [value]="option.value" class="form-control">{{option.label}}
+                              </label>
+                            </ng-container> -->
+                        </div>
+                  
+                          
+                        </div>
+                    </div>
+                       
+                        <div class="modaction-btns">
+                            <button class="border-btn" 
+                            (click)="updateForm();modal.dismiss('Cross click')" >Update Interaction</button>
+                        </div>
+                    </form>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

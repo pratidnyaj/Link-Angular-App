@@ -1,0 +1,279 @@
+<!-- <div class="cont d-none d-sm-block">
+
+    <div class="report-div">
+        <div id='myDiv'></div>
+    </div>
+
+    <div class="reports-bottom">
+        <div class="unlink_table">
+            <div class="tbl_heading">
+                <h6 class="content-title">Total {{totalRec}} Cases</h6>
+                <div class="file-upload">
+                    <button class="btn-export" (click)="exportexcel()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10.647" height="13.309"
+                            viewBox="0 0 10.647 13.309">
+                            <defs>
+                                <style>
+                                    .a {
+                                        fill: #053c6d;
+                                    }
+                                </style>
+                            </defs>
+                            <path class="a"
+                                d="M10.654,2H5.331A1.329,1.329,0,0,0,4.007,3.331L4,13.978a1.329,1.329,0,0,0,1.324,1.331h7.992a1.335,1.335,0,0,0,1.331-1.331V5.993Zm2.662,11.978H5.331V3.331H9.989V6.658h3.327Zm-1.331-3.334-.938-.938L9.989,10.757V7.989H8.658v2.768L7.6,9.7l-.938.945,2.655,2.668Z"
+                                transform="translate(-4 -2)" />
+                        </svg>
+                        <span>Export</span>
+                    </button>
+
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Created Date</th>
+                            <th>Username</th>
+                            <th>Name</th>
+                            <th>User Id</th>
+                            <th>Email</th>
+                            <th>Channel</th>
+                            <th>Todays Total Cases</th>
+                            <th>Todays Open Cases</th>
+                            <th>Todays Close Cases</th>
+                            <th>Daywise Total Cases</th>
+                            <th>Total Previous Cases</th>
+                            <th>Total Previous Open Cases</th>
+                            <th>Total Previous Closed Cases</th>
+                            <th>Today Cases Under 0 to 4hr</th>
+                            <th>Today Cases Under 4 to 8hr</th>
+                            <th>Cases Open Above 4hr</th>
+                            <th>Today Cases Above 8hr</th>
+                            <th>Cases Open Above 24hr</th>
+                            <th>Cases Open Above 48hr</th>
+                            <th>Cases Open Above 72hr</th>
+
+                            <th>Today sBlocked Case</th>
+                            <th>Todays Blocked Pending Case</th>
+                            <th>Todays In Progess Case</th>
+                            <th>Todays Pending Case</th>
+                            <th>Todays Spam Case</th>
+                            <th>Todays Spam Pending Case</th>
+                            <th>Total Previous Blocked Case</th>
+                            <th>Total Previous Blocked Pending Case </th>
+                            <th>Total Previous In Progess Case</th>
+                            <th>Total Previous Pending Case</th>
+                            <th>Total Previous Spam Case</th>
+                            <th>Total Previous Spam Pending Case</th>
+                            <th>Email Channel Source</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let group of AgentPerformanceData | paginate: { id: 'listing_pagination',
+        itemsPerPage: perPageCnt,
+        currentPage: currentPageNumber,
+        totalItems: totalRec }; let idx = index">
+
+                            <td>{{group.Id}}</td>
+                            <td>{{group.CreatedDate}}</td>
+                            <td>{{group.UserName}}</td>
+                            <td>{{group.Name}}</td>
+                            <td>{{group.UserId}}</td>
+                            <td>{{group.Email}}</td>
+                            <td>{{group.Channel}}</td>
+                            <td>{{group.TodaysTotalCases}}</td>
+                            <td>{{group.TodaysOpenCases}}</td>
+                            <td>{{group.TodaysCloseCases}}</td>
+
+                            <td>{{group.DayWiseTotalCases}}</td>
+                            <td>{{group.TotalPreviouscases}}</td>
+                            <td>{{group.TotalPreviousOpenCases}}</td>
+                            <td>{{group.TotalPreviousClosedCases}}</td>
+
+                            <td>{{group.TodayCasesUnder0to4hr}}</td>
+                            <td>{{group.TodayCasesUnder4to8hr}}</td>
+                            <td>{{group.CasesOpenAbove4hr}}</td>
+                            <td>{{group.TodayCasesabove8hr}}</td>
+                            <td>{{group.CasesOpenAbove24hr}}</td>
+                            <td>{{group.CasesOpenAbove48hr}}</td>
+                            <td>{{group.CasesOpenAbove72hr}}</td>
+
+
+                            <td>{{group.todaysBlockedcase}}</td>
+                            <td>{{group.todaysBlockedPendingcase}}</td>
+                            <td>{{group.todaysInProgesscase}}</td>
+                            <td>{{group.todaysPendingcase}}</td>
+                            <td>{{group.todaysSpamcase}}</td>
+                            <td>{{group.todaysSpamPendingcase}}</td>
+
+                            <td>{{group.totalPreviousBlockedcase}}</td>
+                            <td>{{group.totalPreviousBlockedPendingcase}}</td>
+                            <td>{{group.totalPreviousInProgesscase}}</td>
+                            <td>{{group.totalPreviousPendingcase}}</td>
+                            <td>{{group.totalPreviousSpamcase}}</td>
+                            <td>{{group.totalPreviousSpamPendingcase}}</td>
+                            <td>{{group.EmailCS}}</td>
+
+
+
+
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="tbl-footer">
+                <div class="displaying_count">
+                    <div>
+                        Displaying {{(( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt + 1}} -
+                        {{(( ( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) + perPageCnt >
+                        (totalRec) ? totalRec :
+                        (((
+                        currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) + perPageCnt}}
+                        of {{ totalRec }} Records
+                    </div>
+                </div>
+                <div>
+                    <div class="mod_pagination">
+                        <pagination-controls id="listing_pagination" previousLabel="" nextLabel="" [maxSize]="7"
+                            [directionLinks]="true" (pageChange)="handlePageChange($event)"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> -->
+
+<div class="report-section">
+    <div>
+        <ngb-accordion [closeOthers]="true" activeIds="static-1">
+            <ngb-panel id="static-1">
+                <ng-template ngbPanelTitle>
+                    Chart
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    need to show Agent performance chart here
+                </ng-template>
+            </ngb-panel>
+            <ngb-panel id="static-2">
+                <ng-template ngbPanelTitle>
+                    Total {{totalRec}} Cases
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <div class="client-case-tbl">
+                        <div id="table-scroll" class="table-scroll">
+                            <table id="main-table" class="main-table">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Created Date</th>
+                                        <th>Username</th>
+                                        <th>Name</th>
+                                        <th>User Id</th>
+                                        <th>Email</th>
+                                        <th>Channel</th>
+                                        <th>Todays Total Cases</th>
+                                        <th>Todays Open Cases</th>
+                                        <th>Todays Close Cases</th>
+                                        <th>Daywise Total Cases</th>
+                                        <th>Total Previous Cases</th>
+                                        <th>Total Previous Open Cases</th>
+                                        <th>Total Previous Closed Cases</th>
+                                        <th>Today Cases Under 0 to 4hr</th>
+                                        <th>Today Cases Under 4 to 8hr</th>
+                                        <th>Cases Open Above 4hr</th>
+                                        <th>Today Cases Above 8hr</th>
+                                        <th>Cases Open Above 24hr</th>
+                                        <th>Cases Open Above 48hr</th>
+                                        <th>Cases Open Above 72hr</th>
+                                        <th>Today sBlocked Case</th>
+                                        <th>Todays Blocked Pending Case</th>
+                                        <th>Todays In Progess Case</th>
+                                        <th>Todays Pending Case</th>
+                                        <th>Todays Spam Case</th>
+                                        <th>Todays Spam Pending Case</th>
+                                        <th>Total Previous Blocked Case</th>
+                                        <th>Total Previous Blocked Pending Case </th>
+                                        <th>Total Previous In Progess Case</th>
+                                        <th>Total Previous Pending Case</th>
+                                        <th>Total Previous Spam Case</th>
+                                        <th>Total Previous Spam Pending Case</th>
+                                        <th>Email Channel Source</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let group of AgentPerformanceData | paginate: { id: 'listing_pagination',
+                                    itemsPerPage: perPageCnt,
+                                    currentPage: currentPageNumber,
+                                    totalItems: totalRec }; let idx = index">
+                                        <td>{{group.Id}}</td>
+                                        <td>{{group.CreatedDate}}</td>
+                                        <td>{{group.UserName}}</td>
+                                        <td>{{group.Name}}</td>
+                                        <td>{{group.UserId}}</td>
+                                        <td>{{group.Email}}</td>
+                                        <td>{{group.Channel}}</td>
+                                        <td>{{group.TodaysTotalCases}}</td>
+                                        <td>{{group.TodaysOpenCases}}</td>
+                                        <td>{{group.TodaysCloseCases}}</td>
+                                        <td>{{group.DayWiseTotalCases}}</td>
+                                        <td>{{group.TotalPreviouscases}}</td>
+                                        <td>{{group.TotalPreviousOpenCases}}</td>
+                                        <td>{{group.TotalPreviousClosedCases}}</td>
+                                        <td>{{group.TodayCasesUnder0to4hr}}</td>
+                                        <td>{{group.TodayCasesUnder4to8hr}}</td>
+                                        <td>{{group.CasesOpenAbove4hr}}</td>
+                                        <td>{{group.TodayCasesabove8hr}}</td>
+                                        <td>{{group.CasesOpenAbove24hr}}</td>
+                                        <td>{{group.CasesOpenAbove48hr}}</td>
+                                        <td>{{group.CasesOpenAbove72hr}}</td>
+                                        <td>{{group.todaysBlockedcase}}</td>
+                                        <td>{{group.todaysBlockedPendingcase}}</td>
+                                        <td>{{group.todaysInProgesscase}}</td>
+                                        <td>{{group.todaysPendingcase}}</td>
+                                        <td>{{group.todaysSpamcase}}</td>
+                                        <td>{{group.todaysSpamPendingcase}}</td>
+                                        <td>{{group.totalPreviousBlockedcase}}</td>
+                                        <td>{{group.totalPreviousBlockedPendingcase}}</td>
+                                        <td>{{group.totalPreviousInProgesscase}}</td>
+                                        <td>{{group.totalPreviousPendingcase}}</td>
+                                        <td>{{group.totalPreviousSpamcase}}</td>
+                                        <td>{{group.totalPreviousSpamPendingcase}}</td>
+                                        <td>{{group.EmailCS}}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tbl-footer">
+                            <div class="displaying_count">
+                                <div>
+                                    Displaying {{(( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt +
+                                    1}} -
+                                    {{(( ( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) +
+                                    perPageCnt >
+                                    (totalRec) ? totalRec :
+                                    (((
+                                    currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) + perPageCnt}}
+                                    of {{ totalRec }} Records
+                                </div>
+                            </div>
+                            <div>
+                                <div class="mod_pagination">
+                                    <pagination-controls id="listing_pagination" previousLabel="" nextLabel=""
+                                        [maxSize]="7" [directionLinks]="true" (pageChange)="handlePageChange($event)">
+                                    </pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
+    </div>
+</div>

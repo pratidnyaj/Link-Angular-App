@@ -1,12 +1,15 @@
 .header {
     .navbar {
-        padding: 8px 10px;
+        // padding: 8px 10px;
+        padding: 0px 10px;
         background: var(--white_color);
         border: none;
         border-radius: 0;
         margin-bottom: 0px;
         border-bottom: 0px solid var(--nabar_border);
         box-shadow: 0px 2px 3px var(--box_shadow);
+        // position: absolute;
+        // z-index: 999999;
         .page-heading {
             font-size: 25px;
             color: var(--theme_bg_blue);
@@ -56,24 +59,222 @@
             .navbar-nav {
                 align-items: center;
                 li {
+                    padding: 0px 8px 0px 8px;
+                    i {
+                        font-size: 24px;
+                        color: var(--profile_icon_border);
+                        &::before {
+                            color: var(--profile_icon_border);
+                        }
+                    }
                     .add-item-drpdown {
                         .btnadd {
+                            padding: 0px 4px;
                             img {
+                                transform: rotate(45deg);
                                 transition: 0.2s all ease-in;
                             }
+                            i {
+                                font-size: 26px;
+                            }
+
                             &:focus,
                             &:hover {
                                 box-shadow: none;
                                 outline: none;
                             }
                         }
+                        .external-drpmenu {
+                            min-width: 270px;
+                            padding: 20px;
+                            max-height: calc(100vh - 100px);
+                            overflow-y: scroll;
+                            height: auto;
+                            .setting-menu {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                padding: 6px 0px;
+                                .icon-txt {
+                                    display: flex;
+                                    align-items: center;
+                                    i {
+                                        color: var(--theme_bg_blue);
+                                        font-size: 20px;
+                                        padding-right: 10px;
+                                        &::before {
+                                            color: var(--theme_bg_blue);
+                                        }
+                                    }
+                                    .icon-round-robin{
+                                        font-weight: 600;
+                                    }
+                                    .setmenu {
+                                        color: var(--theme_title);
+                                        font-size: 14px;
+                                    }
+                                }
+                                /* Switch Primary */
+                                .checkbox.checbox-switch {
+                                    padding-left: 0;
+                                    label {
+                                        display: inline-block;
+                                        position: relative;
+                                        padding-left: 0;
+                                        input {
+                                            display: none;
+                                        }
+                                        span {
+                                            width: 32px;
+                                            border-radius: 20px;
+                                            height: 18px;
+                                            border: 1px solid #5f5f5f;
+                                            background-color: var(--white_color);
+                                            border-color: #5f5f5f;
+                                            box-shadow: rgb(223, 223, 223) 0px 0px 0px 0px inset;
+                                            transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s;
+                                            display: inline-block;
+                                            vertical-align: middle;
+                                            margin-right: 5px;
+                                            &:before {
+                                                display: inline-block;
+                                                width: 14px;
+                                                height: 14px;
+                                                border-radius: 50%;
+                                                background: rgb(255, 255, 255);
+                                                content: " ";
+                                                top: 0;
+                                                position: relative;
+                                                left: 0px;
+                                                transition: all 0.3s ease;
+                                                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+                                                top: -2px;
+                                                border: 1px solid var(--theme_bg_blue);
+                                            }
+                                        }
+                                        > input {
+                                            &:checked {
+                                                + {
+                                                    span {
+                                                        &:before {
+                                                            left: 16px;
+                                                            top: -2px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .checkbox-inline.checbox-switch {
+                                    display: inline-block;
+                                    position: relative;
+                                    padding-left: 0;
+                                    input {
+                                        display: none;
+                                    }
+                                    span {
+                                        width: 35px;
+                                        border-radius: 20px;
+                                        height: 18px;
+                                        border: 1px solid var(--theme_bg_blue);
+                                        background-color: var(--white_color);
+                                        border-color: var(--theme_bg_blue);
+                                        box-shadow: rgb(223, 223, 223) 0px 0px 0px 0px inset;
+                                        transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s;
+                                        display: inline-block;
+                                        vertical-align: middle;
+                                        margin-right: 5px;
+                                        &:before {
+                                            display: inline-block;
+                                            width: 16px;
+                                            height: 16px;
+                                            border-radius: 50%;
+                                            background: var(--white_color);
+                                            content: " ";
+                                            top: 0;
+                                            position: relative;
+                                            left: 0px;
+                                            transition: all 0.3s ease;
+                                            box-shadow: 0 1px 4px var(--box_shadow);
+                                            top: -2px;
+                                            border: 1px solid var(--theme_bg_blue);
+                                        }
+                                    }
+                                    > input {
+                                        &:checked {
+                                            + {
+                                                span {
+                                                    &:before {
+                                                        left: 16px;
+                                                        top: -2px;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .checkbox.checbox-switch.switch-primary {
+                                    label {
+                                        > input {
+                                            &:checked {
+                                                + {
+                                                    span {
+                                                        background-color: var(--theme_bg_blue);
+                                                        border-color: var(--theme_bg_blue);
+                                                        transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+                                                            background-color 1.2s ease 0s;
+                                                    }
+                                                }
+                                                &:disabled {
+                                                    + {
+                                                        span {
+                                                            background-color: var(--white_color);
+                                                            border-color: var(--white_color);
+                                                            transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+                                                                background-color 1.2s ease 0s;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .checkbox-inline.checbox-switch.switch-primary {
+                                    > input {
+                                        &:checked {
+                                            + {
+                                                span {
+                                                    background-color: var(--theme_bg_blue);
+                                                    border-color: var(--theme_bg_blue);
+                                                    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+                                                        background-color 1.2s ease 0s;
+                                                }
+                                            }
+                                            &:disabled {
+                                                + {
+                                                    span {
+                                                        background-color: var(--white_color);
+                                                        border-color: var(--white_color);
+                                                        transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+                                                            background-color 1.2s ease 0s;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                         .add-drpmenu {
                             background-color: var(--white_color);
                             position: absolute;
-                            // box-shadow: 0px 3px 6px #00000029;
                             box-shadow: 0px 3px 6px var(--box_shadow);
                             border-radius: 15px;
                             border: 1px solid var(--theme_bg_color);
+                            position: absolute;
+                            right: 0;
+                            left: auto;
                             .add-menus {
                                 // padding: 10px 15px;
                                 &:hover {
@@ -89,12 +290,52 @@
                                 .btn-newcases {
                                     background-color: transparent;
                                     border: none;
-                                    padding: 10px 15px;
+                                    padding: 10px 20px;
                                     width: 100%;
                                     text-align: left;
+                                    display: flex;
+                                    align-items: center;
+                                    font-size: 14px;
+                                    color: var(--theme_input_color);
                                     &:hover {
                                         box-shadow: none;
                                     }
+                                    i {
+                                        padding-right: 10px;
+                                        color: var(--theme_bg_blue);
+                                        font-size: 18px;
+                                        &::before {
+                                            color: var(--theme_bg_blue);
+                                        }
+                                    }
+                                }
+                            }
+                            .notify-drp {
+                                border-bottom: 1px solid var(--theme_input_border);
+                                .notifiy-ttl {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+                                    .titleme {
+                                        font-size: 16px;
+                                        font-weight: 600;
+                                        color: var(--theme_title);
+                                        margin-top: 14px;
+                                    }
+                                    .time {
+                                        font-size: 12px;
+                                        color: var(--theme_input_color);
+                                    }
+                                }
+                                .notify-subttl {
+                                    padding: 7px 0px 14px 0px;
+                                    .time {
+                                        font-size: 12px;
+                                        color: var(--theme_input_color);
+                                    }
+                                }
+                                &:last-child {
+                                    border-bottom: none;
                                 }
                             }
                         }
@@ -102,28 +343,19 @@
                     .add-item-drpdown.show {
                         .btnadd {
                             img {
-                                transform: rotate(45deg);
+                                transform: rotate(90deg);
                                 transition: 0.2s all ease-in;
                             }
-                        }
-                    }
-                    .notify {
-                        position: relative;
-                        .notification-count {
-                            background: var(--theme_bg_blue);
-                            border-radius: 50%;
-                            padding: 3px;
-                            color: var(--white_color);
-                            font-size: 10px;
-                            position: absolute;
-                            width: 22px;
-                            height: 22px;
-                            text-align: center;
-                            right: 4px;
-                            top: 11px;
-                        }
-                        .margin-top-7 {
-                            margin-top: 7px;
+                            i {
+                                color: var(--theme_bg_blue);
+                                transition: 0.2s all ease-in;
+                                font-size: 26px;
+
+                                &::before {
+                                    color: var(--theme_bg_blue);
+                                    transition: 0.2s all ease-in;
+                                }
+                            }
                         }
                     }
                     .profile-pic {
@@ -144,9 +376,16 @@
                             transform: translate(-4px, 5px);
                         }
                     }
+                    .toggled {
+                        i {
+                            &::before {
+                                color: var(--theme_bg_blue);
+                            }
+                        }
+                    }
                 }
-                a.nav-link {
-                    padding: 0.5rem 15px !important;
+                #profile {
+                    padding: 0px;
                 }
             }
         }
@@ -166,6 +405,12 @@
             border: none;
             &:hover {
                 box-shadow: none;
+            }
+            i {
+                &::before {
+                    color: var(--theme_bg_blue);
+                    font-size: 20px;
+                }
             }
         }
         position: absolute;
@@ -270,25 +515,25 @@
                     outline: none;
                     ~ {
                         label {
-                            // top: -12px;
-                            // font-size: 16px;
-                            top: 1px;
-                            font-size: 14px;
+                            // top: 1px;
+                            // font-size: 14px;
+                            top: -12px;
+                            font-size: 16px;
                             left: 30px;
-                            // background-color: var(--white_color);
+                            background-color: var(--white_color);
                         }
                     }
                 }
                 &:not(:placeholder-shown) {
                     ~ {
                         label {
-                            // top: -12px;
-                            // font-size: 16px;
-                            top: 1px;
-                            font-size: 14px;
+                            // top: 1px;
+                            // font-size: 14px;
+                            top: -12px;
+                            font-size: 16px;
                             left: 30px;
                             color: var(--theme_input_color);
-                            // background-color: var(--white_color);
+                            background-color: var(--white_color);
                         }
                     }
                 }
@@ -307,12 +552,12 @@
                     outline: none;
                     ~ {
                         label {
-                            // top: -12px;
-                            // font-size: 16px;
-                            top: 1px;
-                            font-size: 14px;
+                            // top: 1px;
+                            // font-size: 14px;
+                            top: -12px;
+                            font-size: 16px;
                             left: 30px;
-                            // background-color: var(--white_color);
+                            background-color: var(--white_color);
                         }
                     }
                 }
@@ -320,13 +565,13 @@
                     &:valid {
                         ~ {
                             label {
-                                // top: -12px;
-                                // font-size: 16px;
-                                top: 1px;
-                                font-size: 14px;
+                                // top: 1px;
+                                // font-size: 14px;
+                                top: -12px;
+                                font-size: 16px;
                                 left: 30px;
                                 color: var(--theme_input_color);
-                                // background-color: var(--white_color);
+                                background-color: var(--white_color);
                             }
                         }
                     }
@@ -339,8 +584,8 @@
                 position: absolute;
                 pointer-events: none;
                 left: 30px;
-                // top: 6px;
-                top: 12px;
+                top: 6px;
+                // top: 12px;
                 transition: 0.2s ease all;
                 -moz-transition: 0.2s ease all;
                 -webkit-transition: 0.2s ease all;
@@ -390,7 +635,7 @@
                 text-align: center;
                 margin-bottom: 40px;
                 .profile_view {
-                    display: none;
+                    // display: none;
                     .profile {
                         text-align: center;
                         background-color: transparent;
@@ -494,3 +739,12 @@
         }
     }
 }
+.blink_me {
+    animation: blinker 1s linear infinite;
+  }
+  
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }

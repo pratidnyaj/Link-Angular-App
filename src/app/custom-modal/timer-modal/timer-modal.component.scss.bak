@@ -1,0 +1,111 @@
+// new case modal scss
+// .modal-header {
+//     border-bottom: 1px solid var(--theme_input_border);
+//     background-color: var(--theme_bg_color);
+//     border-radius: 15px 15px;
+ 
+//   }
+
+
+
+  .case-info-modal {
+    .modal-header {
+      padding: 1rem;
+  
+      .modal-title {
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+  
+    .modal-body {
+      padding: 1rem;
+  
+      .case_status {
+        .caseinfo-modal-bdy {
+          .case-ttl {
+            color: var(--theme_black);
+            text-align: center;
+            font-size: 22px;
+          }
+  
+          .sub-ttl {
+            color: var(--theme_input_color);
+            font-size: 14px;
+            text-align: center;
+          }
+  
+          .assign-icon {
+            text-align: center;
+            margin-bottom: 10px;
+  
+            i {
+              font-size: 20px;
+              background-color: var(--theme_bg_color);
+              border-radius: 10px;
+              padding: 10px;
+            }
+  
+            .icon-block {
+              font-size: 20px;
+              background-color: #ffedee;
+              border-radius: 10px;
+              padding: 10px;
+  
+              &::before {
+                color: var(--theme_red);
+              }
+            }
+          }
+        }
+  
+        .case-modal-button {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          margin: 30px 0px 20px;
+  
+          .btn-no {
+            button {
+              border: 1px solid var(--theme_input_border);
+              color: var(--theme_input_color);
+              background-color: var(--white_color);
+              box-shadow: 0px 1px 3px var(--box_shadow);
+              padding: 6px 50px;
+              border-radius: 4px;
+              width: 100%;
+              font-weight: bold;
+  
+              &:hover {
+                background-color: var(--theme_bg_blue);
+                color: var(--white_color);
+                border: 1px solid var(--theme_bg_blue);
+              }
+            }
+          }
+  
+          .btn-yes {
+            button {
+              border: 1px solid #b4b4b4;
+              color: var(--white_color);
+              background-color: #053c6d;
+              box-shadow: 0px 1px 3px var(--box_shadow);
+              padding: 6px 50px;
+              border-radius: 4px;
+              width: 100%;
+              font-weight: bold;
+  
+              &:hover {
+                background-color: var(--white_color);
+                color: var(--theme_bg_blue);
+                border: 1px solid var(--theme_input_border);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  
+  

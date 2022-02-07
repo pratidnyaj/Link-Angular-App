@@ -1,0 +1,47 @@
+<nav id="unlink_sidebar">
+    <div class="sidebar-content hidden-sm-down">
+        <ul class="nav nav-pills flex-column">
+            <!-- <li class="nav-item">
+                <a class="nav-link" title="Dashboard" [routerLink]="['/dashboard']"
+                    [routerLinkActive]="['active']">
+                    <i class="icon-dashboard "></i>
+                </a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" title="Cases" [routerLink]="['/case']" [routerLinkActive]="['active']" *ngIf="casePageAccessModule">
+                    <i class="icon-cases"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" title="Client" [routerLink]="['/client']" [routerLinkActive]="['active']" *ngIf="clientPageAccessModule">
+                    <i class="icon-client"></i>
+                </a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link" title="Admin" [routerLink]="['/admin']" [routerLinkActive]="['active']" *ngIf="adminPageAccessModule">
+                    <i class="icon-admin"></i>
+                </a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" title="Reports" [routerLink]="['/report']" [routerLinkActive]="['active']" *ngIf="reportPageAccessModule">
+                    <i class="icon-report"></i>
+                </a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link" title="Reports" >
+                    <i class="icon-notification-plus"></i>
+                </a>
+            </li> -->
+            <!-- <li class="nav-item">
+                <a class="nav-link" title="Reports" >
+                    <i class="icon-block"></i>
+                </a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link logout-nav" title="Logout" (click)="logout()" [routerLink]="['/login']" [routerLinkActive]="['active']">
+                    <i class="icon-logout"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

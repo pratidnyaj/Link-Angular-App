@@ -1,0 +1,166 @@
+<div class="wrapper">
+    <div class="action-perform-btns">
+        <div class="filter-action">
+            <button class="filters filter-blue" (click)="openVertically(accountModal);">Add New Account</button>
+        </div>
+    </div>
+    <div class="tbl-section">
+        <div class="data-body">
+            <table>
+                <thead>
+                    <tr style="font-weight: bold;">
+                        <th>Account Name</th>
+                        <th>No.Of Contacts</th>
+                        <th>Parent Account</th>
+                        <th>Service Account</th>
+                        <th>Status</th>
+                        <th> Product Info</th>
+                        <th> Contact Info</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                     
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of accountList | paginate: { itemsPerPage:10, currentPage: p }">
+                        <!-- <td >
+                            <span class="filters filter-blue" style="cursor: pointer;"  > <p class="fontcolor">{{data.AccountName}}</p></span>
+                           </td> -->
+                        <td>{{data.AccountName}}</td>
+                        <td>{{data.NoOfAccounts}}</td>
+                        <td>{{data.ParentAccountName}}</td>
+                        <td>{{data.ServiceContractName}}</td>
+                        <td>{{data.IsActive}}</td>
+                      
+                        <td class="actions">
+                            <a   class="filters filter-blue" style="cursor: pointer;" [routerLink]="['/productView',data.AccountID]"  > <p class="fontcolor">View</p></a>  
+                        </td>
+                        <td class="delete">
+                            <a   class="filters filter-blue" style="cursor: pointer;" [routerLink]="['/contactView',data.AccountID]"  > <p class="fontcolor">View</p></a>  
+                        </td>
+
+                        <td class="actions">
+                            <a><i class="icon-edit" (click)="openVerticallyCentered(accountModal,data);" ></i></a>
+                        </td>
+                        <td class="delete">
+                            <a><i  class="icon-dustbox" (click)="deleteAccount(data);"></i></a>
+                        </td>
+                    </tr>
+               
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="data-footer">
+        <paging-controls (pageChange)="p = $event" [isItemsPerPage]="false"></paging-controls>
+    </div>
+
+</div>
+
+<ng-template #accountModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">New Account</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click');closefrom()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="assign_form">
+            <form class="form_to_rly" action="" [formGroup]="accountForm">
+                <div class="row">
+                    <div class="col-md-12 contact-profile">
+                        <div class="profile_view">
+                            <button class="profile">
+                                <img class="user d-none" src="assets/images/emptyProfile.jpg" alt="contact">
+                            </button> 
+                        </div>
+                        <div class="profile-edit">
+                            <input #uploadFile type="file" id="uploadFile" class="hidden-input" style="display: none;"
+                                accept="image/jpeg, .jpeg, image/png, .png, image/pjpeg, .jpg, .docx, .pdf" />
+                            <div class="pic_user">
+                                <img class="user" [src]="url" alt="client-profile">
+                                <button class="btn-user-edit">
+                                    <img class="pencil-icon" src="assets/images/svg/edit.svg" alt="edit"
+                                        for="uploadFile" (click)="selectFile()">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label style="color: rgb(133, 128, 128);">Account Name</mat-label>
+                            <input required matInput autocomplete="off" name="AccountName" formControlName="AccountName"
+                                [ngClass]="{ 'is-invalid': submitted && f.AccountName.errors }">
+                            <mat-error *ngIf="submitted && f.AccountName.errors">
+                                <mat-error *ngIf="f.AccountName.errors.required"> <strong>Account Name is
+                                        required</strong>
+                                </mat-error>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Service Contract</mat-label>
+                            <mat-select placeholder="" name="value" formControlName="ServiceContractID">
+                                <mat-option *ngFor="let val of serviceContractData" value="{{val.ServiceContractID}}">
+                                    {{val.ServiceContractName}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Parent Account</mat-label>
+                            <mat-select placeholder="" name="value" formControlName="accountID">
+                                <mat-option *ngFor="let val of accountData" value="{{val.AccountID}}">
+                                    {{val.AccountName}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label style="color: rgb(133, 128, 128);">Domain Name</mat-label>
+                            <input matInput autocomplete="off" name="Domain" formControlName="Domain">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label style="color: rgb(133, 128, 128);">Account Rep</mat-label>
+                            <input matInput autocomplete="off" name="AccountRep" formControlName="AccountRep">
+                        </mat-form-field>
+
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label>City</mat-label>
+                            <mat-select placeholder="" name="value" formControlName="city">
+                                <mat-option *ngFor="let val of cityData" value="{{val.City}}">
+                                    {{val.City}}</mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Address</mat-label>
+                            <textarea matInput autocomplete="off" name="Address" formControlName="Address"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Notes</mat-label>
+                            <textarea matInput autocomplete="off" name="Notes" formControlName="Notes"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-label>IsActive</mat-label>
+                        <input style="margin-left: 10px;" type="checkbox" autocomplete="off" name="Description"
+                            formControlName="IsActive">
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <button class="filled-btn" (click)="save();">Save Account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>

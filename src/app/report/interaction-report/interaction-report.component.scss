@@ -1,0 +1,223 @@
+// .cont {
+//     position: fixed;
+//     bottom: 0;
+//     top: 70px;
+//     right: 12px;
+//     left: 372px;
+//     .report-div {
+//         position: absolute;
+//         top: 0;
+//         background-color: var(--white_color);
+//         padding: 15px 0;
+//         margin-bottom: 10px;
+//         box-shadow: 0px 2px 3px var(--box_shadow);
+//         border-radius: 15px;
+//         opacity: 1;
+//         margin-top: 15px;
+//         overflow-y: auto;
+//         left: 10px;
+//         right: 0;
+//         height: 375px;
+//         overflow-y: auto;
+//     }
+//     .reports-bottom {
+//         position: absolute;
+//         bottom: 0;
+//         right: 0;
+//         left: 10px;
+//         top: 405px;
+//         background-color: var(--white_color);
+//         padding: 15px;
+//         margin-bottom: 10px;
+//         box-shadow: 0px 2px 3px var([--box_shadow]);
+//         border-radius: 15px;
+//         opacity: 1;
+//         overflow-y: auto;
+//         .unlink_table {
+//             padding:0px 20px;
+//             .tbl_heading {
+//                 display: flex;
+//                 align-items: center;
+//                 justify-content: space-between;
+//                 margin-bottom: 20px;
+//                 .content-title {
+//                     font-size: 16px;
+//                     font-weight: 600;
+//                     color: var(--theme_title);
+//                     margin-bottom: 0px;
+//                 }
+//                 .file-upload {
+//                     .btn-export {
+//                         background-color: var(--white_color);
+//                         box-shadow: 0px 2px 3px var(--box_shadow);
+//                         border: 1px solid var(--theme_input_border);
+//                         text-decoration: none;
+//                         border-radius: 3px;
+//                         padding: 3px 16px;
+//                         span {
+//                             color: var(--theme_input_color);
+//                             font-size: 14px;
+//                             padding-left: 5px;
+//                         }
+//                     }
+//                 }
+//             }
+//             .table-responsive{
+//                 table{
+//                     th{
+//                         border-top: none;
+//                         color: var( --theme_input_color);
+//                         font-size: 14px;
+//                     }
+//                     td{
+//                         color: var(--theme_title);
+//                         font-size: 14px;
+//                         text-transform: capitalize;
+//                     }
+//                 }
+//             }
+//             .tbl-footer{
+//                 display: flex;
+//                 align-items: center;
+//                 justify-content: space-between;
+//                 .displaying_count{
+//                     color:var(--theme_title);
+//                     font-size: 12px;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// @media only screen and (max-width:768px){
+//     .cont{
+//         overflow-y: auto;
+//         left: 0px;
+//         top:0px;
+//         right: 0;
+//         .report-div{
+//             top:70px;
+//             left: 0px;
+//             height: 500px;
+//             position: relative;
+//         }
+//         .reports-bottom {
+//             top:70px;
+//             left: 0px;
+//             position: relative;
+//             bottom: 63px;
+//         }
+//     }
+   
+// }
+.report-section {
+    ::ng-deep .accordion {
+        .card {
+            border: none;
+            margin-bottom: 14px;
+            box-shadow: 0px 2px 3px 0px var(--box_shadow);
+            border-radius: 15px;
+            .card-header {
+                background-color: var(--white_color);
+                padding: 10px;
+                border: none;
+                color: var(--theme_title);
+                font-weight: 600;
+                button {
+                    width: 100%;
+                    text-align: left;
+                    color: var(--theme_title);
+                    font-weight: 600;
+                    font-size: 16px;
+                    text-transform: capitalize;
+                    &:focus {
+                        outline: none;
+                        box-shadow: none;
+                        text-decoration: none;
+                    }
+                    &:hover {
+                        text-decoration: none;
+                    }
+                  
+                }
+            }
+            .card-body {
+                height: calc(100vh - 230px);
+                overflow-y: scroll;
+                .client-case-tbl {
+                    .table-scroll {
+                        position: relative;
+                        z-index: 1;
+                        margin: auto;
+                        overflow: auto;
+                        height: calc(100vh - 340px);
+                        table {
+                            width: 100%;
+                            min-width: 934px;
+                            margin: auto;
+                            border-collapse: separate;
+                            border-spacing: 0;
+                        }
+                        th {
+                            padding: 5px 10px;
+                            background: #fff;
+                            vertical-align: top;
+                            text-transform: capitalize;
+                        }
+
+                        td {
+                            padding: 5px 10px;
+                            background: #fff;
+                            vertical-align: top;
+                            border-bottom: 1px solid var(--theme_input_border);
+                            white-space: nowrap;
+                            text-align: center;
+                            color: var(--theme_title);
+                            font-size: 12px;
+                        }
+                        thead {
+                            th {
+                                color: var(--theme_input_color);
+                                position: -webkit-sticky;
+                                position: sticky;
+                                top: 0;
+                                border-bottom: 1px solid var(--theme_input_border);
+                                text-align: center;
+                                font-size: 12px;
+                                font-weight: 500;
+                                white-space: nowrap;
+                            }
+                        }
+                    }
+                    .table-wrap {
+                        position: relative;
+                    }
+                    .tbl-footer {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 20px;
+                        .displaying_count {
+                            color: var(--theme_title);
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+///////////////////////////@at-root
+
+
+
+
+
+
+
+
+
+
+
+

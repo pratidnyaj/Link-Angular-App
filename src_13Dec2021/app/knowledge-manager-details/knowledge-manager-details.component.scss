@@ -1,0 +1,89 @@
+.KM-details {
+    .panel-header {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 13px 15px;
+        h4 {
+            margin-bottom: 0;
+            flex: 1;
+            font-size: 18px;
+            font-weight: 600;
+        }
+    }
+    .panel-body {
+        padding: 0 15px;
+        height: calc(100% - 50px);
+        .img {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            border: 1px solid var(--theme_input_border);
+            img {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                -o-object-fit: cover;
+                object-fit: cover;
+                -webkit-object-fit: cover;
+            }
+        }
+        .content-area {
+            height: calc(100% - 193px);
+            overflow: hidden;
+            padding: 10px 15px;
+            background-color: var(--theme_bg_color);
+            border: 1px solid var(--theme_input_border);
+            border-bottom-right-radius: 15px;
+            border-bottom-left-radius: 15px;
+            .details {
+                overflow-y: scroll;
+                max-height: calc(100% - 60px);
+                h5,
+                p {
+                    line-height: 20px;
+                }
+                h5 {
+                    color: var(--theme_title) !important;
+                    margin-bottom: 0;
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+                p {
+                    font-size: 12px;
+                    color: var(--theme_input_color);
+                    margin-bottom: 0;
+                    padding-top: 8px;
+                }
+            }
+            .buttons {
+                padding: 17px 0 13px 0;
+                text-align: center;
+
+                .btn-cancel {
+                    color: var(--theme_input_color);
+                    border: 1px solid var(--profile_icon_border);
+                    font-size: 12px;
+                    background-color: var(--white_color);
+                    border-radius: 4px;
+                    margin-right: 10px;
+                    &:focus {
+                        outline: none;
+                        box-shadow: none;
+                    }
+                }
+                .btn-save {
+                    color: var(--white_color);
+                    background-color: var(--theme_bg_blue);
+                    font-size: 12px;
+                    border-radius: 4px;
+                    &:focus {
+                        outline: none;
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+    }
+}

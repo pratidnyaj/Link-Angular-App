@@ -1,0 +1,109 @@
+<!-- new phase ui -->
+
+<div class="client-collection">
+    <div class="client-calling">
+        <div class="call-info">
+            <div class="icon">
+                <span class="icon-call-redbg"><span class="path1"></span><span class="path2"></span></span>
+            </div>
+            <div class="data">
+                <p class="data-ttl">Mobile 1 </p>
+                <p class="data-subttl"> 7829821475</p>
+                <!-- <p> <input placeholder="Mobile No."  formControlName="phone" name="phone"></p> -->
+                <p class="data-ttl">Mobile 2 </p>
+                <p class="data-subttl">+91 9778482251</p>
+                <!-- <p > <input placeholder="Mobile No."  formControlName="phone" name="phone"></p> -->
+            </div>
+
+        </div>
+        <div class="call-info">
+            <div class="icon">
+                <span class="icon-mail-bgblue"><span class="path1"></span><span class="path2"></span></span>
+            </div>
+            <div class="data">
+                <p class="data-ttl">Email 1</p>
+                <p class="data-subttl"> {{contactInfo.PrimaryEmail}}</p>
+                <p class="d-none"> <input placeholder="Email id"  name="email"></p>
+                <p class="data-ttl">Email 1</p>
+                <p class="data-subttl"> carlos.reyes@gmail.com</p>
+                <p class="d-none"> <input placeholder="Email id"  name="email"></p>
+            </div>
+        </div>
+        <div class="social-mail-info">
+            <div class="icon">
+                <span class="icon-fb-bgblue mail"><span class="path1"></span><span class="path2"></span></span>
+                <span class="mail-data"> {{contactInfo.Facebook}}</span>
+                <p class="d-none"> <input placeholder="Email id"  name="email"></p>
+            </div>
+            <div class="icon">
+                <span class="icon-fb-bgblue mail"><span class="path1"></span><span class="path2"></span></span>
+                <span class="mail-data">carlos.reyes@facebook.com</span>
+                <p class="d-none"> <input placeholder="Email id" class="pl-1"  name="email"></p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="other">
+        <div>
+            <p class="x4 mb-3"><strong>Other Details</strong></p>
+        </div>
+        <div>
+            <div class="other-infos">
+                <div class="info">
+                    <span class="gray">
+                        Status :
+                    </span>
+                    <span class="green pl-2">
+                        Active
+                    </span>
+                    <span class="d-none">
+                        <input placeholder="Status"  name="status">
+                    </span>
+                </div>
+                <div class="info">
+                    <span class="gray">
+                        Language :
+                    </span>
+                    <span class="pl-2">
+                        {{contactInfo.Language}}
+                    </span>
+                    <span class="d-none">
+                        <input placeholder="Language"  name="status">
+                    </span>
+                </div>
+                <div class="info pl-5">
+                    <span class="gray">
+                        TimeZone :
+                    </span>
+                    <span class="pl-2">
+                        {{contactInfo.TimeZone}}
+                    </span>
+                    <span class="d-none">
+                        <input placeholder="Timezone"   name="status">
+                    </span>
+                </div>
+            </div>
+            <div>
+                <div class="info">
+                    <span class="gray">
+                        Address :
+                    </span>
+                    <span class="pl-2">
+                        {{contactInfo.Address}}
+                    </span>
+                    <span class="d-none">
+                        <input placeholder="Address"   name="status">
+                    </span>
+                </div>
+                <div class="info">
+                    <span class="gray">City : </span>
+                    <span class="pl-2"> {{contactInfo.City}}</span>
+                    <span class="d-none">
+                        <input placeholder="City"   name="status">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

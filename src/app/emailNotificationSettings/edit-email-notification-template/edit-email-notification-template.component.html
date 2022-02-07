@@ -1,0 +1,143 @@
+<div class="container-fluid mobile-padding">
+    <div class="admin_content">
+
+        <!-- <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+        <ngx-editor
+          [editor]="editor"
+          [(ngModel)]="html"
+          [disabled]="false"
+          [placeholder]="'Type here...'"
+        ></ngx-editor> -->
+
+        <!-- <quill-editor
+        
+        [(ngModel)]="html" 
+      
+        placeholder= "Insert text here ..."
+      >
+          <div quill-editor-toolbar>
+            <span class="ql-formats">
+              <button class="ql-bold" [title]="'Bold'"></button>
+              <button class="ql-italic" [title]="'italic'"></button>
+            </span>
+            <span class="ql-formats">
+              <button class="ql-image" [title]="'image'"></button>
+            </span>
+            <span class="ql-formats">
+              <select class="ql-align" [title]="'Aligment'">
+                <option selected></option>
+                <option value="center"></option>
+                <option value="right"></option>
+                <option value="justify"></option>
+              </select>
+              <select class="ql-align" [title]="'Aligment2'">
+                <option selected></option>
+                <option value="center"></option>
+                <option value="right"></option>
+                <option value="justify"></option>
+              </select>
+            </span>
+          </div>
+        </quill-editor> -->
+   
+
+        <!-- <quill-editor [styles]="{height: '200px'}"></quill-editor> -->
+<!-- 
+        <quill-editor 
+        [styles]="{height: '200px'}" 
+        (onFocus)="focus($event)" 
+        (onEditorChanged)="changedEditor($event)"
+        (onBlur)="blur($event)" 
+        (onEditorCreated)="created($event)"
+      ></quill-editor> -->
+
+<div class="row">
+<div class="col-md-3">
+ 
+</div>
+<div class="col-md-6">
+        <form class="form_to_rly" action="" [formGroup]="emailNotificationForm">
+                <div class="row">
+                  <div class="col-md-2" style="margin-top: 21px">
+                    <mat-checkbox >Html</mat-checkbox>
+                  </div>
+                  <div class="col-md-10">
+                    <!-- <ng-select [items]="cities"
+                    bindLabel="name"
+                    bindValue="id" 
+                    placeholder="Html"
+                    appendTo="body"
+                    [clearable]="false" [closeOnSelect]="true"> -->
+
+
+                    <ng-select
+                    [items]="getvaribleList"
+                    bindLabel="TextField"
+                    placeholder="Select Variable Field"
+                    appendTo="body"
+                    bindValue="ValField" 
+                    [multiple]="true"
+                    (change)="selectHtmlValue($event)"  formControlName="htmlList">
+
+
+
+                  </ng-select>
+                </div>
+                <div class="col-md-12">
+                    <mat-form-field appearance="fill">
+                        <mat-label style="color: rgb(133, 128, 128);">Subject</mat-label>
+                        <!-- <mat-label style="color: black;"><span class="astrik">*</span> Name</mat-label> -->
+                        <input matInput autocomplete="off" name="Subject"   formControlName="subject"> 
+                    </mat-form-field>
+                  </div>
+                 </div>
+<!-- 
+
+                 <form class="form_to_rly" action="" >
+                  <div class="row">
+                    <div class="col-md-12">
+                      <ng-select [items]="cities"
+                      bindLabel="name"
+                      bindValue="id" 
+                      placeholder="Html"
+                      appendTo="body"
+                      [clearable]="false" [closeOnSelect]="true">
+  
+  
+  
+  
+                      
+                    </ng-select>
+                  </div>
+                  <div class="col-md-12">
+                      <mat-form-field appearance="fill">
+                          <mat-label style="color: rgb(133, 128, 128);">Subject</mat-label>
+                      
+                          <input matInput autocomplete="off" name="Subject"> 
+                      </mat-form-field>
+                    </div>
+                   </div>
+                  </form> -->
+  <!-- <label>Description</label> -->
+  <quill-editor name="content" [(ngModel)]="content" trackChanges="all" [modules]="modules"
+  (onEditorCreated)="addBindingCreated($event)" formControlName="description">
+</quill-editor>
+        
+</form>
+
+<br>
+
+<div _ngcontent-cto-c199="" class="modaction-btns"><button _ngcontent-cto-c199="" class="border-btn" (click)="saveEmailNotification()">Save</button></div>
+
+
+
+<pre><code>{{ content }}</code></pre>
+
+</div>
+<div class="col-md-3">
+    
+</div>
+</div>
+  
+    </div>
+</div>

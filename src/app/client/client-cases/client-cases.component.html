@@ -1,0 +1,59 @@
+<div class="client-case-tbl">
+    <div id="table-scroll" class="table-scroll">
+        <table id="main-table" class="main-table">
+            <thead>
+                <tr>
+                    <th>CaseID</th>
+                    <th>Subject </th>                   
+                    <th>CreatedOn</th>
+                    <th>Owner</th>
+                    <th>Routed Agent</th>
+                    <th>Routed Team</th>
+                    <th>DueOn</th>
+                    <th>Status</th>
+                    <th>Source</th>
+                    <th>Priority</th>
+                    <th>Product</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let group of CaselevelData | paginate: { id: 'listing_pagination',
+                itemsPerPage: perPageCnt,
+                currentPage: currentPageNumber,
+                totalItems: totalRec }; let idx = index">
+                    <td>{{group.CaseID}}</td>
+                    <td>{{group.Subject}}</td>                   
+                    <td>{{group.CreatedDate}}</td>
+                    <td>{{group.Owner}}</td>
+                    <td>{{group.AssignedToAgent}}</td>
+                    <td>{{group.AssignedToTeam}}</td>
+                    <td>{{group.DueDateTime}}</td>
+                    <td>{{group.Status}}</td>
+                    <td>{{group.ChannelID}}</td>
+                    <td>{{group.Priority}}</td>
+                    <td>{{group.ProductName}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="tbl-footer">
+        <div class="displaying_count">
+            <div>
+                Displaying {{(( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt + 1}} -
+                {{(( ( currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) + perPageCnt > (totalRec)
+                ? totalRec :
+                (((
+                currentPageNumber > 1 ? currentPageNumber : 1 ) - 1) * perPageCnt) + perPageCnt}}
+                of {{ totalRec }} Records
+            </div>
+        </div>
+        <div>
+            <div class="mod_pagination">
+                <pagination-controls id="listing_pagination" previousLabel="" nextLabel="" [maxSize]="7"
+                    [directionLinks]="true" (pageChange)="handlePageChange($event)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+
+</div>

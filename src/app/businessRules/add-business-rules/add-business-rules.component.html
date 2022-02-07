@@ -1,0 +1,73 @@
+
+
+<div class="wrapper">
+    <div class="cust-ttl">
+        New Business Rules Create
+    </div>
+    <div class="container">
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+          <p>
+            <label for="name">
+                Rule Name</label>
+            <input type="text" id="name" name="name" formControlName="name" class="form-control">
+          </p>
+          <p>
+            <label for="name">
+                Description</label>
+            <input type="text" id="name" name="name" formControlName="description" class="form-control">
+          </p>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="checklist">
+                    <li>
+                        <div class="radio">
+                            <input type="radio" value="ExistingContact" id="f-option">
+                                
+                            <label for="f-option" class="radio-label"> Match Any of the below
+                            </label>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div class="radio">
+                            <input type="radio" value="ExistingRequestor" id="s-option"
+                              >
+                            <label for="s-option" class="radio-label"> Match All of the below
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+          <table class="table table-bordered" formArrayName="quantities">
+            <tr>
+              <th colspan="2">Object Properties</th>
+              <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Add More</button></th>
+            </tr>
+            <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
+            
+            
+                <td>
+                  Email :
+                  <input type="text" formControlName="qty" class="form-control">
+              </td>
+              <td>
+                  Enter data:
+                  <input type="text" formControlName="price" class="form-control">
+              </td>
+              <td>
+                  <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>
+              </td>
+            </tr>
+          </table>
+         
+          <button type="submit" class="btn btn-success">Submit</button>
+          
+        </form>
+          
+        <br/>
+        {{this.productForm.value | json}}
+      </div>
+    
+</div>

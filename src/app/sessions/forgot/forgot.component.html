@@ -1,0 +1,89 @@
+<div class="unlink_loginsec">
+    <div class="container-fluid unlink_remove_padd">
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-8 unlink_remove_padd unlink_mobhide">
+                <div class="unlink_loginimg">
+                    <img src="assets/images/login-img.png" alt="login_banner" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-4 unlink_remove_padd">
+                <form action="">
+                    <div class="unlink_login_white">
+                        <div class="unlink_forget_pass"  *ngIf="forgot">
+                            <div class="unlink_crossicon">
+                                <button class="close" (click)="resetLogin()"><i class="icon-plus"></i></button>
+                            </div>
+                            <div>
+                                <h1 class=" unlink_title_frtpass unlink_theme_font">
+                                    Forgot Password
+                                </h1>
+                            </div>
+                            <div class="unlink_inputs " *ngIf="forgot && phonenumber">
+                                <form [formGroup]="forgotPhone" (ngSubmit)="phoneEmailvalidate()">
+                                <div class="form-group unlink_formgroup">
+                                    <input type="text" class="form-control unlink_theme_font"
+                                        placeholder="Email id or phone number" name="phoneEmail"  formControlName="phoneEmail"  >
+                                        <div class="invalid-feedback1">{{email_phone_Error_msg}}</div>
+                                    </div>
+                                <div>
+                                    <button class="unlink_theme_button unlink_theme_font unlink_mt-20">Send OTP</button>
+                                </div>
+                                </form>
+                            </div>
+                            <div class="unlink_inputs " *ngIf="forgot && otp">
+                                <form [formGroup]="otpNumberForm" (ngSubmit)="sendOtpnumber()">
+                                <div class="form-group unlink_formgroup">
+                                    <input class="otp_inputs unlink_theme_font" type="text" placeholder="0" maxlength="1" name="otpOne" formControlName="otpOne"  (keypress)="numericOnly($event)"/>
+                                    <input class="otp_inputs unlink_theme_font" type="text" placeholder="0" maxlength="1" name="otpTwo" formControlName="otpTwo"  (keypress)="numericOnly($event)" />
+                                    <input class="otp_inputs unlink_theme_font" type="text" placeholder="0" maxlength="1" name="otpThree" formControlName="otpThree"   (keypress)="numericOnly($event)" />
+                                    <input class="otp_inputs unlink_theme_font" type="text" placeholder="0" maxlength="1" name="otpFour" formControlName="otpFour"  (keypress)="numericOnly($event)" />
+                                    <div class="invalid-feedback1">{{otp_Error_msg}}</div>
+                                    
+                                </div>
+                             
+                             
+                                <div>
+                                    <button
+                                        class="unlink_theme_button unlink_theme_font unlink_mt-20 text-capitalize">Confirm
+                                        OTP</button>
+                                </div>
+                            </form>
+                            </div>
+                            <div class="unlink_inputs"  *ngIf="forgot && resetPwd" >
+                                <form [formGroup]="passwordForm" (ngSubmit)="passwordRest()">
+                                <div class="form-group unlink_formgroup">
+                                    <input type="password" class="form-control unlink_theme_font"
+                                        placeholder="New password" maxlength="8" formControlName="password"  [ngClass]="{ 'is-invalid': forgotsubmitted && f3.password.errors }" >
+                                        <div *ngIf="forgotsubmitted && f3.password.errors" class="invalid-feedback">
+                                            <div *ngIf="f3.password.errors.required">Password is required</div>
+                                            <div *ngIf="f3.password.errors.minlength">Password must be at least 8 characters</div>
+                                        </div>
+                                </div>
+                                <div class="form-group unlink_formgroup unlink_mt-20">
+                                    <input type="password" class="form-control unlink_theme_font"
+                                        placeholder="Confirm password" maxlength="8" formControlName="confirmPassword"
+                                         [ngClass]="{ 'is-invalid': forgotsubmitted && f3.confirmPassword.errors }">
+
+                                        <div *ngIf="forgotsubmitted && f3.confirmPassword.errors" class="invalid-feedback">
+                                            <div *ngIf="f3.confirmPassword.errors.required">Confirm Password is required</div>
+                                            <div *ngIf="f3.confirmPassword.errors.mustMatch">Passwords must match</div>
+                                        </div>
+                                </div>
+                                <div>
+                                    <button
+                                        class="unlink_theme_button unlink_theme_font unlink_mt-40 text-capitalize">Create
+                                        Password
+                                    </button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="unlink_cmnycode">
+                            <a href="#" class="unlink_code"> &copy;UNFYD<sup>&copy;</sup></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

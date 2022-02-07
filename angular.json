@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -31,12 +34,16 @@
               "node_modules/bootstrap/scss/bootstrap.scss",
               "src/styles.scss",
               "node_modules/summernote/dist/summernote-lite.min.css"
+            
             ],
-            "scripts": [
+            "scripts": [              
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/summernote/dist/summernote-lite.min.js"
+              "node_modules/summernote/dist/summernote-lite.min.js",
+              "src/assets/js/UnfydCrypto.js",
+              "node_modules/quill/dist/quill.min.js"
+              
             ]
           },
           "configurations": {
@@ -49,8 +56,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "2mb"
+                  "maximumWarning": "3mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",

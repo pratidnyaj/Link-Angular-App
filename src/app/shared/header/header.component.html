@@ -1,144 +1,151 @@
-<!-- <nav class="navbar fixed-top navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#">
-        <img src="assets/images/U logo.png" />
-    </a>
-    <div class="page-heading">Link</div>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="form-inline my-2 my-lg-0 ml-auto" id="search-box">
-            <div class="searchboxwrapper">
-                <input class="form-control search-input" type="text" value="" placeholder="Search">
-                <input class="searchsubmit" type="submit" id="searchsubmit" value="">
-            </div>
-        </form>
-        <ul class="navbar-nav">
-            <li>
-                <div class="dropdown add-item-drpdown">
-                    <button class="btn btnadd" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <img src="assets/images/svg/add.svg" class="margin-top-7" />
-                    </button>
-                    <div class="dropdown-menu add-drpmenu" aria-labelledby="dropdownMenuButton">
-                        <div class="add-menus">
-                            <a href="#" id="show-new-cases">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px"
-                                    fill="#333333">
-                                    <path d="M0 0h24v24H0z" fill="none" />
-                                    <path
-                                        d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-2-1.46c-1.19.69-2 1.99-2 3.46s.81 2.77 2 3.46V18H4v-2.54c1.19-.69 2-1.99 2-3.46 0-1.48-.8-2.77-1.99-3.46L4 6h16v2.54zM11 15h2v2h-2zm0-4h2v2h-2zm0-4h2v2h-2z" />
-                                </svg>
-                                New Case
-                            </a>
-                        </div>
-
-                        <div class="add-menus">
-                            <a href="#" id="show-new-contact">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                                    fill="#333333">
-                                    <path d="M0 0h24v24H0V0z" fill="none" />
-                                    <path
-                                        d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM4 0h16v2H4zm0 22h16v2H4zm8-10c1.38 0 2.5-1.12 2.5-2.5S13.38 7 12 7 9.5 8.12 9.5 9.5 10.62 12 12 12zm0-3.5c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm5 7.49C17 13.9 13.69 13 12 13s-5 .9-5 2.99V17h10v-1.01zm-8.19-.49c.61-.52 2.03-1 3.19-1 1.17 0 2.59.48 3.2 1H8.81z" />
-                                </svg>
-                                New Contact
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-
-            </li>
-         
-            <li class="nav-item" id="notification">
-                <a class="nav-link notify" href="#">
-                    <img src="assets/images/svg/notification.svg" class="margin-top-7" />
-                    <span class="notification-count">88</span>
-                </a>
-             
-            </li>
-            <li class="nav-item" id="profile">
-                <a class="nav-link disabled" href="#">
-                    <div class="profile-pic">
-                        <span class="online-sign"></span>
-                    </div>
-
-                </a>
-            </li>
-        </ul>
-    </div>
-</nav> -->
-
-
 <div class="header">
     <nav class="navbar fixed-top navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="#">
             <img src="assets/images/U logo.png" />
         </a>
-        <div class="page-heading">Link</div>
-
+        <div class="page-heading ">Link</div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <form class="form-inline my-2 my-lg-0 ml-auto " id="search-box">
-                <div class="searchboxwrapper">
+                <div class="searchboxwrapper" *ngIf="searchbarAccess">
                     <input class="form-control search-input" type="text" value="" placeholder="Search">
                     <input class="searchsubmit" type="submit" id="searchsubmit" value="">
                 </div>
             </form>
             <ul class="navbar-nav">
-                <li>
+                <li><div class="blink_me">
+                        <!-- {{minutesDisplay}} {{secondsDisplay}}   *ngIf="secondsDisplay <= 176 && minutesDisplay != 03"-->
+                       <b style="color: red;" *ngIf="secondsDisplay <= 896 && minutesDisplay != 15">{{ (minutesDisplay) }}:{{ (secondsDisplay)  ? ('0' + temp).slice(-2) : '00' }}
+                    </b> 
+                    </div>
+                </li>
+                <li class="nav-item">
                     <div class="dropdown add-item-drpdown">
                         <button class="btn btnadd" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            <img src="assets/images/svg/add.svg" class="margin-top-7" />
+                            <img src="assets/images/svg/bg-blueplus.svg" class="margin-top-7" alt="addicon" />
                         </button>
                         <div class="dropdown-menu add-drpmenu" aria-labelledby="dropdownMenuButton">
-                            <div class="add-menus">
-                                <button class="btn-newcases" (click)="openScrollableContent(longContent)"> <svg
-                                        xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24"
-                                        width="20px" fill="#333333">
-                                        <path d="M0 0h24v24H0z" fill="none" />
-                                        <path
-                                            d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-2-1.46c-1.19.69-2 1.99-2 3.46s.81 2.77 2 3.46V18H4v-2.54c1.19-.69 2-1.99 2-3.46 0-1.48-.8-2.77-1.99-3.46L4 6h16v2.54zM11 15h2v2h-2zm0-4h2v2h-2zm0-4h2v2h-2z" />
-                                    </svg>
-                                    New Case</button>
-                                <!-- <a href="#" id="show-new-cases">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24"
-                                        width="20px" fill="#333333">
-                                        <path d="M0 0h24v24H0z" fill="none" />
-                                        <path
-                                            d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-2-1.46c-1.19.69-2 1.99-2 3.46s.81 2.77 2 3.46V18H4v-2.54c1.19-.69 2-1.99 2-3.46 0-1.48-.8-2.77-1.99-3.46L4 6h16v2.54zM11 15h2v2h-2zm0-4h2v2h-2zm0-4h2v2h-2z" />
-                                    </svg>
+                            <div class="add-menus" *ngIf="roleNewcase">
+                                <button class="btn-newcases" (click)="myFunctionOne()">
+                                    <i class="icon-cases"></i>
                                     New Case
-                                </a> -->
+                                </button>
                             </div>
 
                             <div class="add-menus">
-                                <!-- <a href="#" id="show-new-contact">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24"
-                                        width="18px" fill="#333333">
-                                        <path d="M0 0h24v24H0V0z" fill="none" />
-                                        <path
-                                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM4 0h16v2H4zm0 22h16v2H4zm8-10c1.38 0 2.5-1.12 2.5-2.5S13.38 7 12 7 9.5 8.12 9.5 9.5 10.62 12 12 12zm0-3.5c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm5 7.49C17 13.9 13.69 13 12 13s-5 .9-5 2.99V17h10v-1.01zm-8.19-.49c.61-.52 2.03-1 3.19-1 1.17 0 2.59.48 3.2 1H8.81z" />
-                                    </svg>
+                                <button class="btn-newcases" (click)="contactModalOpen()">
+                                    <i class="icon-client"></i>
                                     New Contact
-                                </a> -->
-                                <button class="btn-newcases" (click)="openContactContent(contact)"><svg
-                                        xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24"
-                                        width="18px" fill="#333333">
-                                        <path d="M0 0h24v24H0V0z" fill="none" />
-                                        <path
-                                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM4 0h16v2H4zm0 22h16v2H4zm8-10c1.38 0 2.5-1.12 2.5-2.5S13.38 7 12 7 9.5 8.12 9.5 9.5 10.62 12 12 12zm0-3.5c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm5 7.49C17 13.9 13.69 13 12 13s-5 .9-5 2.99V17h10v-1.01zm-8.19-.49c.61-.52 2.03-1 3.19-1 1.17 0 2.59.48 3.2 1H8.81z" />
-                                    </svg>
-                                    New Contact</button>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="nav-item" id="notification">
-                    <a class="nav-link notify" href="#">
-                        <img src="assets/images/svg/notification.svg" class="margin-top-7" />
-                        <span class="notification-count">88</span>
+                <li class="nav-item" *ngIf="agentWebCaseAccess">
+                    <a matTooltip="Web-Engagement" matTooltipClass="custom-tooltip" (click)="openWebEngage()" [class.toggled]="webEngageState">
+                        <i class="icon-web-world"></i>
                     </a>
                 </li>
-                <li class="nav-item" id="profile">
+                <li class="nav-item" *ngIf="myDashboardCaseAccess">
+                    <a matTooltip="Dashboard" matTooltipClass="custom-tooltip" (click)="openDashboard()" [class.toggled]="dashboardState">
+                        <i class="icon-dashboard"></i>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="knowledgeManagerCaseAccess">
+                    <a matTooltip="Knowledge-Manager" matTooltipClass="custom-tooltip" (click)="openKnowledgeManager()" [class.toggled]="knowledgeManagerState">
+                        <i class="icon-information"></i>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="remindersClockCaseAccess">
+                    <a matTooltip="Reminder" matTooltipClass="custom-tooltip" (click)="openClock()" [class.toggled]="clockState">
+                        <i class="icon-clock"></i>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="menuBloackCaseAccess">
+                    <a  matTooltip="Block cases" matTooltipClass="custom-tooltip" (click)="openBlockCase()" [class.toggled]="blockState"> <i class="icon-block"></i></a>
+                </li>
+                <!-- <li>
+                    <a (click)="openNotifylist()" [class.toggled]="notifyState"> <i class="icon-bell"></i></a>
+                </li> -->
+                <li matTooltip="Notification" matTooltipClass="custom-tooltip" class="nav-item" id="notification" *ngIf="notificationCaseAccess">
+                    <app-firebase-notification></app-firebase-notification>
+                </li>
+
+                <li class="nav-item" *ngIf="caseSettingCaseAccess">
+                    <div class="dropdown add-item-drpdown notify">
+                        <button matTooltip="Setting" matTooltipClass="custom-tooltip" class="btn btnadd" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-setting"></i>
+                        </button>
+                        <div class="dropdown-menu add-drpmenu external-drpmenu" aria-labelledby="dropdownMenuButton">
+                            <div>
+                                <div class="setting-menu">
+                                    <div class="icon-txt">
+                                        <span> <i class="icon-bell"></i></span>
+                                        <span class="setmenu">Desktop Notification</span>
+                                    </div>
+                                    <div class="switch">
+                                        <input id="desktopNotification" type="checkbox" class="switch-input">
+                                        <label for="desktopNotification" class="switch-label">Switch</label>
+                                    </div>
+                                </div>
+                                <div class="setting-menu">
+                                    <div class="icon-txt">
+                                        <span> <i class="icon-sound-notify"></i></span>
+                                        <span class="setmenu">Notification Sound</span>
+                                    </div>
+                                    <div class="switch">
+                                        <input id="desktopNotification" type="checkbox" class="switch-input">
+                                        <label for="desktopNotification" class="switch-label">Switch</label>
+                                    </div>
+                                </div>
+                                <div class="setting-menu">
+                                    <div class="icon-txt">
+                                        <span> <i class="icon-round-robin"></i></span>
+                                        <span class="setmenu">Round Robin</span>
+                                    </div>
+                                    <div class="switch">
+                                        <input id="desktopNotification" type="checkbox" class="switch-input">
+                                        <label for="desktopNotification" class="switch-label">Switch</label>
+                                    </div>
+                                </div>
+                                <div class="setting-menu">
+                                    <div class="icon-txt">
+                                        <span> <i class="icon-change-pass"></i></span>
+                                        <span class="setmenu">Change Password</span>
+                                    </div>
+                                </div>
+                                <div class="setting-menu">
+                                    <div class="icon-txt">
+                                        <span> <i class="icon-keyboard"></i></span>
+                                        <span class="setmenu">Keyboard Shortcut Key</span>
+                                    </div>
+                                </div>
+                                <div class="setting-menu">
+                                    <div class="icon-txt">
+                                        <span> <i class="icon-help"></i></span>
+                                        <span class="setmenu">Help</span>
+                                    </div>
+                                </div>
+                                <div class="setting-menu">
+                                    <div class="icon-txt">
+                                        <span> <i class="icon-theme"></i></span>
+                                        <span class="setmenu">Theme</span>
+                                    </div>
+                                    <div class="colors">
+                                        <label>
+                                            <input type="radio" name="options">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li matTooltip="Supervisor" matTooltipClass="custom-tooltip" class="nav-item" *ngIf="caseProfileIcon">
+                    <i class="icon-person"></i>
+                </li>
+                <li class="nav-item" id="profile" *ngIf="caseProfilePhotoCaseAccess">
                     <a class="nav-link disabled" href="#">
                         <div class="profile-pic">
                             <span class="online-sign"></span>
@@ -150,316 +157,26 @@
     </nav>
 </div>
 
+<app-web-engagement (closeWebEngage)='closeWebEngage($event)' [ngClass]="webEngageState ? 'slide-in' : 'slide-out'">
+</app-web-engagement>
+
+<app-konwledge-manager (closeKnowledgeManager)='closeKnowledgeManager($event)'
+    [ngClass]="knowledgeManagerState ? 'slide-in' : 'slide-out'"></app-konwledge-manager>
+<app-chart-dashboard (closeDashboard)='closeDashboard($event)' [ngClass]="dashboardState ? 'slide-in' : 'slide-out'">
+</app-chart-dashboard>
+
+<!-- <app-dashboard-home (closeDashboard)='closeDashboard($event)' [ngClass]="dashboardState ? 'slide-in' : 'slide-out'">
+</app-dashboard-home> -->
+
+<app-reminder (closeClock)="closeClock($event)" [ngClass]="clockState ? 'slide-in' : 'slide-out'"></app-reminder>
+
+<app-block-case (closeBlock)="closeBlock($event)" [ngClass]="blockState ? 'slide-in' : 'slide-out'"></app-block-case>
+
+<app-notification-list (closeNotification)="closeNotification($event)"
+    [ngClass]="notifyState ? 'slide-in' : 'slide-out'"></app-notification-list>
+<!-- New Case -->
 
 
-<ng-template #longContent let-modal>  
-    <div class="modal-header">
-        <h4 class="modal-title">New Case</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <div class="profile-icon">
-            <button>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                    <path d="M0 0h24v24H0V0z" fill="none"></path>
-                    <path
-                        d="M11 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zM5 18c.2-.63 2.57-1.68 4.96-1.94l2.04-2c-.39-.04-.68-.06-1-.06-2.67 0-8 1.34-8 4v2h9l-2-2H5zm15.6-5.5l-5.13 5.17-2.07-2.08L12 17l3.47 3.5L22 13.91z">
-                    </path>
-                </svg>
-            </button>
-        </div>
-    </div>
-    <div class="modal-body">
-        <form action="">
-            <div id="new-case">
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul class="checklist">
-                            <li>
-                                <input type="radio" id="f-option" name="selector" checked="checked">
-                                <label for="f-option">Existing contact for</label>
-                                <div class="check"></div>
-                            </li>
-
-                            <li>
-                                <input type="radio" id="s-option" name="selector">
-                                <label for="s-option">Existing Requestor for</label>
-
-                                <div class="check">
-                                    <div class="inside"></div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <input type="radio" id="t-option" name="selector">
-                                <label for="t-option">New requestor</label>
-
-                                <div class="check">
-                                    <div class="inside"></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="full-content-- form_to_rly">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-sm-4 m-bottom floating-label">
-                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
-                                    value="">
-                                    <option value=""></option>
-                                    <option value="1">Team 1</option>
-                                    <option value="2">Team 2</option>
-                                </select>
-                                <label>Team</label>
-                            </div>
-                            <div class="col-sm-4 m-bottom floating-label">
-                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
-                                    value="">
-                                    <option value=""></option>
-                                    <option value="1">Agent 1</option>
-                                    <option value="2">Agent 2</option>
-                                </select>
-                                <label>Agent</label>
-                            </div>
-                            <div class="col-sm-4 m-bottom floating-label">
-                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
-                                    value="">
-                                    <option value=""></option>
-                                    <option value="1">Source Email 1</option>
-                                    <option value="2">Source Email 2</option>
-                                </select>
-                                <label>Source Email</label>
-                            </div>
-                            <div class="col-sm-4 m-bottom floating-label">
-                                <input type="text" class="floating-input" placeholder=" ">
-                                <label>Sender Email</label>
-                            </div>
-                            <div class="col-sm-4 m-bottom floating-label">
-                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
-                                    value="">
-                                    <option value=""></option>
-                                    <option value="1">Contact 1</option>
-                                    <option value="2">Contact 2</option>
-                                </select>
-                                <label>Contact</label>
-                            </div>
-                            <div class="col-sm-4 m-bottom floating-label">
-                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
-                                    value="">
-                                    <option value=""></option>
-                                    <option value="1">Account 1</option>
-                                    <option value="2">Account 2</option>
-                                </select>
-                                <label>Account</label>
-                            </div>
-                            <div class="col-sm-12 m-bottom floating-label">
-                                <input type="text" class="floating-input" placeholder=" ">
-                                <label>CC</label>
-                            </div>
-                            <div class="col-sm-12 m-bottom floating-label">
-                                <input type="text" class="floating-input" placeholder=" ">
-                                <label>Subject</label>
-                            </div>
-                            <div class="col-12 m-bottom floating-label">
-                                <textarea class="floating-input" type="text" placeholder=" " row="5"></textarea>
-                                <label>Description</label>
-                            </div>
-
-                            <div class="col-sm-4 m-bottom floating-label">
-                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
-                                    value="">
-                                    <option value=""></option>
-                                    <option value="1">Priority 1</option>
-                                    <option value="2">Priority 2</option>
-                                </select>
-                                <label>Priority</label>
-                            </div>
-                            <div class="col-sm-4 m-bottom floating-label">
-                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
-                                    value="">
-                                    <option value=""></option>
-                                    <option value="1">Status 1</option>
-                                    <option value="2">Status 2</option>
-                                </select>
-                                <label>Status</label>
-                            </div>
-                            <div class="col-sm-4 m-bottom floating-label">
-                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
-                                    value="">
-                                    <option value=""></option>
-                                    <option value="1">Request Type 1</option>
-                                    <option value="2">Request Type 2</option>
-                                </select>
-                                <label>Request Type</label>
-                            </div>
-                            <div class="col-sm-4 m-bottom floating-label">
-                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
-                                    value="">
-                                    <option value=""></option>
-                                    <option value="1">Business Hours 1</option>
-                                    <option value="2">Business Hours 2</option>
-                                </select>
-                                <label>Business Hours</label>
-                            </div>
-                            <div class="col-sm-4 m-bottom floating-label">
-                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
-                                    value="">
-                                    <option value=""></option>
-                                    <option value="1">Escalation 1</option>
-                                    <option value="2">Escalation 2</option>
-                                </select>
-                                <label>Escalation</label>
-                            </div>
-                            <div class="col-sm-4 m-bottom floating-label">
-                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
-                                    value="">
-                                    <option value=""></option>
-                                    <option value="1">Callback Request 1</option>
-                                    <option value="2">Callback Request 2</option>
-                                </select>
-                                <label>Callback Request</label>
-                            </div>
-                            <div class="col-sm-4 m-bottom floating-label">
-                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
-                                    value="">
-                                    <option value=""></option>
-                                    <option value="1">Source Channel 1</option>
-                                    <option value="2">Source Channel 2</option>
-                                </select>
-                                <label>Source Channel</label>
-                            </div>
-                            <div class="col-sm-4 m-bottom floating-label">
-                                <input type="" class="floating-input" placeholder=" ">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="19px" viewBox="0 0 24 24" width="19px"
-                                    fill="#5F5F5F">
-                                    <path d="M0 0h24v24H0V0z" fill="none" />
-                                    <path
-                                        d="M7 11h2v2H7v-2zm14-5v14c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2l.01-14c0-1.1.88-2 1.99-2h1V2h2v2h8V2h2v2h1c1.1 0 2 .9 2 2zM5 8h14V6H5v2zm14 12V10H5v10h14zm-4-7h2v-2h-2v2zm-4 0h2v-2h-2v2z" />
-                                </svg>
-                                <label>DueDate</label>
-                            </div>
-                            <div class="col-sm-4 m-bottom floating-label">
-                                <input type="text" class="floating-input" placeholder=" ">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="19px" viewBox="0 0 24 24" width="19px"
-                                    fill="#5F5F5F">
-                                    <path d="M0 0h24v24H0V0z" fill="none" />
-                                    <path
-                                        d="M7 11h2v2H7v-2zm14-5v14c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2l.01-14c0-1.1.88-2 1.99-2h1V2h2v2h8V2h2v2h1c1.1 0 2 .9 2 2zM5 8h14V6H5v2zm14 12V10H5v10h14zm-4-7h2v-2h-2v2zm-4 0h2v-2h-2v2z" />
-                                </svg>
-                                <label>FollowDate</label>
-                            </div>                            
-                        </div>
-                    </div>
-
-                    <div class="modaction-btns">
-                        <button class="border-btn">Assign To Me</button>
-                        <button class="filled-btn">Create Case</button>
-                    </div>                   
-                </div>
-            </div>
-        </form>
-    </div>
-</ng-template>
-
-
-
-<ng-template #contact let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title">Create New Contact</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <form action="" id="new-case">
-            <div class="form_to_rly">
-                <div class="row">
-                    <div class="col-md-8 offset-md-2">
-                        <div class="row">
-                            <div class="col-md-12 contact-profile">
-                                <div class="profile_view">
-                                    <button class="profile">
-                                        <img class="user" src="assets/images/svg/contact-user.svg" alt="contact">
-                                    </button>
-                                </div>
-                                <div class="profile-edit">
-                                    <div class="pic_user">
-                                        <img class="user" src="assets/images/client-profile.png" alt="client-profile">
-                                        <button class="btn-user-edit">
-                                            <img class="pencil-icon" src="assets/images/svg/edit.svg" alt="edit">
-                                        </button>
-                                    </div>                                   
-                                </div>
-                            </div>
-                            <div class="col-md-12 m-bottom floating-label">
-                                <input type="text" class="floating-input" placeholder=" ">
-                                <label>Contact Name</label>
-                            </div>
-                            <div class="col-md-6 m-bottom floating-label">
-                                <input type="text" class="floating-input" placeholder=" ">
-                                <label>Facebook</label>
-                            </div>
-                            <div class="col-sm-6 m-bottom floating-label">
-                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
-                                    value="">
-                                    <option value=""></option>
-                                    <option value="1">Language 1</option>
-                                    <option value="2">Language 2</option>
-                                </select>
-                                <label>Language</label>
-                            </div>
-                            <div class="col-md-6 m-bottom floating-label">
-                                <input type="text" class="floating-input" placeholder=" ">
-                                <label>Email 1</label>
-                            </div>
-                            <div class="col-md-6 m-bottom floating-label">
-                                <input type="text" class="floating-input" placeholder=" ">
-                                <label>Email 2</label>
-                            </div>
-                            <div class="col-md-6 m-bottom floating-label">
-                                <input type="text" class="floating-input" placeholder=" ">
-                                <label>Phone 1</label>
-                            </div>
-                            <div class="col-md-6 m-bottom floating-label">
-                                <input type="text" class="floating-input" placeholder=" ">
-                                <label>Phone 2</label>
-                            </div>
-                            <div class="col-sm-6 m-bottom floating-label">
-                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
-                                    value="">
-                                    <option value=""></option>
-                                    <option value="1">City 1</option>
-                                    <option value="2">City 2</option>
-                                </select>
-                                <label>City</label>
-                            </div>
-                            <div class="col-sm-6 m-bottom floating-label">
-                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
-                                    value="">
-                                    <option value=""></option>
-                                    <option value="1">Time Zone 1</option>
-                                    <option value="2">Time Zone 2</option>
-                                </select>
-                                <label>Time Zone</label>
-                            </div>
-                            <div class="col-md-12 m-bottom floating-label">
-                                <input type="text" class="floating-input" placeholder=" ">
-                                <label>Address</label>
-                            </div>
-                            <div class="col-md-12 m-bottom floating-label">
-                                <input type="text" class="floating-input" placeholder=" ">
-                                <label>Notes</label>
-                            </div>
-                            <div class="col-md-12 text-center">
-                                <button class="filled-btn">Create Contact</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-
-    </div>
-
-</ng-template>
+<app-new-case-modal *ngIf="!caseModal"></app-new-case-modal>
+<!-- Create New Contact -->
+<app-contact-case-modal *ngIf="!contactModal"></app-contact-case-modal>

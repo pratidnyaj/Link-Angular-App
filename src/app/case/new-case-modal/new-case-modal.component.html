@@ -1,0 +1,627 @@
+<div class="modal cust-newcase-modal" role="dialog" id="longContent" data-backdrop="static">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header newcase-header">
+                <h4 class="modal-title">Create New Case</h4>
+                <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body newcase-body">
+                <form action="" [formGroup]="newCaseForm">
+                    <div id="new-case">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="checklist">
+                                    <li>
+                                        <div class="radio">
+                                            <input type="radio" value="ExistingContact" id="f-option"
+                                                formControlName="caseType" checked="true"
+                                                (ngModelChange)="selctRadioButton($event)">
+                                            <label for="f-option" class="radio-label">Existing contact for</label>
+                                        </div>
+
+                                    </li>
+                                    <li>
+                                        <div class="radio">
+                                            <input type="radio" value="ExistingRequestor" id="s-option"
+                                                formControlName="caseType" (ngModelChange)="selctRadioButton($event)">
+                                            <label for="s-option" class="radio-label">Existing Requestor for</label>
+                                        </div>
+
+                                    </li>
+                                    <li>
+                                        <div class="radio">
+                                            <input type="radio" value="NewRequestor" id="t-option"
+                                                formControlName="caseType" (ngModelChange)="selctRadioButton($event)">
+                                            <label for="t-option" class="radio-label">New requestor</label>
+                                        </div>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="newcase-form mt-4">
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                    <!-- <ng-select placeholder="" formControlName="teamId" [clearable]="false"
+                                            (ngModelChange)="selectTeamValue($event)">
+                                            <ng-option *ngFor="let val of teamsData" value="{{val.TeamID}}">
+                                                {{val.TeamName}}</ng-option>
+                                        </ng-select> -->
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Teams</mat-label>
+                                        <!-- <mat-select>
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
+                                        </mat-select> -->
+                                        
+                                        <mat-select formControlName="teamId"
+                                        (ngModelChange)="selectTeamValue($event)">
+                                        <mat-option *ngFor="let val of teamsData" value="{{val.TeamID}}">
+                                            {{val.TeamName}}</mat-option>
+                                    </mat-select>
+
+
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Agent</mat-label>
+                                        <!-- <mat-select>
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
+                                        </mat-select> -->
+                                        <mat-select  formControlName="agentId">
+                                            <mat-option *ngFor="let val of agentsData" value="{{val.UserID}}">
+                                                {{val.FullName}}</mat-option>
+                                        </mat-select>
+
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="assign-btn"  (click)="assignToMe()">
+                                        <i class="icon-assign-outline"></i>
+                                        Assign Me
+                                    </div>
+                                </div>
+                                <div class="col-md-4">                                   
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Source Email</mat-label>
+                                        <!-- <mat-select required>
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
+                                        </mat-select> -->
+                                        <mat-select required placeholder="" formControlName="sourceEmailId" 
+                                        (ngModelChange)="selectSourceEmail($event)"   [ngClass]="{ 'is-invalid': submitted && f.sourceEmailId.errors }">
+                                        <mat-option *ngFor="let val of sourceEmailData"
+                                            value="{{val.SupportEmailID}}">{{val.SupportEmail}}</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="submitted && f.sourceEmailId.errors" >
+                                        <mat-error *ngIf="f.sourceEmailId.errors.required"> <strong>Source Email is required</strong></mat-error>
+                                    </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Sender Email</mat-label>
+                                        <input matInput type="text" class="floating-input" placeholder=" "
+                                            formControlName="senderEmail" [readonly]="!senderEmailReadonly">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+
+
+
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Account</mat-label>
+                                        <!-- <mat-select required>
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
+                                        </mat-select> -->
+                                        
+                                    <mat-select required placeholder="" name="value" formControlName="accountID"
+                                       [ngClass]="{ 'is-invalid': submitted && f.accountID.errors }">
+                                    <mat-option *ngFor="let val of accountData" value="{{val.AccountID}}">
+                                        {{val.AccountName}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="submitted && f.accountID.errors" >
+                                    <mat-error *ngIf="f.accountID.errors.required"> <strong>Account Name is required</strong></mat-error>
+                                </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-12"  *ngIf="selectRadioButton === 'ExistingContact'">
+                                    <mat-form-field appearance="fill">
+                                        <!-- <mat-label>Contact</mat-label> -->
+                                        <mat-label >
+                                           Contact <span class="star" style="color: red;">*</span>
+                                        </mat-label>
+
+                                        <mat-select   placeholder="" name="value" formControlName="contactID"
+                                          (ngModelChange)="contactRequestorFields($event,'ContactInteraction')">
+                                        <mat-option *ngFor="let val of contactData" value="{{val.ContactID}}">
+                                            {{val.FullName}}</mat-option>
+                                    </mat-select>
+
+                                    <div *ngIf="contactError" class="invalid-feedbacktwo">
+                                        <strong>Contact Name is required</strong>
+                                    </div>
+                                    </mat-form-field>
+                                </div>
+
+
+
+
+
+                                <div class="col-md-12"
+                                *ngIf="selectRadioButton === 'ExistingRequestor'">
+                                <!-- <ng-select placeholder="" formControlName="requesterID" [clearable]="false" (ngModelChange)="contactRequestorFields($event,'RequesterInteraction')">
+                                    <ng-option *ngFor="let val of getRequesterdata" value={{val.RequesterID}}>
+                                        {{val.RequesterName}}</ng-option>
+                                </ng-select>
+                                <label>Requester</label> -->
+
+                               
+
+
+
+                                <mat-form-field appearance="fill">
+                                   
+                                    <mat-label >
+                                        Requester <span class="star" style="color: red;">*</span>
+                                     </mat-label>
+                                    <!-- <mat-select required placeholder="" name="value" formControlName="contactID"
+                                      (ngModelChange)="contactRequestorFields($event,'ContactInteraction')">
+                                    <mat-option *ngFor="let val of contactData" value="{{val.ContactID}}">
+                                        {{val.FullName}}</mat-option>
+                                </mat-select> -->
+
+
+                                <mat-select formControlName="requesterID" (ngModelChange)="contactRequestorFields($event,'RequesterInteraction')">
+                                    <mat-option *ngFor="let val of getRequesterdata" value={{val.RequesterID}}>
+                                        {{val.RequesterName}}</mat-option>
+                                </mat-select>
+
+                               
+                                <div *ngIf="requesterError"  class="invalid-feedbacktwo">
+                                    <strong>Requester is required</strong>
+                                </div>
+
+                                </mat-form-field>
+
+
+                                <!-- <ng-select [items]="getRequesterdata"
+                                bindLabel="RequesterName"
+                                bindValue="RequesterID" 
+                                placeholder="Requester"
+                                appendTo="body"
+                                (ngModelChange)="contactRequestorFields($event,'RequesterInteraction')"
+                                [clearable]="false" [closeOnSelect]="true" formControlName="requesterID">
+                               </ng-select>
+                                <div *ngIf="requesterError" class="invalid-feedbacktwo">
+                                    <div>Requester is required</div>
+                                </div> -->
+                            </div>
+
+
+
+
+
+
+                            <div class="col-md-4"
+                            *ngIf="selectRadioButton === 'NewRequestor'">
+                            <!-- <input type="text" class="floating-input" placeholder=""
+                                formControlName="name" (click)="requestorFields('name')">
+                                <label><span class="astrik">*</span>Name</label> -->
+
+                                <mat-form-field appearance="fill">
+                                    <!-- <mat-label ></mat-label> -->
+  
+                                    <mat-label style="color: rgb(133, 128, 128);">
+                                        Name <span class="star" style="color: red;">*</span>
+                                     </mat-label>
+
+
+                                    <input matInput autocomplete="off" name="name" formControlName="name">
+                                    <div *ngIf="name" class="invalid-feedbacktwo">
+                                        <strong>Name is required</strong>
+                                    </div>
+                                    
+                                </mat-form-field>
+
+                            
+                        </div>
+                        <div class="col-md-4"
+                            *ngIf="selectRadioButton === 'NewRequestor'">
+                            <!-- <input type="text" class="floating-input" placeholder=""
+                                formControlName="emailTo" (keyup)="requestorFields('emailTo')">
+                                <label><span class="astrik">*</span>Email To</label> -->
+                                <mat-form-field appearance="fill">
+                                    <!-- <mat-label style="color: rgb(133, 128, 128);">Email To</mat-label> -->
+                                    <mat-label style="color: rgb(133, 128, 128);">
+                                        Email To <span class="star" style="color: red;">*</span>
+                                     </mat-label>
+
+                                    <input matInput autocomplete="off" name="emailTo" formControlName="emailTo"
+                                    (keyup)="requestorFields('emailTo')">
+                                    <div *ngIf="emailTo" class="invalid-feedbacktwo">
+                                        <strong>EmailTo is required</strong>
+                                    </div>
+                                </mat-form-field>
+
+                            <!-- <div *ngIf="emailTo" class="invalid-feedbackOne">
+                                <div>EmailTo is required</div>
+                            </div> -->
+                        </div>
+                        <div class="col-md-4"
+                            *ngIf="selectRadioButton === 'NewRequestor'">
+                            <!-- <input type="text" class="floating-input" placeholder="Phone Number"
+                                formControlName="phoneNumber" maxlength="10" (keypress)="numericOnly($event)"> -->
+
+                                <mat-form-field appearance="fill">
+                                    <mat-label style="color: rgb(133, 128, 128);">Phone Number</mat-label>
+                                    <input matInput autocomplete="off" name="phoneNumber" 
+                                    formControlName="phoneNumber" maxlength="10" (keypress)="numericOnly($event)">
+                                    
+                                </mat-form-field>
+
+                        </div>
+
+
+
+
+
+
+
+                                <div class="col-md-12">
+
+                                    <ng-select [items]="ccType" placeholder="CC" [addTag]="addEmailCC"
+                                    (ngModelChange)="selectEmailCC($event)" [hideSelected]="true"
+                                    [multiple]="true" bindLabel="ccEmail" formControlName="cc"> </ng-select>
+
+                                    <!-- <mat-form-field appearance="fill">
+                                        <mat-label>CC</mat-label>
+                                        <mat-select formControlName="cc">
+                                            <mat-option *ngFor="let val of ccType" value="{{val.ContactID}}" value="one">First option</mat-option>
+                                           
+                                        </mat-select>
+                                    </mat-form-field> -->
+                                </div>
+                                <div class="col-md-12">
+
+                                
+
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Subject</mat-label>
+                                        <input required matInput autocomplete="off" name="subject" formControlName="subject"   [ngClass]="{ 'is-invalid': submitted && f.subject.errors }">
+                                        <mat-error *ngIf="submitted && f.subject.errors" >
+                                            <mat-error *ngIf="f.subject.errors.required"> <strong>Subject is required</strong></mat-error>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-12 mb-4">
+                                    <div class="cust-label">
+                                        <span>Description </span><span class="star">*</span>
+                                    </div>
+                                    <input [ngxSummernote]="config" type="text" formControlName="description"
+                                        placeholder="Descriptiona">
+
+                                        <div *ngIf="submitted && f.description.errors" class="invalid-feedbackone">
+                                            <strong *ngIf="f.description.errors.required">Description is required</strong>
+                                        </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Priority</mat-label>
+
+                                        <mat-select placeholder="" formControlName="priority" >
+                                            <mat-option *ngFor="let val of priorityData" value={{val.Priority}}>
+                                                {{val.Priority}}</mat-option>
+                                        </mat-select>
+
+
+                                        
+                                        <!-- <mat-select>
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
+                                        </mat-select> -->
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Status</mat-label>
+                                        <mat-select required placeholder="" formControlName="caseStatus"  [ngClass]="{ 'is-invalid': submitted && f.caseStatus.errors }">
+                                        <mat-option *ngFor="let val of statusData" value={{val.CaseStatus}}>
+                                            {{val.CaseStatus}}</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="submitted && f.caseStatus.errors" >
+                                        <mat-error *ngIf="f.caseStatus.errors.required"> <strong>Status is required</strong></mat-error>
+                                    </mat-error>
+                                        <!-- <mat-select required>
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
+                                        </mat-select> -->
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Request Type</mat-label>
+                                        <mat-select required placeholder="" formControlName="requestType"  [ngClass]="{ 'is-invalid': submitted && f.requestType.errors }">
+                                        <mat-option *ngFor="let val of requestTypeData" value={{val.RequestType}}>
+                                            {{val.RequestType}}</mat-option>
+                                         
+                                    </mat-select>
+                                    <mat-error *ngIf="submitted && f.requestType.errors" >
+                                        <mat-error *ngIf="f.requestType.errors.required"> <strong>Request is required</strong></mat-error>
+                                    </mat-error>
+                                        <!-- <mat-select required>
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
+                                        </mat-select> -->
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Escalation</mat-label>
+                                        <mat-select required placeholder="" formControlName="escalation"  [ngClass]="{ 'is-invalid': submitted && f.escalation.errors }">
+                                            <mat-option *ngFor="let val of escalationData" value={{val.Escalation}}>
+                                                {{val.Escalation}}</mat-option>
+
+                                              
+                                        </mat-select>
+                                        <mat-error *ngIf="submitted && f.escalation.errors" >
+                                            <mat-error *ngIf="f.escalation.errors.required"> <strong>Escalation is required</strong></mat-error>
+                                        </mat-error>
+                                        <!-- <mat-select required>
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
+                                        </mat-select> -->
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Business Hours</mat-label>
+                                        <mat-select  required formControlName="buisnessHours"   [ngClass]="{ 'is-invalid': submitted && f.buisnessHours.errors }">
+                                            <mat-option *ngFor="let val of buisnessHoursData"
+                                                value={{val.BuisnessHours}}>{{val.BuisnessHours}}</mat-option>
+                                              
+                                        </mat-select>
+                                        <mat-error *ngIf="submitted && f.buisnessHours.errors" >
+                                            <mat-error *ngIf="f.buisnessHours.errors.required"> <strong>Business Hours is required</strong></mat-error>
+                                        </mat-error>
+                                        <!-- <mat-select required>s
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
+                                        </mat-select> -->
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Callback Request</mat-label>
+                                        <mat-select required formControlName="callBackRequest"  [ngClass]="{ 'is-invalid': submitted && f.callBackRequest.errors }">
+                                            <mat-option *ngFor="let val of callBackRequestData"
+                                                value={{val.CallBackRequest}}>{{val.CallBackRequest}}</mat-option>
+                                             
+                                        </mat-select>
+                                        <mat-error *ngIf="submitted && f.callBackRequest.errors" >
+                                            <mat-error *ngIf="f.callBackRequest.errors.required"> <strong>CallBack Request is required</strong></mat-error>
+                                        </mat-error>
+                                        <!-- <mat-select required>
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
+                                        </mat-select> -->
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Sources Channel</mat-label>
+                                        <mat-select required placeholder="" formControlName="caseSourcePriID"  [ngClass]="{ 'is-invalid': submitted && f.caseSourcePriID.errors }">
+                                        <mat-option *ngFor="let val of sourceChannelData"
+                                            value={{val.CaseSourceName}}>{{val.CaseSourceName}}</mat-option>
+                                          
+                                    </mat-select>
+                                    <mat-error *ngIf="submitted && f.caseSourcePriID.errors" >
+                                        <mat-error *ngIf="f.caseSourcePriID.errors.required"> <strong>Source Channel is required</strong></mat-error>
+                                    </mat-error>
+                                        <!-- <mat-select>
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
+                                        </mat-select> -->
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Due Date</mat-label>
+                                        <input matInput [matDatepicker]="picker" formControlName="dueDate"  required>
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+
+                                        <div *ngIf="submitted && f.dueDate.errors" class="invalid-feedbacktwo" >
+                                            <strong *ngIf="f.dueDate.errors.required">DueDate Request is required
+                                            </strong>
+                                        </div>
+                                    </mat-form-field>
+                                    <!-- <input type="date" class="floating-input" placeholder=" "
+                                    formControlName="dueDate"> -->
+                                </div>
+                                <div class="col-md-4">
+                                    <!-- <input type="date" class="floating-input" placeholder=" "
+                                            formControlName="followDate"> -->
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Follow Date</mat-label>
+                                        <input matInput [matDatepicker]="picker1"    formControlName="followDate" required>
+                                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker1></mat-datepicker>
+                                        <div *ngIf="submitted && f.followDate.errors" class="invalid-feedbacktwo">
+                                            <strong *ngIf="f.followDate.errors.required">FollowDate Request is required
+                                            </strong>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Complaint Category</mat-label>
+                                    <mat-select required placeholder="" formControlName="complaintCategory"
+                                    [ngClass]="{ 'is-invalid': submitted && f.complaintCategory.errors }">
+                                    <mat-option *ngFor="let val of getComplaintdata"
+                                        value={{val.ComplaintCategory}}>{{val.ComplaintCategory}}</mat-option>
+                                </mat-select>
+                                <div *ngIf="submitted && f.complaintCategory.errors"
+                                class="invalid-feedbacktwo">
+                                <strong *ngIf="f.complaintCategory.errors.required">Complaint Category is
+                                    required</strong>
+                            </div>
+
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="assign-btn" (click)="fileModalPopup()">
+                                        <img class="pr-1" src="assets/images/svg/attachments.svg" alt="attachments">
+                                        Attachments
+                                    </div>
+                                </div>
+                                <hr class="line">
+                                <div class="col-md-12">
+                                    <div class="other-title">
+                                        Other Filed
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4"
+                                *ngFor="let thcus of buisnessobjectList; let CusIndex = index">
+
+                                <form [formGroup]="customFieldsValueOne">
+                                    <div>
+                                        <mat-form-field appearance="fill"   *ngIf="thcus.AttributeDataType=='text'">
+                                            <mat-label>{{thcus.DisplayName}}</mat-label>
+                                        <input  matInput  type="text"  id="{{CusIndex}}" name="thcus.DisplayName" formControlName="cname" (change)="getMyValue($event,thcus,thcus)">
+                                        </mat-form-field>
+
+
+                                        <!-- (ngModelChange)="contactRequestorFields($event,'ContactInteraction')" -->
+
+                                        <!-- <ng-select *ngIf="thcus.AttributeDataType=='list'" id="{{CusIndex}}"
+                                        [clearable]="false" [items]="thcus.option"
+                                        name="thcus.DisplayName" placeholder="{{thcus.DisplayName}}"
+                                        formControlName="optionname" (change)="selectDropDown(thcus.BusinessAttributeID,thcus);"> -->
+
+
+                                        <mat-form-field appearance="fill"  *ngIf="thcus.AttributeDataType=='list'" id="{{CusIndex}}" >
+                                            <mat-label>{{thcus.DisplayName}}</mat-label>
+                                            <mat-select   name="thcus.DisplayName"  formControlName="optionname" (ngModelChange)="selectDropDown(thcus.BusinessAttributeID,thcus);">
+                                                <mat-option *ngFor="let year of thcus.option" [value]="year">
+                                                    {{year}}
+                                                  </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>              
+            </div>  </form>
+        </div>
+
+
+<!-- 
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Interaction ID</mat-label>
+                                        <input matInput>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Location</mat-label>
+                                        <mat-select>
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Testing One</mat-label>
+                                        <input matInput>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>UnfydText</mat-label>
+                                        <mat-select>
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>SurveyName</mat-label>
+                                        <mat-select>
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div> -->
+
+                            </div>
+                            <div class="mt-2 mb-2">
+                                <button class="filled-btn" (click)="SubmitNewCaseVal()">Create Case</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal attachment-modal" role="dialog" id="fileModal" data-backdrop="static" [ngClass]="{'displays': display === 'block'}">
+    <div class="modal-dialog modal-md modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header att-header">
+                <h4 class="modal-title">Attachments</h4>
+                <button type="button" class="close" aria-label="Close" (click)="closeModalFile()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body att-body">
+                <div>
+                    <input type="file" id="file" multiple (change)="getFileDetails($event)" />
+                    <label for="file">choose a file</label>
+                </div>
+                <div class="row">
+                    <div *ngFor="let file of myFiles" class="col-md-4">
+                        <div class="text-center mb-3">
+                            <div class="">
+                                <img src="assets/images/attachment.png" alt="attachment">
+                            </div>
+                            <div class="attach-data">
+                                <p><span class="info-label">Name:</span>&nbsp;
+                                    <span class="data">{{ file.name.substr(0, 5) }}...</span>
+                                </p>
+                                <!-- <p><span class="info-label">Type:</span>&nbsp;<span class="data">{{ file.type }}</span>
+                                </p>
+                                <p><span class="info-label">Size:</span>&nbsp; <span class="data">{{ file.size }}</span>
+                                </p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button class="filled-btn" (click)="uploadFiles()">Upload</button>
+
+                </div>
+                <!-- <input type="file" id="file" multiple (change)="getFileDetails($event)" />
+
+                <button (click)="uploadFiles()">Upload</button>
+                <div *ngFor="let file of myFiles">
+                    <div>* {{ file.name }} - {{ file.type }} - {{ file.size }}</div>
+                </div> -->
+
+
+            </div>
+        </div>
+    </div>
+</div>

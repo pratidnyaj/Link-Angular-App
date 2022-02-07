@@ -1,0 +1,35 @@
+<!-- <ng-select [items]="dispositionData" [multiple]="false" bindValue="Id" bindLabel="DispostionName"
+    placeholder="Disposition" [clearable]="false" (ngModelChange)="onChangedisposition($event)"
+    [(ngModel)]="selectedDisposition">
+</ng-select>
+
+<ng-select [items]="subdispositionData" [multiple]="false" bindValue="Id" bindLabel="SubDispositionName"
+    placeholder="Sub-disposition" [clearable]="false" (ngModelChange)="onChangeSubdisposition($event)"
+    [(ngModel)]="selectedSubdisposition">
+</ng-select>
+
+<ng-select [items]="subsubdispositionData" [multiple]="false" bindValue="Id" bindLabel="SubSubDispositionName"
+    placeholder="SubSub-disposition" [clearable]="false" [(ngModel)]="selectedsubsubdisposition">
+</ng-select> -->
+
+
+    <div class="row">
+        <div class="col-md-4 pr-0">
+            <ng-select [items]="dispositionData" [multiple]="false" bindValue="Id" bindLabel="DispostionName"
+                placeholder="Disposition" [clearable]="false" (ngModelChange)="onChangedisposition($event)"
+                [(ngModel)]="selectedDisposition">
+            </ng-select>
+        </div>
+        <div class="col-md-4 pr-0">
+            <ng-select [items]="subdispositionData" [multiple]="false" bindValue="Id" bindLabel="SubDispositionName"
+                placeholder="Sub-disposition" [clearable]="false" (ngModelChange)="onChangeSubdisposition($event)"
+                [(ngModel)]="selectedSubdisposition">
+            </ng-select>
+        </div>
+        <div class="col-md-4">
+            <ng-select [items]="subsubdispositionData" [multiple]="false" bindValue="Id"
+                bindLabel="SubSubDispositionName" placeholder="SubSub-disposition" [clearable]="false" (ngModelChange)="onChangeSubSubdisposition($event)"
+                [(ngModel)]="selectedsubsubdisposition">
+            </ng-select>
+        </div>
+    </div>

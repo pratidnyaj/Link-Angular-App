@@ -1,0 +1,177 @@
+<div class="modal" role="dialog" id="contactModal" data-backdrop="static" >
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Create New Contact</h4>
+                <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()" action="" id="new-case" #contactForm="ngForm">
+                    <div class="form_to_rly">
+                        <div class="row">
+                            <div class="col-md-8 offset-md-2">
+                                <div class="row">
+                                    <div class="col-md-12 contact-profile">
+                                        <div class="profile_view">
+                                            <button class="profile">
+                                                <img class="user d-none" src="assets/images/svg/contact-user.svg"
+                                                    alt="contact">
+                                            </button>
+                                        </div>
+                                        <div class="profile-edit">
+                                            <div class="pic_user">
+                                                <img class="user" src="assets/images/client-profile.png"
+                                                    alt="client-profile">
+                                                <button class="btn-user-edit">
+                                                    <img class="pencil-icon" src="assets/images/svg/edit.svg"
+                                                        alt="edit">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 m-bottom floating-label">
+                                        <input id="contactname" name="cn" type="text" class="floating-input"
+                                            placeholder=" " formControlName="contactName"  [ngClass]="{ 'is-invalid': submitted && f.contactName.errors }">
+                                        <label>Contact Name</label>
+                                        <div *ngIf="submitted && f.contactName.errors" class="invalid-feedback">
+                                            <div *ngIf="f.contactName.errors.required">Contact Name is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 m-bottom floating-label">
+                                        <input type="text" name="fb" class="floating-input" placeholder=" " 
+                                        formControlName="facebook"
+                                        [ngClass]="{ 'is-invalid': submitted && f.facebook.errors }">
+                                        <div *ngIf="submitted && f.facebook.errors" class="invalid-feedback">
+                                            <div *ngIf="f.facebook.errors.required">facebookId is required</div>
+                                        </div>
+                                        <label>Facebook</label>
+                                    </div>
+                                    <div class="col-sm-6 m-bottom floating-label">
+                                        <!-- <select class="floating-select" name="lang"
+                                            onclick="this.setAttribute('value', this.value);" value=""  
+                                            formControlName="language"
+                                            [ngClass]="{ 'is-invalid': submitted && f.language.errors }">
+                                            <option value=""></option>
+                                            <option value="1">Language 1</option>
+                                            <option value="2">Language 2</option>
+                                        </select> -->
+                                        <ng-select placeholder="" name="value"    
+                                        formControlName="language" 
+                                         [clearable]="false"  
+                                         [ngClass]="{ 'is-invalid': submitted && f.language.errors }">
+                                           <ng-option  *ngFor="let val of languageData"  
+                                           value="{{val.Language}}">
+                                               {{val.Language}}</ng-option>
+                                       </ng-select>
+
+                                        <div *ngIf="submitted && f.language.errors" class="invalid-feedback">
+                                            <div *ngIf="f.language.errors.required">Language is required</div>
+                                       </div>
+                                        <label>Language</label>
+                                    </div>
+                                    <div class="col-md-6 m-bottom floating-label">
+                                        <input type="text" class="floating-input" name="priemail" placeholder=" " 
+                                        formControlName="primaryEmail"
+                                        [ngClass]="{ 'is-invalid': submitted && f.primaryEmail.errors }">
+                                        <label>Email 1</label>
+                                        <div *ngIf="submitted && f.primaryEmail.errors" class="invalid-feedback">
+                                            <div *ngIf="f.primaryEmail.errors.required">Email 1 is required</div>
+                                            <div *ngIf="f.primaryEmail.errors.email">Email 1 must be a valid </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 m-bottom floating-label">
+                                        <input type="text" class="floating-input" name="altem" placeholder=" "
+                                        formControlName="altEmail1"
+                                        [ngClass]="{ 'is-invalid': submitted && f.altEmail1.errors }">
+                                        <label>Email 2</label>
+                                        <div *ngIf="submitted && f.altEmail1.errors" class="invalid-feedback">
+                                            <div *ngIf="f.altEmail1.errors.email">Email 2 must be a valid </div>
+                                        </div>
+                                        <div  class="errormsg"  *ngIf=" f.primaryEmail.value != '' && f.primaryEmail.value === f.altEmail1.value">Alt.Email Should not be same as Email</div>
+                                    </div>
+                                    <div class="col-md-6 m-bottom floating-label">
+                                        <input type="text" class="floating-input" name="priphone" placeholder=" "
+                                        formControlName="primaryPhone"
+                                        [ngClass]="{ 'is-invalid': submitted && f.primaryPhone.errors }">
+                                        <label>Phone 1 </label>
+                                        <div *ngIf="submitted && f.primaryPhone.errors" class="invalid-feedback">
+                                            <div *ngIf="f.primaryPhone.errors.required">Phone 1 is required</div>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-6 m-bottom floating-label">
+                                        <input type="text" class="floating-input" name="altp1" placeholder=" "
+                                        formControlName="altPhone1" >
+                                        <label>Phone 2</label>
+                                        <div  class="errormsg"  *ngIf=" f.primaryPhone.value != '' && f.primaryPhone.value === f.altPhone1.value">Alt.Phone no Should not be same</div>
+                                    </div>
+                                    <div class="col-sm-6 m-bottom floating-label">
+                                        <!-- <select class="floating-select" name="city"
+                                            onclick="this.setAttribute('value', this.value);" value=""
+                                            formControlName="city"
+                                            [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
+                                            <option value=""></option>
+                                            <option value="1">City 1</option>
+                                            <option value="2">City 2</option>
+                                        </select>-->
+                                        <ng-select placeholder="" name="value"    
+                                         formControlName="city" 
+                                          [clearable]="false"  
+                                          [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
+                                            <ng-option  *ngFor="let val of cityData"  
+                                            value="{{val.City}}">
+                                                {{val.City}}</ng-option>
+                                        </ng-select>
+
+                                        <label>City</label>
+                                        <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                                            <div *ngIf="f.city.errors.required">City is required</div>
+                                       </div>
+                                    </div>
+                                    <div class="col-sm-6 m-bottom floating-label">
+                                        <!-- <select class="floating-select" name="contnm"
+                                            onclick="this.setAttribute('value', this.value);" value=""
+                                            formControlName="timeZoneId"
+                                            [ngClass]="{ 'is-invalid': submitted && f.timeZoneId.errors }">
+                                            
+                                        </select> -->
+                                        <ng-select placeholder="" name="value"    formControlName="timeZoneId" 
+                                          [clearable]="false"  
+                                        [ngClass]="{ 'is-invalid': submitted && f.timeZoneId.errors }">
+                                            <ng-option  *ngFor="let val of timeZoneData"  value="{{val.TimeZoneID}}">
+                                                {{val.TimeZone}}</ng-option>
+                                        </ng-select>
+
+                                        <label>Time Zone</label>
+                                        <div *ngIf="submitted && f.timeZoneId.errors" class="invalid-feedback">
+                                            <div *ngIf="f.timeZoneId.errors.required">Time Zone is required</div>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-12 m-bottom floating-label">
+                                        <input type="text" class="floating-input" name="addrs" placeholder=" "
+                                        formControlName="address"
+                                        [ngClass]="{ 'is-invalid': submitted && f.address.errors }">
+                                        <label>Address</label>
+                                        <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                                            <div *ngIf="f.address.errors.required">Address is required</div>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-12 m-bottom floating-label">
+                                        <input type="text" class="floating-input" name="nt" placeholder=" "
+                                        formControlName="notes">
+                                        <label>Notes</label>
+                                        
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                        <button class="filled-btn">Create Contact</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

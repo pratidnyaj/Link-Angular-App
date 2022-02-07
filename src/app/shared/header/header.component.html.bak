@@ -1,0 +1,182 @@
+<div class="header">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">
+            <img src="assets/images/U logo.png" />
+        </a>
+        <div class="page-heading ">Link</div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="form-inline my-2 my-lg-0 ml-auto " id="search-box">
+                <div class="searchboxwrapper" *ngIf="searchbarAccess">
+                    <input class="form-control search-input" type="text" value="" placeholder="Search">
+                    <input class="searchsubmit" type="submit" id="searchsubmit" value="">
+                </div>
+            </form>
+            <ul class="navbar-nav">
+                <li><div class="blink_me">
+                        <!-- {{minutesDisplay}} {{secondsDisplay}} -->
+                       <b style="color: red;" *ngIf="secondsDisplay <= 176 && minutesDisplay != 03">{{ (minutesDisplay) }}:{{ (secondsDisplay)  ? ('0' + temp).slice(-2) : '00' }}
+                    </b> 
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown add-item-drpdown">
+                        <button class="btn btnadd" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <img src="assets/images/svg/bg-blueplus.svg" class="margin-top-7" alt="addicon" />
+                        </button>
+                        <div class="dropdown-menu add-drpmenu" aria-labelledby="dropdownMenuButton">
+                            <div class="add-menus" *ngIf="roleNewcase">
+                                <button class="btn-newcases" (click)="myFunctionOne()">
+                                    <i class="icon-cases"></i>
+                                    New Case
+                                </button>
+                            </div>
+
+                            <div class="add-menus">
+                                <button class="btn-newcases" (click)="contactModalOpen()">
+                                    <i class="icon-client"></i>
+                                    New Contact
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item" *ngIf="agentWebCaseAccess">
+                    <a (click)="openWebEngage()" [class.toggled]="webEngageState">
+                        <i class="icon-web-world"></i>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="myDashboardCaseAccess">
+                    <a (click)="openDashboard()" [class.toggled]="dashboardState">
+                        <i class="icon-dashboard"></i>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="knowledgeManagerCaseAccess">
+                    <a (click)="openKnowledgeManager()" [class.toggled]="knowledgeManagerState">
+                        <i class="icon-information"></i>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="remindersClockCaseAccess">
+                    <a (click)="openClock()" [class.toggled]="clockState">
+                        <i class="icon-clock"></i>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="menuBloackCaseAccess">
+                    <a (click)="openBlockCase()" [class.toggled]="blockState"> <i class="icon-block"></i></a>
+                </li>
+                <!-- <li>
+                    <a (click)="openNotifylist()" [class.toggled]="notifyState"> <i class="icon-bell"></i></a>
+                </li> -->
+                <li class="nav-item" id="notification" *ngIf="notificationCaseAccess">
+                    <app-firebase-notification></app-firebase-notification>
+                </li>
+
+                <li class="nav-item" *ngIf="caseSettingCaseAccess">
+                    <div class="dropdown add-item-drpdown notify">
+                        <button class="btn btnadd" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-setting"></i>
+                        </button>
+                        <div class="dropdown-menu add-drpmenu external-drpmenu" aria-labelledby="dropdownMenuButton">
+                            <div>
+                                <div class="setting-menu">
+                                    <div class="icon-txt">
+                                        <span> <i class="icon-bell"></i></span>
+                                        <span class="setmenu">Desktop Notification</span>
+                                    </div>
+                                    <div class="switch">
+                                        <input id="desktopNotification" type="checkbox" class="switch-input">
+                                        <label for="desktopNotification" class="switch-label">Switch</label>
+                                    </div>
+                                </div>
+                                <div class="setting-menu">
+                                    <div class="icon-txt">
+                                        <span> <i class="icon-sound-notify"></i></span>
+                                        <span class="setmenu">Notification Sound</span>
+                                    </div>
+                                    <div class="switch">
+                                        <input id="desktopNotification" type="checkbox" class="switch-input">
+                                        <label for="desktopNotification" class="switch-label">Switch</label>
+                                    </div>
+                                </div>
+                                <div class="setting-menu">
+                                    <div class="icon-txt">
+                                        <span> <i class="icon-round-robin"></i></span>
+                                        <span class="setmenu">Round Robin</span>
+                                    </div>
+                                    <div class="switch">
+                                        <input id="desktopNotification" type="checkbox" class="switch-input">
+                                        <label for="desktopNotification" class="switch-label">Switch</label>
+                                    </div>
+                                </div>
+                                <div class="setting-menu">
+                                    <div class="icon-txt">
+                                        <span> <i class="icon-change-pass"></i></span>
+                                        <span class="setmenu">Change Password</span>
+                                    </div>
+                                </div>
+                                <div class="setting-menu">
+                                    <div class="icon-txt">
+                                        <span> <i class="icon-keyboard"></i></span>
+                                        <span class="setmenu">Keyboard Shortcut Key</span>
+                                    </div>
+                                </div>
+                                <div class="setting-menu">
+                                    <div class="icon-txt">
+                                        <span> <i class="icon-help"></i></span>
+                                        <span class="setmenu">Help</span>
+                                    </div>
+                                </div>
+                                <div class="setting-menu">
+                                    <div class="icon-txt">
+                                        <span> <i class="icon-theme"></i></span>
+                                        <span class="setmenu">Theme</span>
+                                    </div>
+                                    <div class="colors">
+                                        <label>
+                                            <input type="radio" name="options">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item" *ngIf="caseProfileIcon">
+                    <i class="icon-person"></i>
+                </li>
+                <li class="nav-item" id="profile" *ngIf="caseProfilePhotoCaseAccess">
+                    <a class="nav-link disabled" href="#">
+                        <div class="profile-pic">
+                            <span class="online-sign"></span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<app-web-engagement (closeWebEngage)='closeWebEngage($event)' [ngClass]="webEngageState ? 'slide-in' : 'slide-out'">
+</app-web-engagement>
+
+<app-konwledge-manager (closeKnowledgeManager)='closeKnowledgeManager($event)'
+    [ngClass]="knowledgeManagerState ? 'slide-in' : 'slide-out'"></app-konwledge-manager>
+<app-chart-dashboard (closeDashboard)='closeDashboard($event)' [ngClass]="dashboardState ? 'slide-in' : 'slide-out'">
+</app-chart-dashboard>
+
+<!-- <app-dashboard-home (closeDashboard)='closeDashboard($event)' [ngClass]="dashboardState ? 'slide-in' : 'slide-out'">
+</app-dashboard-home> -->
+
+<app-reminder (closeClock)="closeClock($event)" [ngClass]="clockState ? 'slide-in' : 'slide-out'"></app-reminder>
+
+<app-block-case (closeBlock)="closeBlock($event)" [ngClass]="blockState ? 'slide-in' : 'slide-out'"></app-block-case>
+
+<app-notification-list (closeNotification)="closeNotification($event)"
+    [ngClass]="notifyState ? 'slide-in' : 'slide-out'"></app-notification-list>
+<!-- New Case -->
+
+
+<app-new-case-modal *ngIf="!caseModal"></app-new-case-modal>
+<!-- Create New Contact -->
+<app-contact-case-modal *ngIf="!contactModal"></app-contact-case-modal>

@@ -1,0 +1,74 @@
+<!-- <div class="cases-holder">
+    <ul class="list-group fa-padding" [ngClass]="{'make-blur' : isContactistBlur}">
+        <li *ngFor="let contact of contacts ; let idx = index"
+            [ngClass]="{'active-contact': contact.ContactID === currentSelectedContactId}"
+            class="list-group-item active-contact" data-toggle="modal" data-target="#issue">
+            <div class="media" (click)="selectContact(contact)">
+                <div class="d-flex justify-content-center h-100">
+                    <div class="image_outer_container">
+                        <div class="status-icon">
+                            <img src="assets/images/svg/active-status.svg" alt="active-status" />
+                        </div>
+                        <div class="image_inner_container">
+                            <img src="assets/images/case pic1.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="media-body client-list">
+                    <span class="client-list-name">{{contact.FullName}}</span>
+                    <div class="float-right margin-top-7">
+                        <button (click)="deleteContact(contact)">
+                            <i class="icon-dustbox"></i>
+                        </button>
+                    </div>
+                    <p>
+                        <span class="gray">{{contact.PrimaryPhone}}</span>
+                    </p>
+                    <p>
+                        <span style=" vertical-align: sub;"><svg xmlns="http://www.w3.org/2000/svg" height="15px"
+                                viewBox="0 0 24 24" width="15px" fill="#6EB3F2">
+                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                <path
+                                    d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
+                            </svg></span>
+                        <span class="gray">{{contact.PrimaryEmail}}</span>
+                    </p>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+</div> -->
+<div class="client-list">
+    <ul class="mail-list">
+        <li class="new-mail" *ngFor="let contact of contacts ; let idx = index"
+        [ngClass]="{'active-contact': contact.ContactID === currentSelectedContactId}"
+        class="active-contact" data-toggle="modal" data-target="#issue">
+            <div class="bor-btm-hrl"  (click)="selectContact(contact)">
+                <div class="mail-block" >
+                    <div class="mail-type1" *ngIf="contact.profilePhotoUrl != null">
+                        <img src='{{contact.profilePhotoUrl}}' height="36px">
+                    </div>
+                    <div class="mail-type1" *ngIf="contact.profilePhotoUrl === null">
+                        <img src="assets/images/emptyProfile.jpg" height="36px">
+                    </div>
+                    <!-- <div class="mail-type"><i class="icon-mail-outline"></i></div> -->
+                    <img src="assets/images/svg/active-status.svg" alt="active-status" class="status-icon" />
+                    <div class="mail-details">
+                        <div class="block-name">aaa {{contact.FullName}}</div>
+                        <div class="block-info">
+                            <i class="icon-call-red pr-2"></i>
+                          <span class="gray">{{contact.PrimaryPhone}}</span>
+                        </div>
+
+                        <div class="assign-to"><span class="icon-mail-outline pr-2"> </span>
+                            <span class="name-assign">{{contact.PrimaryEmail}}</span>
+                        </div>
+                    </div>
+                    <div class="mail-info"><a class="mail-action pr-2" (click)="deleteContact(contact)"><i
+                        class="icon-dustbox"></i></a></div>
+                </div>
+            </div>
+        </li>   
+    </ul>
+</div>

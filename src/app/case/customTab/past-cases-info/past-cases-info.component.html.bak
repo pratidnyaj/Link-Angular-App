@@ -1,0 +1,35 @@
+
+                <div class="tab-title">
+                    <h4>Past Cases</h4>
+                    <div class="icons-link">
+                        <div><a><i class="icon-picture"></i></a></div>
+                        <div><a><i class="icon-reset"></i></a></div>
+                        <div><a><i class="icon-filters"></i></a></div>
+                    </div>
+                </div>
+
+                <div class="scroll-content">
+                    <ul class="chain-listing">
+                        <li *ngFor="let pc of pastCases"> 
+                            <a>
+                                <div class="icon"><i class="icon-appoinment"></i></div>
+                                <div class="short-description">
+                                    <span class="ticket-id">{{pc.CaseID}}</span>
+                                    <h6><span>{{pc.Subject}}</span></h6>
+                                    <span class="sub-title"><span>{{pc.CreatedDate}}</span>
+                                        <span class="status red">Status:{{pc.Status}}</span>
+                                        <span class="status green">Priority:{{pc.Priority}}</span></span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+
+
+
+
+
+
+

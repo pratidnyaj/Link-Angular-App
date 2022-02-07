@@ -1,0 +1,223 @@
+<div class="wrapper">
+    <div class="action-perform-btns">
+        <div class="filter-action">
+            <button class="filters filter-blue" (click)="openVertically(collaboratorsModal);">Add Collaborators</button>
+        </div>
+    </div>
+    <div class="tbl-section">
+        <div class="data-body">
+            <table>
+                <thead>
+                    <tr>
+                      <th>Photo</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr *ngFor="let data of collaboratorsData | paginate: { itemsPerPage:10, currentPage: p }"></tr> -->
+                   <tr *ngFor="let data of collaboratorsData | paginate: { itemsPerPage:10, currentPage: p }">
+                    <td class="media-profile"> <img *ngIf="data.photourl != null || data.photourl != '' "
+                        src='{{data.photourl}}' class="case-profile" alt="user" />
+                    <img *ngIf="data.photourl === null || data.photourl === ''" src="assets/images/emptyProfile.jpg"
+                        class="case-profile" alt="user" />
+                </td>
+                    <td>{{data.CollaboratorName}}</td>
+                    <td>{{data.RoleName}}</td>
+                    <td>{{data.CollaboratorEmailID}}</td>
+                    <td>{{data.IsActive}}</td>
+                    <td class="actions">
+                        <a><i class="icon-edit" (click)="openVerticallyCentered(collaboratorsModal,data);"></i></a>
+                    </td>
+                    <td class="delete">
+                        <a><i (click)="deleteAgent(data)" class="icon-dustbox"></i></a>
+                    </td>
+                    </tr>
+                  
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="data-footer">
+        <paging-controls (pageChange)="p = $event" [isItemsPerPage]="false"></paging-controls>
+    </div>
+</div>
+
+<!-- /////////////////////////////////////////////collaboratorsModal/////////////////////////////////////// -->
+
+    <ng-template #collaboratorsModal let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title">New Collaborators</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click');closefrom()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="assign_form">
+                <form class="form_to_rly" action="" [formGroup]="collaboratorsForm" autocomplete="nope">
+                    <div class="row">
+                        <div class="col-md-12 contact-profile">
+                            <div class="profile_view">
+                                <button class="profile">
+                                    <img class="user d-none" src="assets/images/svg/contact-user.svg" alt="contact">
+                                </button>
+                            </div>
+                            <div class="profile-edit">
+                                <input #uploadFile type="file" id="uploadFile" class="hidden-input"
+                                    style="display: none;"
+                                    accept="image/jpeg, .jpeg, image/png, .png, image/pjpeg, .jpg, .docx, .pdf" />
+
+
+                                <div class="pic_user">
+                                    <img class="user" [src]="url" alt="client-profile">
+                                    <button class="btn-user-edit">
+                                        <img class="pencil-icon" src="assets/images/svg/edit.svg" alt="edit"
+                                            for="uploadFile" (click)="selectFile()">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label style="color: rgb(133, 128, 128);">Name</mat-label>
+                                <input required matInput autocomplete="off" name="FullName" formControlName="FullName"
+                                    [ngClass]="{ 'is-invalid': submitted && f.FullName.errors }">
+                                <mat-error *ngIf="submitted && f.FullName.errors">
+                                    <mat-error *ngIf="f.FullName.errors.required"> <strong>Name is required</strong>
+                                    </mat-error>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label style="color: rgb(133, 128, 128);">Email</mat-label>
+                                <input matInput required autocomplete="off" name="EmailID" formControlName="EmailID"
+                                    [ngClass]="{ 'is-invalid': submitted && f.EmailID.errors }">
+
+                                <div *ngIf="submitted && f.EmailID.errors" class="invalid-feedbacktwo">
+                                    <strong *ngIf="f.EmailID.errors.required">* Email is required</strong>
+                                    <strong *ngIf="f.EmailID.errors.email">* Email must be valid</strong>
+                                </div>
+
+                            </mat-form-field>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label style="color: rgb(133, 128, 128);">Phone No</mat-label>
+                                <input required matInput autocomplete="off" name="PhoneNo" formControlName="PhoneNo"
+                                    [ngClass]="{ 'is-invalid': submitted && f.PhoneNo.errors }" maxlength="10"
+                                    (keypress)="numericOnly($event)">
+                                <mat-error *ngIf="submitted && f.PhoneNo.errors">
+                                    <mat-error *ngIf="f.PhoneNo.errors.required"> <strong>Phone No is required</strong>
+                                    </mat-error>
+                                </mat-error>
+
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Role</mat-label>
+                                <mat-select required formControlName="RoleName"
+                                    [ngClass]="{ 'is-invalid': submitted && f.RoleName.errors }">
+                                    <mat-option *ngFor="let val of roledata" value={{val.RoleID}}>
+                                        {{val.RoleName}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="submitted && f.RoleName.errors">
+                                    <mat-error *ngIf="f.RoleName.errors.required"> <strong>Role Name is
+                                            required</strong>
+                                    </mat-error>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Time Zone</mat-label>
+                                <mat-select required formControlName="timeZoneData"
+                                    [ngClass]="{ 'is-invalid': submitted && f.timeZoneData.errors }">
+                                    <mat-option *ngFor="let val of timeZoneData" value={{val.TimeZoneID}}>
+                                        {{val.TimeZone}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="submitted && f.timeZoneData.errors">
+                                    <mat-error *ngIf="f.timeZoneData.errors.required"> <strong>Time Zone is
+                                            required</strong></mat-error>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <!-- <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Member of</mat-label>
+                                <mat-select required formControlName="Teamsdata" multiple
+                                    [ngClass]="{ 'is-invalid': submitted && f.accountId.errors }" #select>
+                                    <div class="select-all">
+                                        <button (click)="selectAlla()" class="btn btn-sm btn-secondary">Select
+                                            all</button>
+                                    </div>
+                                    <mat-option *ngFor="let val of getTeamsdata" value={{val.TeamID}}>
+                                        {{val.TeamName}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div> -->
+                        <!-- <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Signature</mat-label>
+                                <textarea matInput autocomplete="off" name="Description"
+                                    formControlName="Signature"></textarea>
+                            </mat-form-field>
+                        </div>
+                         -->
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Company</mat-label>
+                                <input matInput autocomplete="off" name="Title" formControlName="Company">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Password</mat-label>
+                                <input matInput autocomplete="new-password" maxlength="12" type="password" name="Password"
+                                    formControlName="Password">
+                            </mat-form-field>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Address</mat-label>
+                                <textarea matInput autocomplete="off" name="Description"
+                                    formControlName="Address"></textarea>
+                            </mat-form-field>
+                        </div>
+                        <!-- <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Account Name</mat-label>
+                                <mat-select required formControlName="accountId"
+                                    [ngClass]="{ 'is-invalid': submitted && f.accountId.errors }">
+                                    <mat-option *ngFor="let val of accountList" value={{val.accountid}}>
+                                        {{val.accountname}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="submitted && f.accountId.errors">
+                                    <mat-error *ngIf="f.accountId.errors.required"> <strong>Account Name is
+                                            required</strong></mat-error>
+                                </mat-error>
+                            </mat-form-field>
+                        </div> -->
+                        <div class="col-md-4">
+                            <mat-label>IsActive</mat-label>
+                            <input style="margin-left: 10px;" type="checkbox" autocomplete="off" name="Description"
+                                formControlName="IsActive">
+                        </div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class="filled-btn" (click)="save();">Save Collaborators</button>
+                    </div>
+                 </form>
+            </div>
+        </div>
+    </ng-template>

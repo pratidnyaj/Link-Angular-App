@@ -1,0 +1,219 @@
+// // ng structure LD_code start
+.unlink_loginsec {
+    .unlink_remove_padd,
+    .padding-less {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .unlink_loginimg {
+        background-color: var(--theme_bg_color);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        .ext-txt {
+            color: var(--theme_input_color);
+            font-size: 20px;
+            padding-top: 10px;
+        }
+       
+    }
+    .unlink_login_white {
+        background-color: var(--white_color);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        .unlink_login_me {
+            .unlink_title {
+                color: var(--theme_bg_blue);
+                text-transform: uppercase;
+                text-align: center;
+                font-weight: bold;
+                font-size: 39px;
+                margin: 25px 0 65px 0;
+            }
+            .unlink_inputs {
+                .unlink_formgroup {
+                    margin-bottom: 20px;
+                    position: relative;
+                    i {
+                        position: absolute;
+                        z-index: 2;
+                        display: block;
+                        width: 2.375rem;
+                        height: 2.375rem;
+                        line-height: 2.375rem;
+                        text-align: center;
+                        pointer-events: none;
+                        color: var(--theme_icon_gray);
+                        top:3px
+                    }
+                    img {
+                        position: absolute;
+                        top: 10px;
+                        left: 10px;
+                        z-index: 2;
+                        display: block;
+                        text-align: center;
+                        pointer-events: none;
+                        color: var(--theme_icon_gray);
+                    }
+                    .icon-eye-icon {
+                        position: absolute;
+                        right: 3px;
+                        top: 0px;
+                        z-index: 2;
+                        width: 2.375rem;
+                        line-height: 2.375rem;
+                        text-align: center;
+                        pointer-events: none;
+                        font-size: 12px;
+                        display: none;
+                    }
+                    .form-control {
+                        padding-left: 30px;
+                        padding-right: 30px;
+                        border: 1px solid var(--theme_input_border);
+                        font-size: 14px;
+                        color: var(--theme_bg_blue);
+                        background-color: var(--theme_bg_color);
+                        height: 45px;
+                        &:focus {
+                            outline: none;
+                            box-shadow: 0px 2px 3px var(--box_shadow);
+                            border: 1px solid var(--theme_input_border);
+                            background-color: var(--white_color);
+                        }
+                        &::placeholder {
+                            font-size: 12px;
+                            color: var(--theme_palceholder);
+                        }
+                    }
+                    .form-control.is-invalid{
+                        border: 1px solid var(--theme_red);
+                    }
+
+                    .form-control:focus ~ .icon-eye-icon::before {
+                        color: var(--theme_bg_blue);
+                    }
+                }
+                .form-control:focus ~ .icon-eye-icon {
+                    display: none;//to show password icon 
+                }
+            }
+            .unlink_frgtpass {
+                color: var(--theme_bg_blue);
+                font-size: 14px;
+                text-decoration: underline;
+            }
+        }
+
+        .unlink_forget_pass {
+            .unlink_crossicon {
+                position: absolute;
+                top: 30px;
+                right: 36px;
+                button {
+                    background-color: transparent;
+                    border: none;
+                    opacity: 1;
+                    transform: rotate(45deg);
+                    &:focus {
+                        box-shadow: none;
+                    }
+                }
+            }
+            .unlink_title_frtpass {
+                color: var(--theme_bg_blue);
+                text-transform: capitalize;
+                text-align: center;
+                font-weight: bold;
+                font-size: 30px;
+                margin: 25px 0 30px 0;
+            }
+            .unlink_inputs {
+                .unlink_formgroup {
+                    margin-bottom: 5px;
+                    position: relative;
+                    .form-control {
+                        border: 1px solid var(--theme_input_border);
+                        font-size: 14px;
+                        color: var(--theme_input_color);
+                        &:focus {
+                            outline: none;
+                            box-shadow: none;
+                            border-color: none;
+                        }
+                        &::placeholder {
+                            font-size: 12px;
+                            color: var(--theme_palceholder);
+                        }
+                    }
+                    .otp_inputs {
+                        width: 50px;
+                        height: 40px;
+                        line-height: 50px;
+                        text-align: center;
+                        font-size: 24px;
+                        font-weight: 200;
+                        margin: 0 2px;
+                        border: 1px solid var(--theme_input_border);
+                        border-radius: 4px;
+                        font-size: 14px;
+                        color: var(--theme_input_color);
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                }
+            }
+        }
+        .unlink_cmnycode {
+            position: absolute;
+            bottom: 20px;
+            .unlink_code {
+                color: var(--theme_red);
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .unlink_loginsec {
+        .unlink_login_white {
+            .unlink_login_me {
+                width: 70%;
+            }
+        }
+        .unlink_loginimg {
+            // .ext-txt {
+            //     color: var(--theme_input_color);
+            //     font-size: 40px;
+            //     padding-top: 10px;
+            // }
+            // img {
+            //     height: 600px;
+            //     width: auto;
+            // }
+        }
+    }
+}
+@media only screen and(max-width:767px) {
+    .unlink_loginsec {
+        .unlink_mobhide {
+            display: none;
+        }
+    }
+}
+
+.markpoint {
+    cursor: pointer;
+}
+.invalid-feedback1 {
+    font-size: 80%;
+    color: #dc3545;
+}

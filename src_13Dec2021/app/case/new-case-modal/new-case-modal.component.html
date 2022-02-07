@@ -1,0 +1,462 @@
+<div class="modal" role="dialog" id="longContent" data-backdrop="static">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">New Case</h4>
+                <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="profile-icon">
+                    <button>
+                        <i class="icon-assign-me"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form action="" [formGroup]="newCaseForm">
+                    <div id="new-case">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="checklist">
+                                    <li>
+                                        <input type="radio" value="ExistingContact" id="f-option"
+                                            formControlName="caseType" checked="true"
+                                            (ngModelChange)="selctRadioButton($event)">
+                                        <label for="f-option">Existing contact for</label>
+                                        <div class="check"></div>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="ExistingRequestor" id="s-option"
+                                            formControlName="caseType" (ngModelChange)="selctRadioButton($event)">
+                                        <label for="s-option">Existing Requestor for</label>
+                                        <div class="check">
+                                            <div class="inside"></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="NewRequestor" id="t-option"
+                                            formControlName="caseType" (ngModelChange)="selctRadioButton($event)">
+                                        <label for="t-option">New requestor</label>
+                                        <div class="check">
+                                            <div class="inside"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="full-content-- form_to_rly">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-sm-4 m-bottom floating-label">
+                                        <!-- <div> -->
+                                        <ng-select placeholder="" formControlName="teamId" [clearable]="false"
+                                            (ngModelChange)="selectTeamValue($event)">
+                                            <ng-option *ngFor="let val of teamsData" value="{{val.TeamID}}">
+                                                {{val.TeamName}}</ng-option>
+                                        </ng-select>
+                                        <label>Teams</label>
+                                        <!-- </div> -->
+                                    </div>
+                                    <div class="col-sm-4 m-bottom floating-label">
+                                        <ng-select placeholder="" formControlName="agentId" [clearable]="false">
+                                            <ng-option *ngFor="let val of agentsData" value="{{val.UserID}}">
+                                                {{val.FullName}}</ng-option>
+                                        </ng-select>
+                                        <label>Agent</label>
+                                    </div>
+
+
+                                    <div class="col-sm-4 m-bottom floating-label">
+                                    <div >
+                                        <button class="border-btn" (click)="assignToMe()">Assign To Me</button>
+                                    </div>
+                                </div>
+
+
+                                    <div class="col-sm-4 m-bottom floating-label">
+                                        <ng-select placeholder="" formControlName="sourceEmailId" [clearable]="false"
+                                            [ngClass]="{ 'is-invalid': submitted && f.sourceEmailId.errors }"
+                                            (ngModelChange)="selectSourceEmail($event)">
+                                            <!-- (ngModelChange)="passSourceEmail($event)" -->
+                                            <ng-option *ngFor="let val of sourceEmailData"
+                                                value="{{val.SupportEmailID}}">{{val.SupportEmail}}</ng-option>
+                                        </ng-select>
+                                        <label><span class="astrik">*</span> Source Email</label>
+                                        <div *ngIf="submitted && f.sourceEmailId.errors" class="invalid-feedbacktwo">
+                                            <div *ngIf="f.sourceEmailId.errors.required">Source Email is required</div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-4 m-bottom floating-label">
+                                        <input type="text" class="floating-input" placeholder=" "
+                                            formControlName="senderEmail" [readonly]="!senderEmailReadonly">
+                                        <label>Sender Email</label>
+                                    </div>
+                                    <div class="col-sm-4 m-bottom floating-label">
+                                        <ng-select placeholder="" name="value" formControlName="accountID"
+                                            [clearable]="false"
+                                            [ngClass]="{ 'is-invalid': submitted && f.accountID.errors }">
+                                            <ng-option *ngFor="let val of accountData" value="{{val.AccountID}}">
+                                                {{val.AccountName}}</ng-option>
+                                        </ng-select>
+                                        <label><span class="astrik">*</span>Account</label>
+                                        <div *ngIf="submitted && f.accountID.errors" class="invalid-feedbacktwo">
+                                            <div *ngIf="f.accountID.errors.required">Account Name is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 m-bottom floating-label"
+                                        *ngIf="selectRadioButton === 'ExistingContact'">
+                                        <ng-select placeholder="" name="value" formControlName="contactID"
+                                            [clearable]="false"   (ngModelChange)="contactRequestorFields($event,'ContactInteraction')">
+                                            <ng-option *ngFor="let val of contactData" value="{{val.ContactID}}">
+                                                {{val.FullName}}</ng-option>
+                                        </ng-select>
+                                        <label><span class="astrik">*</span>Contact</label>
+                                        <div *ngIf="contactError" class="invalid-feedbacktwo">
+                                            <div>Contact Name is required</div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-12 m-bottom floating-label"
+                                        *ngIf="selectRadioButton === 'ExistingRequestor'">
+                                        <ng-select placeholder="" formControlName="requesterID" [clearable]="false" (ngModelChange)="contactRequestorFields($event,'RequesterInteraction')">
+                                            <ng-option *ngFor="let val of getRequesterdata" value={{val.RequesterID}}>
+                                                {{val.RequesterName}}</ng-option>
+                                        </ng-select>
+                                        <label>Requester</label>
+                                        <div *ngIf="requesterError" class="invalid-feedbacktwo">
+                                            <div>Requester is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 m-bottom floating-label"
+                                        *ngIf="selectRadioButton === 'NewRequestor'">
+                                        <input type="text" class="floating-input" placeholder=""
+                                            formControlName="name" (click)="requestorFields('name')">
+                                            <label><span class="astrik">*</span>Name</label>
+                                        <div *ngIf="name" class="invalid-feedbackOne">
+                                            <div>Name is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 m-bottom floating-label"
+                                        *ngIf="selectRadioButton === 'NewRequestor'">
+                                        <input type="text" class="floating-input" placeholder=""
+                                            formControlName="emailTo" (keyup)="requestorFields('emailTo')">
+                                            <label><span class="astrik">*</span>Email To</label>
+                                        <div *ngIf="emailTo" class="invalid-feedbackOne">
+                                            <div>EmailTo is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 m-bottom floating-label"
+                                        *ngIf="selectRadioButton === 'NewRequestor'">
+                                        <input type="text" class="floating-input" placeholder="Phone Number"
+                                            formControlName="phoneNumber" maxlength="10" (keypress)="numericOnly($event)">
+                                    </div>
+
+                                    <div class="col-sm-12 m-bottom floating-label">
+                                        <!-- <input type="text" class="floating-input" placeholder="CC"  formControlName="cc"> -->
+                                        <!-- <ng-select [items]="ccItems"
+                                        bindLabel="title" placeholder="CC" 
+                                        bindValue="id" 
+                                        groupBy="subprojects"
+                                        [multiple]="true" formControlName="cc"
+                                        [(ngModel)]="selectedProjects">
+                                        <ng-template ng-optgroup-tmp let-item="item">
+                                        {{item.title}}
+                                        </ng-template>
+                                        <ng-template ng-option-tmp let-item="item">
+                                        {{item.title}}
+                                        </ng-template>
+                                        </ng-select> -->
+                                        <ng-select [items]="ccType" placeholder="CC" [addTag]="addEmailCC"
+                                            (ngModelChange)="selectEmailCC($event)" [hideSelected]="true"
+                                            [multiple]="true" bindLabel="ccEmail" formControlName="cc"> </ng-select>
+                                        <!-- <label>CC</label> -->
+                                    </div>
+                                    <div class="col-sm-12 m-bottom floating-label " style="padding-bottom: 1.25em ;">
+                                        <input type="text" class="floating-input" placeholder=""
+                                            formControlName="subject"
+                                            [ngClass]="{ 'is-invalid': submitted && f.subject.errors }">
+                                        <label><span class="astrik">*</span>Subject</label>
+                                        <div *ngIf="submitted && f.subject.errors" class="invalid-feedbackOne">
+                                            <div *ngIf="f.subject.errors.required">Subject is required</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 m-bottom floating-label" style="padding-bottom: 1.25em ;">
+                                        <textarea class="floating-input" type="text" placeholder=""
+                                            formControlName="description" row="5"
+                                            [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+                                        <div *ngIf="submitted && f.description.errors" class="invalid-feedbackOne">
+                                            <div *ngIf="f.description.errors.required">Description is required</div>
+                                        </div>
+                                        <label> <span class="astrik">*</span>Description</label>
+                                    </div>
+
+                                    <div class="col-sm-4 m-bottom floating-label">
+                                        <ng-select placeholder="" formControlName="priority" [clearable]="false">
+                                            <ng-option *ngFor="let val of priorityData" value={{val.Priority}}>
+                                                {{val.Priority}}</ng-option>
+                                        </ng-select>
+                                        <label>Priority</label>
+                                    </div>
+                                    <div class="col-sm-4 m-bottom floating-label">
+                                        <ng-select placeholder="" formControlName="caseStatus" [clearable]="false"
+                                            [ngClass]="{ 'is-invalid': submitted && f.caseStatus.errors }">
+                                            <ng-option *ngFor="let val of statusData" value={{val.CaseStatus}}>
+                                                {{val.CaseStatus}}</ng-option>
+                                        </ng-select>
+                                        <label><span class="astrik">*</span>Status</label>
+                                        <div *ngIf="submitted && f.caseStatus.errors" class="invalid-feedbacktwo">
+                                            <div *ngIf="f.caseStatus.errors.required">Status is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 m-bottom floating-label">
+                                        <ng-select placeholder="" formControlName="requestType" [clearable]="false"
+                                            [ngClass]="{ 'is-invalid': submitted && f.requestType.errors }">
+                                            <ng-option *ngFor="let val of requestTypeData" value={{val.RequestType}}>
+                                                {{val.RequestType}}</ng-option>
+                                        </ng-select>
+                                        <label><span class="astrik">*</span>Request Type</label>
+                                        <div *ngIf="submitted && f.requestType.errors" class="invalid-feedbacktwo">
+                                            <div *ngIf="f.requestType.errors.required">Request Type is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 m-bottom floating-label">
+                                        <ng-select placeholder="" formControlName="escalation" [clearable]="false"
+                                            [ngClass]="{ 'is-invalid': submitted && f.escalation.errors }">
+                                            <ng-option *ngFor="let val of escalationData" value={{val.Escalation}}>
+                                                {{val.Escalation}}</ng-option>
+                                        </ng-select>
+                                        <label><span class="astrik">*</span>Escalation</label>
+                                        <div *ngIf="submitted && f.escalation.errors" class="invalid-feedbacktwo">
+                                            <div *ngIf="f.escalation.errors.required">Escalation is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 m-bottom floating-label">
+                                        <ng-select placeholder="" formControlName="buisnessHours" [clearable]="false"
+                                            [ngClass]="{ 'is-invalid': submitted && f.buisnessHours.errors }">
+                                            <ng-option *ngFor="let val of buisnessHoursData"
+                                                value={{val.BuisnessHours}}>{{val.BuisnessHours}}</ng-option>
+                                        </ng-select>
+                                        <label><span class="astrik">*</span>Business Hours</label>
+                                        <div *ngIf="submitted && f.buisnessHours.errors" class="invalid-feedbacktwo">
+                                            <div *ngIf="f.buisnessHours.errors.required">Business Hours is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 m-bottom floating-label">
+                                        <ng-select placeholder="" formControlName="callBackRequest" [clearable]="false"
+                                            [ngClass]="{ 'is-invalid': submitted && f.callBackRequest.errors }">
+                                            <ng-option *ngFor="let val of callBackRequestData"
+                                                value={{val.CallBackRequest}}>{{val.CallBackRequest}}</ng-option>
+                                        </ng-select>
+                                        <label><span class="astrik">*</span>CallBack Request</label>
+                                        <div *ngIf="submitted && f.callBackRequest.errors" class="invalid-feedbacktwo">
+                                            <div *ngIf="f.callBackRequest.errors.required">CallBack Request is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 m-bottom floating-label">
+                                        <ng-select placeholder="" formControlName="caseSourcePriID" [clearable]="false"
+                                            [ngClass]="{ 'is-invalid': submitted && f.caseSourcePriID.errors }">
+                                            <ng-option *ngFor="let val of sourceChannelData"
+                                                value={{val.CaseSourceName}}>{{val.CaseSourceName}}</ng-option>
+                                        </ng-select>
+                                        <label>Source Channel</label>
+                                        <div *ngIf="submitted && f.caseSourcePriID.errors" class="invalid-feedbacktwo">
+                                            <div *ngIf="f.caseSourcePriID.errors.required">Source Channel is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 m-bottom floating-label">
+                                        <input type="date" class="floating-input" placeholder=" "
+                                            formControlName="dueDate">
+                                        <!-- <svg xmlns="http://www.w3.org/2000/svg" height="19px" viewBox="0 0 24 24"
+                                            width="19px" fill="#5F5F5F">
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                            <path
+                                                d="M7 11h2v2H7v-2zm14-5v14c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2l.01-14c0-1.1.88-2 1.99-2h1V2h2v2h8V2h2v2h1c1.1 0 2 .9 2 2zM5 8h14V6H5v2zm14 12V10H5v10h14zm-4-7h2v-2h-2v2zm-4 0h2v-2h-2v2z" />
+                                        </svg> -->
+                                        <label> <span class="astrik">*</span>DueDate</label>
+                                        <div *ngIf="submitted && f.dueDate.errors" class="invalid-feedbacktwo" style="margin-top:0px!important">
+                                            <div *ngIf="f.dueDate.errors.required">DueDate Request is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 m-bottom floating-label">
+                                        <!-- 
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Choose a date</mat-label>
+                                            <input matInput [matDatepicker]="picker">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                          </mat-form-field> -->
+                                        <input type="date" class="floating-input" placeholder=" "
+                                            formControlName="followDate">
+                                            <label> <span class="astrik">*</span>FollowDate</label>
+                                        <!-- <label>FollowDate</label> -->
+                                        <div *ngIf="submitted && f.followDate.errors" class="invalid-feedbacktwo" style="margin-top:0px!important">
+                                            <div *ngIf="f.followDate.errors.required">FollowDate Request is required
+                                            </div>
+                                        </div>
+                                        <!-- <mat-form-field>
+                                            <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                          </mat-form-field> -->
+                                          <!-- <label>FollowDate</label> -->    
+                                      <!-- 
+                                        <mat-form-field>
+                                            <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [formControl]="dateControl"
+                                               [min]="minDate" [max]="maxDate" [disabled]="disabled">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <ngx-mat-datetime-picker #picker [showSpinners]="showSpinners" [showSeconds]="showSeconds"
+                                               [stepHour]="stepHour" [stepMinute]="stepMinute" [stepSecond]="stepSecond"
+                                               [touchUi]="touchUi" [color]="color" [enableMeridian]="enableMeridian" 
+                                               [disableMinute]="disableMinute" [hideTime]="hideTime">
+                                            </ngx-mat-datetime-picker>
+                                         </mat-form-field> -->
+                                    </div>
+                                    <div class="col-sm-4 m-bottom floating-label">
+                                        <ng-select placeholder="" formControlName="complaintCategory"
+                                            [clearable]="false"
+                                            [ngClass]="{ 'is-invalid': submitted && f.complaintCategory.errors }">
+                                            <ng-option *ngFor="let val of getComplaintdata"
+                                                value={{val.ComplaintCategory}}>{{val.ComplaintCategory}}</ng-option>
+                                        </ng-select>
+                                        <label><span class="astrik">*</span>Complaint Category</label>
+                                        <div *ngIf="submitted && f.complaintCategory.errors"
+                                            class="invalid-feedbacktwo">
+                                            <div *ngIf="f.complaintCategory.errors.required">Complaint Category is
+                                                required</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- File -->
+                                    <!-- <div class="col-sm-4 m-bottom floating-label">
+                                        <label>Attachments</label>
+                                        <button id="newContact"
+                                            style="cursor: pointer;height: 25px;position: relative;left: 10px;width: 25px;"
+                                            type="button" title="Attach" value="" (click)="fileModalPopup()">
+                                            <i class="fa fa-paperclip" id="attch"
+                                                style="color: rgb(0, 0, 0);"></i></button>
+                                    </div> -->
+                                    <!-- <button id="myBtn">1</button> -->
+                                    <div class="col-md-4" *ngIf="uploadAttachmentsCasesRole">
+                                        <button class="border-btn" (click)="fileModalPopup()">Attachments</button>
+                                    </div>
+                                </div>
+
+
+                              
+
+
+
+                            </div>
+                            <!-- </div> -->
+
+                            <!--  ////////////////////////////////////////////------- Newcustomfileds ------///////////////////////////////////////////////////// -->
+
+                            <!-- <div class="full-content-- form_to_rly"  > -->
+                            <!-- <div *ngIf="Newcustomfileds != null">
+                                <hr>
+                                <h5>other Fields  </h5>
+                                <div class="col-md-12">
+                                    <div class="row">
+
+                                        <div class="col-sm-4 m-bottom floating-label"
+                                            *ngFor="let thcus of Newcustomfileds; let CusIndex = index">
+
+                                         
+                                            <div *ngIf="thcus.visibleToAgent && userTypes === 'agent'">
+                                                 <input class="floating-input" style="height: 52px"
+                                                    *ngIf="thcus.dataType=='Textbox' && userTypes === 'agent'" type="text" class="form-control"
+                                                    id="{{CusIndex}}" placeholder="{{thcus.lableName}}">
+                                                 <ng-select *ngIf="thcus.dataType=='List' && userTypes === 'agent'" id="{{CusIndex}}"
+                                                    [clearable]="false" [items]="thcus.options"
+                                                    placeholder="{{thcus.lableName}}">
+                                                </ng-select>
+                                            </div>
+
+                                          
+
+                                            <div
+                                                *ngIf="thcus.visibleToContact && userTypes === 'contact'">
+                                                contact <input class="floating-input" style="height: 52px"
+                                                    *ngIf="thcus.dataType=='Textbox' && userTypes === 'contact'" type="text" class="form-control"
+                                                    id="{{CusIndex}}" placeholder="{{thcus.lableName}}">
+                                                <ng-select *ngIf="thcus.dataType=='List' && userTypes === 'contact'" id="{{CusIndex}}"
+                                                    [clearable]="false" [items]="thcus.options"
+                                                    placeholder="{{thcus.lableName}}">
+                                                </ng-select>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <div class="modaction-btns">
+                                <!-- <button class="border-btn">Assign To Me</button> -->
+                                <button class="filled-btn" (click)="SubmitNewCaseVal()">Create Case</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal" role="dialog" id="fileModal" data-backdrop="static" [ngClass]="{'displays': display === 'block'}"  >
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Attachments</h4>
+                <button type="button" class="close" aria-label="Close" (click)="closeModalFile()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <input type="file" id="file" multiple (change)="getFileDetails($event)" />
+                    <label for="file">choose a file</label>
+                </div>
+                <div class="row">
+                    <div *ngFor="let file of myFiles" class="col-md-4">
+                        <div class="text-center mb-3">
+                            <div class="">
+                                <img src="assets/images/attachment.png" alt="attachment">
+                            </div>
+                            <div class="attach-data">
+                                <p><span class="info-label">Name:</span>&nbsp;
+                                    <span class="data">{{ file.name.substr(0, 5) }}...</span>
+                                </p>
+                                <!-- <p><span class="info-label">Type:</span>&nbsp;<span class="data">{{ file.type }}</span>
+                                </p>
+                                <p><span class="info-label">Size:</span>&nbsp; <span class="data">{{ file.size }}</span>
+                                </p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button class="filled-btn" (click)="uploadFiles()">Upload</button>
+
+                </div>
+                <!-- <input type="file" id="file" multiple (change)="getFileDetails($event)" />
+
+                <button (click)="uploadFiles()">Upload</button>
+                <div *ngFor="let file of myFiles">
+                    <div>* {{ file.name }} - {{ file.type }} - {{ file.size }}</div>
+                </div> -->
+
+
+            </div>
+        </div>
+    </div>

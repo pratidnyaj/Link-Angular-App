@@ -1,80 +1,48 @@
-<!-- 
-<nav id="sidebar">
-    <div class="sidebar-content hidden-sm-down">
-        <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/dashboard']" [routerLinkActive]="['active']">
-                    <i class="icon-dashboard "></i>
-                    
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/case']" [routerLinkActive]="['active']">
-                    <i class="icon-cases"></i>
-                  
-                </a>
-
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/client']" [routerLinkActive]="['active']">
-                    <i class="icon-client"></i>
-                   
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/admin']" [routerLinkActive]="['active']">
-                    <i class="icon-admin"></i>
-                   
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/report']" [routerLinkActive]="['active']">
-                    <i class="icon-reports"></i>
-                 
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link logout-nav" [routerLink]="['/login']" [routerLinkActive]="['active']">
-                    <i class="icon-logout"></i>
-                    
-                </a> 
-            </li>
-        </ul>
-    </div>
-</nav> -->
-
-
 <nav id="unlink_sidebar">
     <div class="sidebar-content hidden-sm-down">
         <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" title="Dashboard" [routerLink]="['/dashboard']"
                     [routerLinkActive]="['active']">
                     <i class="icon-dashboard "></i>
                 </a>
-            </li>
+            </li> -->           
             <li class="nav-item">
-                <a class="nav-link" title="Cases" [routerLink]="['/case']" [routerLinkActive]="['active']">
+                <a class="nav-link"  matTooltip="Cases" matTooltipClass="custom-tooltip" [routerLink]="['/case']"
+                    [routerLinkActive]="['active']" *ngIf="casePageAccessModule">
                     <i class="icon-cases"></i>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" title="Client" [routerLink]="['/client']" [routerLinkActive]="['active']">
+                <a class="nav-link" matTooltip="Client" matTooltipClass="custom-tooltip"  [routerLink]="['/client']" [routerLinkActive]="['active']"
+                    *ngIf="clientPageAccessModule" (click)="routerActive()">
                     <i class="icon-client"></i>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" title="Admin" [routerLink]="['/admin']" [routerLinkActive]="['active']">
-                    <i class="icon-admin"></i>
+            <li class="nav-item" *ngIf="adminPageAccessModule">
+                <a class="nav-link" matTooltip="Admin" matTooltipClass="custom-tooltip" [routerLink]="['/admin']" [routerLinkActive]="['active']" >
+                    <i class="icon-agent"></i>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" title="Reports" [routerLink]="['/report']" [routerLinkActive]="['active']">
-                    <i class="icon-reports"></i>
+                <a class="nav-link" matTooltip="Reports" matTooltipClass="custom-tooltip" [routerLink]="['/report']" [routerLinkActive]="['active']"
+                    *ngIf="reportPageAccessModule">
+                    <i class="icon-report"></i>
                 </a>
             </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link" title="Reports" >
+                    <i class="icon-notification-plus"></i>
+                </a>
+            </li> -->
+            <!-- <li class="nav-item">
+                <a class="nav-link" title="Reports" >
+                    <i class="icon-block"></i>
+                </a>
+            </li> -->
             <li class="nav-item">
-                <a class="nav-link logout-nav" title="Logout" [routerLink]="['/login']" [routerLinkActive]="['active']">
+                <a class="nav-link logout-nav" matTooltip="Logout" matTooltipClass="custom-tooltip" (click)="logout()" [routerLink]="['/login']"
+                    [routerLinkActive]="['active']">
                     <i class="icon-logout"></i>
                 </a>
             </li>

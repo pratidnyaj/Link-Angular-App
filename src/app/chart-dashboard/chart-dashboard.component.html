@@ -1,0 +1,38 @@
+<div class="rightSlidePanel column-slide-panel panel-dashboard">
+    <div class="panel-header">
+        <h4>My Dashboard</h4>
+        <div class="close-btn"><i (click)="closePanel()" class="icon-cancel"></i></div>
+    </div>
+    <div class="panel-body">
+        <div class="chart-box tab-chart">
+            <div class="custom-tab parent-tab">
+                <ul class="nav">
+                    <li><a data-target="#Interactions" data-toggle="tab" class="active">Cases</a></li>
+                    <li><a data-target="#ProductiveTime" data-toggle="tab">Productive Time</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="Interactions" class="tab-pane active">
+                        <div class="custom-tab child-tab">
+                            <ul class="nav">
+                                <li><a data-target="#donut" data-toggle="tab" class="active">Cases</a></li>
+                                <li><a data-target="#bar" data-toggle="tab">Channels</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="donut" class="tab-pane active">All Cases</div>
+                                <div id="bar" class="tab-pane">Channels</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ProductiveTime" class="tab-pane">Productive Time</div>
+                </div>
+            </div>
+        </div>
+        <div class="info-btns">
+            <button class="red"><i class="icon-mail-outline"></i> <span>AHT</span> <strong>00:25:24</strong></button>
+            <button class="green"><span>QC Score</span> <strong>80%</strong> <sup>2</sup></button>
+        </div>
+        <div class="chart-box feedback-chart">
+            <h4>Customer Feedback</h4>
+        </div>
+    </div>
+</div>

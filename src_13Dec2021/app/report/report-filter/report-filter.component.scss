@@ -1,0 +1,58 @@
+.unlink_case_form {
+    .src {
+        .src_filed {
+            background-color: var(--white_color);
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+
+            .src_txt {
+                margin-bottom: 0px;
+            }
+            input {
+                background-color: none;
+                border: none;
+                text-align: right;
+                &:focus {
+                    outline: none;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+}
+.input-group > .input-group-append > .btn {
+    border: none;
+    padding: 0px;
+    &:hover {
+        background-color: transparent;
+    }
+    &:focus{
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+::ng-deep.ng-select .ng-select-container {
+    min-height: 0px;
+    padding-left: 5px;
+}
+
+
+
+::ng-deep.ng-select.ng-select-multiple .ng-select-container .ng-value-container {
+	
+	.ng-value {
+		background-color: var(--theme_input_border) !important;
+		border-radius: 4px !important;
+		color: var(--theme_input_color) !important;
+		font-size: 14px;
+		.ng-value-icon {
+			color: var(--theme_input_color) !important;
+		}
+	}
+}

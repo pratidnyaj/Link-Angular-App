@@ -1,0 +1,99 @@
+<p>create-contact works!</p>
+
+<ng-template #contact let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Create New Contact</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form action="" id="new-case">
+            <div class="form_to_rly">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="row">
+                            <div class="col-md-12 contact-profile">
+                                <div class="profile_view">
+                                    <button class="profile">
+                                        <img class="user d-none" src="assets/images/svg/contact-user.svg" alt="contact">
+                                    </button>
+                                </div>
+                                <div class="profile-edit">
+                                    <div class="pic_user">
+                                        <img class="user" src="assets/images/images/emptyProfile.jpg" alt="client-profile">
+                                        <button class="btn-user-edit">
+                                            <img class="pencil-icon" src="assets/images/svg/edit.svg" alt="edit">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 m-bottom floating-label">
+                                <input type="text" class="floating-input" placeholder=" ">
+                                <label>Contact Name</label>
+                            </div>
+                            <div class="col-md-6 m-bottom floating-label">
+                                <input type="text" class="floating-input" placeholder=" ">
+                                <label>Facebook</label>
+                            </div>
+                            <div class="col-sm-6 m-bottom floating-label">
+                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
+                                    value="">
+                                    <option value=""></option>
+                                    <option value="1">Language 1</option>
+                                    <option value="2">Language 2</option>
+                                </select>
+                                <label>Language</label>
+                            </div>
+                            <div class="col-md-6 m-bottom floating-label">
+                                <input type="text" class="floating-input" placeholder=" ">
+                                <label>Email 1</label>
+                            </div>
+                            <div class="col-md-6 m-bottom floating-label">
+                                <input type="text" class="floating-input" placeholder=" ">
+                                <label>Email 2</label>
+                            </div>
+                            <div class="col-md-6 m-bottom floating-label">
+                                <input type="text" class="floating-input" placeholder=" ">
+                                <label>Phone 1</label>
+                            </div>
+                            <div class="col-md-6 m-bottom floating-label">
+                                <input type="text" class="floating-input" placeholder=" ">
+                                <label>Phone 2</label>
+                            </div>
+                            <div class="col-sm-6 m-bottom floating-label">
+                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
+                                    value="">
+                                    <option value=""></option>
+                                    <option value="1">City 1</option>
+                                    <option value="2">City 2</option>
+                                </select>
+                                <label>City</label>
+                            </div>
+                            <div class="col-sm-6 m-bottom floating-label">
+                                <select class="floating-select" onclick="this.setAttribute('value', this.value);"
+                                    value="">
+                                    <option value=""></option>
+                                    <option value="1">Time Zone 1</option>
+                                    <option value="2">Time Zone 2</option>
+                                </select>
+                                <label>Time Zone</label>
+                            </div>
+                            <div class="col-md-12 m-bottom floating-label">
+                                <input type="text" class="floating-input" placeholder=" ">
+                                <label>Address</label>
+                            </div>
+                            <div class="col-md-12 m-bottom floating-label">
+                                <input type="text" class="floating-input" placeholder=" ">
+                                <label>Notes</label>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <button class="filled-btn">Create Contact</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>

@@ -1,0 +1,119 @@
+// .admin-content {
+//     position: absolute;
+//     bottom: 0;
+//     right: 15px;
+//     left: 85px;
+//     top: 88px;
+//     background-color: var(--white_color);
+//     padding: 15px;
+//     margin-bottom: 15px;
+//     box-shadow: 0px 2px 3px var(--box_shadow);
+//     border-radius: 15px;
+//     opacity: 1;
+//     overflow-y: auto;
+//     .content-title {
+//         font-size: 25px;
+//         color: var(--theme_title);
+//         font-weight: 600;
+//     }
+//     .card {
+//         border: none;
+//         border-radius: 0;
+//         padding: 10px 0px 5px 0px;
+//         .card-body {
+//             padding: 5px 0px 5px 0px;
+//             .img-title {
+//                 font-size: 15px;
+//                 color: var(--theme_title);
+//                 margin-bottom: 0;
+//                 font-weight: 600;
+//             }
+//         }
+//     }
+// }
+
+.admin_content {
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    left: 85px;
+    top: 88px;
+    background-color: var(--white_color);
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0px 2px 3px var(--box_shadow);
+    border-radius: 15px;
+    opacity: 1;
+    overflow-y: auto;
+    .Admin_elements {
+        padding: 10px 30px;
+        .admin_title {
+            font-size: 25px;
+            color: var(--theme_title);
+            font-weight: 600;
+        }
+        .admin_body {
+            background-color: var(--white_color);
+            padding: 15px 30px;
+            border-bottom: 1px solid var(--theme_input_border);
+            .admin-roles {
+                text-align: center;
+                img {
+                    // height: 75px;
+                    height: 50px;
+                }
+                .admin_info {
+                    margin-top: 10px;
+                    text-transform: capitalize;
+                    font-size: 14px;
+                    color: var(--theme_title);
+
+                    span {
+                        font-size: 15px;
+                        color: var(--theme_title);
+                        margin-bottom: 0;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+        &:last-child {
+            .admin_body {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .admin_content {
+        left: 15px;
+        bottom: 70px;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0px;
+        .Admin_elements {
+            padding: 10px 0px;
+            .admin_title {
+                margin-bottom: 10px;
+            }
+            .admin_body {
+                border-bottom: none;
+                border-radius: 15px;
+                padding: 30px 20px;
+                box-shadow: 0px 2px 3px var(--box_shadow);
+
+                .admin-roles {
+                    margin-bottom: 20px;
+                    text-align: center;
+                    img {
+                        // height: 75px;
+                        height: 50px;
+                        width: auto;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

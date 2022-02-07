@@ -1,0 +1,19 @@
+<div class="dropdown add-item-drpdown notify">
+    <button class="btn btnadd" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        <i class="icon-bell"></i>
+        <span class="notification-count">{{items.length}}</span>
+    </button>
+    <div class="dropdown-menu add-drpmenu external-drpmenu"  aria-labelledby="dropdownMenuButton" 
+     style="cursor: pointer;">
+        <div class="notify-drp"  *ngFor="let item of items" (click)="redirectCase()" >
+            <div class="notifiy-ttl">
+                <div class="titleme">{{item.caseId}}</div>
+                <div class="time">{{item.message.createdTime}}</div>
+            </div>
+            <div class="notify-subttl">
+                <p class="time">{{item.message.subject}}</p>
+            </div>
+        </div>
+    </div>
+</div>
